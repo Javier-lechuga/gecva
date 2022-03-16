@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/estilos.css">
+	<title>Tesis con Gamificación</title>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#otro">
+						<span class="sr-only"> Desplegar / Ocultar Menú</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!--
+					<a href="#" class="navbar-brand">Tesis con Gamificación</a>
+					-->
+				</div>
+				<!--Inicia Menú-->
+				<div class="collapse navbar-collapse" id="otro">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="principal.html">Inicio</a></li>
+						<li><a href="progreso.html">Progreso</a></li>
+						<li><a href="listaPlantillas.html">Plantillas</a></li>
+						<li><a href="entregables.html">Entregables</a></li>
+						<li><a href="listaTesistas.html">Tesistas</a></li>
+						<li><a href="perfil.html">Cuenta</a></li>
+					</ul>
+					<form action="" class="navbar-form navbar-right" role="search">
+						<button type="submit" class="btn">
+							<span class="glyphicon glyphicon-bell"><span class="badge">0</span></span>
+						</button>
+						<button type="submit" class="btn">
+							<span class="glyphicon glyphicon-user"></span>
+						</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<section class="jumbotron">
+		<div class="container">
+			<h1>Tesis con Gamificación</h1>
+			<p>Seguimiento de tesis con Gamificación</p>
+		</div>
+	</section>
+
+	<section class="main container">
+		<div class="row">
+			<section class="posts col-md-12">
+
+
+				<article class="post clearfix">
+					
+					<h3>Crear Plantilla</h3>
+
+					</br></br></br></br>
+
+					<form action="">
+						<div class="form-group row">
+							<label for="name" class="col-sm-2 col-form-label">Nombre</label>
+							<div class="col-sm-10">
+								<input type="name" class="form-control" id="name" placeholder="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="name" class="col-sm-4 col-form-label"></label>
+							<div class="col-sm-6">
+								<button type="button" class="form-control btn btn-primary" id="capitulo" data-toggle="modal" data-target="#agregaCapitulo">Agregar Capitulo +</button>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="name" class="col-sm-4 col-form-label"></label>
+							<div class="col-sm-6">
+								<button type="button" class="form-control btn btn-primary" id="titulo" data-toggle="modal" data-target="#agregaTitulo">Agregar Titulo +</button>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="name" class="col-sm-4 col-form-label"></label>
+							<div class="col-sm-6">
+								<button type="button" class="form-control btn btn-primary" id="subtitulo" data-toggle="modal" data-target="#agregaSubtitulo">Agregar Subtitulo +</button>
+							</div>
+						</div>
+
+						<!-- Modal Capitulo-->
+						<div class="modal fade" id="agregaCapitulo" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      	<div class="modal-content">
+						        	<div class="modal-header">
+						          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+						          		<h4 class="modal-title">Nombre del Capitulo</h4>
+						        	</div>
+						        	<div class="modal-body">
+						          		<input type="name" class="form-control" id="name" placeholder="ingresa el nombre del capitulo">
+						        	</div>
+						        	<div class="modal-footer">
+						          		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						          		<button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+						        	</div>
+						      	</div>
+						    </div>
+						</div>
+
+						<!-- Modal Titulo-->
+						<div class="modal fade" id="agregaTitulo" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      	<div class="modal-content">
+						        	<div class="modal-header">
+						          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+						          		<h4 class="modal-title">Nombre del Titulo</h4>
+						        	</div>
+						        	<div class="modal-body">
+						          		<input type="name" class="form-control" id="name" placeholder="ingresa el nombre del titulo">
+						        	</div>
+						        	<div class="modal-footer">
+						          		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						          		<button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+						        	</div>
+						      	</div>
+						    </div>
+						</div>
+
+						<!-- Modal Subtitulo-->
+						<div class="modal fade" id="agregaSubtitulo" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      	<div class="modal-content">
+						        	<div class="modal-header">
+						          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+						          		<h4 class="modal-title">Nombre del Subtitulo</h4>
+						        	</div>
+						        	<div class="modal-body">
+						          		<input type="name" class="form-control" id="name" placeholder="ingresa el nombre del subtitulo">
+						        	</div>
+						        	<div class="modal-footer">
+						          		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						          		<button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+						        	</div>
+						      	</div>
+						    </div>
+						</div>
+
+
+
+					</form>
+
+
+
+
+
+					
+				</article>
+
+				
+
+			</section>
+
+		</div>
+	</section>
+
+	<div class="form-group">
+		<p align="center">
+			<button type="reset" name="reset" class="btn btn-default" onclick="window.location.href='principal.html'">Cancelar</button>
+			<button type="submit" name="enviar" class="btn btn-default" onclick="window.location.href='listaPlantillas.html'">Crear</button>
+		</p>
+	</div>
+
+	<footer>
+	
+		<section class="jumbotron-bajo">
+			<div class="container">
+	            <a href="http://ingsoftware.reduaz.mx/moodle/" class="thumb pull-right"><img height="50px" width="80px" src="../imagenes/moodle.png">&nbsp;</a>
+	            <a href="https://www.facebook.com/CoordinacionTutoriasIngSoftUaz/?fref=ts" class="thumb pull-right"><img height="50px" width="80px" src="../imagenes/facebook.png">&nbsp;</a>
+	            <a href="http://ingsoftware.uaz.edu.mx/" class="thumb pull-right"><img height="50px" width="80px" src="../imagenes/ingSoftware.png" >&nbsp;</a>
+			</div>
+		</section>
+
+	</footer>
+
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Unidades
+{% endblock titulo %}
+
+{% block content %}
+
+	<div class="container">
+		<h1>{{mensaje}}</h1>
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr align="center">
+										<th>#</th>
+										<th>Unidad</th>
+										<th>Descripción</th>
+										<th>Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for unidad in unidades %}
+										<tr>
+											<td>{{forloop.counter}}</td>
+											<td>{{unidad.nombre}}</td>
+											<td>{{unidad.descripcion}}</td>
+											<td>
+												<a href = "javascript: if(confirm('Deseas editar {{unidad}}??')) window.location='{% url "editar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil">Editar</a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove">Eliminar</a>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</article>
+				</section>
+			</div>
+		</section>
+		<p align="center">
+			<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+			<a href = "{% url 'nueva_unidad' %}">Nueva unidad</a>
+		</p>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}

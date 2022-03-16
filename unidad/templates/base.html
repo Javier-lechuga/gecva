@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+
+	<link rel="icon" type="image/png" href="{% static 'imagenes/logo.png' %}" />
+
+	{% block css %}
+
+	{% endblock %}
+
+    <title>GECVA</title>
+</head>
+<body>
+    <header>
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#otro">
+						<span class="sr-only"> Desplegar / Ocultar Menú</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<!--Inicia Menú-->
+				<div class="collapse navbar-collapse" id="otro">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/principal/">Inicio</a></li>
+						{% if request.session.grupo == 'Asesores' or request.session.grupo == 'Tesistas' %}
+							<li><a href="/plantillas/">Plantillas</a></li>
+						{% endif %}
+						{% if request.session.grupo == 'Asesores' %}
+							<li><a href="/usuarios/lista_tesistas/">Progreso</a></li>
+							<li><a href="/usuarios/tesistas_entregables/">Entregables</a></li>
+							<li><a href="/usuarios/tesistas/">Tesistas</a></li>
+						{% endif %}
+						{% if request.session.grupo == 'Tesistas' %}
+							<li><a href="/progreso/">Progreso</a></li>
+							<li><a href="/plantillas/entregables/">Entregables</a></li>
+							<li><a href="/usuarios/asesores/">Asesores</a></li>
+							<li><a href="/topten/">TopTen</a></li>
+						{% endif %}
+					</ul>
+
+					<form action="" class="navbar-form navbar-right" role="search">
+						<!-- <button type="submit" class="btn">
+							<span class="glyphicon glyphicon-bell"><span class="badge">0</span></span>
+						</button> -->
+						{% if request.session.grupo == 'Asesores' or request.session.grupo == 'Tesistas' %}
+
+						<button type="submit" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"></span>
+							{{user.username }}
+						</button>
+							<ul class="dropdown-menu dropdown-r btn-sm" role="menu">
+								<li class=""><a href="/usuarios/perfil/">Perfil</a></li>
+								<li class="divider"></li>
+								<li><a href="{% url 'logout_sistema' %}">Salir</a></li>
+							</ul>
+						<ul class="nav navbar-right top-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-envelope"><span class="badge">{{user_not.count}}</span></i> <b class="caret"></b></a>
+								<ul class="dropdown-menu message-dropdown">
+									{% for noti in user_not%}
+									<li class="message-preview" id="noti-{{noti.id}}">
+										<a href="#" data-toggle="modal" data-target="#mimodal" onclick="mostrarModal({{noti.id}},'{% url 'mostrar_modal' %}')">
+											<div class="media">
+												<div class="media-body">
+													<h5 class="media-heading"><strong>Notificación</strong>
+													</h5>
+													<p class="small text-muted"><i class="glyphicon glyphicon-time"></i> {{noti.fecha}} </p>
+													<p>{{noti.tipo_notificacion.nombre}}</p>
+												</div>
+											</div>
+										</a>
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+						</ul>
+						{% endif %}
+					</form>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+    <section class="jumbotron">
+		<div class="container">
+			<h1>GECVA</h1>
+			<p>Gestor</p>
+		</div>
+	</section>
+
+    <div class="contenedor">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="mimodal" tabindex="-1" role="dialog" aria-labelledby="mimodalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				  <div class="modal-header">
+						<p align="center" class="modal-title" id="divMostrar"></p>
+				  </div>
+		  	</div>
+		</div>
+	</div>
+
+    <footer>
+		<section class="jumbotron-bajo">
+			<div class="container">
+	            <a href="#" class="thumb pull-right"><img height="50px" width="80px" src="{% static 'imagenes/logo1.png' %}" >&nbsp;</a>
+			</div>
+		</section>
+	</footer>
+
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/funciones.js' %}"></script>
+
+	{% block scripts %}
+
+	{% endblock %}
+</body>
+</html>
