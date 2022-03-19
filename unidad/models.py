@@ -10,5 +10,5 @@ class Unidad(models.Model):
     descripcion = models.CharField(u'Descripción', max_length=245, null=True)
     activo = models.BooleanField(verbose_name=('Activo'), default=True)
 
-def __unicode__(self):
-        return self.nombre
+    def __str__(self):
+            return self.nombre

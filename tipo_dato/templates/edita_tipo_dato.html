@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}
+	Tipo de dato
+{% endblock titulo %}
+
+{% block content %}
+	<section class="main container">
+		<h1> {{mensaje}}</h1>
+			<form method="POST">
+				{% csrf_token %}
+					{{ form.as_p }}
+					<input type = "submit" class="btn btn-primary" value = "Guardar" />
+					<button class="btn btn-primary" onclick="goBack()">Cancelar</button>
+			</form>
+	</section>
+{% endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}

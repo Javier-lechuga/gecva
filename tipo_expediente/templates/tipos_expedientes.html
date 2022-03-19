@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Tipos de expedientes
+{% endblock titulo %}
+
+{% block content %}
+
+	<div class="container">
+		<h1>{{mensaje}}</h1>
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr align="center">
+										<th>#</th>
+										<th>Nombre</th>
+										<th>Activo</th>
+										<th>Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for tipo in tipos %}
+										<tr>
+											<td>{{forloop.counter}}</td>
+											<td>{{tipo.nombre}}</td>
+											<td>{{tipo.descripcion}}</td>
+											<td>
+												<a href = "javascript: if(confirm('Deseas editar {{tipo}}??')) window.location='{% url "editar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{tipo}}??')) window.location='{% url "eliminar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</article>
+				</section>
+			</div>
+		</section>
+		<p align="center">
+			<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+			<a href = "{% url 'nuevo_tipo_exp' %}">Nuevo tipo de expediente</a>
+		</p>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}

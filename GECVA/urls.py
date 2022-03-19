@@ -23,5 +23,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('unidad/', include('unidad.urls')),
+    path('estatus/', include('estatus.urls')),
+    path('roles/', include('rol.urls')),
+    path('tipos_expedientes/', include('tipo_expediente.urls')),
+    path('tipos_datos/', include('tipo_dato.urls')),
+    path('expedientes/', include('expediente.urls')),
+    path('metadatos/', include('metadato.urls')),
     #re_path(r'^unidades/', include('unidad.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )

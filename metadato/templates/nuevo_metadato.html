@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo %}
+	Metadato
+{% endblock titulo %}
+
+{% block content %}
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<h1> {{etiqueta}} Crear metadato</h1>
+							<form method="POST" class="form-horizontal">
+								{% csrf_token %}
+								
+								{{form}}
+							    
+								
+								<br>
+								<p align="center">
+									<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+									<input class="btn btn-primary" type = "submit" />
+								</p>
+							</form>
+						</div>
+						
+					</article>
+				</section>
+			</div>
+		</section>
+
+
+{%endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}

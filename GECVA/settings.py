@@ -40,6 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'unidad',
+    'estatus',
+    'rol',
+    'tipo_expediente',
+    'expediente',
+    'tipo_dato',
+    'metadato',
 ]
 
 MIDDLEWARE = [
@@ -111,9 +117,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'es-mx'
+
+# TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block titulo %}
+	Estatus
+{% endblock titulo %}
+
+{% block content %}
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<h1> {{etiqueta}} Crear estatus</h1>
+							<form method="POST" class="form-horizontal">
+								{% csrf_token %}
+								
+								{{form}}
+							    
+
+								<p align="center">
+									<input class="btn btn-primary" type = "submit" />
+								</p>
+							</form>
+						</div>
+						<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+					</article>
+				</section>
+			</div>
+		</section>
+
+
+{%endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}

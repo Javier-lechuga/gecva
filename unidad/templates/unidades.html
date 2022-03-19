@@ -30,8 +30,8 @@
 											<td>{{unidad.nombre}}</td>
 											<td>{{unidad.descripcion}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{unidad}}??')) window.location='{% url "editar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil">Editar</a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove">Eliminar</a>
+												<a href = "javascript: if(confirm('Deseas editar {{unidad}}??')) window.location='{% url "editar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
 											</td>
 										</tr>
 									{% endfor %}
