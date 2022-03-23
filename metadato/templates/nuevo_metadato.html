@@ -14,7 +14,7 @@
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
 								
-								{{form}}
+								{{form.as_p}}
 							    
 								
 								<br>
@@ -30,6 +30,11 @@
 			</div>
 		</section>
 
+		{% if form.errors %}
+            {% for error in form.errors %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
 
 {%endblock %}
 

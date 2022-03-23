@@ -14,9 +14,9 @@
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
 								
-								{{form}}
+								{{form.as_p}}
 							    
-
+								<br/>
 								<p align="center">
 									<input class="btn btn-primary" type = "submit" />
 								</p>

@@ -31,7 +31,7 @@ def NuevoExpediente(request):
         if form.is_valid():
             # Instanciando Estatus
             estatus_dos = Estatus()
-            estatus_dos = Estatus.objects.get(pk=request.POST['estatus'])
+            estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
             # Instanciando TipoExpediente
             tipo_expediente_dos = TipoExpediente()
             tipo_expediente_dos = TipoExpediente.objects.get(pk=request.POST['tipo_expediente'])
@@ -44,7 +44,7 @@ def NuevoExpediente(request):
             else:
                 activo_dos = False
             user = get_user(request)
-            # user = request.user
+            user = request.user
             expediente = Expediente.objects.create(
                 identificador = request.POST.get('identificador',''),
                 nombre = request.POST.get('nombre',''),
@@ -57,7 +57,7 @@ def NuevoExpediente(request):
                 tipo_expediente = tipo_expediente_dos,
                 unidad = unidad_dos,
                 activo = activo_dos,
-                # usuario_crea = user
+                usuario_crea = user
             )
             expediente.save()
             return redirect('/expedientes/')

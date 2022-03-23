@@ -7,8 +7,9 @@ class UnidadForm(forms.ModelForm):
     class Meta:
         activo = forms.BooleanField()
         model = Unidad
-        fields = ('nombre', 'descripcion','activo')
+        fields = ('nombre', 'descripcion', 'jefe_unidad','activo')
         widgets = {
             'nombre': TextInput(attrs={'class': 'form-control'}),
             'descripcion': TextInput(attrs={'class': 'form-control'}),
+            'jefe_unidad' : forms.Select(attrs={'class': 'form-control'}),
         }

@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from estatus.models import Estatus
 from tipo_dato.models import TipoDato
+from tipo_expediente.models import TipoExpediente
 
 # Create your models here.
 class Metadato(models.Model):
@@ -15,6 +16,7 @@ class Metadato(models.Model):
     motivo_rechazo = models.CharField(u'Motivo_rechazo', max_length=245, null=True)
     tipo_dato = models.ForeignKey(TipoDato, related_name='Tipo_dato', blank=True, null=True, on_delete=models.CASCADE)
     estatus = models.ForeignKey(Estatus, related_name='Estatus_uno', blank=False, null=True, on_delete=models.CASCADE)
+    tipo_expediente = models.ForeignKey(TipoExpediente, related_name='Tipo_exp', blank=True, null=True, on_delete=models.CASCADE)
     obligatorio = models.BooleanField(verbose_name=('Obligatorio'), default=False)
 
     def __str__(self):

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block titulo %}
-	Metadatos
+	Usuarios
 {% endblock titulo %}
 
 {% block content %}
@@ -18,20 +18,20 @@
 								<thead>
 									<tr align="center">
 										<th>#</th>
-										<th>Nombre</th>
-										<th>Descripción</th>
+										<th>Usuario</th>
+										<th>Correo</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
-									{% for metadato in metadatos %}
+									{% for usuario in usuarios %}
 										<tr>
 											<td>{{forloop.counter}}</td>
-											<td>{{metadato.nombre}}</td>
-											<td>{{metadato.descripcion}}</td>
+											<td>{{usuario.username}}</td>
+											<td>{{usuario.email}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{metadato}}??')) window.location='{% url "editar_metadato" pk=metadato.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{metadato}}??')) window.location='{% url "eliminar_metadato" pk=metadato.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+												<a href = "javascript: if(confirm('Deseas editar {{usuario}}??')) window.location='{% url "editar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{usuario}}??')) window.location='{% url "eliminar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
 											</td>
 										</tr>
 									{% endfor %}
@@ -43,8 +43,8 @@
 			</div>
 		</section>
 		<p align="center">
-			<a href = "javascript: if(confirm('Deseas terminar??')) window.location='{% url "listar_tipos_exp" %}'" type="button" class="btn btn-primary">Terminar</a>
-			<a href = '{% url "metadato_tipo_exp" pk=tipo.pk %}'>Nuevo metadato</a>
+			<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+			<a href = "{% url 'nuevo_usuario' %}">Nuevo usuario</a>
 		</p>
 	</div>
 

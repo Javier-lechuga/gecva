@@ -12,7 +12,7 @@ class ExpedienteForm(forms.ModelForm):
         # descripcion = forms.CharField( widget=forms.Textarea(attrs={'rows': 5, 'cols': 100}) )
         model = Expediente
         fields = ('identificador','nombre', 'descripcion','asunto',
-            'ubicacion', 'motivo_rechazo','activo', 'tipo_expediente', 'estatus', 'unidad')
+            'ubicacion', 'motivo_rechazo','activo', 'tipo_expediente', 'unidad')
         widgets = {
             'identificador': TextInput(attrs={'class': 'form-control'}),
             'nombre': TextInput(attrs={'class': 'form-control'}),
@@ -20,8 +20,7 @@ class ExpedienteForm(forms.ModelForm):
             'asunto': TextInput(attrs={'class': 'form-control'}),
             'ubicacion': TextInput(attrs={'class': 'form-control'}),
             'motivo_rechazo': TextInput(attrs={'class': 'form-control'}),
-            'estatus' : forms.Select(attrs={'class': 'form-control'}),
+            # 'estatus' : forms.Select(attrs={'class': 'form-control'}),
             'unidad' : forms.Select(attrs={'class': 'form-control'}),
             'tipo_expediente' : forms.Select(attrs={'class': 'form-control'}),
-            # 'usuario_crea' : forms.Select(attrs={'class': 'form-control'}),
         }

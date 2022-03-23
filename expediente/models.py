@@ -17,11 +17,11 @@ class Expediente(models.Model):
     fecha_cierre = models.DateTimeField(u'Cierre',null=True)
     ubicacion = models.CharField(u'Ubicación', max_length=245)
     motivo_rechazo = models.CharField(u'motivo_rechazo', max_length=245)
-    activo = models.BooleanField(verbose_name=('Activo'), default=True)
-    tipo_expediente = models.ForeignKey(TipoExpediente, related_name='Tipo_expediente', blank=True, null=True, on_delete=models.CASCADE)
+    tipo_expediente = models.ForeignKey(TipoExpediente, related_name='Tipo_expediente', blank=False, null=True, on_delete=models.CASCADE)
     estatus = models.ForeignKey(Estatus, related_name='Estatus', blank=False, null=True, on_delete=models.CASCADE)
     unidad = models.ForeignKey(Unidad, related_name='Unidad', blank=False, null=True, on_delete=models.CASCADE)
-    # usuario_crea = models.ForeignKey(User, related_name='Creador', blank=False, null=False, on_delete=models.CASCADE)
+    usuario_crea = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    activo = models.BooleanField(verbose_name=('Activo'), default=True)
 
 def __unicode__(self):
         return self.nombre

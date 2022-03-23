@@ -7,6 +7,8 @@ from tipo_expediente.models import TipoExpediente
 from unidad.models import Unidad
 from estatus.models import Estatus
 from expediente.models import Expediente
+from usuarios.models import PerfilUser
+import usuarios
 
 # Register your models here.
 
@@ -32,3 +34,4 @@ admin.site.register(TipoExpediente)
 admin.site.register(Unidad)
 admin.site.register(Estatus)
 admin.site.register(Expediente, Administracion)
+admin.site.register(PerfilUser)

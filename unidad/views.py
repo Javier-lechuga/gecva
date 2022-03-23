@@ -4,6 +4,7 @@ from unidad.forms import UnidadForm
 from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 import datetime
 
 import json
@@ -25,9 +26,13 @@ def NuevaUnidad(request):
         unidad = None
         if form.is_valid():
             user = request.user
+            # Instanciando Jefe_inmediato
+            jefe_unidad_dos = User()
+            jefe_unidad_dos = User.objects.get(pk=request.POST['jefe_unidad'])
             unidad = Unidad.objects.create(
                 nombre = request.POST.get('nombre',''),
                 descripcion = request.POST.get('descripcion',''),
+                jefe_unidad = jefe_unidad_dos,
             )
             unidad.save()
             return redirect('/unidad/')

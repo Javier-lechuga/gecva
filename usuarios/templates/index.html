@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Forma 2</title>
+    </head>
+    <body>
+
+        {% if mensaje %}
+            {{mensaje}}
+        {% else %}
+
+        <form method="POST" action="/prueba/">
+            {% csrf_token %}
+            Usuario: {{perfil_form.username}}
+            Correo: {{perfil_form.email}}
+            Contraseña: {{perfil_form.password}}
+            {{perfil_form.last_login.as_hidden}}
+            {{perfil_form.date_joined.as_hidden}}
+            <input name="enviar" value="enviar" type="submit"/>
+        </form>
+        {% endif %}
+
+        {% if perfil_form.errors %}
+            {% for error in perfil_form.errors %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

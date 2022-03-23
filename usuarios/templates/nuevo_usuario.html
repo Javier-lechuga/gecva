@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block titulo %}
-	Tipo de expediente
+	Usuario
 {% endblock titulo %}
 
 {% block content %}
@@ -10,11 +10,11 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
-							<h1> {{etiqueta}} Crear tipo de expediente</h1>
+							<h1> {{etiqueta}} Crear usuario</h1>
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
 								
-								{{form}}
+								{{form.as_p}}
 							    
 
 								<p align="center">
@@ -27,6 +27,12 @@
 				</section>
 			</div>
 		</section>
+
+		{% if perfil_form.errors %}
+            {% for error in perfil_form.errors %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
 
 
 {%endblock %}

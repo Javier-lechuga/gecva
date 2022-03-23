@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
+from metadato.forms import MetadatoForm
+from metadato.models import Metadato
 from tipo_expediente.forms import TipoExpForm
 from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -35,10 +37,15 @@ def NuevoTipoExp(request):
                 activo = activo_dos,
             )
             tipo.save()
-            return redirect('/tipos_expedientes/')
+            # return redirect('/tipos_expedientes/')
+            # return redirect('/metadatos/nuevo_metadato')
+            #form = MetadatoForm()
+            return render(request, 'metadatos.html', {'tipo': tipo,})
+            # return render(request, 'nuevo_metadato.html', {'tipo': tipo,})
     else:
         form = TipoExpForm()
     return render(request, 'nuevo_tipo_exp.html', {'form': form, 'nuevo': 'Nuevo'})
+
 
 # @login_required(redirect_field_name='login')
 def EditarTipoExp(request, pk):
@@ -49,10 +56,11 @@ def EditarTipoExp(request, pk):
             if form.is_valid():
                 tipo = form.save()
                 tipo.save()
-                return redirect('/tipos_expedientes/')
+                metadatos = Metadato.objects.filter(tipo_expediente=pk)
+                return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos'})
         else:
             form = TipoExpForm(instance=tipo)
-        return render(request, 'edita_tipo_exp.html', {'form': form, 'mensaje': 'Modificar tipo de expediente'})
+        return render(request, 'edita_tipo_exp.html', {'form': form,'tipo': tipo, 'mensaje': 'Modificar tipo de expediente'})
     except ObjectDoesNotExist:
         return redirect('/tipos_expedientes/')
 

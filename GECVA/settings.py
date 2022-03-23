@@ -145,3 +145,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Auth_user_model = 'usuarios.PerfilUser' # donde los usuarios son el nombre de la aplicación, el usuario es un nombre de clase de modelo
