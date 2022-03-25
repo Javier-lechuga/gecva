@@ -9,13 +9,16 @@
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
+						{{ 'Aqui debe de estar el tipo:' }}{{tipo.pk}}
 						<div class="table-responsive">
 							<h1> {{etiqueta}} Crear expediente</h1>
-							<form method="POST" class="form-horizontal">
+							<form method="POST" class="form-horizontal" action="/expedientes/nuevo_expediente">
 								{% csrf_token %}
 								
 								{{form.as_p}}
 							    
+
+								<input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
 								<br/>
 								<p align="center">
 									<input class="btn btn-primary" type = "submit" />

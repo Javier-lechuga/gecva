@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Tipos de Expedientes
+{% endblock titulo %}
+
+{% block content %}
+
+	<div class="container">
+		<h1>{{mensaje}}</h1>
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<form action="/expedientes/muestra_campos_exp" method="POST">
+							{% csrf_token %}
+							<label for="" >Tipo de expediente</label>
+							<select id="tipo" name="tipo" class="form form-control">
+								<option  value="" selected="selected">--- SELECT ---</option>
+								{% for tipo in tipos_expedientes %}
+									<option value="{{tipo.pk}}"
+										{% if tipo == current_tipo %}selected="selected"{% endif %}>
+										{{tipo.nombre|capfirst}}
+									</option>
+								{% endfor %}
+							</select>
+							<br/><br/>
+							<p align="center">
+								<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+								<input type="submit" name="enviar" value="enviar" class="btn btn-primary"/>
+							</p>
+						</form>
+					</article>
+				</section>
+			</div>
+		</section>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}

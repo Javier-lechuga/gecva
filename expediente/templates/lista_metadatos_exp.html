@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block titulo %}
+	Expediente
+{% endblock titulo %}
+
+{% block content %}
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<h1> {{etiqueta}} Crear metadatos</h1>
+							<form method="POST" class="form-horizontal" action="">
+
+								<label for="avatar">Versión: 1</label>
+
+								{% for metadato in metadatos %}
+
+									<div>
+										{{metadato.nombre}}
+										<input type="text" id="valor" name="valor" class="form-control"/>
+									</div>
+									<div>
+										{{metadato.descripcion}}
+									</div>
+									
+									
+									{% if metadato.tipo_dato == 2 %}
+										<label for="avatar">Seleccionar archivo:</label>
+										<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+									{% endif %}
+
+									{% if metadato.tipo_dato == 3 %}
+										<input type="number" id="valor" name="valor" min="0" max="10000000">
+									{% endif %}
+
+									{% if metadato.tipo_dato == 4 %}
+										<input type="date" id="valor" name="valor" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+									{% endif %}
+
+									{% if metadato.tipo_dato == 3 %}
+										<input type="text" id="valor" name="valor">
+									{% endif %}
+
+								{% endfor %}
+
+								<input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+								<br/>
+								<p align="center">
+									<input class="btn btn-primary" type = "submit" />
+								</p>
+							</form>
+						</div>
+						<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+					</article>
+				</section>
+			</div>
+		</section>
+
+
+{%endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+{% endblock %}
