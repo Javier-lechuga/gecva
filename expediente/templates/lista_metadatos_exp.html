@@ -11,15 +11,17 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							<h1> {{etiqueta}} Crear metadatos</h1>
-							<form method="POST" class="form-horizontal" action="">
-
+							{{tipo}}
+							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp">
+								{% csrf_token %}
+								<input type="hidden" name="tipo" value="{{tipo.pk}}"/>
 								<label for="avatar">Versión: 1</label>
 
 								{% for metadato in metadatos %}
 
 									<div>
 										{{metadato.nombre}}
-										<input type="text" id="valor" name="valor" class="form-control"/>
+										<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control"/>
 									</div>
 									<div>
 										{{metadato.descripcion}}
@@ -28,19 +30,19 @@
 									
 									{% if metadato.tipo_dato == 2 %}
 										<label for="avatar">Seleccionar archivo:</label>
-										<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+										<input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg">
 									{% endif %}
 
 									{% if metadato.tipo_dato == 3 %}
-										<input type="number" id="valor" name="valor" min="0" max="10000000">
+										<input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000">
 									{% endif %}
 
 									{% if metadato.tipo_dato == 4 %}
-										<input type="date" id="valor" name="valor" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+										<input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31">
 									{% endif %}
 
 									{% if metadato.tipo_dato == 3 %}
-										<input type="text" id="valor" name="valor">
+										<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}">
 									{% endif %}
 
 								{% endfor %}

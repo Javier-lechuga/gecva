@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import get_user
+from django.http import HttpResponse
 import datetime
 
 import json
@@ -75,6 +76,24 @@ def NuevoExpediente(request):
     return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
 
 # @login_required(redirect_field_name='login')
+def GuardaMetadatosExp(request):
+    vars = []
+    for variable in request.POST.items():
+        vars.append(variable)
+    for otro in vars[2:]:
+        Metadato.objects.filter(pk=otro[0]).update(valor=otro[1])
+        Metadato.objects.filter(pk=otro[0]).update(version=1)
+    # return HttpResponse(vars)
+    return redirect('/expedientes/mis_expedientes')
+
+# @login_required(redirect_field_name='login')
+def ListarMisExpedientes(request):
+    user = get_user(request)
+    user = request.user
+    expedientes = Expediente.objects.filter(usuario_crea=user)
+    return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'mensaje': 'Expedientes'})
+
+# @login_required(redirect_field_name='login')
 def ListaMetadatosExp(request):
     if request.method == "GET":
         tipo = TipoExpediente()
@@ -105,21 +124,21 @@ def EditarExpediente(request, pk):
             if form.is_valid():
                 expediente = form.save()
                 expediente.save()
-                return redirect('/expedientes/')
+                return redirect('/expedientes/mis_expedientes')
         else:
             form = ExpedienteForm(instance=expediente)
         return render(request, 'edita_expediente.html', {'form': form, 'mensaje': 'Modificar expediente'})
     except ObjectDoesNotExist:
-        return redirect('/expedientes/')
+        return redirect('/expedientes/mis_expedientes')
 
 # @login_required(redirect_field_name='login')
 def EliminarExpediente(request, pk):
     try:
         expediente = Expediente.objects.get(pk=pk)
         expediente.delete()
-        return redirect('/expedientes/')
+        return redirect('/expedientes/mis_expedientes')
     except ObjectDoesNotExist:
-        return redirect('/expedientes/')
+        return redirect('/expedientes/mis_expedientes')
 
 # @login_required(redirect_field_name='login')
 def VerExpediente(request, pk):
