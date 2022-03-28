@@ -37,10 +37,15 @@ def NuevoExpediente(request):
         form = ExpedienteForm(request.POST)
         expediente = None
         if form.is_valid():
-            # Instanciando Estatus
-            estatus_dos = Estatus()
-            estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
-            # Instanciando TipoExpediente
+             # Instanciando Estatus
+            # @cambio
+            # fecha : 28/03/2020
+            # autor: lechuga
+            # Explcación: cambie para que busque el estatus y no el pk    
+            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
+            # @Anteriro 
+            #estatus_dos = Estatus()
+            #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
             tipo_expediente_dos = TipoExpediente()
             tipo_expediente_dos = TipoExpediente.objects.get(pk=request.POST['tipo'])
             # Instanciando Unidad
