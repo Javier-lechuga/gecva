@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+from django.http import HttpResponse
 from django.shortcuts import render
 from estatus.models import Estatus
 import expediente
+from expediente.models import Expediente
 from metadato.forms import MetadatoForm
 from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -34,6 +36,7 @@ def ListarMetadatosTipoEXp(request,pk):
 
 # @login_required(redirect_field_name='login')
 def MetadatoTipoExp(request,pk):
+    # return HttpResponse(request.POST.items())
     if request.method == "POST":
         form = MetadatoForm(request.POST)
         metadato = None
@@ -43,8 +46,9 @@ def MetadatoTipoExp(request,pk):
             # @cambio
             # fecha : 28/03/2020
             # autor: lechuga
-            # Explcación: cambie para que busque el estatus y no el pk    
-            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
+            # Explcación: cambie para que busque el estatus y no el pk
+            estatus_dos = Estatus()  
+            estatus_dos = Estatus.objects.get(nombre='Creado')
             # @Anteriro 
             #estatus_dos = Estatus()
             #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
@@ -69,7 +73,6 @@ def MetadatoTipoExp(request,pk):
                 tipo_dato = tipo_dato_dos,
                 tipo_expediente = tipo_expediente_dos,
                 estatus = estatus_dos,
-                expediente = request.POST.get('expediente',''),
             )
             metadato.save()
             tipo = tipo_expediente_dos

@@ -105,7 +105,7 @@ def ModificaExpCompleto(request):
             # return redirect('/expedientes/mis_expedientes')
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
             metadatos = Metadato.objects.filter(expediente=expediente.pk)
-            return render(request, 'detalle_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
+            return render(request, 'detalle_expediente.html', {'expediente': expediente,'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
         else:
             form = ExpedienteForm(instance=expediente)
         return render(request, 'edita_expediente.html', {'form': form, 'mensaje': 'Modificar expediente'})

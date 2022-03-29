@@ -30,8 +30,8 @@
 											<td>{{expediente.nombre}}</td>
 											<td>{{expediente.identificador}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{expediente}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{expediente}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+												<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar el expediente: {{expediente.identificador}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
 											</td>
 										</tr>
 									{% endfor %}
@@ -43,7 +43,7 @@
 			</div>
 		</section>
 		<p align="center">
-			<a href = "{% url 'selecciona_expediente' %}">Nuevo expediente</a>
+			<a href = "{% url 'selecciona_expediente' %}" type="button" class="btn btn-primary">Nuevo expediente</a>
 		</p>
 		<br/><br/>
 	</div>

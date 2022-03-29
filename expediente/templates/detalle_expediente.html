@@ -20,13 +20,51 @@
                                 <fieldset>
                                     <legend>Datos generales</legend>
                                     <div class="row">
-                                        <div class="col-md-9">
-                                            Nombre:
-                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" readonly/>
-                                        </div>
                                         <div class="col-md-3">
                                             Identificador: 
                                             <input type="text" class="form-control" id="identificador" name="identificador" value="{{expediente.identificador}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            Fecha de creación:
+                                            <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" value="{{expediente.fecha_creacion}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            Fecha de cierre: 
+                                            {% if expediente.fecha_cierre == None %}
+                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="" readonly/>
+                                            {% else %}
+                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="{{expediente.fecha_cierre}}" readonly/>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-3">
+                                            Estatus: 
+                                            <input type="text" class="form-control" id="estatus" name="estatus" value="{{expediente.estatus.nombre}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Creado por:
+                                            <input type="text" class="form-control" id="usuario_crea" name="usuario_crea" value="{{expediente.usuario_crea}}" readonly/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            Unidad: 
+                                            <input type="text" class="form-control" id="unidad" name="unidad" value="{{expediente.unidad.nombre}}" readonly/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Tipo de expediente:
+                                            <input type="text" class="form-control" id="tipo_expediente" name="tipo_expediente" value="{{expediente.tipo_expediente.nombre}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            Nombre:
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" readonly/>
+                                        </div>
+                                        <div class="col-md-5">
+                                            Ubicación:
+                                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{expediente.ubicacion}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
@@ -44,46 +82,6 @@
                                         </div>
                                     </div>
                                     <br/>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            Fecha de creación:
-                                            <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" value="{{expediente.fecha_creacion}}" readonly/>
-                                        </div>
-                                        <div class="col-md-4">
-                                            Fecha de cierre: 
-                                            {% if expediente.fecha_cierre == None %}
-                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="" readonly/>
-                                            {% else %}
-                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="{{expediente.fecha_cierre}}" readonly/>
-                                            {% endif %}
-                                        </div>
-                                        <div class="col-md-4">
-                                            Estatus: 
-                                            <input type="text" class="form-control" id="estatus" name="estatus" value="{{expediente.estatus.nombre}}" readonly/>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Tipo de expediente:
-                                            <input type="text" class="form-control" id="tipo_expediente" name="tipo_expediente" value="{{expediente.tipo_expediente.nombre}}" readonly/>
-                                        </div>
-                                        <div class="col-md-6">
-                                            Ubicación:
-                                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{expediente.ubicacion}}" readonly/>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Creado por:
-                                            <input type="text" class="form-control" id="usuario_crea" name="usuario_crea" value="{{expediente.usuario_crea}}" readonly/>
-                                        </div>
-                                        <div class="col-md-6">
-                                            Unidad: 
-                                            <input type="text" class="form-control" id="unidad" name="unidad" value="{{expediente.unidad.nombre}}" readonly/>
-                                        </div>
-                                    </div>
                                 </fieldset>
                                 <br/>
                                 <fieldset id="campos">
@@ -94,15 +92,15 @@
                                             {{metadato.nombre}}:
                                             {% if metadato.tipo_dato.pk == 2 %}
                                                 <label for="avatar">Seleccionar archivo:</label>
-                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" placeholder="{{metadato.valor}}" class="form-control" readonly/>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" placeholder="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 3 %}
-                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" placeholder="{{metadato.valor}}" class="form-control" readonly/>
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" placeholder="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 4 %}
-                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31" value="{{metadato.valor}}" placeholder="{{metadato.valor}}" class="form-control" readonly/>
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31" value="{{metadato.valor}}" placeholder="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 5 %}
@@ -118,7 +116,7 @@
 								<p align="center">
                                     <input id="modificar" name="modificar" class="btn btn-primary" type="button" value="Modificar" />
                                     <input id="cancelar" name="cancelar" class="btn btn-primary" type="button" value="Cancelar" />
-                                    <button id="regresar" name="regresar" class="btn btn-primary" onclick="goBack()">Regresar</button>
+                                    <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
                                     <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
 							</form>
@@ -188,7 +186,6 @@
                 });
             });
 
-            
         });
     </script>
 

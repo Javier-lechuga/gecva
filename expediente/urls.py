@@ -1,8 +1,9 @@
 #   from django.conf.urls import url
 from django.urls import path, re_path
 from . import views
-from expediente.views import EditarExpediente, EliminarExpediente, NuevoExpediente, SeleccionaTipoExp, VerExpediente, ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp, ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto
-
+from expediente.views import EditarExpediente, EliminarExpediente,NuevoExpediente, SeleccionaTipoExp, VerExpediente
+from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp
+from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto
 
 urlpatterns = [
 

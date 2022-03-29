@@ -6,7 +6,6 @@
 {% block content %}
 
 		<section class="main container">
-			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
@@ -18,24 +17,24 @@
 								<label for="avatar">Versión: 1</label>
 								
 								{% for metadato in metadatos %}
-									<div class="col-md-12"></div>
+									<div class="col-md-12">
 										{{metadato.nombre}}
 										
 										{% if metadato.tipo_dato.pk == 2 %}
 											<label for="avatar">Seleccionar archivo:</label>
-											<input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg">
+											<input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control" accept="image/png, image/jpeg">
 										{% endif %}
 
 										{% if metadato.tipo_dato.pk == 3 %}
-											<input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000">
+											<input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control" min="0" max="10000000">
 										{% endif %}
 
 										{% if metadato.tipo_dato.pk == 4 %}
-											<input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+											<input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
 										{% endif %}
 
 										{% if metadato.tipo_dato.pk == 5 %}
-											<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}">
+											<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control">
 										{% endif %}
 										{{metadato.descripcion}}
 									</div>
@@ -43,14 +42,14 @@
 								
 								<br/>
 								<p align="center">
+									<button class="btn btn-primary" onclick="goBack()">Regresar</button>
 									<input class="btn btn-primary" type = "submit" />
 								</p>
 							</form>
 						</div>
-						<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+						
 					</article>
 				</section>
-			</div>
 		</section>
 
 
