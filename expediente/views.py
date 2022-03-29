@@ -188,7 +188,7 @@ def ListaMetadatosExp(request):
         #   metadatos : metadatos // Los metadatos que componen el expediente
         #   tipo : tipo           // El tipo de expediente
         #   id : id               // El id del expediente que se esta trabajando
-        #   mensaje : metadatos   // Los metadatos que componen el expediente ¿Esta de mas?
+        #   mensaje : 'metadatos' // Mensaje a mostrar en la pagina
         #   bandera : bandera     // variable auxiliar que representa si el expediente
         #                            tiene un metadato del tipo Archivo.
         return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 
