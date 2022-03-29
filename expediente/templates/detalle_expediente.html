@@ -11,11 +11,11 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							<h1> {{etiqueta}} Detalle expediente</h1>
-							<form method="POST" class="form-horizontal" action="/expedientes/nuevo_expediente">
-
-                                
+							<form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo">
 								
 								{% csrf_token %}
+
+                                <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
 
                                 <fieldset>
                                     <legend>Datos generales</legend>
@@ -86,7 +86,7 @@
                                     </div>
                                 </fieldset>
                                 <br/>
-                                <fieldset>
+                                <fieldset id="campos">
                                     <legend>Metadatos</legend>
                                     {% for metadato in metadatos %}
 
@@ -106,19 +106,20 @@
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 5 %}
-                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control" readonly/>
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
                                     {% endfor %}
                                 </fieldset>
 
-								<input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+								
 								<br/>
 								<p align="center">
-									<input id="subir" name="subir" class="btn btn-primary" type="hidden"/>
-                                    <input id="modificar" name="modificar" class="btn btn-primary" type="button" value="Modificar" onclick="modificar()"/>
-                                    <button class="btn btn-primary" onclick="goBack()">Regresar</button>
+                                    <input id="modificar" name="modificar" class="btn btn-primary" type="button" value="Modificar" />
+                                    <input id="cancelar" name="cancelar" class="btn btn-primary" type="button" value="Cancelar" />
+                                    <button id="regresar" name="regresar" class="btn btn-primary" onclick="goBack()">Regresar</button>
+                                    <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
 							</form>
 						</div>
@@ -146,9 +147,49 @@
 	</script>
 
     <script type="text/javascript">
-        function modificar() {
+        $(function(){
+            window.onload = function() {
+                console.log("onload");
+                $("#subir").hide();
+                $("#cancelar").hide();
+            }
+
+            $('#modificar').click(function(){
+                console.log("Click en modificar")
+                $("#modificar").hide()
+                $("#nombre").attr("readonly", false)
+                $("#descripcion").attr("readonly", false)
+                $("#asunto").attr("readonly", false)
+                $("#ubicacion").attr("readonly", false)
+                $("#subir").show()
+                $("#cancelar").show()
+                $("#regresar").hide()
+                var ids = $(".inputClass")
+                $.each(ids, function(i,value){
+                    $("#"+value.id).attr("readonly", false)
+                    console.log(value.id)
+                });
+            });
+
+            $("#cancelar").click(function(){
+                console.log("Click en cancelar")
+                $("#nombre").attr("readonly", true)
+                $("#descripcion").attr("readonly", true)
+                $("#asunto").attr("readonly", true)
+                $("#ubicacion").attr("readonly", true)
+                $("#subir").hide()
+                $("#cancelar").hide()
+                $("#modificar").show()
+                $("#regresar").show()
+                var ids = $(".inputClass")
+                $.each(ids, function(i,value){
+                    $("#"+value.id).attr("readonly", true)
+                    console.log(value.id)
+                });
+            });
+
             
-        }
+        });
     </script>
 
 {% endblock %}

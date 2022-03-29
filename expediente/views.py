@@ -87,6 +87,32 @@ def NuevoExpediente(request):
     return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
 
 # @login_required(redirect_field_name='login')
+def ModificaExpCompleto(request):
+    try:
+        if request.method == "POST":
+            expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
+            exp = request.POST.get('expediente','')
+            Expediente.objects.filter(pk=exp).update(nombre=request.POST.get('nombre',''))
+            Expediente.objects.filter(pk=exp).update(descripcion=request.POST.get('descripcion',''))
+            Expediente.objects.filter(pk=exp).update(asunto=request.POST.get('asunto',''))
+            Expediente.objects.filter(pk=exp).update(ubicacion=request.POST.get('ubicacion',''))
+            vars = []
+            for variable in request.POST.items():
+                vars.append(variable)
+            for otro in vars[13:]:
+                Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
+                Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
+            # return redirect('/expedientes/mis_expedientes')
+            expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
+            metadatos = Metadato.objects.filter(expediente=expediente.pk)
+            return render(request, 'detalle_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
+        else:
+            form = ExpedienteForm(instance=expediente)
+        return render(request, 'edita_expediente.html', {'form': form, 'mensaje': 'Modificar expediente'})
+    except ObjectDoesNotExist:
+        return redirect('/expedientes/mis_expedientes')
+
+# @login_required(redirect_field_name='login')
 def DetalleExpediente(request, pk):
     try:
         expediente = Expediente.objects.get(pk=pk)
