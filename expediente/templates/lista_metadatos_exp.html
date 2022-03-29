@@ -21,7 +21,6 @@
 							{% endif %}
 
 								{% csrf_token %}
-								<input type="hidden" name="tipo" value="{{tipo.pk}}"/>
 								<label for="avatar">Versión: 1</label>
 								{% for metadato in metadatos %}
 
@@ -66,8 +65,7 @@
 									{% endif %}
 
 								{% endfor %}
-
-								<input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+								
 								<br/>
 								<p align="center">
 									<input class="btn btn-primary" type = "submit" />

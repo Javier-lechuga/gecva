@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from estatus.models import Estatus
+import expediente
 from metadato.forms import MetadatoForm
 from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -68,6 +69,7 @@ def MetadatoTipoExp(request,pk):
                 tipo_dato = tipo_dato_dos,
                 tipo_expediente = tipo_expediente_dos,
                 estatus = estatus_dos,
+                expediente = request.POST.get('expediente',''),
             )
             metadato.save()
             tipo = tipo_expediente_dos
@@ -116,6 +118,7 @@ def NuevoMetadato(request):
                 tipo_dato = tipo_dato_dos,
                 tipo_expediente = tipo_expediente_dos,
                 estatus = estatus_dos,
+                expediente = request.POST.get('expediente',''),
             )
             metadato.save()
             return redirect('/metadatos/')

@@ -30,7 +30,7 @@
 											<td>{{expediente.nombre}}</td>
 											<td>{{expediente.identificador}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{expediente}}??')) window.location='{% url "editar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+												<a href = "javascript: if(confirm('Deseas editar {{expediente}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
 												<a href = "javascript: if(confirm('Deseas eliminar {{expediente}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
 											</td>
 										</tr>
