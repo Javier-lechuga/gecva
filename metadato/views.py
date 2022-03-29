@@ -40,8 +40,14 @@ def MetadatoTipoExp(request,pk):
         if form.is_valid():
             user = request.user
             # Instanciando Estatus
-            estatus_dos = Estatus()
-            estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
+            # @cambio
+            # fecha : 28/03/2020
+            # autor: lechuga
+            # Explcación: cambie para que busque el estatus y no el pk    
+            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
+            # @Anteriro 
+            #estatus_dos = Estatus()
+            #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
             # Instanciando TipoDato
             tipo_dato_dos = TipoDato()
             tipo_dato_dos = TipoDato.objects.get(pk=request.POST['tipo_dato'])
@@ -83,8 +89,14 @@ def NuevoMetadato(request):
         if form.is_valid():
             user = request.user
             # Instanciando Estatus
-            estatus_dos = Estatus()
-            estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
+            # @cambio
+            # fecha : 28/03/2020
+            # autor: lechuga
+            # Explcación: cambie para que busque el estatus y no el pk    
+            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
+            # @Anteriro 
+            #estatus_dos = Estatus()
+            #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
             # Instanciando TipoDato
             tipo_dato_dos = TipoDato()
             tipo_dato_dos = TipoDato.objects.get(pk=request.POST['tipo_dato'])
