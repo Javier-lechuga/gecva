@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from estatus.models import Estatus
+import expediente
 from expediente.forms import ExpedienteForm
 from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -68,21 +69,44 @@ def NuevoExpediente(request):
                 usuario_crea = user
             )
             expediente.save()
+            nuevo_expediente = Expediente.objects.filter(identificador=request.POST.get('identificador',''))
             # return redirect('/expedientes/lista_metadatos_exp')
-            return redirect('/expedientes/lista_metadatos_exp?pk=%s' % expediente.tipo_expediente.pk )
-            # return render(request, '/expedientes/lista_metadatos_exp', {'pk': expediente.tipo_expediente,'mensaje': 'Metadatos'})
+            id = 0
+            for exp in nuevo_expediente:
+                id = exp.pk
+            print(id)
+            return redirect('/expedientes/lista_metadatos_exp?pk=%s&id=%s' % (expediente.tipo_expediente.pk, id))
+            # return render(request, '/expedientes/lista_metadatos_exp', {'pk': expediente.tipo_expediente, 'id': nuevo_expediente.pk})
     else:
         form = ExpedienteForm()
     return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
+
+# @login_required(redirect_field_name='login')
+def DetalleExpediente(request, pk):
+    try:
+        expediente = Expediente.objects.get(pk=pk)
+        metadatos = Metadato.objects.filter(expediente=pk)
+        if request.method == "POST":
+            form = ExpedienteForm(request.POST, instance=expediente)
+            if form.is_valid():
+                expediente = form.save()
+                expediente.save()
+                return redirect('/expedientes/mis_expedientes')
+        # else:
+            # form = ExpedienteForm(instance=expediente)
+        return render(request, 'detalle_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
+    except ObjectDoesNotExist:
+        return redirect('/expedientes/mis_expedientes')
 
 # @login_required(redirect_field_name='login')
 def GuardaMetadatosExp(request):
     vars = []
     for variable in request.POST.items():
         vars.append(variable)
-    for otro in vars[2:]:
+    for otro in vars[3:]:
         Metadato.objects.filter(pk=otro[0]).update(valor=otro[1])
         Metadato.objects.filter(pk=otro[0]).update(version=1)
+        Metadato.objects.filter(pk=otro[0]).update(expediente=request.POST['id_exp'])
     # return HttpResponse(vars)
     return redirect('/expedientes/mis_expedientes')
 
@@ -98,8 +122,12 @@ def ListaMetadatosExp(request):
     if request.method == "GET":
         tipo = TipoExpediente()
         tipo = TipoExpediente.objects.get(pk=request.GET['pk'])
+
+        id = Expediente()
+        id = Expediente.objects.get(pk=request.GET['id'])
+
         metadatos = Metadato.objects.filter(tipo_expediente=tipo.pk)
-        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo,'mensaje': 'Metadatos'})
+        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo, 'id': id,'mensaje': 'Metadatos'})
 
 # @login_required(redirect_field_name='login')
 def MuestraCamposExp(request):
