@@ -6,7 +6,6 @@ from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCampos
 from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto
 
 urlpatterns = [
-
     ###############   Expedientes   #########################
     path('', views.ListarExpedientes, name = "listar_expedientes"),
     path('selecciona_expediente', views.SeleccionaTipoExp, name = "selecciona_expediente"),
@@ -21,6 +20,8 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/eliminarExpediente', EliminarExpediente, name= "eliminar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/verExpediente$', VerExpediente, name= "ver_expediente"),
-
-
 ]
+
+# 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, documen_root=settings.MEDIA_ROOT)

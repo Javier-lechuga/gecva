@@ -20,6 +20,10 @@ import tipo_expediente
 from tipo_expediente.models import TipoExpediente
 from unidad.models import Unidad
 
+#Para cargar expediente
+from django.core.files.storage import default_storage
+#
+
 # Create your views here.
 # @login_required(redirect_field_name='login')
 def ListarExpedientes(request):
@@ -131,6 +135,14 @@ def DetalleExpediente(request, pk):
 
 # @login_required(redirect_field_name='login')
 def GuardaMetadatosExp(request):
+    request.FILES
+    
+    print("hola putito")
+    print(request.FILES)
+
+    file = request.FILES['1']
+    file_name = default_storage.save(file.name, file)
+
     vars = []
     for variable in request.POST.items():
         vars.append(variable)
@@ -158,7 +170,33 @@ def ListaMetadatosExp(request):
         id = Expediente.objects.get(pk=request.GET['id'])
 
         metadatos = Metadato.objects.filter(tipo_expediente=tipo.pk)
-        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo, 'id': id,'mensaje': 'Metadatos'})
+
+        #se revisa si el expediente tiene algun archivo como metadato,
+        #de ser asi se le asigna true a la variable bandera, 
+        #caso contrario sele asigna false  
+        bandera = False
+        for metadato in metadatos:
+            if metadato.tipo_dato.tipo == "Archivo":
+                bandera = True
+                break
+
+        #lechuga        
+        #return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo,'mensaje': 'Metadatos','bandera':bandera})
+        #rada
+        #return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo, 'id': id,'mensaje': 'Metadatos'})
+        #se cambio para regresar 
+        #   metadatos : metadatos // Los metadatos que componen el expediente
+        #   tipo : tipo           // El tipo de expediente
+        #   id : id               // El id del expediente que se esta trabajando
+        #   mensaje : metadatos   // Los metadatos que componen el expediente ¿Esta de mas?
+        #   bandera : bandera     // variable auxiliar que representa si el expediente
+        #                            tiene un metadato del tipo Archivo.
+        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 
+                                                            'tipo': tipo, 
+                                                            'id': id,
+                                                            'mensaje': 'Metadatos',
+                                                            'bandera': bandera
+                                                            })
 
 # @login_required(redirect_field_name='login')
 def MuestraCamposExp(request):
