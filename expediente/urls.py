@@ -2,10 +2,14 @@
 from django.urls import path, re_path
 from . import views
 from expediente.views import EditarExpediente, EliminarExpediente, NuevoExpediente, SeleccionaTipoExp, VerExpediente, ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp, ListarMisExpedientes
+#
 
+#para cargar archivos
+from django.conf import settings
+from django.conf.urls.static import static
+#
 
 urlpatterns = [
-
     ###############   Expedientes   #########################
     path('', views.ListarExpedientes, name = "listar_expedientes"),
     path('selecciona_expediente', views.SeleccionaTipoExp, name = "selecciona_expediente"),
@@ -18,6 +22,8 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/eliminarExpediente', EliminarExpediente, name= "eliminar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/verExpediente$', VerExpediente, name= "ver_expediente"),
-
-
 ]
+
+# 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, documen_root=settings.MEDIA_ROOT)

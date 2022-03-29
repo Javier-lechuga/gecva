@@ -19,6 +19,10 @@ import tipo_expediente
 from tipo_expediente.models import TipoExpediente
 from unidad.models import Unidad
 
+#Para cargar expediente
+from django.core.files.storage import default_storage
+#
+
 # Create your views here.
 # @login_required(redirect_field_name='login')
 def ListarExpedientes(request):
@@ -82,6 +86,14 @@ def NuevoExpediente(request):
 
 # @login_required(redirect_field_name='login')
 def GuardaMetadatosExp(request):
+    request.FILES
+    
+    print("hola putito")
+    print(request.FILES)
+
+    file = request.FILES['1']
+    file_name = default_storage.save(file.name, file)
+
     vars = []
     for variable in request.POST.items():
         vars.append(variable)
@@ -104,7 +116,13 @@ def ListaMetadatosExp(request):
         tipo = TipoExpediente()
         tipo = TipoExpediente.objects.get(pk=request.GET['pk'])
         metadatos = Metadato.objects.filter(tipo_expediente=tipo.pk)
-        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo,'mensaje': 'Metadatos'})
+
+        bandera = False
+        for metadato in metadatos:
+            if metadato.tipo_dato.tipo == "Archivo":
+                bandera = True
+                
+        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo,'mensaje': 'Metadatos','bandera':bandera})
 
 # @login_required(redirect_field_name='login')
 def MuestraCamposExp(request):

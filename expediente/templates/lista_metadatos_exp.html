@@ -10,39 +10,59 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
+        
 							<h1> {{etiqueta}} Crear metadatos</h1>
 							{{tipo}}
-							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp">
+
+							{% if bandera %}
+							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp" enctype="multipart/form-data">
+							{% else %}
+							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp">	
+							{% endif %}
+
 								{% csrf_token %}
 								<input type="hidden" name="tipo" value="{{tipo.pk}}"/>
 								<label for="avatar">Versión: 1</label>
-
 								{% for metadato in metadatos %}
 
+									<h1>
 									<div>
 										{{metadato.nombre}}
-										<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control"/>
+										<!--input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control"/-->
 									</div>
-									<div>
-										{{metadato.descripcion}}
-									</div>
+									</h1>
 									
-									
-									{% if metadato.tipo_dato == 2 %}
+									{% if metadato.tipo_dato.tipo == "Archivo" %}
+										Entrando a la selección de archivi. metadato tipo ={{metadato.tipo_dato}}
 										<label for="avatar">Seleccionar archivo:</label>
 										<input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg">
+										<div>
+											{{metadato.descripcion}}
+										</div>
 									{% endif %}
 
-									{% if metadato.tipo_dato == 3 %}
+									{% if metadato.tipo_dato.tipo == "Numérico" %}
+										Entrando al registro de número. metadato tipo ={{metadato.tipo_dato}}
 										<input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000">
+										<div>
+											{{metadato.descripcion}}
+										</div>
 									{% endif %}
 
-									{% if metadato.tipo_dato == 4 %}
+									{% if metadato.tipo_dato.tipo == "Fecha" %}
+										Entrando al registro de fecha. metadato tipo ={{metadato.tipo_dato}}
 										<input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+										<div>
+											{{metadato.descripcion}}
+										</div>
 									{% endif %}
 
-									{% if metadato.tipo_dato == 3 %}
+									{% if metadato.tipo_dato.tipo == "Texto" %}
+										Entrando al registro de texto. metadato tipo ={{metadato.tipo_dato}}
 										<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}">
+										<div>
+											{{metadato.descripcion}}
+										</div>
 									{% endif %}
 
 								{% endfor %}
