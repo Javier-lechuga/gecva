@@ -106,6 +106,9 @@
                                             {% if metadato.tipo_dato.pk == 5 %}
                                                 <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
+                                            {% if metadato.tipo_dato.pk == 6 %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" />
+                                            {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
                                     {% endfor %}
