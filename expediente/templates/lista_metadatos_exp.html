@@ -11,7 +11,6 @@
 						<div class="table-responsive">
         
 							<h1> {{etiqueta}} Crear metadatos</h1>
-							{{tipo}}
 
 							{% if bandera %}
 							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp" enctype="multipart/form-data">
@@ -19,52 +18,41 @@
 							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp">	
 							{% endif %}
 
-								{% csrf_token %}
-								<label for="avatar">Versión: 1</label>
-								{% for metadato in metadatos %}
+							<input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+							<input name="id_exp" id="id_exp" type="hidden" value="{{id.pk}}" />
+								<div class="col-md-12">
+									{% csrf_token %}
 
-									<h1>
-									<div>
-										{{metadato.nombre}}
-										<!--input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control"/-->
-									</div>
-									</h1>
+									{% for metadato in metadatos %}
+										
+										{% if metadato.tipo_dato.tipo == "Archivo" %}
+											{{metadato.nombre}}:
+											<label for="">Seleccionar archivo:</label>
+											<input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control" accept="image/png, image/jpeg">	
+											*Descripción: {{metadato.descripcion}}
+										{% endif %}
+
+										{% if metadato.tipo_dato.tipo == "Numérico" %}
+											{{metadato.nombre}}:
+											<input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control" min="0" max="10000000">
+											*Descripción: {{metadato.descripcion}}
+										{% endif %}
+
+										{% if metadato.tipo_dato.tipo == "Fecha" %}
+											{{metadato.nombre}}:
+											<input type="date" id="{{metadato.pk}}" class="form-control" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+											*Descripción: {{metadato.descripcion}}
+										{% endif %}
+
+										{% if metadato.tipo_dato.tipo == "Texto" %}
+											{{metadato.nombre}}:
+											<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" class="form-control">
+											*Descripción: {{metadato.descripcion}}
+										{% endif %}
+										<br/>
+									{% endfor %}
 									
-									{% if metadato.tipo_dato.tipo == "Archivo" %}
-										Entrando a la selección de archivi. metadato tipo ={{metadato.tipo_dato}}
-										<label for="avatar">Seleccionar archivo:</label>
-										<input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg">
-										<div>
-											{{metadato.descripcion}}
-										</div>
-									{% endif %}
-
-									{% if metadato.tipo_dato.tipo == "Numérico" %}
-										Entrando al registro de número. metadato tipo ={{metadato.tipo_dato}}
-										<input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000">
-										<div>
-											{{metadato.descripcion}}
-										</div>
-									{% endif %}
-
-									{% if metadato.tipo_dato.tipo == "Fecha" %}
-										Entrando al registro de fecha. metadato tipo ={{metadato.tipo_dato}}
-										<input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31">
-										<div>
-											{{metadato.descripcion}}
-										</div>
-									{% endif %}
-
-									{% if metadato.tipo_dato.tipo == "Texto" %}
-										Entrando al registro de texto. metadato tipo ={{metadato.tipo_dato}}
-										<input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}">
-										<div>
-											{{metadato.descripcion}}
-										</div>
-									{% endif %}
-
-								{% endfor %}
-								
+								</div>
 								<br/>
 								<p align="center">
 									<button class="btn btn-primary" onclick="goBack()">Regresar</button>

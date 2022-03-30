@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Principal
+{% endblock titulo %}
+
+{% block content %}
+
+	<div class="main container">
+		<h2>Opciones</h2>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/expedientes/mis_expedientes" type="button" class="btn btn-primary btn-block btn-lg">Expedientes</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/tipos_expedientes/" type="button" class="btn btn-warning btn-block btn-lg">Tipos de expedientes</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/unidad/" type="button" class="btn btn-warning btn-block btn-lg">Unidades</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/usuarios/" type="button" class="btn btn-warning btn-block btn-lg">Usuarios</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/roles/" type="button" class="btn btn-danger btn-block btn-lg">Roles</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/estatus/" type="button" class="btn btn-danger btn-block btn-lg">Estatus</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<p align="center">
+					<a href = "/tipos_datos/" type="button" class="btn btn-danger btn-block btn-lg">Tipos de datos</a>
+				</p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		<a href="{% url "logout_sistema" %}">Salir</a>
+
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+	
+{% endblock%}

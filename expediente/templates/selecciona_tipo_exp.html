@@ -13,7 +13,7 @@
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<form action="/expedientes/muestra_campos_exp" method="POST">
+						<form method="POST" action="/expedientes/busca_metadatos_exp">
 							{% csrf_token %}
 							<label for="" >Tipo de expediente</label>
 							<select id="tipo" name="tipo" class="form form-control">

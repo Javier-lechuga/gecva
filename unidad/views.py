@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from asyncio.windows_events import NULL
 from django.shortcuts import render
 from unidad.forms import UnidadForm
 from django.contrib.auth.decorators import permission_required, login_required
@@ -28,7 +29,11 @@ def NuevaUnidad(request):
             user = request.user
             # Instanciando Jefe_inmediato
             jefe_unidad_dos = User()
-            jefe_unidad_dos = User.objects.get(pk=request.POST['jefe_unidad'])
+            if request.POST['jefe_unidad']:
+                jefe_unidad_dos = User.objects.get(pk=request.POST['jefe_unidad'])
+            else:
+                # Si no cuenta con jefe de unidad se asigna automaticamente al superusuario del sistema
+                jefe_unidad_dos = User.objects.get(pk=1)
             unidad = Unidad.objects.create(
                 nombre = request.POST.get('nombre',''),
                 descripcion = request.POST.get('descripcion',''),

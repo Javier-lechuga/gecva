@@ -15,13 +15,17 @@ import time
 
 
 from expediente.models import Expediente
+from metadato.forms import MetadatoForm
 from metadato.models import Metadato
+from tipo_dato.models import TipoDato
 import tipo_expediente
 from tipo_expediente.models import TipoExpediente
 from unidad.models import Unidad
 
 #Para cargar expediente
 from django.core.files.storage import default_storage
+
+from usuarios.models import PerfilUser
 #
 
 # Create your views here.
@@ -69,7 +73,6 @@ def NuevoExpediente(request):
                 descripcion = request.POST.get('descripcion',''),
                 asunto = request.POST.get('asunto',''),
                 ubicacion = request.POST.get('ubicacion',''),
-                motivo_rechazo = request.POST.get('motivo_rechazo',''),
                 fecha_creacion = datetime.datetime.now(),
                 estatus = estatus_dos,
                 tipo_expediente = tipo_expediente_dos,
@@ -91,7 +94,90 @@ def NuevoExpediente(request):
     return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
 
 # @login_required(redirect_field_name='login')
+def BuscaMetadatosExp(request):
+    metadatos = Metadato.objects.filter(tipo_expediente=request.POST['tipo'], base =1)
+    expediente = ExpedienteForm()
+    tipo = TipoExpediente()
+    tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
+    return render(request, 'nuevo_exp_completo.html', {'tipo': tipo, 'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Nuevo expediente'})
+
+# @login_required(redirect_field_name='login')
+def NuevoExpCompleto(request):
+    if request.method == "POST":
+        # return HttpResponse(request.POST.items())
+        form = ExpedienteForm(request.POST)
+        expediente = None
+        # CREANDO EL EXPEDIENTE
+        user = get_user(request)
+        user = request.user
+        # Instanciando Estatus
+        estatus_expediente = Estatus()
+        estatus_expediente = Estatus.objects.get(nombre = 'Creado')
+        #Instanciando Tipo_expediente
+        tipo_expediente_exp = TipoExpediente()
+        tipo_expediente_exp = TipoExpediente.objects.get(pk=request.POST['tipo'])
+        #Instanciando el PerfilUser
+        perfil = PerfilUser()
+        perfil = PerfilUser.objects.get(pk=user)
+        # Instanciando Unidad Modificar con lo del login
+        unidad_expediente = Unidad()
+        unidad_expediente = Unidad.objects.get(pk=perfil.unidad_user.pk)
+        expediente = Expediente.objects.create(
+            identificador = request.POST.get('identificador',''),
+            nombre = request.POST.get('nombre',''),
+            descripcion = request.POST.get('descripcion',''),
+            asunto = request.POST.get('asunto',''),
+            ubicacion = request.POST.get('ubicacion',''),
+            fecha_creacion = datetime.datetime.now(),
+            estatus = estatus_expediente,
+            tipo_expediente = tipo_expediente_exp,
+            unidad = unidad_expediente,
+            activo = True,
+            usuario_crea = user
+        )
+        expediente.save()
+        nuevo_expediente = Expediente.objects.get(identificador=request.POST.get('identificador',''))
+        # CREANDO LOS METADATOS
+        metadato = None
+        vars = []
+        tipo = 0
+        metas = []
+        for variable in request.POST.items():
+            vars.append(variable)
+        # print(vars)
+        for otro in vars[8:]:
+            metas.append(otro)
+            tipo = otro[0]
+        # print(vars)
+        # print("Este es el valor de tipo: %s" % tipo)
+        # print(metas)
+        for valor in metas:
+            #Instanciando Metadato
+            meta = Metadato()
+            meta = Metadato.objects.get(pk=valor[0])
+            # print(valor)
+            # print(meta)
+            metadato = Metadato.objects.create(
+                nombre = meta.nombre,
+                descripcion = meta.descripcion,
+                obligatorio = meta.obligatorio,
+                valor = valor[1],
+                version = 1,
+                tipo_dato = meta.tipo_dato,
+                tipo_expediente = nuevo_expediente.tipo_expediente,
+                estatus = meta.estatus,
+                expediente = nuevo_expediente,
+            )
+            metadato.save()
+        # return HttpResponse(request.POST.items())
+        return redirect('/expedientes/mis_expedientes')
+    else:
+        form = ExpedienteForm()
+    return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
+
+# @login_required(redirect_field_name='login')
 def ModificaExpCompleto(request):
+    # return HttpResponse(request.POST.items())
     try:
         if request.method == "POST":
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
@@ -103,6 +189,7 @@ def ModificaExpCompleto(request):
             vars = []
             for variable in request.POST.items():
                 vars.append(variable)
+            print(vars)
             for otro in vars[13:]:
                 Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
                 Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
@@ -135,13 +222,13 @@ def DetalleExpediente(request, pk):
 
 # @login_required(redirect_field_name='login')
 def GuardaMetadatosExp(request):
-    request.FILES
+    # request.FILES
     
-    print("hola putito")
-    print(request.FILES)
+    # print("hola putito")
+    # print(request.FILES)
 
-    file = request.FILES['1']
-    file_name = default_storage.save(file.name, file)
+    # file = request.FILES['51']
+    # file_name = default_storage.save(file.name, file)
 
     vars = []
     for variable in request.POST.items():

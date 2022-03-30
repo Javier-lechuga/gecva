@@ -13,6 +13,8 @@ import os
 
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'expediente',
     'tipo_dato',
     'metadato',
+    'inicio',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +150,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Auth_user_model = 'usuarios.PerfilUser' # donde los usuarios son el nombre de la aplicación, el usuario es un nombre de clase de modelo
+
+LOGIN_URL = reverse_lazy('login_sistema')
+LOGOUT_URL = reverse_lazy('inicio')
+LOGIN_REDIRECT_URL = reverse_lazy('principal')

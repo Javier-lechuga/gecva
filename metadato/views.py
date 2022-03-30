@@ -43,15 +43,8 @@ def MetadatoTipoExp(request,pk):
         if form.is_valid():
             user = request.user
             # Instanciando Estatus
-            # @cambio
-            # fecha : 28/03/2020
-            # autor: lechuga
-            # Explcación: cambie para que busque el estatus y no el pk
             estatus_dos = Estatus()  
             estatus_dos = Estatus.objects.get(nombre='Creado')
-            # @Anteriro 
-            #estatus_dos = Estatus()
-            #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
             # Instanciando TipoDato
             tipo_dato_dos = TipoDato()
             tipo_dato_dos = TipoDato.objects.get(pk=request.POST['tipo_dato'])
@@ -73,6 +66,7 @@ def MetadatoTipoExp(request,pk):
                 tipo_dato = tipo_dato_dos,
                 tipo_expediente = tipo_expediente_dos,
                 estatus = estatus_dos,
+                base = 1,
             )
             metadato.save()
             tipo = tipo_expediente_dos
@@ -92,14 +86,8 @@ def NuevoMetadato(request):
         if form.is_valid():
             user = request.user
             # Instanciando Estatus
-            # @cambio
-            # fecha : 28/03/2020
-            # autor: lechuga
-            # Explcación: cambie para que busque el estatus y no el pk    
-            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
-            # @Anteriro 
-            #estatus_dos = Estatus()
-            #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
+            estatus_dos = Estatus()  
+            estatus_dos = Estatus.objects.get(nombre='Creado')
             # Instanciando TipoDato
             tipo_dato_dos = TipoDato()
             tipo_dato_dos = TipoDato.objects.get(pk=request.POST['tipo_dato'])
@@ -122,6 +110,7 @@ def NuevoMetadato(request):
                 tipo_expediente = tipo_expediente_dos,
                 estatus = estatus_dos,
                 expediente = request.POST.get('expediente',''),
+                base = 1,
             )
             metadato.save()
             return redirect('/metadatos/')

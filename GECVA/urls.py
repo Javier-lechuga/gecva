@@ -31,4 +31,5 @@ urlpatterns = [
     path('expedientes/', include('expediente.urls')),
     path('metadatos/', include('metadato.urls')),
     #re_path(r'^unidades/', include('unidad.urls')),
+    path('', include('inicio.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )

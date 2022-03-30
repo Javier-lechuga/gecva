@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import IntegerField
 from estatus.models import Estatus
 from expediente.models import Expediente
 from tipo_dato.models import TipoDato
@@ -20,6 +22,7 @@ class Metadato(models.Model):
     tipo_expediente = models.ForeignKey(TipoExpediente, related_name='Tipo_exp', blank=True, null=True, on_delete=models.CASCADE)
     expediente = models.ForeignKey(Expediente, related_name='Tipo_exp', blank=True, null=True, on_delete=models.CASCADE)
     obligatorio = models.BooleanField(verbose_name=('Obligatorio'), default=False)
+    base = models.IntegerField(default=0)
 
     def __str__(self):
             return self.nombre

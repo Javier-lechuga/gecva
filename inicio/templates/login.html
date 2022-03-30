@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Login
+{% endblock titulo %}
+
+{% block content %}
+
+
+	<section class="main container">
+		<div class="row">
+			<section class="posts col-md-12">
+				<!-- Pendientes -->
+				<article class="post clearfix">
+					{% if mensaje %}
+						<h3>
+							<p align="center">
+								<div class="alert alert-success">
+								  <strong>{{mensaje}}!</strong>
+								</div>
+
+							</p>
+						</h3>
+					{% endif %}
+					{% if mensajeerror %}
+						<div class="alert alert-danger">
+							<strong>Error!!!   </strong>{{mensajeerror}}
+						</div>
+					{% endif %}
+					<br><br><br>
+
+					<p align="center">
+						"Gestor Electrónico para el Control de Versiones de Archivos"
+					</p>
+							
+					<br><br>	
+					<p align="center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Login</button></p>
+					<br>
+					<p align="center"><button type="button" class="btn btn-primary" class="btn btn-link" onclick="window.location.href='/usuarios/nuevoUsuario/'">Crear Cuenta</button></p>
+					<br
+
+				</article>
+			</section>
+		</div>
+	</section>
+
+	<!-- Modal Login-->
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog">
+			<div class="loginmodal-container">
+				<h1>Bienvenido!!!</h1><br>
+				<form method="POST" action="{% url "login_sistema" %}">
+					{% csrf_token %}
+					<input name="username" placeholder="Username" type="text">
+					<input name="password" placeholder="Password" type="password">
+					<input name="login" class="login loginmodal-submit" value="Login" type="submit">
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
