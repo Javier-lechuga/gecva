@@ -1,7 +1,12 @@
 {% extends "base.html" %}
+
 {% block titulo %}
 	Expediente
 {% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
 
 {% block content %}
 
@@ -10,8 +15,8 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
-							<h1> {{etiqueta}} Detalle expediente</h1>
-							<form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo">
+							<h1> {{etiqueta}}</h1>
+							<form method="POST" class="form-horizontal" action="/expedientes/ver_expediente">
 								
 								{% csrf_token %}
 
@@ -60,7 +65,7 @@
                                     <div class="row">
                                         <div class="col-md-7">
                                             Nombre:
-                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" required readonly/>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" readonly/>
                                         </div>
                                         <div class="col-md-5">
                                             Ubicación:
@@ -71,14 +76,14 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             Descripción:
-                                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{expediente.descripcion}}" required readonly/>
+                                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{expediente.descripcion}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-12">
                                             Asunto: 
-                                            <input type="text" class="form-control" id="asunto" name="asunto" value="{{expediente.asunto}}" required readonly/>
+                                            <input type="text" class="form-control" id="asunto" name="asunto" value="{{expediente.asunto}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
@@ -91,45 +96,24 @@
                                         <div class="col-md-12">
                                             {{metadato.nombre}}:
                                             {% if metadato.tipo_dato.pk == 2 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <label for="avatar">Seleccionar archivo:</label>
-                                                    <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" reqiored readonly/>
-                                                {% else %}
-                                                    <label for="avatar">Seleccionar archivo:</label>
-                                                    <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                                <label for="avatar">Seleccionar archivo:</label>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 3 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 4 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 5 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
 
                                             {% if metadato.tipo_dato.pk == 6 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
@@ -139,8 +123,7 @@
 								
 								<br/>
 								<p align="center">
-                                    <input id="modificar" name="modificar" class="btn btn-primary" type="button" value="Modificar" />
-                                    <input id="cancelar" name="cancelar" class="btn btn-primary" type="button" value="Cancelar" />
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Solicitar aprobación</button>
                                     <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
                                     <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
@@ -151,6 +134,75 @@
 				</section>
             </div>
 		</section>
+
+        <!-- Modal Usuarios-->
+        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-tittle">Seleccionar usuarios</h2>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="tablita">
+                            <thead>
+                                <tr align="center">
+                                    <th>
+                                        <p align="center">
+                                            #
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p align="center">
+                                            Seleccionar
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p align="center">
+                                            Usuario
+                                        </p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for usuario in usuarios %}
+                                <tr>
+                                    <td>
+                                        <p align="center">
+                                            {{forloop.counter}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p align="center">
+                                            <input type="checkbox" id="{{usuario.pk}}" name="{{usuario.pk}}" class="elementTable" value="{{usuario.pk}}">
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p align="center">
+                                            {{usuario.first_name}} {{usuario.last_name}}
+                                        </p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        
 
 {%endblock %}
 
@@ -206,6 +258,28 @@
             });
 
         });
+
+        $(document).ready( function () {
+            $('#tablita').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse":true,
+                "paging":false
+            });
+        } );
+
+        $("#confirmar").click(function(){
+            var idss = $(".elementTable")
+            var seleccionados = []
+            $.each(idss, function(i,value){
+                if($("#"+value.id).is(':checked')) {  
+                    seleccionados.push(value.id)
+                }
+            });
+            console.log(seleccionados)
+        });
+
     </script>
+
+    <script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 {% endblock %}

@@ -56,7 +56,7 @@ def EditarTipoExp(request, pk):
             if form.is_valid():
                 tipo = form.save()
                 tipo.save()
-                metadatos = Metadato.objects.filter(tipo_expediente=pk)
+                metadatos = Metadato.objects.filter(tipo_expediente=pk, base=1)
                 return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos'})
         else:
             form = TipoExpForm(instance=tipo)

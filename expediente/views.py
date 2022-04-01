@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import get_user
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 import datetime
 
 import json
@@ -95,11 +96,18 @@ def NuevoExpediente(request):
 
 # @login_required(redirect_field_name='login')
 def BuscaMetadatosExp(request):
-    metadatos = Metadato.objects.filter(tipo_expediente=request.POST['tipo'], base =1)
+    metadatos = Metadato.objects.filter(tipo_expediente=request.POST['tipo'], base =1).order_by('pk')
     expediente = ExpedienteForm()
     tipo = TipoExpediente()
     tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
     return render(request, 'nuevo_exp_completo.html', {'tipo': tipo, 'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Nuevo expediente'})
+
+# @login_required(redirect_field_name='login')
+def VerExpediente(request, pk):
+    usuarios = User.objects.all().order_by('pk')
+    expediente = Expediente.objects.get(pk=pk)
+    metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
+    return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente'})
 
 # @login_required(redirect_field_name='login')
 def NuevoExpCompleto(request):
@@ -195,7 +203,7 @@ def ModificaExpCompleto(request):
                 Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
             # return redirect('/expedientes/mis_expedientes')
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
-            metadatos = Metadato.objects.filter(expediente=expediente.pk)
+            metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
             return render(request, 'detalle_expediente.html', {'expediente': expediente,'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
         else:
             form = ExpedienteForm(instance=expediente)
@@ -207,7 +215,7 @@ def ModificaExpCompleto(request):
 def DetalleExpediente(request, pk):
     try:
         expediente = Expediente.objects.get(pk=pk)
-        metadatos = Metadato.objects.filter(expediente=pk)
+        metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
         if request.method == "POST":
             form = ExpedienteForm(request.POST, instance=expediente)
             if form.is_valid():
@@ -244,7 +252,7 @@ def GuardaMetadatosExp(request):
 def ListarMisExpedientes(request):
     user = get_user(request)
     user = request.user
-    expedientes = Expediente.objects.filter(usuario_crea=user)
+    expedientes = Expediente.objects.filter(usuario_crea=user).order_by('pk')
     return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'mensaje': 'Expedientes'})
 
 # @login_required(redirect_field_name='login')
@@ -256,7 +264,7 @@ def ListaMetadatosExp(request):
         id = Expediente()
         id = Expediente.objects.get(pk=request.GET['id'])
 
-        metadatos = Metadato.objects.filter(tipo_expediente=tipo.pk)
+        metadatos = Metadato.objects.filter(tipo_expediente=tipo.pk).order_by('pk')
 
         #se revisa si el expediente tiene algun archivo como metadato,
         #de ser asi se le asigna true a la variable bandera, 
@@ -324,10 +332,3 @@ def EliminarExpediente(request, pk):
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
 
-# @login_required(redirect_field_name='login')
-def VerExpediente(request, pk):
-    try:
-        expediente = Expediente.objects.get(pk=pk)
-        return render(request, 'expedientes.html', {'expediente': expediente})
-    except ObjectDoesNotExist:
-        return redirect('principal')
