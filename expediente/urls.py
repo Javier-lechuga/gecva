@@ -1,9 +1,9 @@
 #   from django.conf.urls import url
 from django.urls import path, re_path
 from . import views
-from expediente.views import BuscaMetadatosExp, EditarExpediente, EliminarExpediente,NuevoExpediente, SeleccionaTipoExp, VerExpediente
-from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp
-from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp
+from expediente.views import AprobarExp, BuscaMetadatosExp, EditarExpediente, EliminarExpediente,NuevoExpediente, SeleccionaTipoExp, VerExpediente
+from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp, ExpRecibidos
+from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp, AprobarExp
 
 #para cargar archivos
 from django.conf import settings
@@ -22,12 +22,15 @@ urlpatterns = [
     path('modifica_exp_completo', views.ModificaExpCompleto, name = "modifica_exp_completo"),
     path('busca_metadatos_exp', views.BuscaMetadatosExp, name = "busca_metadatos_exp"),
     path('ver_expediente', views.VerExpediente, name = "ver_expediente"),
+    path('asigna_expediente', views.AsignaExpediente, name = "asigna_expediente"),
+    path('exp_recibidos', views.ExpRecibidos, name = "exp_recibidos"),
     # re_path(r'^(?P<pk>[0-9]+)/guardaMetadatosExp', GuardaMetadatosExp, name= "guarda_metadatos_exp"),
     re_path(r'^(?P<pk>[0-9]+)/detalleExpediente', DetalleExpediente, name= "detalle_expediente"),
     # re_path(r'^(?P<pk>[0-9]+)/verExpediente', DetalleExpediente, name= "ver_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/eliminarExpediente', EliminarExpediente, name= "eliminar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/verExpediente$', VerExpediente, name= "ver_expediente"),
+    re_path(r'^(?P<pk>[0-9]+)/aprobarExp$', AprobarExp, name= "aprobar_exp"),
 ]
 
 # 

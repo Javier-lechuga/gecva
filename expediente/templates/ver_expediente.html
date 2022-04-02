@@ -16,7 +16,7 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							<h1> {{etiqueta}}</h1>
-							<form method="POST" class="form-horizontal" action="/expedientes/ver_expediente">
+							<form method="POST" id="forma" class="form-horizontal" action="/expedientes/asigna_expediente">
 								
 								{% csrf_token %}
 
@@ -120,6 +120,7 @@
                                     {% endfor %}
                                 </fieldset>
 
+                                <input type="hidden" id="users" name="users" value="">
 								
 								<br/>
 								<p align="center">
@@ -127,6 +128,59 @@
                                     <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
                                     <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
+
+                                
+                                {% if seleccionados %}
+                                    <fieldset id="campos">
+                                    <legend>Asignado</legend>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr align="center">
+                                                        <th>
+                                                            <p align="center">
+                                                                #
+                                                            </p>
+                                                        </th>
+                                                        <th>
+                                                            <p align="center">
+                                                                Usuario
+                                                            </p>
+                                                        </th>
+                                                        <th>
+                                                            <p align="center">
+                                                                Estatus
+                                                            </p>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for seleccionado in seleccionados %}
+                                                    <tr>
+                                                        <td>
+                                                            <p align="center">
+                                                                {{forloop.counter}}
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p align="center">
+                                                                {{seleccionado.id_usuario.first_name}} {{seleccionado.id_usuario.last_name}}
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p align="center">
+                                                                {{seleccionado.id_estatus.nombre}}
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </fieldset>
+                                {% endif %}
+                                
+
 							</form>
 						</div>
 						
@@ -134,6 +188,9 @@
 				</section>
             </div>
 		</section>
+
+        
+
 
         <!-- Modal Usuarios-->
         <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
@@ -190,9 +247,6 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                    
-
                     
                 </div>
                 <div class="modal-footer">
@@ -263,7 +317,10 @@
             $('#tablita').DataTable({
                 "scrollY": "200px",
                 "scrollCollapse":true,
-                "paging":false
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
             });
         } );
 
@@ -275,7 +332,9 @@
                     seleccionados.push(value.id)
                 }
             });
+            $('#users').val(seleccionados)
             console.log(seleccionados)
+            $("#forma").submit();
         });
 
     </script>

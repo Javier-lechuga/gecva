@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% block titulo %}
+	Expediente
+{% endblock titulo %}
+
+{% block content %}
+
+		<section class="main container">
+            <div class="container">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<h1> {{etiqueta}} Detalle expediente</h1>
+							<form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo">
+								
+								{% csrf_token %}
+
+                                <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
+
+                                <fieldset>
+                                    <legend>Datos generales</legend>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            Identificador: 
+                                            <input type="text" class="form-control" id="identificador" name="identificador" value="{{expediente.identificador}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            Fecha de creación:
+                                            <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" value="{{expediente.fecha_creacion}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            Fecha de cierre: 
+                                            {% if expediente.fecha_cierre == None %}
+                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="" readonly/>
+                                            {% else %}
+                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="{{expediente.fecha_cierre}}" readonly/>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-3">
+                                            Estatus: 
+                                            <input type="text" class="form-control" id="estatus" name="estatus" value="{{expediente.estatus.nombre}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Creado por:
+                                            <input type="text" class="form-control" id="usuario_crea" name="usuario_crea" value="{{expediente.usuario_crea.first_name}} {{expediente.usuario_crea.last_name}}" readonly/>
+                                        </div>
+                                        <div class="col-md-5">
+                                            Unidad: 
+                                            <input type="text" class="form-control" id="unidad" name="unidad" value="{{expediente.unidad.nombre}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            Tipo de expediente:
+                                            <input type="text" class="form-control" id="tipo_expediente" name="tipo_expediente" value="{{expediente.tipo_expediente.nombre}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            Nombre:
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" required readonly/>
+                                        </div>
+                                        <div class="col-md-5">
+                                            Ubicación:
+                                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{expediente.ubicacion}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            Descripción:
+                                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{expediente.descripcion}}" required readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            Asunto: 
+                                            <input type="text" class="form-control" id="asunto" name="asunto" value="{{expediente.asunto}}" required readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </fieldset>
+                                <br/>
+                                <fieldset id="campos">
+                                    <legend>Metadatos</legend>
+                                    {% for metadato in metadatos %}
+
+                                        <div class="col-md-12">
+                                            {{metadato.nombre}}:
+                                            {% if metadato.tipo_dato.pk == 2 %}
+                                                {% if metadato.obligatorio == True %}
+                                                    <label for="avatar">Seleccionar archivo:</label>
+                                                    <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" reqiored readonly/>
+                                                {% else %}
+                                                    <label for="avatar">Seleccionar archivo:</label>
+                                                    <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% if metadato.tipo_dato.pk == 3 %}
+                                                {% if metadato.obligatorio == True %}
+                                                    <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                                {% else %}
+                                                    <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% if metadato.tipo_dato.pk == 4 %}
+                                                {% if metadato.obligatorio == True %}
+                                                    <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                                {% else %}
+                                                    <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% if metadato.tipo_dato.pk == 5 %}
+                                                {% if metadato.obligatorio == True %}
+                                                    <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                                {% else %}
+                                                    <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% if metadato.tipo_dato.pk == 6 %}
+                                                {% if metadato.obligatorio == True %}
+                                                    <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                                {% else %}
+                                                    <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                                {% endif %}
+                                            {% endif %}
+                                            *Descripción.- {{metadato.descripcion}}
+                                        </div>
+                                    {% endfor %}
+                                </fieldset>
+
+								
+								<br/>
+								<p align="center">
+                                    {% if expediente.estatus.pk == 5 %}
+                                    
+                                    {% elif expediente.estatus.pk == 6 %}
+                                        
+                                    {% else %}
+                                        <input id="aprobar" name="aprobar" class="btn btn-primary" type="button" value="Aprobar" />
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rechazo">Rechazar</button>
+                                    {% endif %}
+                                    <a href = "{% url 'exp_recibidos' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
+								</p>
+							</form>
+						</div>
+						
+					</article>
+				</section>
+            </div>
+		</section>
+
+        <!-- Modal Motivo Rechazo-->
+        <div class="modal fade" id="rechazo" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg" role="document" >
+                <div class="modal-content">
+                    <form action="/expedientes/mis_expedientes" method="POST">
+                        <div class="modal-header">
+                            <h2 class="modal-tittle">Motivo de rechazo</h2>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="table-responsive">
+                                <textarea id="motivo_rechazo" name="motivo_rechazo" class="form-control" rows="10" placeholder="Escribir el motivo de rechazo en esta área"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                            <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{%endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+    <script type="text/javascript">
+        $(function(){
+            window.onload = function() {
+                console.log("onload");
+                $("#subir").hide();
+                $("#cancelar").hide();
+            }
+        });
+
+        $("#confirmar").click(function(){
+            console.log("Aprobado")
+            $("#forma").submit();
+        });
+
+    </script>
+
+{% endblock %}

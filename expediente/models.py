@@ -23,5 +23,14 @@ class Expediente(models.Model):
     usuario_crea = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     activo = models.BooleanField(verbose_name=('Activo'), default=True)
 
-def __unicode__(self):
+    def __str__(self):
         return self.nombre
+
+class Expediente_aprobador(models.Model):
+
+    id_expediente = models.ForeignKey(Expediente, related_name='Expediente', blank=True, null=True, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(User, related_name='Usuario', blank=True, null=True, on_delete=models.CASCADE)
+    id_estatus = models.ForeignKey(Estatus, related_name='id_Estatus', blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.id_expediente

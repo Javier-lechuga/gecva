@@ -15,7 +15,7 @@ import json
 import time
 
 
-from expediente.models import Expediente
+from expediente.models import Expediente, Expediente_aprobador
 from metadato.forms import MetadatoForm
 from metadato.models import Metadato
 from tipo_dato.models import TipoDato
@@ -107,7 +107,65 @@ def VerExpediente(request, pk):
     usuarios = User.objects.all().order_by('pk')
     expediente = Expediente.objects.get(pk=pk)
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
-    return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente'})
+    ids_users = Expediente_aprobador.objects.filter(id_expediente=pk)
+    # print(ids_users.query)
+    seleccionados = []
+    va = Expediente_aprobador()
+    va = Expediente_aprobador.objects.filter(id_expediente=pk)
+    for v in va:
+        seleccionados.append(v)
+        
+    return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados})
+
+# @login_required(redirect_field_name='login')
+def AprobarExp(request, pk):
+    expediente = Expediente.objects.get(pk=pk)
+    metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
+    ids_users = Expediente_aprobador.objects.filter(id_expediente=pk)
+        
+    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido'})
+
+# @login_required(redirect_field_name='login')
+def ExpRecibidos(request):
+    user = get_user(request)
+    user = request.user
+    ids_users = Expediente_aprobador.objects.filter(id_usuario=user.pk)
+    # print(ids_users.query)
+    recibidos = []
+    for id_usr in ids_users:
+        recibidos.append(id_usr)
+       
+    return render(request, 'exp_recibidos.html', {'recibidos': recibidos, 'etiqueta': 'Expedientes recibidos'})
+
+# @login_required(redirect_field_name='login')
+def AsignaExpediente(request):
+    if request.method == "POST":
+        usuarios = User.objects.all().order_by('pk')
+        expediente = Expediente()
+        expediente = Expediente.objects.get(pk=request.POST['expediente'])
+        Expediente.objects.filter(pk=expediente.pk).update(estatus=3)
+        metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
+        ids_usuarios_sel = request.POST['users'].split(",")
+        estatus = Estatus()
+        estatus = Estatus.objects.get(pk=3)
+        seleccionados = []
+        for usuario in ids_usuarios_sel:
+            # print(usuario)
+            usr = User()
+            usr = User.objects.get(pk=usuario)
+            # seleccionados.append(usr)
+            exp_aprobador = Expediente_aprobador.objects.create(
+                id_expediente = expediente,
+                id_usuario = usr,
+                id_estatus = estatus,
+            )
+            exp_aprobador.save()
+        va = Expediente_aprobador()
+        va = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
+        for v in va:
+            seleccionados.append(v)
+        # return HttpResponse(request.POST.items())
+        return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados})
 
 # @login_required(redirect_field_name='login')
 def NuevoExpCompleto(request):
