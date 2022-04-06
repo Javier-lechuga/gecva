@@ -16,8 +16,24 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							<h1> {{etiqueta}}</h1>
-							<form method="POST" id="forma" class="form-horizontal" action="/expedientes/asigna_expediente">
-								
+                            <!--
+                                # @cambio
+                                # fecha : 04/04/2020
+                                # autor: lechuga
+                                # Explcación: se valida si el expediente tirne algun metadato del tipo "archvo"
+                                # en tal caso se le agrega enctype="multipart/form-data al formulario
+                                # para que envie los archivos cargados
+                                # caso contrario no se agrega enctype="multipart/form-data
+                            -->
+                        {% if contiene_archivos %}
+                            <form method="POST" id="forma" class="form-horizontal" action="/expedientes/asigna_expediente" enctype="multipart/form-data">    
+                        {% else %}
+                            <form method="POST" class="form-horizontal" action="/expedientes/nuevo_exp_completo" >
+						{% endif %}
+                            <!--
+                                # @anterior
+                            <form method="POST" id="forma" class="form-horizontal" action="/expedientes/asigna_expediente">    
+                            -->
 								{% csrf_token %}
 
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
@@ -92,29 +108,36 @@
                                 <fieldset id="campos">
                                     <legend>Metadatos</legend>
                                     {% for metadato in metadatos %}
-
                                         <div class="col-md-12">
                                             {{metadato.nombre}}:
-                                            {% if metadato.tipo_dato.pk == 2 %}
-                                                <label for="avatar">Seleccionar archivo:</label>
-                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                            {% endif %}
+                                        <!--
+                                            # @cambio
+                                            # fecha : 31/03/2020
+                                            # autor: lechuga
+                                            # Explcación: se cambia para que utilice el nombre del estatus enligar del pk
+                                        -->
+                                        {% if metadato.tipo_dato.tipo == "Archivo" %}
+                                            <label for="avatar">Seleccionar archivo:</label>
+                                            <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            <a href="{{metadato.valor}}">{{metadato.valor}}:</a>
+                                            <br>
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 3 %}
-                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                            {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Numérico" %}
+                                            <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 4 %}
-                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                            {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Fecha" %}
+                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 5 %}
-                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                            {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Texto" %}
+                                            <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 6 %}
-                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                            {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Correo electrónico" %}
+                                            <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                        {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
                                     {% endfor %}

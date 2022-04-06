@@ -11,8 +11,24 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							<h1> {{etiqueta}} Detalle expediente</h1>
-							<form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo">
-								
+                            <!--
+                                # @cambio
+                                # fecha : 31/03/2020
+                                # autor: lechuga
+                                # Explcación: se valida si el expediente tirne algun metadato del tipo "archvo"
+                                # en tal caso se le agrega enctype="multipart/form-data al formulario
+                                # para que envie los archivos cargados
+                                # caso contrario no se agrega enctype="multipart/form-data
+                            -->
+                            {% if contiene_archivos %}
+                            <form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo" enctype="multipart/form-data">
+                            {% else %}
+                            <form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo" enctype="multipart/form-data">
+                            {% endif %}	
+                            <!--
+                            # @anterior
+                            <form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo">
+                            -->
 								{% csrf_token %}
 
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
@@ -87,55 +103,61 @@
                                 <fieldset id="campos">
                                     <legend>Metadatos</legend>
                                     {% for metadato in metadatos %}
-
                                         <div class="col-md-12">
                                             {{metadato.nombre}}:
-                                            {% if metadato.tipo_dato.pk == 2 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <label for="avatar">Seleccionar archivo:</label>
-                                                    <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" reqiored readonly/>
-                                                {% else %}
-                                                    <label for="avatar">Seleccionar archivo:</label>
-                                                    <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                        <!--
+                                            # @cambio
+                                            # fecha : 31/03/2020
+                                            # autor: lechuga
+                                            # Explcación: se cambia para que utilice el nombre del estatus enligar del pk
+                                        -->
+                                        {% if metadato.tipo_dato.tipo == "Archivo" %}
+                                            {% if metadato.obligatorio == True %}
+                                            <label for="avatar">Seleccionar archivo:</label>
+                                            <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" reqiored readonly/>
+                                            {% else %}
+                                            <label for="avatar">Seleccionar archivo:</label>
+                                            <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
+                                            <a href="{{metadato.valor}}">{{metadato.valor}}:</a>
+                                            <br>
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 3 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Numérico" %}
+                                            {% if metadato.obligatorio == True %}
+                                            <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                            <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 4 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Fecha" %}
+                                            {% if metadato.obligatorio == True %}
+                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 5 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Texto" %}
+                                            {% if metadato.obligatorio == True %}
+                                            <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                            <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
+                                        {% endif %}
 
-                                            {% if metadato.tipo_dato.pk == 6 %}
-                                                {% if metadato.obligatorio == True %}
-                                                    <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
-                                                {% else %}
-                                                    <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                                {% endif %}
+                                        {% if metadato.tipo_dato.tipo == "Correo electrónico" %}
+                                            {% if metadato.obligatorio == True %}
+                                            <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                            <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
+                                        {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
                                     {% endfor %}
                                 </fieldset>
-
 								
 								<br/>
 								<p align="center">

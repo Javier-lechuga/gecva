@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from ensurepip import version
 from django.shortcuts import render
 from estatus.models import Estatus
 import expediente
@@ -25,9 +26,14 @@ from unidad.models import Unidad
 
 #Para cargar expediente
 from django.core.files.storage import default_storage
-
 from usuarios.models import PerfilUser
+#para crer directorios
+from os import path
+from os import makedirs
+from genericpath import exists
 #
+
+
 
 # Create your views here.
 # @login_required(redirect_field_name='login')
@@ -96,14 +102,48 @@ def NuevoExpediente(request):
 
 # @login_required(redirect_field_name='login')
 def BuscaMetadatosExp(request):
-    metadatos = Metadato.objects.filter(tipo_expediente=request.POST['tipo'], base =1).order_by('pk')
+    metadatos = Metadato.objects.filter(tipo_expediente=request.POST['tipo'], base =1)
     expediente = ExpedienteForm()
     tipo = TipoExpediente()
     tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
-    return render(request, 'nuevo_exp_completo.html', {'tipo': tipo, 'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Nuevo expediente'})
+    
+    # @cambio
+    # fecha : 31/03/2020
+    # autor: lechuga
+    # Explcación: se revisa si el expediente tiene algun archivo como metadato,
+    #             de ser asi se le asigna true a la variable bandera, 
+    #             caso contrario sele asigna false  
+    cantiene_arhivos = False
+    for metadato in metadatos:
+        if metadato.tipo_dato.tipo == "Archivo":
+            cantiene_arhivos = True
+            break
+
+    # @cambio
+    # fecha : 31/03/2020
+    # autor: lechuga
+    # Explcación: se agrego un parametro en el return para especificar si uno de los metadotas
+    #             es de tipo "Archivo"
+    # Contenido del return:
+    #   metadatos : metadatos           // Los metadatos que componen el expediente
+    #   tipo : tipo                     // El tipo de expediente
+    #   id : id                         // El id del expediente que se esta trabajando
+    #   mensaje : 'metadatos'           // Mensaje a mostrar en la pagina
+    #   bandera : cantiene_arhivos      // variable auxiliar que representa si el expediente
+    #                                      tiene un metadato del tipo Archivo.
+    return render(request,
+                  'nuevo_exp_completo.html',
+                  {'tipo': tipo,
+                   'expediente': expediente,
+                   'metadatos': metadatos,
+                   'mensaje': 'Nuevo expediente',
+                   'contiene_archivos' : cantiene_arhivos
+                  })
+    # @Anteriro 
+    #return render(request, 'nuevo_exp_completo.html', {'tipo': tipo, 'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Nuevo expediente'})
 
 # @login_required(redirect_field_name='login')
-def VerExpediente(request, pk):
+def VerExpediente(request, pk): # para mostrar el expediente
     usuarios = User.objects.all().order_by('pk')
     expediente = Expediente.objects.get(pk=pk)
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
@@ -114,8 +154,39 @@ def VerExpediente(request, pk):
     va = Expediente_aprobador.objects.filter(id_expediente=pk)
     for v in va:
         seleccionados.append(v)
-        
-    return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados})
+
+   
+    contiene_arhivos = expediente_tine_archivos(metadatos)
+
+    #full_url = ''.join(['http://', get_current_site(request).domain, obj.get_absolute_url()])
+    #url_archivo = get_current_site(request) 
+    #return HttpResponse(url_archivo)
+
+    # @cambio
+    # fecha : 04/04/2020
+    # autor: lechuga
+    # Explcación: se agrego un parametro en el return para especificar si uno de los metadotas
+    #             es de tipo "Archivo"
+    # Contenido del return:
+    #   expediente : int                // pk del expediente
+    #   metadatos  : tupla              // tupla con todos los metadatos
+    #   usuarios   : tupla              // tupla con todos los usuarios
+    #   etiqueta   : string             // Mensaje a mostrar en la pagina
+    #   contiene_arhivos : boolean      // variable auxiliar que representa si el expediente
+    #                                      tiene un metadato del tipo Archivo.
+
+    return render(request,
+                 'ver_expediente.html',
+                 {'expediente': expediente,
+                  'metadatos': metadatos,
+                  'usuarios': usuarios,
+                  'etiqueta': 'Detalle expediente',
+                  'seleccionados': seleccionados,
+                  'contiene_arhivos' : contiene_arhivos
+                  })
+
+    # @Anteriro 
+    #return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados})
 
 # @login_required(redirect_field_name='login')
 def AprobarExp(request, pk):
@@ -236,6 +307,50 @@ def NuevoExpCompleto(request):
             )
             metadato.save()
         # return HttpResponse(request.POST.items())
+
+        # return HttpResponse(request.POST.items())
+
+        # @cambio
+        # fecha : 04/04/2020
+        # autor: lechuga
+        # Explcación: Funcionalidad para guardar metadatos con archivos, 
+        #
+
+        if not request.FILES:
+            pass
+        else:
+            for metadato_archivo in request.FILES.items():
+                # crear el directorio con el id del expediente, nombre del metadato y version,
+                # la version simpre sera 1 cuando se crea un metadato nuevo
+                #   ejemplo : ./media/nombre_metadato/pk_expediente/v1/
+                nombre_metadato = Metadato.objects.get(pk=metadato_archivo[0]).nombre    
+                pk_expediente = str(nuevo_expediente.pk)
+                ruta_archivo = crea_carpeta('./media/'+pk_expediente+'/'+nombre_metadato+'/v1/')
+                #guardar el archivo
+                url_archivo = guardar_archivo(ruta_archivo,metadato_archivo[1])
+                # @cambio
+                # fecha : 04/04/2020
+                # autor: lechuga
+                # Explcación: se elimina el primer caracter de lacadena '.' para poder guardar 
+                #             la url 
+                #
+                url_archivo = url_archivo[1:]
+                print(url_archivo)
+                #crear el metadato
+                metadato = Metadato()
+                metadato = Metadato.objects.get(pk=metadato_archivo[0])
+                nuevo_metadato = Metadato.objects.create(
+                    nombre = metadato.nombre,
+                    descripcion = metadato.descripcion,
+                    obligatorio = metadato.obligatorio,
+                    valor = url_archivo,
+                    version = 1,
+                    tipo_dato = metadato.tipo_dato,
+                    tipo_expediente = metadato.tipo_expediente,
+                    estatus = metadato.estatus,
+                    expediente = nuevo_expediente,    
+                )
+            metadato.save()
         return redirect('/expedientes/mis_expedientes')
     else:
         form = ExpedienteForm()
@@ -252,13 +367,71 @@ def ModificaExpCompleto(request):
             Expediente.objects.filter(pk=exp).update(descripcion=request.POST.get('descripcion',''))
             Expediente.objects.filter(pk=exp).update(asunto=request.POST.get('asunto',''))
             Expediente.objects.filter(pk=exp).update(ubicacion=request.POST.get('ubicacion',''))
+
+
+            #
+            #return(HttpResponse(request.FILES.items()))
+            #return(HttpResponse(request.POST.items()))
+            
+
+            #
+
+            #actializando metadatos con archivo 
+            #obteniendo_archivos si existen
+            if not request.FILES:
+                #return HttpResponse("no se encontraron archivos en el POST primera linea")
+                pass
+            else :
+                for archivo in request.FILES.items():
+                    #return HttpResponse(archivo)
+                    #metadato = Metadato.objects.get(pk=archivo[0])
+                    nombre_metadato = Metadato.objects.get(pk=archivo[0]).nombre
+                    pk_expediente = str(expediente.pk)
+                    version = Metadato.objects.get(pk=archivo[0]).version
+                    version = int(version) + 1
+                    ruta_archivo = crea_carpeta('./media/'+
+                                                pk_expediente+
+                                                '/'+nombre_metadato+
+                                                '/v'+
+                                                str(version)+
+                                                '/'
+                                                )
+                    #guardar el archivo
+                    url_archivo = guardar_archivo(ruta_archivo,archivo[1])
+                    print("guardando")
+                    print(url_archivo)
+                    url_archivo = url_archivo[1:]
+                    #return HttpResponse(url_archivo)
+                    Metadato.objects.filter(pk=archivo[0], expediente=exp).update(valor=url_archivo)
+                    Metadato.objects.filter(pk=archivo[0], expediente=exp).update(version=version)
+                     
+            #actializando metadatos            
             vars = []
             for variable in request.POST.items():
                 vars.append(variable)
             print(vars)
-            for otro in vars[13:]:
+            for otro in vars[13:]:       
+                         
+            # @cambio
+            # fecha : 06/04/2020
+            # autor: lechuga
+            # Explcación: se valida que e tipo del metadato no sea archivo dado que el POST
+            #             cuando no se seleccionan archivos envia los camopos de tipo file
+            #             en el POST.items() y no en el post.FILE.items(),por lo que hay que
+            #             filttrarlos
+                #return HttpResponse(Metadato.objects.get(pk=otro[0]).tipo_dato)
+                if Metadato.objects.get(pk=otro[0]).tipo_dato.tipo == "Archivo":
+                    #return HttpResponse(Metadato.objects.get(pk=otro[0]).tipo_dato)
+                    pass
+                else:
+                    #return HttpResponse("modificando mal")
+                    Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
+                    Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
+
+            # @anterios
                 Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
                 Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
+
             # return redirect('/expedientes/mis_expedientes')
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
             metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
@@ -269,8 +442,9 @@ def ModificaExpCompleto(request):
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
 
+
 # @login_required(redirect_field_name='login')
-def DetalleExpediente(request, pk):
+def DetalleExpediente(request, pk): #muestra expediente para ser modificado
     try:
         expediente = Expediente.objects.get(pk=pk)
         metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
@@ -282,9 +456,30 @@ def DetalleExpediente(request, pk):
                 return redirect('/expedientes/mis_expedientes')
         # else:
             # form = ExpedienteForm(instance=expediente)
-        return render(request, 'detalle_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
+
+
+    # @cambio
+    # fecha : 04/04/2020
+    # autor: lechuga
+    # Explcación: se agrego un parametro en el return para especificar sitio actual,
+    #             al final no se utilizo y solo se acomodo el formato
+    # Contenido del return:
+    #   metadatos : metadatos           // Los metadatos que componen el expediente
+    #   tipo : tipo                     // El tipo de expediente
+    #   id : id                         // El id del expediente que se esta trabajando
+    #   mensaje : 'metadatos'           // Mensaje a mostrar en la pagina
+    #   bandera : cantiene_arhivos      // variable auxiliar que representa si el expediente
+    #                                      tiene un metadato del tipo Archivo.        
+        return render(request, 
+                      'detalle_expediente.html', 
+                       {'expediente': expediente, 
+                        'metadatos': metadatos, 
+                        'mensaje': 'Detalle expediente',
+                       }
+                      )
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
+        #return HttpResponse(str(url_archivo) + str(metadatos[0]))
 
 # @login_required(redirect_field_name='login')
 def GuardaMetadatosExp(request):
@@ -333,7 +528,6 @@ def ListaMetadatosExp(request):
                 bandera = True
                 break
 
-        #lechuga        
         #return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo,'mensaje': 'Metadatos','bandera':bandera})
         #rada
         #return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo, 'id': id,'mensaje': 'Metadatos'})
@@ -344,12 +538,14 @@ def ListaMetadatosExp(request):
         #   mensaje : 'metadatos' // Mensaje a mostrar en la pagina
         #   bandera : bandera     // variable auxiliar que representa si el expediente
         #                            tiene un metadato del tipo Archivo.
-        return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 
-                                                            'tipo': tipo, 
-                                                            'id': id,
-                                                            'mensaje': 'Metadatos',
-                                                            'bandera': bandera
-                                                            })
+        return render(request,
+                     'lista_metadatos_exp.html',
+                     {'metadatos': metadatos, 
+                      'tipo': tipo, 
+                      'id': id,
+                      'mensaje': 'Metadatos',
+                      'bandera': bandera
+                     })
 
 # @login_required(redirect_field_name='login')
 def MuestraCamposExp(request):
@@ -390,3 +586,48 @@ def EliminarExpediente(request, pk):
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
 
+
+
+# @creacióm de función
+# fecha : 01/03/2020
+# autor: lechuga        
+def crea_carpeta(ruta ): # parametros 
+                         #    ruta : string. Cadena que contenga la ruta
+                         # retorno
+                         #    string : ruta de la carpeta creada
+    if not exists(ruta):
+        makedirs(ruta)
+    print(ruta)
+    return ruta          # rwtorno : string. Cadena con la ruta creada
+    
+
+
+# @creacióm de función
+# fecha : 01/03/2020
+# autor: lechuga       
+def guardar_archivo(ruta,archivo): # parametros 
+                                   #    ruta : string. Cadena que contenga la ruta
+                                   #    archivo : File. Archivo que sera guardado
+                                   # retorno
+                                   #    string : Cadena con la url del archivo guardado
+    url = ruta+archivo.name
+    with open(url, 'wb+') as destination:
+        for chunk in archivo.chunks():
+                        destination.write(chunk)
+    return url                     
+
+
+# @creacióm de función
+# fecha : 01/03/2020
+# autor: lechuga
+def expediente_tine_archivos(metadatos): # parametros 
+                                         #    metadatos : Metadato. Tupla con los metadatos
+                                         #    del expediente                              
+                                         # retorno
+                                         #    boolean : True si el expediente tine archivvos, 
+                                         #              False en caso contrario
+    for metadato in metadatos:
+        if metadato.tipo_dato.tipo == "Archivo":
+            bandera = True
+            return True
+        return False
