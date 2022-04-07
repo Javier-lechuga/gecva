@@ -65,10 +65,19 @@ def EditarTipoExp(request, pk):
         return redirect('/tipos_expedientes/')
 
 # @login_required(redirect_field_name='login')
+# def EliminarTipoExp(request, pk):
+#     try:
+#         tipo = TipoExpediente.objects.get(pk=pk)
+#         tipo.delete()
+#         return redirect('/tipos_expedientes/')
+#     except ObjectDoesNotExist:
+#         return redirect('/tipos_expedientes/')
+
+# @login_required(redirect_field_name='login')
 def EliminarTipoExp(request, pk):
     try:
         tipo = TipoExpediente.objects.get(pk=pk)
-        tipo.delete()
+        TipoExpediente.objects.filter(pk=pk).update(activo=False)
         return redirect('/tipos_expedientes/')
     except ObjectDoesNotExist:
         return redirect('/tipos_expedientes/')

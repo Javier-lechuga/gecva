@@ -42,15 +42,15 @@
                                     <legend>Datos generales</legend>
                                     <div class="row">
                                         <div class="col-md-3">
-                                            Identificador: 
+                                            <strong>Identificador: </strong>
                                             <input type="text" class="form-control" id="identificador" name="identificador" value="{{expediente.identificador}}" readonly/>
                                         </div>
                                         <div class="col-md-3">
-                                            Fecha de creación:
+                                            <strong>Fecha de creación:</strong>
                                             <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" value="{{expediente.fecha_creacion}}" readonly/>
                                         </div>
                                         <div class="col-md-3">
-                                            Fecha de cierre: 
+                                            <strong>Fecha de cierre: </strong>
                                             {% if expediente.fecha_cierre == None %}
                                                 <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="" readonly/>
                                             {% else %}
@@ -58,47 +58,47 @@
                                             {% endif %}
                                         </div>
                                         <div class="col-md-3">
-                                            Estatus: 
+                                            <strong>Estatus: </strong>
                                             <input type="text" class="form-control" id="estatus" name="estatus" value="{{expediente.estatus.nombre}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            Creado por:
+                                            <strong>Creado por:</strong>
                                             <input type="text" class="form-control" id="usuario_crea" name="usuario_crea" value="{{expediente.usuario_crea.first_name}} {{expediente.usuario_crea.last_name}}" readonly/>
                                         </div>
                                         <div class="col-md-5">
-                                            Unidad: 
+                                            <strong>Unidad: </strong>
                                             <input type="text" class="form-control" id="unidad" name="unidad" value="{{expediente.unidad.nombre}}" readonly/>
                                         </div>
                                         <div class="col-md-3">
-                                            Tipo de expediente:
+                                            <strong>Tipo de expediente:</strong>
                                             <input type="text" class="form-control" id="tipo_expediente" name="tipo_expediente" value="{{expediente.tipo_expediente.nombre}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-7">
-                                            Nombre:
+                                            <strong>Nombre:</strong>
                                             <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" readonly/>
                                         </div>
                                         <div class="col-md-5">
-                                            Ubicación:
+                                            <strong>Ubicación:</strong>
                                             <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{expediente.ubicacion}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            Descripción:
+                                            <strong>Descripción:</strong>
                                             <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{expediente.descripcion}}" readonly/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            Asunto: 
+                                            <strong>Asunto: </strong>
                                             <input type="text" class="form-control" id="asunto" name="asunto" value="{{expediente.asunto}}" readonly/>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                     <legend>Metadatos</legend>
                                     {% for metadato in metadatos %}
                                         <div class="col-md-12">
-                                            {{metadato.nombre}}:
+                                            <strong>{{metadato.nombre}}:</strong>
                                         <!--
                                             # @cambio
                                             # fecha : 31/03/2020
@@ -117,26 +117,47 @@
                                             # Explcación: se cambia para que utilice el nombre del estatus enligar del pk
                                         -->
                                         {% if metadato.tipo_dato.tipo == "Archivo" %}
-                                            <label for="avatar">Seleccionar archivo:</label>
-                                            <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
-                                            <a href="{{metadato.valor}}">{{metadato.valor}}:</a>
+                                            {% if metadato.obligatorio == True %}
+                                                <label for="avatar">Seleccionar archivo:</label>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass archive" required readonly/>
+                                            {% else %}
+                                                <label for="avatar">Seleccionar archivo:</label>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass archive" readonly/>
+                                            {% endif %}
+                                            <a href="{{metadato.valor}}" target="_blank">{{metadato.valor}}:</a>
                                             <br>
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Numérico" %}
-                                            <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Fecha" %}
-                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Texto" %}
-                                            <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Correo electrónico" %}
-                                            <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
                                         {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
@@ -147,17 +168,16 @@
 								
 								<br/>
 								<p align="center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Solicitar aprobación</button>
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Solicitar aprobación</button>-->
                                     <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
                                     <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
 
-                                
                                 {% if seleccionados %}
                                     <fieldset id="campos">
                                     <legend>Asignado</legend>
                                         <div class="table-responsive">
-                                            <table class="table table-hover">
+                                            <table class="table table-hover" id="seleccionados">
                                                 <thead>
                                                     <tr align="center">
                                                         <th>
@@ -202,18 +222,12 @@
                                         </div>
                                     </fieldset>
                                 {% endif %}
-                                
-
 							</form>
 						</div>
-						
 					</article>
 				</section>
             </div>
 		</section>
-
-        
-
 
         <!-- Modal Usuarios-->
         <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
@@ -249,23 +263,25 @@
                             </thead>
                             <tbody>
                                 {% for usuario in usuarios %}
-                                <tr>
-                                    <td>
-                                        <p align="center">
-                                            {{forloop.counter}}
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p align="center">
-                                            <input type="checkbox" id="{{usuario.pk}}" name="{{usuario.pk}}" class="elementTable" value="{{usuario.pk}}">
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p align="center">
-                                            {{usuario.first_name}} {{usuario.last_name}}
-                                        </p>
-                                    </td>
-                                </tr>
+                                    {% if request.user.pk != usuario.pk %}
+                                        <tr>
+                                            <td>
+                                                <p align="center">
+                                                    {{forloop.counter}}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p align="center">
+                                                    <input type="checkbox" id="{{usuario.pk}}" name="{{usuario.pk}}" class="elementTable" value="{{usuario.pk}}">
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p align="center">
+                                                    {{usuario.first_name}} {{usuario.last_name}}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -297,6 +313,7 @@
                 console.log("onload");
                 $("#subir").hide();
                 $("#cancelar").hide();
+                $(".archive").hide();
             }
 
             $('#modificar').click(function(){
@@ -309,6 +326,7 @@
                 $("#subir").show()
                 $("#cancelar").show()
                 $("#regresar").hide()
+                $(".archive").show();
                 var ids = $(".inputClass")
                 $.each(ids, function(i,value){
                     $("#"+value.id).attr("readonly", false)
@@ -340,6 +358,17 @@
             $('#tablita').DataTable({
                 "scrollY": "200px",
                 "scrollCollapse":true,
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+            });
+        } );
+
+        $(document).ready( function () {
+            $('#seleccionados').DataTable({
+                "bFilter": false,
+                "bInfo": false,
                 "paging":false,
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"

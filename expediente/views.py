@@ -144,7 +144,7 @@ def BuscaMetadatosExp(request):
 
 # @login_required(redirect_field_name='login')
 def VerExpediente(request, pk): # para mostrar el expediente
-    usuarios = User.objects.all().order_by('pk')
+    usuarios = User.objects.all().exclude(is_active=False).order_by('pk')
     expediente = Expediente.objects.get(pk=pk)
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
     ids_users = Expediente_aprobador.objects.filter(id_expediente=pk)
@@ -194,6 +194,56 @@ def AprobarExp(request, pk):
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
     ids_users = Expediente_aprobador.objects.filter(id_expediente=pk)
         
+    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido'})
+
+# @login_required(redirect_field_name='login')
+def ExpAprobado(request):
+    user = get_user(request)
+    user = request.user
+    expediente = Expediente.objects.get(pk=request.POST['expediente'])
+    metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
+    ids_users = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
+    Expediente.objects.filter(pk=expediente.pk).update(estatus=5)
+    # Expediente.objects.filter(pk=expediente.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
+    Expediente_aprobador.objects.filter(pk=expediente.pk).update(id_estatus=5)
+    # Expediente_aprobador.objects.filter(pk=expediente.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
+    # Expediente_aprobador.objects.filter(pk=expediente.pk, id_usuario=user.pk).delete()
+    print(expediente)
+    for metadato in metadatos:
+        Metadato.objects.filter(pk=metadato.pk).update(id_estatus=5)
+    # return HttpResponse(request.POST.items())
+    user = get_user(request)
+    user = request.user
+    ids_users = Expediente_aprobador.objects.filter(id_usuario=user.pk)
+    # print(ids_users.query)
+    recibidos = []
+    for id_usr in ids_users:
+        recibidos.append(id_usr)
+    # return render(request, 'exp_recibidos.html', {'recibidos': recibidos, 'etiqueta': 'Expedientes recibidos'})
+    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido'})
+
+# @login_required(redirect_field_name='login')
+def RechazarExp(request):
+    user = get_user(request)
+    user = request.user
+    expediente = Expediente.objects.get(pk=request.POST['expediente'])
+    metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
+    ids_users = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
+    Expediente.objects.filter(pk=expediente.pk).update(estatus=6)
+    Expediente.objects.filter(pk=expediente.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
+    Expediente_aprobador.objects.filter(pk=expediente.pk).update(id_estatus=6)
+    Expediente_aprobador.objects.filter(pk=expediente.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
+    # Expediente_aprobador.objects.filter(pk=expediente.pk, id_usuario=user.pk).delete()
+    print(expediente)
+    # return HttpResponse(request.POST.items())
+    user = get_user(request)
+    user = request.user
+    ids_users = Expediente_aprobador.objects.filter(id_usuario=user.pk)
+    # print(ids_users.query)
+    recibidos = []
+    for id_usr in ids_users:
+        recibidos.append(id_usr)
+    # return render(request, 'exp_recibidos.html', {'recibidos': recibidos, 'etiqueta': 'Expedientes recibidos'})
     return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido'})
 
 # @login_required(redirect_field_name='login')
@@ -505,7 +555,7 @@ def GuardaMetadatosExp(request):
 def ListarMisExpedientes(request):
     user = get_user(request)
     user = request.user
-    expedientes = Expediente.objects.filter(usuario_crea=user).order_by('pk')
+    expedientes = Expediente.objects.filter(usuario_crea=user).exclude(activo=False).order_by('pk')
     return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'mensaje': 'Expedientes'})
 
 # @login_required(redirect_field_name='login')
@@ -578,15 +628,22 @@ def EditarExpediente(request, pk):
         return redirect('/expedientes/mis_expedientes')
 
 # @login_required(redirect_field_name='login')
+# def EliminarExpediente(request, pk):
+#     try:
+#         expediente = Expediente.objects.get(pk=pk)
+#         expediente.delete()
+#         return redirect('/expedientes/mis_expedientes')
+#     except ObjectDoesNotExist:
+#         return redirect('/expedientes/mis_expedientes')
+
+# @login_required(redirect_field_name='login')
 def EliminarExpediente(request, pk):
     try:
         expediente = Expediente.objects.get(pk=pk)
-        expediente.delete()
+        Expediente.objects.filter(pk=pk).update(activo=False)
         return redirect('/expedientes/mis_expedientes')
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
-
-
 
 # @creacióm de función
 # fecha : 01/03/2020

@@ -4,6 +4,10 @@
 	Unidades
 {% endblock titulo %}
 
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
+
 {% block content %}
 
 	<div class="container">
@@ -14,12 +18,13 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
-							<table class="table table-hover">
+							<table class="table table-hover" id="tablita">
 								<thead>
 									<tr align="center">
 										<th>#</th>
 										<th>Unidad</th>
 										<th>Descripción</th>
+										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -29,6 +34,13 @@
 											<td>{{forloop.counter}}</td>
 											<td>{{unidad.nombre}}</td>
 											<td>{{unidad.descripcion}}</td>
+											<td>
+												{% if unidad.activo == True %}
+													Activo
+												{% else %}
+													Inactiva
+												{% endif %}
+											</td>
 											<td>
 												<a href = "javascript: if(confirm('Deseas editar {{unidad}}??')) window.location='{% url "editar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
 												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
@@ -57,5 +69,20 @@
 			window.history.back();
 		}
 	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready( function () {
+			$('#tablita').DataTable({
+				"paging":false,
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+			});
+		} );
+
+	</script>
+
+	<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 {% endblock %}

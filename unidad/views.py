@@ -64,10 +64,19 @@ def EditarUnidad(request, pk):
         return redirect('/unidad/')
 
 # @login_required(redirect_field_name='login')
+# def EliminarUnidad(request, pk):
+#     try:
+#         unidad = Unidad.objects.get(pk=pk)
+#         unidad.delete()
+#         return redirect('/unidad/')
+#     except ObjectDoesNotExist:
+#         return redirect('/unidad/')
+
+# @login_required(redirect_field_name='login')
 def EliminarUnidad(request, pk):
     try:
         unidad = Unidad.objects.get(pk=pk)
-        unidad.delete()
+        Unidad.objects.filter(pk=pk).update(activo=False)
         return redirect('/unidad/')
     except ObjectDoesNotExist:
         return redirect('/unidad/')

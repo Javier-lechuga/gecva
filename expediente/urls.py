@@ -3,7 +3,7 @@ from django.urls import path, re_path
 from . import views
 from expediente.views import AprobarExp, BuscaMetadatosExp, EditarExpediente, EliminarExpediente,NuevoExpediente, SeleccionaTipoExp, VerExpediente
 from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp, ExpRecibidos
-from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp, AprobarExp
+from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp, AprobarExp, ExpAprobado
 
 #para cargar archivos
 from django.conf import settings
@@ -31,6 +31,8 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/verExpediente$', VerExpediente, name= "ver_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/aprobarExp$', AprobarExp, name= "aprobar_exp"),
+    path('rechazar_exp', views.RechazarExp, name = "rechazar_exp"),
+    path('expediente_aprob', views.ExpAprobado, name = "expediente_aprob"),
 ]
 
 # 

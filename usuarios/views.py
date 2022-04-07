@@ -77,10 +77,19 @@ def EditarUsuario(request, pk):
         return redirect('/usuarios/')
 
 # @login_required(redirect_field_name='login')
+# def EliminarUsuario(request, pk):
+#     try:
+#         usuario = PerfilUser.objects.get(pk=pk)
+#         usuario.delete()
+#         return redirect('/usuarios/')
+#     except ObjectDoesNotExist:
+#         return redirect('/usuarios/')
+
+# @login_required(redirect_field_name='login')
 def EliminarUsuario(request, pk):
     try:
         usuario = PerfilUser.objects.get(pk=pk)
-        usuario.delete()
+        PerfilUser.objects.filter(pk=pk).update(is_active=False)
         return redirect('/usuarios/')
     except ObjectDoesNotExist:
         return redirect('/usuarios/')

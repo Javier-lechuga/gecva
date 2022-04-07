@@ -16,7 +16,7 @@
 						<form method="POST" action="/expedientes/busca_metadatos_exp">
 							{% csrf_token %}
 							<label for="" >Tipo de expediente</label>
-							<select id="tipo" name="tipo" class="form form-control">
+							<select id="tipo" name="tipo" class="form form-control" required>
 								<option  value="" selected="selected">--- SELECT ---</option>
 								{% for tipo in tipos_expedientes %}
 									<option value="{{tipo.pk}}"

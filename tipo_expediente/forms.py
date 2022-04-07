@@ -5,9 +5,9 @@ from tipo_expediente.models import TipoExpediente
 
 class TipoExpForm(forms.ModelForm):
     class Meta:
-        activo = forms.BooleanField()
+        # activo = forms.BooleanField()
         model = TipoExpediente
-        fields = ('nombre', 'activo')
+        fields = ('nombre', )
         widgets = {
             'nombre': TextInput(attrs={'class': 'form-control'}),
         }

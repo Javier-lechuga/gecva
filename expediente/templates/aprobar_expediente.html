@@ -11,7 +11,7 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							<h1> {{etiqueta}} Detalle expediente</h1>
-							<form method="POST" class="form-horizontal" action="/expedientes/modifica_exp_completo">
+							<form method="POST" class="form-horizontal" id="forma" action="/expedientes/expediente_aprob">
 								
 								{% csrf_token %}
 
@@ -138,6 +138,7 @@
 
 								
 								<br/>
+                                <input type="hidden" id="expediente" name="expediente" value="{{expediente.pk}}">
 								<p align="center">
                                     {% if expediente.estatus.pk == 5 %}
                                     
@@ -161,7 +162,7 @@
         <div class="modal fade" id="rechazo" role="dialog" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg" role="document" >
                 <div class="modal-content">
-                    <form action="/expedientes/mis_expedientes" method="POST">
+                    <form action="/expedientes/rechazar_exp" method="POST">
                         <div class="modal-header">
                             <h2 class="modal-tittle">Motivo de rechazo</h2>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -170,6 +171,7 @@
                         </div>
                         <div class="modal-body">
                             {% csrf_token %}
+                            <input type="hidden" id="expediente" name="expediente" value="{{expediente.pk}}">
                             <div class="table-responsive">
                                 <textarea id="motivo_rechazo" name="motivo_rechazo" class="form-control" rows="10" placeholder="Escribir el motivo de rechazo en esta área"></textarea>
                             </div>
@@ -202,7 +204,7 @@
             }
         });
 
-        $("#confirmar").click(function(){
+        $("#aprobar").click(function(){
             console.log("Aprobado")
             $("#forma").submit();
         });

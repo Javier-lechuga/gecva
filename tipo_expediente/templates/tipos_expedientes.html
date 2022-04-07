@@ -4,6 +4,10 @@
 	Tipos de expedientes
 {% endblock titulo %}
 
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
+
 {% block content %}
 
 	<div class="container">
@@ -14,12 +18,12 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
-							<table class="table table-hover">
+							<table class="table table-hover" id="tablita">
 								<thead>
 									<tr align="center">
 										<th>#</th>
 										<th>Nombre</th>
-										<th>Activo</th>
+										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -30,9 +34,9 @@
 											<td>{{tipo.nombre}}</td>
 											<td>{{tipo.descripcion}}
 												{% if tipo.activo %}
-													<p>Si</p>
+													<p>Activo</p>
 												{% else %}
-													<p>No</p>
+													<p>Inactivo</p>
 												{% endif %}
 											</td>
 											<td>
@@ -63,5 +67,20 @@
 			window.history.back();
 		}
 	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready( function () {
+			$('#tablita').DataTable({
+				"paging":false,
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+			});
+		} );
+
+	</script>
+
+	<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 {% endblock %}

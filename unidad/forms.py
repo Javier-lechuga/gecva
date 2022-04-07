@@ -5,9 +5,9 @@ from unidad.models import Unidad
 
 class UnidadForm(forms.ModelForm):
     class Meta:
-        activo = forms.BooleanField()
+        # activo = forms.BooleanField()
         model = Unidad
-        fields = ('nombre', 'descripcion', 'jefe_unidad','activo')
+        fields = ('nombre', 'descripcion', 'jefe_unidad')
         widgets = {
             'nombre': TextInput(attrs={'class': 'form-control'}),
             'descripcion': TextInput(attrs={'class': 'form-control'}),

@@ -14,7 +14,6 @@
             <div class="container">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						{% if recibidos %}
                             <fieldset id="campos">
                                 <h1>{{etiqueta}}</h1>
                                 <div class="table-responsive">
@@ -48,6 +47,7 @@
                                                 </th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
                                             {% for recibido in recibidos %}
                                                 <tr>
@@ -82,10 +82,9 @@
                                     </table>
                                 </div>
                             </fieldset>
-                            <p align="center">
-                                <a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
-                            </p>
-                        {% endif %}
+                        <p align="center">
+                            <a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+                        </p>
 					</article>
 				</section>
             </div>

@@ -21,9 +21,9 @@
                                 # caso contrario no se agrega enctype="multipart/form-data
                             -->
                             {% if contiene_archivos %}
-							<form method="POST" class="form-horizontal" action="/expedientes/nuevo_exp_completo" enctype="multipart/form-data">
+							    <form method="POST" class="form-horizontal" action="/expedientes/nuevo_exp_completo" enctype="multipart/form-data">
                             {% else %}
-                            <form method="POST" class="form-horizontal" action="/expedientes/nuevo_exp_completo" >
+                                <form method="POST" class="form-horizontal" action="/expedientes/nuevo_exp_completo" >
 							{% endif %}
                             
                             <!--
@@ -40,14 +40,14 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             Identificador: 
-                                            <input type="text" class="form-control" id="identificador" name="identificador" value="" />
+                                            <input type="text" class="form-control" id="identificador" name="identificador" value="" required/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-7">
                                             Nombre:
-                                            <input type="text" class="form-control" id="nombre" name="nombre" value="" />
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="" required/>
                                         </div>
                                         <div class="col-md-5">
                                             Ubicación:
@@ -58,14 +58,14 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             Descripción:
-                                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" />
+                                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-12">
                                             Asunto: 
-                                            <input type="text" class="form-control" id="asunto" name="asunto" value="" />
+                                            <input type="text" class="form-control" id="asunto" name="asunto" value="" required/>
                                         </div>
                                     </div>
                                     <br/>
@@ -87,22 +87,43 @@
 
                                         {% if metadato.tipo_dato.tipo == "Archivo" %}
                                             <label for="avatar">Seleccionar archivo:</label>
-                                            <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="" class="form-control inputClass" />
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="" class="form-control inputClass" required/>
+                                            {% else %}
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="" class="form-control inputClass"/>
+                                            {% endif %}
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Numérico" %}
-                                            <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" class="form-control inputClass" />
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" class="form-control inputClass" required/>
+                                            {% else %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" class="form-control inputClass" />
+                                            {% endif %}
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Fecha" %}
+                                            {% if metadato.obligatorio == True %}
+                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31" value="" class="form-control inputClass" required/>
+                                            {% else %}
                                             <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31" value="" class="form-control inputClass" />
+                                            {% endif %}
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Texto" %}
-                                            <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" />
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" required/>
+                                            {% else %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" />
+                                            {% endif %}
                                         {% endif %}
+
                                         {% if metadato.tipo_dato.tipo == "Correo electrónico" %}
-                                            <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" />
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" required/>
+                                            {% else %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="" class="form-control inputClass" />
+                                            {% endif %}
                                         {% endif %}
                                             *Descripción.- {{metadato.descripcion}}
                                         </div>
