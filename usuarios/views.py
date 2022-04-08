@@ -20,9 +20,10 @@ def ListarUsuarios(request):
 
 # @login_required(redirect_field_name='login')
 def NuevoUsuario(request):
-    usuarios = User.objects.all().exclude(is_active=False).order_by('pk')
+    usuarios = PerfilUser.objects.all().exclude(is_active=False).order_by('pk')
+    # usuarios = User.objects.all().exclude(is_active=False, unidad_user=4).order_by('pk')
     unidades = Unidad.objects.all().order_by('pk')
-    roles = Rol.objects.all().order_by('pk')
+    roles = Rol.objects.all().exclude(nombre='Aprobación').order_by('pk')
     if request.method == "POST":
         # return HttpResponse(request.POST.items())
         # form = PerfilUserForm(request.POST)
