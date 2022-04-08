@@ -8,9 +8,46 @@
 		<h1> {{mensaje}}</h1>
 			<form method="POST">
 				{% csrf_token %}
-					{{ form.as_p }}
-					<input type = "submit" class="btn btn-primary" value = "Guardar" />
-					<button class="btn btn-primary" onclick="goBack()">Cancelar</button>
+
+					<div class="row">
+						<div class="col-md-12">
+							<strong>Nombre:</strong>
+							<input type="text" name="nombre" id="nombre" class="form-control" value="{{unidad.nombre}}" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<strong>Descripción:</strong>
+							<input type="text" name="descripcion" id="descripcion" value="{{unidad.descripcion}}" class="form-control">
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-12">
+							<strong>Jefe de unidad:</strong>
+							<select id="jefe_unidad" name="jefe_unidad" class="form form-control" required>
+								<option  value="" selected="selected">--- SELECT ---</option>
+								{% for usuario in usuarios %}
+									<option value="{{usuario.pk}}"
+										{% if usuario.pk == unidad.jefe_unidad.pk %}selected="selected"{% endif %}>
+										{{usuario.first_name|capfirst}} {{usuario.last_name|capfirst}} {{usuario.amaterno|capfirst}}
+									</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					{% if unidad.activo %}
+						<label><input type="checkbox" id="activo" name="activo" checked> Activa</label><br>
+					{% else %}
+						<label><input type="checkbox" id="activo" name="activo"> Activa</label><br>
+					{% endif %}
+					<br/>
+					<p align="center">
+						<a href = "/unidad/" type="button" class="btn btn-primary">Regresar</a>
+						<input type = "submit" class="btn btn-primary" value = "Guardar" />
+					</p>
 			</form>
 	</section>
 {% endblock %}

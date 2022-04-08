@@ -9,20 +9,48 @@
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
+						
 							<h1> {{etiqueta}} Crear unidad</h1>
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
-								
-								{{form}}
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Nombre:</strong>
+										<input type="text" name="nombre" id="nombre" class="form-control" required>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Descripción:</strong>
+										<input type="text" name="descripcion" id="descripcion" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Jefe de unidad:</strong>
+										<select id="jefe_unidad" name="jefe_unidad" class="form form-control" required>
+											<option  value="" selected="selected">--- SELECT ---</option>
+											{% for usuario in usuarios %}
+												<option value="{{usuario.pk}}"
+													{% if usuario == current_usuario %}{% endif %}>
+													{{usuario.first_name|capfirst}} {{usuario.last_name|capfirst}} {{usuario.amaterno|capfirst}}
+												</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
 							    
 								<br/>
 								<p align="center">
+									<a href = "/unidad/" type="button" class="btn btn-primary">Regresar</a>
 									<input class="btn btn-primary" type = "submit" />
 								</p>
 							</form>
-						</div>
-						<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+						
 					</article>
 				</section>
 			</div>
