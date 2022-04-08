@@ -9,20 +9,117 @@
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
+						
 							<h1> {{etiqueta}} Crear usuario</h1>
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
-								
-								{{form.as_p}}
-							    
 
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-4">
+											<strong>Nombre:</strong>
+											<input type="text" class="form-control" id="first_name" name="first_name" value="" required/>
+										</div>
+										<div class="col-md-4">
+											<strong>Apellido paterno:</strong>
+											<input type="text" class="form-control" id="last_name" name="last_name" value="" required/>
+										</div>
+										<div class="col-md-4">
+											<strong>Apellido materno:</strong>
+											<input type="text" class="form-control" id="amaterno" name="amaterno" value="" required/>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-8">
+											<strong>Unidad:</strong>
+											<select id="unidad_user" name="unidad_user" class="form form-control" required>
+												<option  value="" selected="selected">--- SELECT ---</option>
+												{% for unidad in unidades %}
+													<option value="{{unidad.pk}}"
+														{% if tipo == current_unidad %}{% endif %}>
+														{{unidad.nombre|capfirst}}
+													</option>
+												{% endfor %}
+											</select>
+										</div>
+										<div class="col-md-2">
+											<strong>Teléfono:</strong>
+											<input type="text" class="form-control" id="telefono" name="telefono" value="" required/>
+										</div>
+										<div class="col-md-2">
+											<strong>Extensión:</strong>
+											<input type="text" class="form-control" id="extension" name="extension" value=""/>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-6">
+											<strong>Jefe inmediato:</strong>
+											<select id="jefe_inmediato" name="jefe_inmediato" class="form form-control" required>
+												<option  value="" selected="selected">--- SELECT ---</option>
+												{% for usuario in usuarios %}
+													<option value="{{usuario.pk}}"
+														{% if tipo == current_usuario %}{% endif %}>
+														{{usuario.first_name|capfirst}} {{usuario.last_name|capfirst}}
+													</option>
+												{% endfor %}
+											</select>
+										</div>
+										<div class="col-md-6">
+											<strong>Tipo de cuenta:</strong>
+											<select id="rol" name="rol" class="form form-control" required>
+												<option  value="" selected="selected">--- SELECT ---</option>
+												{% for rol in roles %}
+													<option value="{{rol.pk}}"
+														{% if tipo == current_tipo %}{% endif %}>
+														{{rol.nombre|capfirst}}
+													</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-12">
+											<strong>Correo electrónico:</strong>
+											<input type="email" class="form-control" id="email" name="email" value="" required/>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-12">
+											<strong>Nombre de usuario:</strong>
+											<input type="text" class="form-control" id="username" name="username" value="" required/>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-12">
+											<strong>Contraseña:</strong>
+											<input type="password" class="form-control" id="password" name="password" value="" required/>
+										</div>
+									</div>
+								</div>
+							    
+								<br/>
 								<p align="center">
+									<a href = "/usuarios/" type="button" class="btn btn-primary">Regresar</a>
 									<input class="btn btn-primary" type = "submit" />
 								</p>
 							</form>
-						</div>
-						<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+						
+						
 					</article>
 				</section>
 			</div>

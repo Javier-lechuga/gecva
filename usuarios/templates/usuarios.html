@@ -32,7 +32,7 @@
 									{% for usuario in usuarios %}
 										<tr>
 											<td>{{forloop.counter}}</td>
-											<td>{{usuario.username}}</td>
+											<td>{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</td>
 											<td>{{usuario.email}}</td>
 											<td>
 												{% if usuario.is_active == True %}
@@ -43,7 +43,10 @@
 											</td>
 											<td>
 												<a href = "javascript: if(confirm('Deseas editar {{usuario}}??')) window.location='{% url "editar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+												{% if usuario.is_active == True %}
 												<a href = "javascript: if(confirm('Deseas eliminar {{usuario}}??')) window.location='{% url "eliminar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+												{% endif %}
+												
 											</td>
 										</tr>
 									{% endfor %}

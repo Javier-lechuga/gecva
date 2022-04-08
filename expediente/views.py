@@ -15,7 +15,6 @@ import datetime
 import json
 import time
 
-
 from expediente.models import Expediente, Expediente_aprobador
 from metadato.forms import MetadatoForm
 from metadato.models import Metadato
@@ -31,9 +30,6 @@ from usuarios.models import PerfilUser
 from os import path
 from os import makedirs
 from genericpath import exists
-#
-
-
 
 # Create your views here.
 # @login_required(redirect_field_name='login')
@@ -144,7 +140,8 @@ def BuscaMetadatosExp(request):
 
 # @login_required(redirect_field_name='login')
 def VerExpediente(request, pk): # para mostrar el expediente
-    usuarios = User.objects.all().exclude(is_active=False).order_by('pk')
+    usuarios = PerfilUser()
+    usuarios = PerfilUser.objects.all().exclude(is_active=False).order_by('pk')
     expediente = Expediente.objects.get(pk=pk)
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
     ids_users = Expediente_aprobador.objects.filter(id_expediente=pk)

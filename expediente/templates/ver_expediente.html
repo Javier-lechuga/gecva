@@ -168,7 +168,7 @@
 								
 								<br/>
 								<p align="center">
-                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Solicitar aprobación</button>-->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Solicitar aprobación</button>
                                     <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
                                     <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
@@ -277,7 +277,7 @@
                                             </td>
                                             <td>
                                                 <p align="center">
-                                                    {{usuario.first_name}} {{usuario.last_name}}
+                                                    {{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
                                                 </p>
                                             </td>
                                         </tr>
@@ -289,7 +289,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                    <!--<button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>-->
                     <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
                 </div>
             </div>
