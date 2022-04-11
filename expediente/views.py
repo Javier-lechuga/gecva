@@ -1,3 +1,15 @@
+#
+#
+#
+#
+# hay que limpear los imprts
+#
+#
+#
+#
+#
+#
+
 # -*- coding: utf-8 -*-
 from ensurepip import version
 from django.shortcuts import render
@@ -23,7 +35,7 @@ import tipo_expediente
 from tipo_expediente.models import TipoExpediente
 from unidad.models import Unidad
 
-#Para cargar expediente
+#Para cargar archivos
 from django.core.files.storage import default_storage
 from usuarios.models import PerfilUser
 #para crer directorios
@@ -43,58 +55,6 @@ def ListarExpUnidad(request, pk):
     expedientes = Expediente.objects.filter(unidad=pk)
     return render(request, 'expedientes.html', {'expedientes': expedientes, 'mensaje': 'Expedientes'})
 
-# @login_required(redirect_field_name='login')
-def NuevoExpediente(request):
-    if request.method == "POST":
-        form = ExpedienteForm(request.POST)
-        expediente = None
-        if form.is_valid():
-             # Instanciando Estatus
-            # @cambio
-            # fecha : 28/03/2020
-            # autor: lechuga
-            # Explcación: cambie para que busque el estatus y no el pk    
-            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
-            # @Anteriro 
-            #estatus_dos = Estatus()
-            #estatus_dos = Estatus.objects.get(pk=7) # Estableciendo el estatus como creado
-            tipo_expediente_dos = TipoExpediente()
-            tipo_expediente_dos = TipoExpediente.objects.get(pk=request.POST['tipo'])
-            # Instanciando Unidad
-            unidad_dos = Unidad()
-            unidad_dos = Unidad.objects.get(pk=request.POST['unidad'])
-            # Asignando el valor de activo
-            if request.POST.get('activo','') == 'on':
-                activo_dos = True
-            else:
-                activo_dos = False
-            user = get_user(request)
-            user = request.user
-            expediente = Expediente.objects.create(
-                identificador = request.POST.get('identificador',''),
-                nombre = request.POST.get('nombre',''),
-                descripcion = request.POST.get('descripcion',''),
-                asunto = request.POST.get('asunto',''),
-                ubicacion = request.POST.get('ubicacion',''),
-                fecha_creacion = datetime.datetime.now(),
-                estatus = estatus_dos,
-                tipo_expediente = tipo_expediente_dos,
-                unidad = unidad_dos,
-                activo = activo_dos,
-                usuario_crea = user
-            )
-            expediente.save()
-            nuevo_expediente = Expediente.objects.filter(identificador=request.POST.get('identificador',''))
-            # return redirect('/expedientes/lista_metadatos_exp')
-            id = 0
-            for exp in nuevo_expediente:
-                id = exp.pk
-            print(id)
-            return redirect('/expedientes/lista_metadatos_exp?pk=%s&id=%s' % (expediente.tipo_expediente.pk, id))
-            # return render(request, '/expedientes/lista_metadatos_exp', {'pk': expediente.tipo_expediente, 'id': nuevo_expediente.pk})
-    else:
-        form = ExpedienteForm()
-    return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
 
 # @login_required(redirect_field_name='login')
 def BuscaMetadatosExp(request):
@@ -102,30 +62,14 @@ def BuscaMetadatosExp(request):
     expediente = ExpedienteForm()
     tipo = TipoExpediente()
     tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
-    
-    # @cambio
-    # fecha : 31/03/2020
-    # autor: lechuga
-    # Explcación: se revisa si el expediente tiene algun archivo como metadato,
-    #             de ser asi se le asigna true a la variable bandera, 
-    #             caso contrario sele asigna false  
-    cantiene_arhivos = False
-    for metadato in metadatos:
-        if metadato.tipo_dato.tipo == "Archivo":
-            cantiene_arhivos = True
-            break
+    contiene_arhivos = expediente_tine_archivos(metadatos)
 
-    # @cambio
-    # fecha : 31/03/2020
-    # autor: lechuga
-    # Explcación: se agrego un parametro en el return para especificar si uno de los metadotas
-    #             es de tipo "Archivo"
-    # Contenido del return:
-    #   metadatos : metadatos           // Los metadatos que componen el expediente
+    # valores retornados:
     #   tipo : tipo                     // El tipo de expediente
-    #   id : id                         // El id del expediente que se esta trabajando
+    #   expediente : definir            // definir el tipo
+    #   metadatos : metadatos           // tupla con los metadatos que componen el expediente
     #   mensaje : 'metadatos'           // Mensaje a mostrar en la pagina
-    #   bandera : cantiene_arhivos      // variable auxiliar que representa si el expediente
+    #   contiene_archivos : bool        // variable auxiliar que representa si el expediente
     #                                      tiene un metadato del tipo Archivo.
     return render(request,
                   'nuevo_exp_completo.html',
@@ -133,10 +77,8 @@ def BuscaMetadatosExp(request):
                    'expediente': expediente,
                    'metadatos': metadatos,
                    'mensaje': 'Nuevo expediente',
-                   'contiene_archivos' : cantiene_arhivos
+                   'contiene_archivos' : contiene_arhivos
                   })
-    # @Anteriro 
-    #return render(request, 'nuevo_exp_completo.html', {'tipo': tipo, 'expediente': expediente, 'metadatos': metadatos, 'mensaje': 'Nuevo expediente'})
 
 # @login_required(redirect_field_name='login')
 def VerExpediente(request, pk): # para mostrar el expediente
@@ -152,23 +94,18 @@ def VerExpediente(request, pk): # para mostrar el expediente
     for v in va:
         seleccionados.append(v)
 
-   
+
     contiene_arhivos = expediente_tine_archivos(metadatos)
 
     #full_url = ''.join(['http://', get_current_site(request).domain, obj.get_absolute_url()])
     #url_archivo = get_current_site(request) 
     #return HttpResponse(url_archivo)
 
-    # @cambio
-    # fecha : 04/04/2020
-    # autor: lechuga
-    # Explcación: se agrego un parametro en el return para especificar si uno de los metadotas
-    #             es de tipo "Archivo"
-    # Contenido del return:
-    #   expediente : int                // pk del expediente
+    # vaores returnados:
+    #   expediente : Expediente         // Expediente a mostrar
     #   metadatos  : tupla              // tupla con todos los metadatos
     #   usuarios   : tupla              // tupla con todos los usuarios
-    #   etiqueta   : string             // Mensaje a mostrar en la pagina
+    #   seleccionados : string          // Mensaje a mostrar en la pagina
     #   contiene_arhivos : boolean      // variable auxiliar que representa si el expediente
     #                                      tiene un metadato del tipo Archivo.
 
@@ -181,9 +118,6 @@ def VerExpediente(request, pk): # para mostrar el expediente
                   'seleccionados': seleccionados,
                   'contiene_arhivos' : contiene_arhivos
                   })
-
-    # @Anteriro 
-    #return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados})
 
 # @login_required(redirect_field_name='login')
 def AprobarExp(request, pk):
@@ -328,13 +262,9 @@ def NuevoExpCompleto(request):
         metas = []
         for variable in request.POST.items():
             vars.append(variable)
-        # print(vars)
         for otro in vars[8:]:
             metas.append(otro)
             tipo = otro[0]
-        # print(vars)
-        # print("Este es el valor de tipo: %s" % tipo)
-        # print(metas)
         for valor in metas:
             #Instanciando Metadato
             meta = Metadato()
@@ -353,16 +283,7 @@ def NuevoExpCompleto(request):
                 expediente = nuevo_expediente,
             )
             metadato.save()
-        # return HttpResponse(request.POST.items())
-
-        # return HttpResponse(request.POST.items())
-
-        # @cambio
-        # fecha : 04/04/2020
-        # autor: lechuga
-        # Explcación: Funcionalidad para guardar metadatos con archivos, 
-        #
-
+        # Guardando metadatos con archivos, 
         if not request.FILES:
             pass
         else:
@@ -373,16 +294,9 @@ def NuevoExpCompleto(request):
                 nombre_metadato = Metadato.objects.get(pk=metadato_archivo[0]).nombre    
                 pk_expediente = str(nuevo_expediente.pk)
                 ruta_archivo = crea_carpeta('./media/'+pk_expediente+'/'+nombre_metadato+'/v1/')
-                #guardar el archivo
                 url_archivo = guardar_archivo(ruta_archivo,metadato_archivo[1])
-                # @cambio
-                # fecha : 04/04/2020
-                # autor: lechuga
-                # Explcación: se elimina el primer caracter de lacadena '.' para poder guardar 
-                #             la url 
-                #
+                # se elimina el primer caracter de lacadena '.' para poder guardar la url 
                 url_archivo = url_archivo[1:]
-                print(url_archivo)
                 #crear el metadato
                 metadato = Metadato()
                 metadato = Metadato.objects.get(pk=metadato_archivo[0])
@@ -415,40 +329,28 @@ def ModificaExpCompleto(request):
             Expediente.objects.filter(pk=exp).update(asunto=request.POST.get('asunto',''))
             Expediente.objects.filter(pk=exp).update(ubicacion=request.POST.get('ubicacion',''))
 
-
-            #
-            #return(HttpResponse(request.FILES.items()))
-            #return(HttpResponse(request.POST.items()))
-            
-
-            #
-
-            #actializando metadatos con archivo 
-            #obteniendo_archivos si existen
+            # guardando metadatos con archivo en caso de tenerlos
             if not request.FILES:
-                #return HttpResponse("no se encontraron archivos en el POST primera linea")
+                # no se encontraron archivos en el POST
                 pass
-            else :
+            else:
                 for archivo in request.FILES.items():
-                    #return HttpResponse(archivo)
-                    #metadato = Metadato.objects.get(pk=archivo[0])
                     nombre_metadato = Metadato.objects.get(pk=archivo[0]).nombre
                     pk_expediente = str(expediente.pk)
                     version = Metadato.objects.get(pk=archivo[0]).version
                     version = int(version) + 1
                     ruta_archivo = crea_carpeta('./media/'+
                                                 pk_expediente+
-                                                '/'+nombre_metadato+
+                                                '/'+
+                                                nombre_metadato+
                                                 '/v'+
                                                 str(version)+
                                                 '/'
                                                 )
-                    #guardar el archivo
                     url_archivo = guardar_archivo(ruta_archivo,archivo[1])
-                    print("guardando")
-                    print(url_archivo)
+                    #le quitamos el "." a la ruta del archivo guardado
                     url_archivo = url_archivo[1:]
-                    #return HttpResponse(url_archivo)
+                    # actualizando cambios
                     Metadato.objects.filter(pk=archivo[0], expediente=exp).update(valor=url_archivo)
                     Metadato.objects.filter(pk=archivo[0], expediente=exp).update(version=version)
                      
@@ -458,43 +360,35 @@ def ModificaExpCompleto(request):
                 vars.append(variable)
             print(vars)
             for otro in vars[13:]:       
-                         
-            # @cambio
-            # fecha : 06/04/2020
-            # autor: lechuga
-            # Explcación: se valida que e tipo del metadato no sea archivo dado que el POST
-            #             cuando no se seleccionan archivos envia los camopos de tipo file
-            #             en el POST.items() y no en el post.FILE.items(),por lo que hay que
-            #             filttrarlos
-                #return HttpResponse(Metadato.objects.get(pk=otro[0]).tipo_dato)
+                #solo realizar actualizacion si no se trata de metadatos de tipo archivo 
                 if Metadato.objects.get(pk=otro[0]).tipo_dato.tipo == "Archivo":
-                    #return HttpResponse(Metadato.objects.get(pk=otro[0]).tipo_dato)
                     pass
                 else:
-                    #return HttpResponse("modificando mal")
                     Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
                     Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
 
-            # @anterios
-                Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
-                Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
-
-            # return redirect('/expedientes/mis_expedientes')
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
-            metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
+            metadatos  = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
             return render(request, 'detalle_expediente.html', {'expediente': expediente,'metadatos': metadatos, 'mensaje': 'Detalle expediente'})
         else:
             form = ExpedienteForm(instance=expediente)
         return render(request, 'edita_expediente.html', {'form': form, 'mensaje': 'Modificar expediente'})
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
+        # Gansito marinela
+        # 
+        # recuerdame
+        #
+        #
+        # hay que escribir en el log del sistema el error ocurrido
+        #
 
 
 # @login_required(redirect_field_name='login')
 def DetalleExpediente(request, pk): #muestra expediente para ser modificado
     try:
         expediente = Expediente.objects.get(pk=pk)
-        metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
+        metadatos  = Metadato.objects.filter(expediente=pk).order_by('pk')
         if request.method == "POST":
             form = ExpedienteForm(request.POST, instance=expediente)
             if form.is_valid():
@@ -505,18 +399,11 @@ def DetalleExpediente(request, pk): #muestra expediente para ser modificado
             # form = ExpedienteForm(instance=expediente)
 
 
-    # @cambio
-    # fecha : 04/04/2020
-    # autor: lechuga
-    # Explcación: se agrego un parametro en el return para especificar sitio actual,
-    #             al final no se utilizo y solo se acomodo el formato
-    # Contenido del return:
-    #   metadatos : metadatos           // Los metadatos que componen el expediente
-    #   tipo : tipo                     // El tipo de expediente
-    #   id : id                         // El id del expediente que se esta trabajando
-    #   mensaje : 'metadatos'           // Mensaje a mostrar en la pagina
-    #   bandera : cantiene_arhivos      // variable auxiliar que representa si el expediente
-    #                                      tiene un metadato del tipo Archivo.        
+
+    #   Valores regresados
+    #   expediente : Expedinte        // Expediente seleccionado
+    #   metadatos  : Metadaros[]      // Tupla con los metadatos del expediente
+    #   mensaje    : String           // Mensaje a mostrar en la pagina
         return render(request, 
                       'detalle_expediente.html', 
                        {'expediente': expediente, 
@@ -526,17 +413,16 @@ def DetalleExpediente(request, pk): #muestra expediente para ser modificado
                       )
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
-        #return HttpResponse(str(url_archivo) + str(metadatos[0]))
+        # Gansito marinela
+        # 
+        # recuerdame
+        #
+        #
+        # hay que escribir en el log del sistema el error ocurrido
+        #
 
 # @login_required(redirect_field_name='login')
 def GuardaMetadatosExp(request):
-    # request.FILES
-    
-    # print("hola putito")
-    # print(request.FILES)
-
-    # file = request.FILES['51']
-    # file_name = default_storage.save(file.name, file)
 
     vars = []
     for variable in request.POST.items():
@@ -565,20 +451,9 @@ def ListaMetadatosExp(request):
         id = Expediente.objects.get(pk=request.GET['id'])
 
         metadatos = Metadato.objects.filter(tipo_expediente=tipo.pk).order_by('pk')
+        bandera = expediente_tine_archivos(metadatos)
 
-        #se revisa si el expediente tiene algun archivo como metadato,
-        #de ser asi se le asigna true a la variable bandera, 
-        #caso contrario sele asigna false  
-        bandera = False
-        for metadato in metadatos:
-            if metadato.tipo_dato.tipo == "Archivo":
-                bandera = True
-                break
-
-        #return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo,'mensaje': 'Metadatos','bandera':bandera})
-        #rada
-        #return render(request, 'lista_metadatos_exp.html', {'metadatos': metadatos, 'tipo': tipo, 'id': id,'mensaje': 'Metadatos'})
-        #se cambio para regresar 
+        #   Valores regresados 
         #   metadatos : metadatos // Los metadatos que componen el expediente
         #   tipo : tipo           // El tipo de expediente
         #   id : id               // El id del expediente que se esta trabajando
@@ -600,6 +475,7 @@ def MuestraCamposExp(request):
     tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
     form = ExpedienteForm()
     return render(request, 'nuevo_expediente.html', {'form': form,'tipo': tipo, 'nuevo': 'Nuevo'})
+
 
 # @login_required(redirect_field_name='login')
 def SeleccionaTipoExp(request):
@@ -624,27 +500,38 @@ def EditarExpediente(request, pk):
     except ObjectDoesNotExist:
         return redirect('/expedientes/mis_expedientes')
 
-# @login_required(redirect_field_name='login')
-# def EliminarExpediente(request, pk):
-#     try:
-#         expediente = Expediente.objects.get(pk=pk)
-#         expediente.delete()
-#         return redirect('/expedientes/mis_expedientes')
-#     except ObjectDoesNotExist:
-#         return redirect('/expedientes/mis_expedientes')
 
 # @login_required(redirect_field_name='login')
 def EliminarExpediente(request, pk):
+    #return redirect(borrar_expediente(request, pk))
+    return redirect(marcar_expediente_como_inactivo(request, pk))
+    
+
+# @creacióm de función
+# fecha : 08/04/2020
+# autor: Rada
+# explicacion : borra expediente de la base de datos, el borrado se realiza en cascada
+def borrar_expediente(request, pk):
+     try:
+         expediente = Expediente.objects.get(pk=pk)
+         expediente.delete()
+         return '/expedientes/mis_expedientes'
+     except ObjectDoesNotExist:
+         return '/expedientes/mis_expedientes'
+
+
+# @creacióm de función
+# fecha : 08/04/2020
+# autor: Rada
+def marcar_expediente_como_inactivo(request, pk):
     try:
         expediente = Expediente.objects.get(pk=pk)
         Expediente.objects.filter(pk=pk).update(activo=False)
-        return redirect('/expedientes/mis_expedientes')
+        return '/expedientes/mis_expedientes'
     except ObjectDoesNotExist:
-        return redirect('/expedientes/mis_expedientes')
+        return '/expedientes/mis_expedientes'
 
-# @creacióm de función
-# fecha : 01/03/2020
-# autor: lechuga        
+     
 def crea_carpeta(ruta ): # parametros 
                          #    ruta : string. Cadena que contenga la ruta
                          # retorno
@@ -655,10 +542,6 @@ def crea_carpeta(ruta ): # parametros
     return ruta          # rwtorno : string. Cadena con la ruta creada
     
 
-
-# @creacióm de función
-# fecha : 01/03/2020
-# autor: lechuga       
 def guardar_archivo(ruta,archivo): # parametros 
                                    #    ruta : string. Cadena que contenga la ruta
                                    #    archivo : File. Archivo que sera guardado
@@ -671,9 +554,6 @@ def guardar_archivo(ruta,archivo): # parametros
     return url                     
 
 
-# @creacióm de función
-# fecha : 01/03/2020
-# autor: lechuga
 def expediente_tine_archivos(metadatos): # parametros 
                                          #    metadatos : Metadato. Tupla con los metadatos
                                          #    del expediente                              
@@ -685,3 +565,65 @@ def expediente_tine_archivos(metadatos): # parametros
             bandera = True
             return True
         return False
+
+
+
+
+# @Funciones decrepitas
+# poner acontinuación las funciones que ya no tienen utilidad y especificar porque es decrepita 
+#
+#
+#
+#
+
+# @ Decrepita ya no se utiliza dado que solo crea los datos principales 
+#   del expediente y no crea las demas relaciones que conforman el expediente,
+#   en sulugar se usa la funcion NuevoExpCompleto 
+#    
+# @login_required(redirect_field_name='login')
+def NuevoExpediente(request): 
+    if request.method == "POST":
+        form = ExpedienteForm(request.POST)
+        expediente = None
+        if form.is_valid():
+            # Instanciando Estatus
+            estatus_dos = Estatus.objects.get(nombre = 'Creado') 
+            tipo_expediente_dos = TipoExpediente()
+            tipo_expediente_dos = TipoExpediente.objects.get(pk=request.POST['tipo'])
+            # Instanciando Unidad
+            unidad_dos = Unidad()
+            unidad_dos = Unidad.objects.get(pk=request.POST['unidad'])
+            # Asignando el valor de activo
+            if request.POST.get('activo','') == 'on':
+                activo_dos = True
+            else:
+                activo_dos = False
+            # Obteniendo usuario
+            user = get_user(request)
+            user = request.user
+            # Creando expediente
+            expediente = Expediente.objects.create(
+                identificador   = request.POST.get('identificador',''),
+                nombre          = request.POST.get('nombre',''),
+                descripcion     = request.POST.get('descripcion',''),
+                asunto          = request.POST.get('asunto',''),
+                ubicacion       = request.POST.get('ubicacion',''),
+                fecha_creacion  = datetime.datetime.now(),
+                estatus         = estatus_dos,
+                tipo_expediente = tipo_expediente_dos,
+                unidad          = unidad_dos,
+                activo          = activo_dos,
+                usuario_crea    = user
+            )
+            # Guardando expediente en la base
+            expediente.save()
+            # Regresando expediente completo
+            nuevo_expediente = Expediente.objects.filter(identificador=request.POST.get('identificador',''))
+            id = 0
+            for exp in nuevo_expediente:
+                id = exp.pk
+            print(id)
+            return redirect('/expedientes/lista_metadatos_exp?pk=%s&id=%s' % (expediente.tipo_expediente.pk, id))            
+    else:
+        form = ExpedienteForm()
+    return render(request, 'nuevo_expediente.html', {'form': form, 'nuevo': 'Nuevo'})
