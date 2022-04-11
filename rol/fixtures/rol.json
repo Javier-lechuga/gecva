@@ -1,0 +1,5 @@
+[
+    {"model": "rol.Rol", "pk": 1, "fields":{"nombre": "Administrador"   , "descripcion": "Para administrar"}},
+    {"model": "rol.Rol", "pk": 3, "fields":{"nombre": "Usuario"   , "descripcion": "Usuario normal del sistema"}},
+    {"model": "rol.Rol", "pk": 4, "fields":{"nombre": "Aprobación"   , "descripcion": "Usuario que aprueba expediente y documento"}}
+]
