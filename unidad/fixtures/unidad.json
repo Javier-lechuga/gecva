@@ -1,3 +1,0 @@
-[
-    {"model": "unidad.Unidad", "pk": 1, "fields":{"nombre": "GECVA", "descripcion": "unidad administradora del sistema", "jefe_unidad": 1,"activo": true}}
-]

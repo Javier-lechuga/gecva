@@ -13,17 +13,3 @@ class Unidad(models.Model):
 
     def __str__(self):
             return self.nombre
-
-
-# creación de los roles para los tipos de usuarios que manejara el sistema
-# para crear estos modelos en la base de datos utilizar la fixture unidad.json ejecutando
-# el comando "python manage.py loaddata unidad.json" en la terminal
-#
-#   roles:
-#       nombre       - Nobre de la unidad
-#       descripcion  - primer usuario necesario para eliminar la redundancia ciclica 
-#                      Unidad -> Usuario -> Unidad 
-#       jefe_unidad  - Usuario que podra aprobar expedientes y documentos
-#       activo 
-# Ingreso de los estatus anteriores al modelo Estatus
-#  
