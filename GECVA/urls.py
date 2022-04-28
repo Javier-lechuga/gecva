@@ -22,15 +22,15 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # eliminar para no permitir el ingreso sin que este el usuario logeado
-    #path('admin/', admin.site.urls),
-    #path('usuarios/', include('usuarios.urls')),
-    #path('unidad/', include('unidad.urls')),
-    #path('estatus/', include('estatus.urls')),
-    #path('roles/', include('rol.urls')),
-    #path('tipos_expedientes/', include('tipo_expediente.urls')),
-    #path('tipos_datos/', include('tipo_dato.urls')),
-    #path('expedientes/', include('expediente.urls')),
-    #path('metadatos/', include('metadato.urls')),
-    #re_path(r'^unidades/', include('unidad.urls')),
+    path('admin/', admin.site.urls),
+    path('usuarios/', include('usuarios.urls')),
+    path('unidad/', include('unidad.urls')),
+    path('estatus/', include('estatus.urls')),
+    path('roles/', include('rol.urls')),
+    path('tipos_expedientes/', include('tipo_expediente.urls')),
+    path('tipos_datos/', include('tipo_dato.urls')),
+    path('expedientes/', include('expediente.urls')),
+    path('metadatos/', include('metadato.urls')),
+    re_path(r'^unidades/', include('unidad.urls')),
     path('', include('inicio.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )
