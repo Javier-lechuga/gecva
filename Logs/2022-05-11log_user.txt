@@ -1,0 +1,15 @@
+2022-05-11 10:02:25 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-11 10:02:38 El usuario Admin Admin Admin se loguea en el sistema
+2022-05-11 10:41:41 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-11 10:41:49 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-11 10:47:13 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-11 10:47:25 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM00001254
+2022-05-11 10:49:44 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-11 10:49:52 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-11 11:00:06 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00012
+2022-05-11 11:00:08 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-11 11:00:10 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM00001254
+2022-05-11 11:00:26 El usuario Luis Miguel Correa Rada rechazó el expediente: NOM00001254
+2022-05-11 11:00:29 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-11 11:00:33 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM00001254
+2022-05-11 11:00:35 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos

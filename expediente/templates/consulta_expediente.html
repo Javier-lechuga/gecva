@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Expediente
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
+
+{% block content %}
+
+		<section class="main container">
+            <div class="container">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<h1> {{etiqueta}}: {{expediente.identificador}}</h1>
+                            <form method="POST" id="forma" class="form-horizontal" action="/expedientes/asigna_expediente" enctype="multipart/form-data">    
+								{% csrf_token %}
+                                <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
+                                <fieldset>
+                                    <legend>Datos generales</legend>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <strong>Identificador: </strong>
+                                            <input type="text" class="form-control" id="identificador" name="identificador" value="{{expediente.identificador}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <strong>Fecha de creación:</strong>
+                                            <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" value="{{expediente.fecha_creacion}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <strong>Fecha de cierre: </strong>
+                                            {% if expediente.fecha_cierre == None %}
+                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="" readonly/>
+                                            {% else %}
+                                                <input type="text" class="form-control" id="fecha_cierre" name="fecha_cierre" value="{{expediente.fecha_cierre}}" readonly/>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-3">
+                                            <strong>Estatus: </strong>
+                                            <input type="text" class="form-control" id="estatus" name="estatus" value="{{expediente.estatus.nombre}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <strong>Creado por:</strong>
+                                            <input type="text" class="form-control" id="usuario_crea" name="usuario_crea" value="{{expediente.usuario_crea.first_name}} {{expediente.usuario_crea.last_name}}" readonly/>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <strong>Unidad: </strong>
+                                            <input type="text" class="form-control" id="unidad" name="unidad" value="{{expediente.unidad.nombre}}" readonly/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <strong>Tipo de expediente:</strong>
+                                            <input type="text" class="form-control" id="tipo_expediente" name="tipo_expediente" value="{{expediente.tipo_expediente.nombre}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <strong>Nombre:</strong>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{expediente.nombre}}" readonly/>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <strong>Ubicación:</strong>
+                                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" value="{{expediente.ubicacion}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <strong>Descripción:</strong>
+                                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{expediente.descripcion}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <strong>Asunto: </strong>
+                                            <input type="text" class="form-control" id="asunto" name="asunto" value="{{expediente.asunto}}" readonly/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </fieldset>
+                                <br/>
+                                <fieldset id="campos">
+                                    <legend>Metadatos</legend>
+                                    {% for metadato in metadatos %}
+                                        <div class="col-md-12">
+                                            <strong>{{metadato.nombre}}:</strong>
+                                        {% if metadato.tipo_dato.tipo == "Archivo" %}
+                                            {% if metadato.obligatorio == True %}
+                                                <label for="avatar">Seleccionar archivo:</label>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass archive" required readonly/>
+                                            {% else %}
+                                                <label for="avatar">Seleccionar archivo:</label>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="{{metadato.valor}}" class="form-control inputClass archive" readonly/>
+                                            {% endif %}
+                                            <a href="{{metadato.valor}}" target="_blank">{{metadato.valor}}:</a>
+                                            <br>
+                                        {% endif %}
+
+                                        {% if metadato.tipo_dato.tipo == "Numérico" %}
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
+                                        {% endif %}
+
+                                        {% if metadato.tipo_dato.tipo == "Fecha" %}
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="1900-01-01"  value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="1900-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
+                                        {% endif %}
+
+                                        {% if metadato.tipo_dato.tipo == "Texto" %}
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="text" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
+                                        {% endif %}
+
+                                        {% if metadato.tipo_dato.tipo == "Correo electrónico" %}
+                                            {% if metadato.obligatorio == True %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                            {% else %}
+                                                <input type="email" id="{{metadato.pk}}" name="{{metadato.pk}}" value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                            {% endif %}
+                                        {% endif %}
+                                            *Descripción.- {{metadato.descripcion}}
+                                        </div>
+                                    {% endfor %}
+                                </fieldset>
+
+                                <input type="hidden" id="users" name="users" value="">
+								
+								
+                                </br>
+                                {% if seleccionados %}
+                                    <fieldset id="campos">
+                                    <legend>Asignado a:</legend>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" id="seleccionados">
+                                                <thead>
+                                                    <tr align="center">
+                                                        <th>
+                                                            <p align="center">
+                                                                #
+                                                            </p>
+                                                        </th>
+                                                        <th>
+                                                            <p align="center">
+                                                                Usuario
+                                                            </p>
+                                                        </th>
+                                                        <th>
+                                                            <p align="center">
+                                                                Estatus
+                                                            </p>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for seleccionado in seleccionados %}
+                                                    <tr>
+                                                        <td>
+                                                            <p align="center">
+                                                                {{forloop.counter}}
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p align="center">
+                                                                {{seleccionado.id_usuario.first_name}} {{seleccionado.id_usuario.last_name}}
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p align="center">
+                                                                {{seleccionado.id_estatus.nombre}}
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </fieldset>
+                                {% else %}
+                                    <p align="center"><strong>Expediente sin asignar</strong></p>
+                                {% endif %}
+                                <br/>
+								<p align="center">
+                                    <a href = "/expedientes/busca_expedientes" type="button" class="btn btn-primary">Regresar</a>
+								</p>
+							</form>
+						</div>
+					</article>
+				</section>
+            </div>
+		</section>
+
+{%endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+    <script type="text/javascript">
+        $(function(){
+            window.onload = function() {
+                console.log("onload");
+                $("#subir").hide();
+                $("#cancelar").hide();
+                $(".archive").hide();
+            }
+
+            $('#modificar').click(function(){
+                console.log("Click en modificar")
+                $("#modificar").hide()
+                $("#nombre").attr("readonly", false)
+                $("#descripcion").attr("readonly", false)
+                $("#asunto").attr("readonly", false)
+                $("#ubicacion").attr("readonly", false)
+                $("#subir").show()
+                $("#cancelar").show()
+                $("#regresar").hide()
+                $(".archive").show();
+                var ids = $(".inputClass")
+                $.each(ids, function(i,value){
+                    $("#"+value.id).attr("readonly", false)
+                    console.log(value.id)
+                });
+            });
+
+            $("#cancelar").click(function(){
+                location.reload();
+                console.log("Click en cancelar")
+                $("#nombre").attr("readonly", true)
+                $("#descripcion").attr("readonly", true)
+                $("#asunto").attr("readonly", true)
+                $("#ubicacion").attr("readonly", true)
+                $("#subir").hide()
+                $("#cancelar").hide()
+                $("#modificar").show()
+                $("#regresar").show()
+                var ids = $(".inputClass")
+                $.each(ids, function(i,value){
+                    $("#"+value.id).attr("readonly", true)
+                    console.log(value.id)
+                });
+            });
+
+        });
+
+        $(document).ready( function () {
+            $('#tablita').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse":true,
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+            });
+        } );
+
+        $(document).ready( function () {
+            $('#seleccionados').DataTable({
+                "bFilter": false,
+                "bInfo": false,
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+            });
+        } );
+
+        $("#confirmar").click(function(){
+            var idss = $(".elementTable")
+            var seleccionados = []
+            $.each(idss, function(i,value){
+                if($("#"+value.id).is(':checked')) {  
+                    seleccionados.push(value.id)
+                }
+            });
+            $('#users').val(seleccionados)
+            console.log(seleccionados)
+            if (seleccionados.length != 0){
+                $("#forma").submit();
+            } else {
+                alert("No se han seleccionado usuarios");
+            }
+        });
+
+    </script>
+
+    <script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}

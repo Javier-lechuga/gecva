@@ -9,73 +9,52 @@
 {% endblock css %}
 
 {% block content %}
-
+        
 		<section class="main container">
             <div class="container">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
                             <fieldset id="campos">
-                                <h1>{{etiqueta}}</h1>
+                                <div class="row">
+                                    <div class="col-md-12"><h1>{{etiqueta}}</h1></div>
+                                    <div class="col-md-12">
+                                        <p align="right">
+                                            {% if user_log.deputy == True %}
+                                                <a href = "/expedientes/recibidos_deputy" type="button" id="depu" class="btn btn-primary">Deputy</a>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="tablita">
                                         <thead>
                                             <tr align="center">
-                                                <th>
-                                                    <p align="center">
-                                                        #
-                                                    </p>
-                                                </th>
-                                                <th>
-                                                    <p align="center">
-                                                        Expediente
-                                                    </p>
-                                                </th>
-                                                <th>
-                                                    <p align="center">
-                                                        Enviado por
-                                                    </p>
-                                                </th>
-                                                <th>
-                                                    <p align="center">
-                                                        Estatus
-                                                    </p>
-                                                </th>
-                                                <th>
-                                                    <p align="center">
-                                                        Acciones
-                                                    </p>
-                                                </th>
+                                                <th>#</th>
+                                                <th>Identificador</th>
+                                                <th>Expediente</th>
+                                                <th>Descripción</th>
+                                                <th>Asunto</th>
+                                                <th>Creado por</th>
+                                                <th>Fecha creación</th>
+                                                <th>Estatus</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             {% for recibido in recibidos %}
                                                 <tr>
+                                                    <td align="center" width="50">{{forloop.counter}}</td>
                                                     <td>
-                                                        <p align="center">
-                                                            {{forloop.counter}}
-                                                        </p>
+                                                        <strong>
+                                                            <a href = "{% url "aprobar_exp" pk=recibido.id_expediente.pk %}" title="Consultar">{{recibido.id_expediente.identificador}}</a>
+                                                        </strong>
                                                     </td>
-                                                    <td>
-                                                        <p align="center">
-                                                            {{recibido.id_expediente.identificador}}
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p align="center">
-                                                            {{recibido.id_expediente.usuario_crea.first_name}} {{recibido.id_expediente.usuario_crea.last_name}}
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p align="center">
-                                                            {{recibido.id_estatus.nombre}}
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p align="center">
-                                                            <a href = "javascript: if(confirm('Deseas ver el expediente: {{recibido.id_expediente}}??')) window.location='{% url "aprobar_exp" pk=recibido.id_expediente.pk %}'" type="button" class="btn btn-primary glyphicon glyphicon-eye-open"></a>
-                                                        </p>
-                                                    </td>
+                                                    <td>{{recibido.id_expediente.nombre}}</td>
+                                                    <td>{{recibido.id_expediente.descripcion}}</td>
+                                                    <td>{{recibido.id_expediente.asunto}}</td>
+                                                    <td>{{recibido.id_expediente.usuario_crea.first_name}} {{recibido.id_expediente.usuario_crea.last_name}} {{recibido.id_expediente.usuario_crea.amaterno}}</td>
+                                                    <td width="50" align="center">{{recibido.id_expediente.fecha_creacion|date:"d-m-Y"}}</td>
+                                                    <td width="90" align="center">{{recibido.id_estatus.nombre}}</td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>
@@ -110,6 +89,16 @@
                 },
             });
         } );
+
+        $(function(){
+            window.onload = function() {
+                //$("#captura").hide();
+                var myButton = document.getElementById('depu');
+                    myButton.style.width= '200px';
+                $("#identificador").focus();
+            }
+
+        });
 
     </script>
 

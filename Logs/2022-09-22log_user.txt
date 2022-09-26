@@ -1,0 +1,131 @@
+2022-09-22 09:56:34 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-22 09:56:36 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-22 09:56:39 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 09:56:43 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-09-22 09:57:48 Usuario María Sánchez Treviño Entra Sistema
+2022-09-22 09:57:49 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 09:57:51 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 09:57:53 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 09:57:55 Usuario María Sánchez Treviño Consulta Expediente: RHHSDI0000001
+2022-09-22 09:57:57 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 09:57:58 Usuario María Sánchez Treviño Consulta Expediente: RHHSOM0000004
+2022-09-22 09:58:01 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 09:58:02 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 09:58:08 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 09:58:10 Usuario María Sánchez Treviño Buscador Expedientes
+2022-09-22 09:58:28 Administrador Admin Admin Admin Entra Sistema
+2022-09-22 11:14:06 Usuario María Sánchez Treviño Entra Sistema
+2022-09-22 11:14:08 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 11:14:09 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 11:14:12 Usuario María Sánchez Treviño Consulta Expediente: RHHSDI0000001
+2022-09-22 11:14:15 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 11:29:06 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 11:29:08 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 11:29:21 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 11:29:28 Usuario Pruebas López Pérez Entra Sistema
+2022-09-22 11:29:29 Usuario Pruebas López Pérez Consulta Expedientes
+2022-09-22 11:37:35 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 11:37:37 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 11:37:42 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 11:37:58 Usuario Pruebas López Pérez Consulta Expedientes
+2022-09-22 13:25:44 Administrador Admin Admin Admin Entra Sistema
+2022-09-22 13:27:11 Administrador Admin Admin Admin Consulta Log administrador
+2022-09-22 13:27:16 Administrador Admin Admin Admin Consulta Log administrador
+2022-09-22 13:27:58 Administrador Admin Admin Admin Consulta Log usuarios
+2022-09-22 13:31:58 Usuario María Sánchez Treviño Entra Sistema
+2022-09-22 13:32:00 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:32:03 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 13:32:08 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 13:32:37 Usuario María Sánchez Treviño Consulta Expediente: TIDSOM0000002
+2022-09-22 13:33:12 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 13:33:14 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 13:33:15 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 13:33:17 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 13:33:19 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:33:54 Administrador Admin Admin Admin Entra Sistema
+2022-09-22 13:51:48 Usuario María Sánchez Treviño Entra Sistema
+2022-09-22 13:51:49 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:51:55 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:51:58 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-09-22 13:55:46 Usuario María Sánchez Treviño Crea Expediente: RHHPDV0000006
+2022-09-22 13:55:46 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:56:28 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:56:39 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000006
+2022-09-22 13:56:48 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000006
+2022-09-22 13:56:50 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 13:59:36 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000006
+2022-09-22 14:01:50 Usuario María Sánchez Treviño Asigna Expediente: RHHPDV0000006
+2022-09-22 14:01:50 Usuario María Sánchez Treviño Asigna Expediente: RHHPDV0000006
+2022-09-22 14:02:34 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 14:02:36 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 14:02:45 Usuario Pruebas López Pérez Entra Sistema
+2022-09-22 14:02:48 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 14:03:00 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-22 14:03:02 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 14:08:30 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 14:21:05 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 14:21:08 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-22 14:21:13 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 14:21:48 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-09-22 14:22:01 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 14:30:14 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-09-22 15:42:18 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 15:42:25 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-22 15:42:38 Usuario María Sánchez Treviño Entra Sistema
+2022-09-22 15:42:40 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 15:42:42 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-09-22 15:42:50 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 15:42:52 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000006
+2022-09-22 15:42:55 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 15:42:58 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 15:43:03 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 15:43:05 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-09-22 15:43:34 Usuario María Sánchez Treviño Crea Expediente: RHHPDV0000007
+2022-09-22 15:43:34 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 15:43:39 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000006
+2022-09-22 15:43:45 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 15:43:46 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 15:43:50 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 15:43:54 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-09-22 15:44:07 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-09-22 15:44:09 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 16:11:55 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 16:12:01 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-09-22 16:12:32 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-09-22 16:12:34 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 16:12:40 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 16:12:42 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-09-22 16:12:44 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-22 16:12:49 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-22 16:13:03 Usuario Pruebas López Pérez Entra Sistema
+2022-09-22 16:13:05 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 16:13:17 Usuario Pruebas López Pérez Consulta Expediente: RHHPDV0000006
+2022-09-22 16:14:21 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 16:14:23 Usuario Pruebas López Pérez Consulta Expediente: RHHPDV0000006
+2022-09-22 16:15:15 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 16:16:23 Usuario Pruebas López Pérez Buscador Expedientes
+2022-09-22 16:16:28 Usuario Pruebas López Pérez Consulta Recibidos Expedientes
+2022-09-22 16:18:03 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-22 16:18:04 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-22 16:18:09 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 16:18:14 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-22 16:18:38 Administrador Admin Admin Admin Entra Sistema
+2022-09-22 16:20:09 Usuario Juan perez perez Entra Sistema
+2022-09-22 16:20:10 Usuario Juan perez perez Consulta Expedientes
+2022-09-22 16:20:19 Usuario Juan perez perez Consulta Expedientes
+2022-09-22 16:20:45 Usuario Juan perez perez Consulta Expedientes
+2022-09-22 16:20:47 Usuario Juan perez perez Lista Tipos de Expedientes
+2022-09-22 16:21:27 Usuario Juan perez perez Crea Expediente: RHHPDV0000008
+2022-09-22 16:21:27 Usuario Juan perez perez Consulta Expedientes
+2022-09-22 16:22:23 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-22 16:22:25 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 16:22:27 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-09-22 16:22:38 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-09-22 16:23:06 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-09-22 16:24:30 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 16:26:15 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-09-22 16:27:41 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-22 16:27:45 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-22 16:27:46 Usuario Luis Miguel Correa Rada Consulta Expediente: TIDSOM0000005
+2022-09-22 16:27:58 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-09-22 16:28:02 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes

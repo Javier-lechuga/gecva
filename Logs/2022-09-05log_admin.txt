@@ -1,0 +1,13 @@
+2022-09-05 11:45:07 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 11:53:38 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 12:43:16 Administrador Admin Admin Admin Elimina Usuario: Maria
+2022-09-05 12:43:16 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 12:43:30 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 16:46:02 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 17:01:51 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 17:08:11 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 17:12:51 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 17:45:38 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 17:47:03 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 18:01:09 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-05 18:02:03 Administrador Admin Admin Admin Consulta Usuarios

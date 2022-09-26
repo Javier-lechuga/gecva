@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Expedientes
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
+
+{% block content %}
+
+	<div class="container">
+		<h1>{{mensaje}}</h1>
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<table id="tablita" class="table table-hover">
+								<thead>
+										<th align="center" width="50">#</th>
+                                        <th>Identificador</th>
+										<th>Expediente</th>
+                                        <th>Descripción</th>
+                                        <th>Asunto</th>
+                                        <th>Creado por</th>
+                                        <th align="center" width="50">Fecha creación</th>
+										<th align="center" width="50">Estatus</th>
+								</thead>
+								<tbody>
+									{% for expediente in expedientes %}
+										<tr>
+											<td align="center" width="50">{{forloop.counter}}</td>
+                                            <td>
+												<strong>
+													<a href = "{% url "consulta_expediente" pk=expediente.id %}" title="Consultar">{{expediente.identificador}}</a>
+												</strong>
+											</td>
+											<td>{{expediente.nombre}}</td>
+                                            <td>{{expediente.descripcion}}</td>
+                                            <td>{{expediente.asunto}}</td>
+                                            <td>{{expediente.usuario_crea.first_name}} {{expediente.usuario_crea.last_name}} {{expediente.usuario_crea.amaterno}}</td>
+                                            <td width="50" align="center">{{expediente.fecha_creacion|date:"d-m-Y"}}</td>
+											<td width="90" align="center">{{expediente.estatus}}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</article>
+				</section>
+			</div>
+		</section>
+		<p align="center">
+			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+		</p>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script type="text/javascript">
+
+		$(document).ready( function () {
+			$('#tablita').DataTable({
+				"paging":true,
+                "pageLength": 100,
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+			});
+		} );
+
+	</script>
+
+	<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}

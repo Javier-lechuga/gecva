@@ -3,7 +3,8 @@ from django.urls import path, re_path
 from . import views
 from expediente.views import AprobarExp, BuscaMetadatosExp, EditarExpediente, EliminarExpediente,NuevoExpediente, SeleccionaTipoExp, VerExpediente
 from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp, ExpRecibidos
-from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp, AprobarExp, ExpAprobado
+from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp, AprobarExp, ExpAprobado, BuscaExpedientes, ConsultaExpediente
+from expediente.views import LogUsuario, LogAdministrador, ReporteUsuario, ReporteUnidad
 
 #para cargar archivos
 from django.conf import settings
@@ -24,15 +25,28 @@ urlpatterns = [
     path('ver_expediente', views.VerExpediente, name = "ver_expediente"),
     path('asigna_expediente', views.AsignaExpediente, name = "asigna_expediente"),
     path('exp_recibidos', views.ExpRecibidos, name = "exp_recibidos"),
+    path('busca_expedientes', views.BuscaExpedientes, name = "busca_expedientes"),
+    path('log_usuario', views.LogUsuario, name = "log_usuario"),
+    path('log_administrador', views.LogAdministrador, name = "log_administrador"),
     # re_path(r'^(?P<pk>[0-9]+)/guardaMetadatosExp', GuardaMetadatosExp, name= "guarda_metadatos_exp"),
     re_path(r'^(?P<pk>[0-9]+)/detalleExpediente', DetalleExpediente, name= "detalle_expediente"),
     # re_path(r'^(?P<pk>[0-9]+)/verExpediente', DetalleExpediente, name= "ver_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/eliminarExpediente', EliminarExpediente, name= "eliminar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/verExpediente$', VerExpediente, name= "ver_expediente"),
+    re_path(r'^(?P<pk>[0-9]+)/consultaExpediente$', ConsultaExpediente, name= "consulta_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/aprobarExp$', AprobarExp, name= "aprobar_exp"),
     path('rechazar_exp', views.RechazarExp, name = "rechazar_exp"),
     path('expediente_aprob', views.ExpAprobado, name = "expediente_aprob"),
+    # reportes
+    re_path(r'^(?P<pk>[0-9]+)/reporteUsuario$', ReporteUsuario, name= "reporte_usuario"),
+    re_path(r'^(?P<pk>[0-9]+)/reporteUnidad$', ReporteUnidad, name= "reporte_unidad"),
+    path('reporte_general', views.ReporteGeneral, name = "reporte_general"),
+    path('reporte_usuarios', views.ReporteUsuarios, name = "reporte_usuarios"),
+    path('reporte_unidades', views.ReporteUnidades, name = "reporte_unidades"),
+    path('reporte_tipo_exp', views.ReporteTiposExpedientes, name = "reporte_tipo_exp"),
+    path('recibidos_deputy', views.RecibidosDeputy, name = "recibidos_deputy"),
+    path('deputy', views.Deputy, name = "deputy"),
 ]
 
 # 

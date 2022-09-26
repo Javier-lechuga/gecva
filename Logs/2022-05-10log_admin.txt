@@ -1,0 +1,65 @@
+2022-05-10 09:57:01 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:09:32 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:09:42 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:12:38 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:14:52 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:16:45 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:18:40 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:19:34 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:19:42 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:19:59 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:20:09 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:20:38 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 10:20:48 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 10:21:25 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 10:22:00 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 14:07:15 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:09:04 El usuario Pruebas López López crea el tipo de expediente: Contrato
+2022-05-10 14:09:14 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:10:18 El usuario Pruebas López López crea el tipo de expediente: dsadsadsa
+2022-05-10 14:10:22 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:11:12 El usuario Pruebas López López edita el tipo de expediente: dsadsadsa
+2022-05-10 14:11:15 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:11:28 El usuario Pruebas López López edita el tipo de expediente: dja
+2022-05-10 14:11:31 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:12:57 El usuario Pruebas López López edita el tipo de expediente: dja
+2022-05-10 14:12:59 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:13:50 El usuario Pruebas López López edita el tipo de expediente: DJA
+2022-05-10 14:13:52 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:14:52 El usuario Pruebas López López edita el tipo de expediente: DJA
+2022-05-10 14:14:56 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:15:23 El usuario Pruebas López López edita el tipo de expediente: DJA
+2022-05-10 14:15:25 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:15:40 El usuario Pruebas López López crea el tipo de expediente: ioewqepwquepq
+2022-05-10 14:15:42 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:15:52 El usuario Pruebas López López edita el tipo de expediente: ioewqepwquepq
+2022-05-10 14:15:54 El usuario Pruebas López López consulta los tipos
+2022-05-10 14:16:54 El usuario Pruebas López López consulta las unidades
+2022-05-10 15:02:35 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 15:06:31 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 15:06:40 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 15:07:00 El usuario Admin Admin Admin crea la unidad: unidad uno
+2022-05-10 15:07:00 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 15:07:18 El usuario Admin Admin Admin modifica la unidad: unidad uno
+2022-05-10 15:07:18 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 15:07:32 El usuario Admin Admin Admin modifica la unidad: unidad una
+2022-05-10 15:07:32 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:20:26 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 17:20:37 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:20:41 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 17:21:12 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 17:22:45 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 17:22:57 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 17:23:02 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 17:23:08 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:23:12 El usuario Admin Admin Admin consulta los tipos
+2022-05-10 17:23:22 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:24:19 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:24:29 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:24:36 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 17:25:38 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 17:25:48 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 17:25:55 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 17:26:10 El usuario Admin Admin Admin consulta los usuarios
+2022-05-10 17:26:13 El usuario Admin Admin Admin consulta las unidades
+2022-05-10 17:26:16 El usuario Admin Admin Admin consulta los tipos

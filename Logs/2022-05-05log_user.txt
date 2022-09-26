@@ -1,0 +1,116 @@
+2022-05-05 11:52:55 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-05 11:53:07 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:53:07 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:53:21 El usuario Luis Miguel Correa Rada consulta el expediente SOLINF00001
+2022-05-05 11:53:43 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:53:51 El usuario Luis Miguel Correa Rada lista los tipos de expedientes
+2022-05-05 11:55:10 El usuario Luis Miguel Correa Rada elimina el estatus SOLINF0006
+2022-05-05 11:55:10 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:56:13 El usuario Luis Miguel Correa Rada elimina el estatus SOLINF0006
+2022-05-05 11:57:12 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:57:15 El usuario Luis Miguel Correa Rada consulta el expediente SOLINF0006
+2022-05-05 11:57:44 El usuario Luis Miguel Correa Rada modifica el expediente SOLINF0006
+2022-05-05 11:57:52 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:57:58 El usuario Luis Miguel Correa Rada consulta el expediente SOLINF0006
+2022-05-05 11:58:07 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 11:58:13 El usuario Luis Miguel Correa Rada elimina el expediente SOLINF0006
+2022-05-05 11:58:13 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:12:38 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-05 12:14:12 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:16:14 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:16:17 El usuario Luis Miguel Correa Rada lista los tipos de expedientes
+2022-05-05 12:16:42 El usuario Luis Miguel Correa Rada crea el expediente NOM000000012
+2022-05-05 12:16:42 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:16:55 El usuario Luis Miguel Correa Rada consulta el expediente NOM000000012
+2022-05-05 12:17:08 El usuario Luis Miguel Correa Rada modifica el expediente NOM000000012
+2022-05-05 12:17:15 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:17:18 El usuario Luis Miguel Correa Rada consulta el expediente NOM000000012
+2022-05-05 12:17:29 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:17:40 El usuario Luis Miguel Correa Rada elimina el expediente NOM000000012
+2022-05-05 12:17:40 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:17:52 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-05 12:17:58 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:18:01 El usuario Luis Miguel Correa Rada consulta el expediente NOM0000001
+2022-05-05 12:18:07 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:18:11 El usuario Luis Miguel Correa Rada lista los tipos de expedientes
+2022-05-05 12:18:29 El usuario Luis Miguel Correa Rada crea el expediente NOM000045
+2022-05-05 12:18:29 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:18:37 El usuario Luis Miguel Correa Rada consulta el expediente NOM000045
+2022-05-05 12:18:47 El usuario Luis Miguel Correa Rada asignó el expediente NOM000045
+2022-05-05 12:18:59 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 12:19:13 El usuario Pruebas López López se loguea en el sistema
+2022-05-05 12:19:38 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 12:19:50 El usuario Pruebas López López consulta el expediente NOM000045 para aprobación
+2022-05-05 12:20:08 El usuario Pruebas López López rechazó el expediente NOM000045
+2022-05-05 12:20:30 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 12:21:08 El usuario Pruebas López López consulta el expediente NOM000045 para aprobación
+2022-05-05 12:21:16 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 12:21:18 El usuario Pruebas López López consulta el expediente NOM0000001 para aprobación
+2022-05-05 12:21:40 El usuario Pruebas López López aprobó el expediente NOM0000001
+2022-05-05 12:21:56 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 12:21:59 El usuario Pruebas López López consulta el expediente NOM0000001 para aprobación
+2022-05-05 12:22:01 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:13:55 El usuario Pruebas López López consulta sus expedientes
+2022-05-05 16:13:56 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-05 16:14:20 El usuario Pruebas López López crea el expediente SOLINF00012
+2022-05-05 16:14:20 El usuario Pruebas López López consulta sus expedientes
+2022-05-05 16:14:24 El usuario Pruebas López López consulta el expediente SOLINF00012
+2022-05-05 16:14:29 El usuario Pruebas López López asignó el expediente SOLINF00012
+2022-05-05 16:14:31 El usuario Pruebas López López consulta sus expedientes
+2022-05-05 16:14:34 El usuario Pruebas López López consulta el expediente SOLINF00012
+2022-05-05 16:14:36 El usuario Pruebas López López consulta sus expedientes
+2022-05-05 16:14:49 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-05 16:14:50 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-05 16:14:55 El usuario Luis Miguel Correa Rada consulta el expediente SOLINF00012 para aprobación
+2022-05-05 16:15:13 El usuario Luis Miguel Correa Rada rechazó el expediente SOLINF00012
+2022-05-05 16:16:06 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-05 16:16:11 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 16:16:15 El usuario Luis Miguel Correa Rada consulta el expediente NOM000045
+2022-05-05 16:16:18 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 16:16:19 El usuario Luis Miguel Correa Rada lista los tipos de expedientes
+2022-05-05 16:16:44 El usuario Luis Miguel Correa Rada crea el expediente yiuyiuui
+2022-05-05 16:16:44 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 16:16:50 El usuario Luis Miguel Correa Rada consulta el expediente yiuyiuui
+2022-05-05 16:16:55 El usuario Luis Miguel Correa Rada asignó el expediente yiuyiuui
+2022-05-05 16:17:22 El usuario Luis Miguel Correa Rada consulta sus expedientes
+2022-05-05 16:17:33 El usuario Pruebas López López se loguea en el sistema
+2022-05-05 16:17:35 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:17:40 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:33:46 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:34:00 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:34:03 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:34:43 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:34:45 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:34:47 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:37:04 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:39:57 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:40:00 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:40:05 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:42:07 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:42:10 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:48:22 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:48:43 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:48:45 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:48:49 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:49:13 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:49:16 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:49:19 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:52:23 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:52:25 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:52:29 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:54:19 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:54:21 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:54:49 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:54:51 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:54:56 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 16:56:03 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:56:06 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:56:54 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:56:56 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 16:57:47 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 16:57:49 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 17:01:12 El usuario Pruebas López López rechazó el expediente yiuyiuui
+2022-05-05 17:02:47 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 17:02:49 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación
+2022-05-05 17:02:52 El usuario Pruebas López López consulta los expedientes recibidos
+2022-05-05 17:02:55 El usuario Pruebas López López consulta el expediente yiuyiuui para aprobación

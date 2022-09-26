@@ -16,15 +16,19 @@ import time
 
 from unidad.models import Unidad
 from usuarios.models import PerfilUser
+from expediente.views import registro_log_admin
 
 # Create your views here.
 # @login_required(redirect_field_name='login')
 def ListarUnidades(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    registro_log_admin(user_log,"Consulta",None,"Unidades","Administrador")
     unidades = Unidad.objects.all()
-    return render(request, 'unidades.html', {'unidades': unidades, 'mensaje': 'Unidades'})
+    return render(request, 'unidades.html', {'unidades': unidades, 'mensaje': 'Unidades','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
 def NuevaUnidad(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     usuarios = PerfilUser.objects.all().exclude(is_active=False).order_by('pk')
     if request.method == "POST":
         form = UnidadForm(request.POST)
@@ -38,75 +42,72 @@ def NuevaUnidad(request):
         else:
             # Si no cuenta con jefe de unidad se asigna automaticamente al superusuario del sistema
             jefe_unidad_dos = User.objects.get(pk=1)
-        unidad = Unidad.objects.create(
-            nombre = request.POST.get('nombre',''),
-            descripcion = request.POST.get('descripcion',''),
-            jefe_unidad = jefe_unidad_dos,
-        )
-        unidad.save()
-        return redirect('/unidad/')
-            #return render(request,'unidades.html',{'unidad/':unidad})
+        try:
+            unidad = Unidad.objects.create(
+                nombre = request.POST.get('nombre',''),
+                siglas = request.POST.get('siglas',''),
+                descripcion = request.POST.get('descripcion',''),
+                jefe_unidad = jefe_unidad_dos,
+            )
+            unidad.save()
+            registro_log_admin(user_log,"Crea",unidad,"Unidad","Administrador")
+            # return redirect('/unidad/')
+        except:
+            return render(request, 'nueva_unidad.html', {'form': form, 'nuevo': 'Nuevo', 'usuarios': usuarios,'user_log':user_log})
     else:
         form = UnidadForm()
-    return render(request, 'nueva_unidad.html', {'form': form, 'nuevo': 'Nuevo', 'usuarios': usuarios})
+    return render(request, 'nueva_unidad.html', {'form': form, 'nuevo': 'Nuevo', 'usuarios': usuarios,'user_log':user_log})
 
 # @login_required(redirect_field_name='login')
 def EditarUnidad(request, pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     unidad = Unidad.objects.get(pk=pk)
     usuarios = PerfilUser.objects.all().exclude(is_active=False).order_by('pk')
     if request.method == "POST":
-        # return HttpResponse(request.POST.items())
-        Unidad.objects.filter(pk=pk).update(nombre=request.POST['nombre'])
-        Unidad.objects.filter(pk=pk).update(descripcion=request.POST['descripcion'])
-        # Instanciando el jefe de unidad
-        jefe = PerfilUser()
-        jefe = PerfilUser.objects.get(pk=request.POST['jefe_unidad'])
-        Unidad.objects.filter(pk=pk).update(jefe_unidad=jefe)
-        if request.POST['activo'] == 'on':
-            Unidad.objects.filter(pk=pk).update(activo=True)
-        else:
-            Unidad.objects.filter(pk=pk).update(activo=False)
-        # try:
-        #     unidad = Unidad.objects.get(pk=pk)
-        #     if request.method == "POST":
-        #         form = UnidadForm(request.POST, instance=unidad)
-        #         if form.is_valid():
-        #             unidad = form.save()
-        #             unidad.save()
-        #             return redirect('/unidad/')
-        #             #return render(request, 'unidades.html', {'unidad/': unidad})
-        #     else:
-        #         form = UnidadForm(instance=unidad)
-        #     return render(request, 'edita_unidad.html', {'form': form, 'mensaje': 'Modificar unidad','usuarios': usuarios})
+        contador = 0
+        if Unidad.objects.filter(nombre=request.POST.get('nombre','')).exclude(pk=unidad.pk).exists():
+            contador = 1
+        if Unidad.objects.filter(siglas=request.POST.get('siglas','')).exclude(pk=unidad.pk).exists():
+            contador = 2
+        if contador == 1:
+            return render(request, 'edita_unidad.html', {'unidad': unidad,'mensaje': 'Modificar unidad','usuarios': usuarios,'user_log':user_log, 'error':'nombre'})
+        if contador == 2:
+            return render(request, 'edita_unidad.html', {'unidad': unidad,'mensaje': 'Modificar unidad','usuarios': usuarios,'user_log':user_log, 'error':'siglas'})
+        if contador == 0:
+            # return HttpResponse(request.POST.items())
+            Unidad.objects.filter(pk=pk).update(nombre=request.POST['nombre'])
+            Unidad.objects.filter(pk=pk).update(siglas=request.POST['siglas'])
+            Unidad.objects.filter(pk=pk).update(descripcion=request.POST['descripcion'])
+            # Instanciando el jefe de unidad
+            jefe = PerfilUser()
+            jefe = PerfilUser.objects.get(pk=request.POST['jefe_unidad'])
+            Unidad.objects.filter(pk=pk).update(jefe_unidad=jefe)
+            if request.POST['activo'] == 'on':
+                Unidad.objects.filter(pk=pk).update(activo=True)
+            else:
+                Unidad.objects.filter(pk=pk).update(activo=False)
+            registro_log_admin(user_log,"Modifica",unidad,"Unidad","Administrador")
+
         return redirect('/unidad/')
     else:
-        return render(request, 'edita_unidad.html', {'unidad': unidad,'mensaje': 'Modificar unidad','usuarios': usuarios})
-        # return HttpResponse(request.POST.items())
-    # except ObjectDoesNotExist:
-        # return redirect('/unidad/')
-
-# @login_required(redirect_field_name='login')
-# def EliminarUnidad(request, pk):
-#     try:
-#         unidad = Unidad.objects.get(pk=pk)
-#         unidad.delete()
-#         return redirect('/unidad/')
-#     except ObjectDoesNotExist:
-#         return redirect('/unidad/')
-
-# @login_required(redirect_field_name='login')
+        return render(request, 'edita_unidad.html', {'unidad': unidad,'mensaje': 'Modificar unidad','usuarios': usuarios,'user_log':user_log})
+        
 def EliminarUnidad(request, pk):
     try:
+        user_log = PerfilUser.objects.get(pk=request.user.pk)
         unidad = Unidad.objects.get(pk=pk)
         Unidad.objects.filter(pk=pk).update(activo=False)
+        registro_log_admin(user_log,"Elimina",unidad,"Unidad","Administrador")
         return redirect('/unidad/')
     except ObjectDoesNotExist:
         return redirect('/unidad/')
 
 # @login_required(redirect_field_name='login')
 def VerUnidad(request, pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         unidad = Unidad.objects.get(pk=pk)
-        return render(request, 'unidad.html', {'unidad': unidad})
+        registro_log_admin(user_log,"Consulta",unidad,"Unidad","Administrador")
+        return render(request, 'unidad.html', {'unidad': unidad,'user_log':user_log})
     except ObjectDoesNotExist:
         return redirect('principal')

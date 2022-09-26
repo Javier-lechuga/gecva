@@ -23,6 +23,8 @@
 									<tr align="center">
 										<th>#</th>
 										<th>Nombre</th>
+										<th>Siglas</th>
+										<th>Unidad</th>
 										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
@@ -30,18 +32,25 @@
 								<tbody>
 									{% for tipo in tipos %}
 										<tr>
-											<td>{{forloop.counter}}</td>
-											<td>{{tipo.nombre}}</td>
-											<td>{{tipo.descripcion}}
+											<td align="center" width="50">{{forloop.counter}}</td>
+											<td width="300">
+												<strong>
+													<a href = "{% url "editar_tipo_exp" pk=tipo.id %}" title="Consultar/Editar">{{tipo.nombre}}</a>
+												</strong>
+											</td>
+											<td align="center" width="50">{{tipo.siglas}}</td>
+											<td align="center" width="300">{{tipo.unidad}}</td>
+											<td align="center" width="50">
 												{% if tipo.activo %}
 													<p>Activo</p>
 												{% else %}
 													<p>Inactivo</p>
 												{% endif %}
 											</td>
-											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{tipo}}??')) window.location='{% url "editar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{tipo}}??')) window.location='{% url "eliminar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+											<td width="50">
+												{% if tipo.activo == True %}
+													<a href = "javascript: if(confirm('Deseas eliminar {{tipo}}??')) window.location='{% url "eliminar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
+												{% endif %}
 											</td>
 										</tr>
 									{% endfor %}

@@ -11,32 +11,63 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
-
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
+						<div class="row">
+							<div class="col-md-6"><h1>{{mensaje}}</h1></div>
+							<div class="col-md-6" align="right">
+								{% if user_log.rol.nombre == "Aprobador" %}
+									{% if user_log.transferido == False %}
+										<button type="button" class="btn btn-primary" id="depu" data-toggle="modal" data-target="#usuarios" value="{{usuario.id}}">Deputy</button>
+									{% endif %}
+								{% endif %}
+							</div>
+						</div>
 						<div class="table-responsive">
 							<table class="table table-hover" id="tablita">
 								<thead>
 									<tr align="center">
 										<th>#</th>
+                                        <th>Identificador</th>
 										<th>Expediente</th>
-										<th>Identificador</th>
+                                        <th>Descripción</th>
+                                        <th>Asunto</th>
+                                        <th>Fecha creación</th>
+										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
 									{% for expediente in expedientes %}
 										<tr>
-											<td>{{forloop.counter}}</td>
+											<td align="center" width="50">{{forloop.counter}}</td>
+                                            <td>
+												<strong>
+													<a href = "{% url "ver_expediente" pk=expediente.id %}" title="Consultar">{{expediente.identificador}}</a>
+												</strong>
+											</td>
 											<td>{{expediente.nombre}}</td>
-											<td>{{expediente.identificador}}</td>
-											<td>
-												<a href = "javascript: if(confirm('Deseas ver el expediente: {{expediente.identificador}}??')) window.location='{% url "ver_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-eye-open"></a>
-												<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar el expediente: {{expediente.identificador}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+                                            <td>{{expediente.descripcion}}</td>
+                                            <td>{{expediente.asunto}}</td>
+                                            <td width="50" align="center">{{expediente.fecha_creacion|date:"d-m-Y"}}</td>
+											<td width="50" align="center">{{expediente.estatus}}</td>
+											<td width="90" align="center">
+												{% if expediente.estatus.nombre == "Creado" %}
+													<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
+													<a href = "javascript: if(confirm('Deseas eliminar el expediente: {{expediente.identificador}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
+												{% endif %}
+												{% if expediente.estatus.nombre == "Aprobado" %}
+													
+												{% endif %}
+												{% if expediente.estatus.nombre == "Rechazado" %}
+													<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
+												{% endif %}
+												{% if expediente.estatus.nombre == "Enviado" %}
+													
+												{% endif %}
+												
 											</td>
 										</tr>
 									{% endfor %}
@@ -52,6 +83,85 @@
 			<a href = "{% url 'selecciona_expediente' %}" type="button" class="btn btn-primary">Nuevo expediente</a>
 		</p>
 		<br/><br/>
+
+
+		<!-- Modal Usuarios-->
+        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog modal-lg" role="document" >
+				<div class="modal-content">
+				<form action="/expedientes/deputy" method="POST">
+					{% csrf_token %}
+					<div class="modal-header">
+						<h2 class="modal-tittle">Selecciona usuario destino</h2>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="table-responsive">
+							<table class="table table-hover" id="usuarios2">
+								<thead>
+									<tr align="center">
+										<th>
+											<p align="center">
+												#
+											</p>
+										</th>
+										<th>
+											<p align="center">
+												Seleccionar
+											</p>
+										</th>
+										<th>
+											<p align="center">
+												Usuario
+											</p>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for usuario in usuarios %}
+											<tr>
+												<td>
+													<p align="center">
+														{{forloop.counter}}
+													</p>
+												</td>
+												<td>
+													{% for seleccionado in seleccionados %}
+														{% if usuario.pk == seleccionado.id_usuario.pk %}
+														
+														{% endif %}
+													{% endfor %}
+													<p align="center">
+														<input type="radio" id="{{usuario.pk}}" name="usuario_destino" class="elementTable varios" value="{{usuario.pk}}">
+													</p>
+												</td>
+												<td>
+													<p align="center">
+														{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
+													</p>
+												</td>
+											</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" id="usuario_origen" name="usuario_origen" value="{{user_log.pk}}">
+						<button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+						<button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+					</div>
+				</div>
+				</form>
+			</div>
+			</div>
+
+
+
+
 	</div>
 
 {% endblock %}
@@ -68,6 +178,27 @@
 				},
 			});
 		} );
+
+		$(document).ready( function () {
+            $('#usuarios2').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse":true,
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+            });
+        } );
+
+		$(function(){
+            window.onload = function() {
+                //$("#captura").hide();
+                var myButton = document.getElementById('depu');
+                    myButton.style.width= '200px';
+                $("#identificador").focus();
+            }
+
+        });
 
 	</script>
 

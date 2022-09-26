@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Unidades
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
+
+{% block content %}
+
+	<div class="container">
+		<h1>{{mensaje}}</h1>
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+						<div class="table-responsive">
+							<table class="table table-hover" id="tablita">
+								<thead>
+									<tr align="center">
+										<th>#</th>
+										<th>Unidad</th>
+										<th>Siglas</th>
+										<th>Seleccionar</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for unidad in unidades %}
+										<tr>
+											<td align="center" width="50">{{forloop.counter}}</td>
+											<td>
+												<strong>
+													{{unidad.nombre}}
+												<strong>
+											</td>
+											<td align="center" width="50">
+												{{unidad.siglas}}
+											</td>
+											<td width="90">
+												{% if unidad.activo == True %}
+													<a href = "javascript: if(confirm('Deseas generar el reporte de la unidad: {{unidad}}??')) window.location='{% url "reporte_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-list-alt" title="Generar reporte"></a>
+												{% endif %}
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</article>
+				</section>
+			</div>
+		</section>
+		<p align="center">
+			<a href = "/reportes_menu" type="button" class="btn btn-primary">Regresar</a>
+		</p>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready( function () {
+			$('#tablita').DataTable({
+				"paging":false,
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+			});
+		} );
+
+	</script>
+
+	<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}

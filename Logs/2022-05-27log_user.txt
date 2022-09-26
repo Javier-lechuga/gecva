@@ -1,0 +1,109 @@
+2022-05-27 10:21:55 El usuario Admin Admin Admin se loguea en el sistema
+2022-05-27 12:49:06 El usuario Admin Admin Admin se loguea en el sistema
+2022-05-27 12:53:47 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-27 12:53:48 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 12:54:24 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 12:54:50 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 12:55:13 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 12:55:39 El usuario Luis Miguel Correa Rada Consulta el expediente: RHHPDF0000018
+2022-05-27 12:55:41 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 12:55:43 El usuario Luis Miguel Correa Rada Consulta el expediente: RHHPDF0000017
+2022-05-27 12:55:44 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 12:55:45 El usuario Luis Miguel Correa Rada Consulta el expediente: RHHSDI0000016
+2022-05-27 12:55:47 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 13:03:28 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:04:09 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:04:17 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:04:30 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:04:40 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:04:44 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:04:46 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 13:05:34 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:05:48 El usuario Luis Miguel Correa Rada Consulta el expediente: yiuyiuui
+2022-05-27 13:05:56 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:05:58 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM000045
+2022-05-27 13:06:01 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:06:04 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM000045
+2022-05-27 13:06:07 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:06:09 El usuario Luis Miguel Correa Rada Consulta el expediente: yiuyiuui
+2022-05-27 13:06:45 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:06:48 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00001
+2022-05-27 13:06:51 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:07:04 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00001
+2022-05-27 13:07:06 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:08:22 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:08:26 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:08:31 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM00001254
+2022-05-27 13:08:37 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:08:44 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00012
+2022-05-27 13:08:47 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:08:59 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00012
+2022-05-27 13:09:08 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:09:09 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM00001254
+2022-05-27 13:09:19 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 13:14:48 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 13:50:20 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF0006
+2022-05-27 13:50:22 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 13:50:26 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF0006
+2022-05-27 13:50:27 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 13:50:31 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:50:35 El usuario Luis Miguel Correa Rada Consulta el expediente: yiuyiuui
+2022-05-27 13:50:46 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:50:53 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMDJA0000014
+2022-05-27 13:50:55 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:50:57 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMDJA0000013
+2022-05-27 13:50:58 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:50:59 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMSDI0000015
+2022-05-27 13:51:00 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:51:04 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM0000001
+2022-05-27 13:51:09 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:51:13 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM0000001
+2022-05-27 13:51:32 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:51:35 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00001
+2022-05-27 13:51:38 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:51:42 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM000045
+2022-05-27 13:54:32 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:54:37 El usuario Luis Miguel Correa Rada consulta el expediente: ADMSDI0000015
+2022-05-27 13:54:53 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:55:00 El usuario Luis Miguel Correa Rada consulta el expediente: NOM000045
+2022-05-27 13:55:04 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:55:10 El usuario Luis Miguel Correa Rada consulta el expediente: NOM000045
+2022-05-27 13:55:30 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:55:33 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM000045
+2022-05-27 13:55:58 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:56:00 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM000045
+2022-05-27 13:56:02 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:56:05 El usuario Luis Miguel Correa Rada consulta el expediente: NOM000045
+2022-05-27 13:56:31 El usuario Luis Miguel Correa Rada modifica el expediente: NOM000045
+2022-05-27 13:56:33 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 13:58:24 El usuario Luis Miguel Correa Rada Consulta el expediente: yiuyiuui
+2022-05-27 13:58:26 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:39:58 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:40:03 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 16:40:05 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00012
+2022-05-27 16:40:06 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 16:40:08 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM00001254
+2022-05-27 16:40:10 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-27 16:40:12 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 16:49:14 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:49:23 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM0000001
+2022-05-27 16:49:27 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:49:35 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMDJA0000013
+2022-05-27 16:49:38 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:49:40 El usuario Luis Miguel Correa Rada consulta el expediente: ADMSDI0000015
+2022-05-27 16:49:50 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:50:21 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMSDI0000015
+2022-05-27 16:50:24 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 16:50:27 El usuario Luis Miguel Correa Rada consulta el expediente: ADMSDI0000015
+2022-05-27 16:50:33 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 17:28:56 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 17:34:19 El usuario Luis Miguel Correa Rada Consulta el expediente: RHHPDF0000017
+2022-05-27 17:34:30 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-27 17:37:39 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 17:37:45 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMDJA0000013
+2022-05-27 17:40:52 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 17:40:57 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMSDI0000015
+2022-05-27 17:42:44 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 17:42:47 El usuario Luis Miguel Correa Rada consulta el expediente: ADMSDI0000015
+2022-05-27 17:42:49 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-27 17:42:50 El usuario Luis Miguel Correa Rada Consulta el expediente: ADMSDI0000015

@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
 
-	<link rel="icon" type="image/png" href="{% static 'imagenes/logo.png' %}" />
+	<link rel="icon" type="image/png" href="{% static 'imagenes/2.ico' %}" />
 
 	{% block css %}
 
@@ -33,27 +33,27 @@
 				<div class="collapse navbar-collapse" id="otro">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="/principal/">Inicio</a></li>
-						{% if request.session.grupo == 'Asesores' or request.session.grupo == 'Tesistas' %}
+						<!--{% if request.session.grupo == 'Asesores' or request.session.grupo == 'Tesistas' %}-->
 							<li><a href="/plantillas/">Plantillas</a></li>
-						{% endif %}
-						{% if request.session.grupo == 'Asesores' %}
+						<!--{% endif %}-->
+						<!--{% if request.session.grupo == 'Asesores' %}-->
 							<li><a href="/usuarios/lista_tesistas/">Progreso</a></li>
 							<li><a href="/usuarios/tesistas_entregables/">Entregables</a></li>
 							<li><a href="/usuarios/tesistas/">Tesistas</a></li>
-						{% endif %}
-						{% if request.session.grupo == 'Tesistas' %}
+						<!--{% endif %}-->
+						<!--{% if request.session.grupo == 'Tesistas' %}-->
 							<li><a href="/progreso/">Progreso</a></li>
 							<li><a href="/plantillas/entregables/">Entregables</a></li>
 							<li><a href="/usuarios/asesores/">Asesores</a></li>
 							<li><a href="/topten/">TopTen</a></li>
-						{% endif %}
+						<!--{% endif %}-->
 					</ul>
 
 					<form action="" class="navbar-form navbar-right" role="search">
 						<!-- <button type="submit" class="btn">
 							<span class="glyphicon glyphicon-bell"><span class="badge">0</span></span>
 						</button> -->
-						{% if request.session.grupo == 'Asesores' or request.session.grupo == 'Tesistas' %}
+						<!--{% if request.session.grupo == 'Asesores' or request.session.grupo == 'Tesistas' %}-->
 
 						<button type="submit" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
 							<span class="glyphicon glyphicon-user"></span>
@@ -85,10 +85,13 @@
 								</ul>
 							</li>
 						</ul>
-						{% endif %}
+						<!--{% endif %}-->
 					</form>
+					<br/>
+					<p style="color:white;" align="right"><strong>Bienvenido: {{user_log.first_name}} {{user_log.last_name}} {{user_log.amaterno}}</strong></p>
 				</div>
 			</div>
+
 		</nav>
 	</header>
 

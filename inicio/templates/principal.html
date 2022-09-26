@@ -5,58 +5,122 @@
 {% endblock titulo %}
 
 {% block content %}
-
 	<div class="main container">
-		<h2>Opciones</h2>
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<p align="center">
-					<a href = "/expedientes/mis_expedientes" type="button" class="btn btn-primary btn-block btn-lg">Expedientes</a>
-				</p>
+		<h2>Opciones: {{ user_log.rol.nombre }}</h2>
+		{% if user_log.rol.nombre == "Administrador" %}
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/tipos_expedientes/" type="button" class="btn btn-primary btn-block btn-lg">Tipos de expedientes</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-4"></div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<p align="center">
-					<a href = "/expedientes/exp_recibidos" type="button" class="btn btn-primary btn-block btn-lg">Recibidos</a>
-				</p>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/unidad/" type="button" class="btn btn-primary btn-block btn-lg">Unidades</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-4"></div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<p align="center">
-					<a href = "/tipos_expedientes/" type="button" class="btn btn-warning btn-block btn-lg">Tipos de expedientes</a>
-				</p>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/usuarios/" type="button" class="btn btn-primary btn-block btn-lg">Usuarios</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-4"></div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<p align="center">
-					<a href = "/unidad/" type="button" class="btn btn-warning btn-block btn-lg">Unidades</a>
-				</p>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/reportes_menu" type="button" class="btn btn-primary btn-block btn-lg">Reportes</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-4"></div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<p align="center">
-					<a href = "/usuarios/" type="button" class="btn btn-warning btn-block btn-lg">Usuarios</a>
-				</p>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/log_administrador" type="button" class="btn btn-primary btn-block btn-lg">Log del sistema</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-4"></div>
-		</div>
+
+		{% elif user_log.rol.nombre == "Aprobador" %}
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/mis_expedientes" type="button" class="btn btn-primary btn-block btn-lg">Mis expedientes</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/exp_recibidos" type="button" class="btn btn-primary btn-block btn-lg">Expedientes recibidos</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/busca_expedientes" type="button" class="btn btn-primary btn-block btn-lg">Búscar</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			
+		{% else %}
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/mis_expedientes" type="button" class="btn btn-primary btn-block btn-lg">Mis expedientes</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/exp_recibidos" type="button" class="btn btn-primary btn-block btn-lg">Expedientes recibidos</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/busca_expedientes" type="button" class="btn btn-primary btn-block btn-lg">Búscar</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		{% endif %}
+		
 <!--
 		<div class="row">
 			<div class="col-md-4"></div>

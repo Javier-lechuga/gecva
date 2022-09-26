@@ -31,22 +31,28 @@
 								<tbody>
 									{% for usuario in usuarios %}
 										<tr>
-											<td>{{forloop.counter}}</td>
-											<td>{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</td>
-											<td>{{usuario.email}}</td>
+											<td align="center" width="50">{{forloop.counter}}</td>
 											<td>
+												<strong>
+													<a href = "{% url "editar_usuario" pk=usuario.id %}" title="Consultar/Editar">{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</a>
+												</strong>
+											</td>
+											<td>{{usuario.email}}</td>
+											<td align="center" width="50">
 												{% if usuario.is_active == True %}
 													Activo
 												{% else %}
 													Inactivo
 												{% endif %}
 											</td>
-											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{usuario}}??')) window.location='{% url "editar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+											<td width="90">
 												{% if usuario.is_active == True %}
-												<a href = "javascript: if(confirm('Deseas eliminar {{usuario}}??')) window.location='{% url "eliminar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+													{% if usuario.transferido == True %}
+														<a href = "javascript: if(confirm('Desactivar el usuario: {{usuario}}??')) window.location='{% url "eliminar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
+													{% else %}
+														<button type="button" class="btn btn-primary glyphicon glyphicon-transfer transferir" data-toggle="modal" data-target="#usuarios" value="{{usuario.id}}"></button>
+													{% endif %}
 												{% endif %}
-												
 											</td>
 										</tr>
 									{% endfor %}
@@ -61,6 +67,86 @@
 			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
 			<a href = "{% url 'nuevo_usuario' %}" type="button" class="btn btn-primary">Nuevo usuario</a>
 		</p>
+
+
+		<!-- Modal Usuarios-->
+        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog modal-lg" role="document" >
+				<div class="modal-content">
+				<form action="/usuarios/transferir_exp" method="POST">
+					{% csrf_token %}
+					<div class="modal-header">
+						<h2 class="modal-tittle">Selecciona usuario destino</h2>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="table-responsive">
+							<table class="table table-hover" id="usuarios2">
+								<thead>
+									<tr align="center">
+										<th>
+											<p align="center">
+												#
+											</p>
+										</th>
+										<th>
+											<p align="center">
+												Seleccionar
+											</p>
+										</th>
+										<th>
+											<p align="center">
+												Usuario
+											</p>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for usuario in usuarios %}
+										
+										{% if request.user.pk != usuario.pk %}
+											<tr>
+												<td>
+													<p align="center">
+														{{forloop.counter}}
+													</p>
+												</td>
+												<td>
+													{% for seleccionado in seleccionados %}
+														{% if usuario.pk == seleccionado.id_usuario.pk %}
+														
+														{% endif %}
+													{% endfor %}
+													<p align="center">
+														<input type="radio" id="{{usuario.pk}}" name="usuario_destino" class="elementTable varios" value="{{usuario.pk}}">
+													</p>
+												</td>
+												<td>
+													<p align="center">
+														{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
+													</p>
+												</td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" id="users" name="users" value="">
+						<input type="hidden" id="usuario_origen" name="usuario_origen" value="">
+						<button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+						<button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+					</div>
+				</div>
+				</form>
+			</div>
+			</div>
+
 	</div>
 
 {% endblock %}
@@ -83,6 +169,50 @@
 				},
 			});
 		} );
+
+		$(document).ready( function () {
+            $('#usuarios2').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse":true,
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+            });
+        } );
+
+		
+		$('#confirmar').prop('disabled', true);
+		$( ".varios" ).change(function() {
+			$('#confirmar').removeAttr('disabled');
+		});
+
+		$("#confirmar").click(function(){
+            var idss = $(".elementTable")
+            var seleccionados = []
+            $.each(idss, function(i,value){
+                if($("#"+value.id).is(':checked')) {  
+                    seleccionados.push(value.id)
+                }
+            });
+
+            $('#users').val(seleccionados)
+            console.log(seleccionados)
+            if (seleccionados.length != 0){
+                $("#forma").submit();
+            } else {
+                alert("No se han seleccionado usuarios");
+            }
+        });
+
+		$(".transferir").click(function(){
+            //var origin = $("#otro")
+			var origin = this.value;
+			//alert(origin)
+            $('#usuario_origen').val(origin)
+            // console.log(origin)
+			// alert(origin)
+        });
 
 	</script>
 

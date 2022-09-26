@@ -5,14 +5,27 @@
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}</h1>
+		<h1> {{mensaje}}: {{unidad.nombre}}</h1>
 			<form method="POST">
 				{% csrf_token %}
 
 					<div class="row">
 						<div class="col-md-12">
 							<strong>Nombre:</strong>
+							{% if error == "nombre" %}
+								<li> <strong>Ya existe una Unidad con este Nombre.</strong></li>
+							{% endif %}
 							<input type="text" name="nombre" id="nombre" class="form-control" value="{{unidad.nombre}}" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<strong>Siglas:</strong>
+							{% if error == "siglas" %}
+								<li> <strong>Ya existe una Unidad con estas Siglas.</strong></li>
+							{% endif %}
+							<input type="text" name="siglas" id="siglas" class="form-control" value="{{unidad.siglas}}" maxlength="3" required>
 						</div>
 					</div>
 
@@ -55,9 +68,16 @@
 {% block scripts %}
 
 	<script>
-		function goBack() {
-			window.history.back();
-		}
+		$(function(){
+            window.onload = function() {
+                console.log("onload");
+            }
+
+			$("#siglas").keyup(function () {  
+				$(this).val($(this).val().toUpperCase());  
+			});
+
+        });
 	</script>
 
 {% endblock %}

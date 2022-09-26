@@ -1,0 +1,44 @@
+2022-05-26 09:52:35 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-26 09:52:36 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-26 09:52:56 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-26 09:53:08 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-26 09:55:29 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF000045
+2022-05-26 09:55:32 El usuario Luis Miguel Correa Rada ingresa al buscador de expedientes
+2022-05-26 09:55:39 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-26 09:56:43 El usuario Luis Miguel Correa Rada Consulta el expediente: NOM0000001
+2022-05-26 09:56:53 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-26 10:03:26 El usuario Luis Miguel Correa Rada consulta el expediente: NOM000045
+2022-05-26 10:03:51 El usuario Luis Miguel Correa Rada consulta el expediente: NOM000045
+2022-05-26 10:11:35 El usuario Luis Miguel Correa Rada Consulta expedientes
+2022-05-26 10:11:53 El usuario Admin Admin Admin se loguea en el sistema
+2022-05-26 10:13:39 El usuario Pruebas López López se loguea en el sistema
+2022-05-26 10:13:46 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:13:49 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-26 10:14:02 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-26 10:14:20 El usuario Admin Admin Admin se loguea en el sistema
+2022-05-26 10:14:49 El usuario Pruebas López López se loguea en el sistema
+2022-05-26 10:14:52 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:14:55 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-26 10:16:25 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:18:30 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:18:32 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-26 10:19:32 El usuario Pruebas López López crea el expediente: RHHPDF0000017
+2022-05-26 10:19:32 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:19:36 El usuario Pruebas López López Consulta el expediente: RHHPDF0000017
+2022-05-26 10:23:59 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:24:08 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-26 10:24:46 El usuario Pruebas López López crea el expediente: RHHPDF0000018
+2022-05-26 10:24:46 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:24:52 El usuario Pruebas López López Consulta el expediente: RHHPDF0000018
+2022-05-26 10:24:59 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:26:00 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:26:02 El usuario Pruebas López López consulta el expediente: RHHPDF0000018
+2022-05-26 10:26:09 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:26:13 El usuario Pruebas López López consulta el expediente: RHHPDF0000017
+2022-05-26 10:26:17 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:32:45 El usuario Pruebas López López consulta el expediente: RHHPDF0000018
+2022-05-26 10:32:57 El usuario Pruebas López López consulta el expediente: RHHPDF0000018
+2022-05-26 10:33:05 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:41:44 El usuario Pruebas López López lista los tipos de expedientes
+2022-05-26 10:45:50 El usuario Pruebas López López Consulta expedientes
+2022-05-26 10:45:55 El usuario Pruebas López López lista los tipos de expedientes

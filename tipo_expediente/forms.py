@@ -7,7 +7,9 @@ class TipoExpForm(forms.ModelForm):
     class Meta:
         # activo = forms.BooleanField()
         model = TipoExpediente
-        fields = ('nombre', )
+        fields = ('nombre', 'siglas','unidad',)
         widgets = {
             'nombre': TextInput(attrs={'class': 'form-control'}),
+            'siglas': TextInput(attrs={'class': 'form-control'}),
+            'unidad' : forms.Select(attrs={'class': 'form-control'}),
         }

@@ -10,7 +10,7 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="table-responsive">
-							<h1> {{etiqueta}} Detalle expediente</h1>
+							<h1> Detalle expediente: {{expediente.identificador}}</h1>
                             <!--
                                 # @cambio
                                 # fecha : 31/03/2020
@@ -133,9 +133,9 @@
 
                                         {% if metadato.tipo_dato.tipo == "Fecha" %}
                                             {% if metadato.obligatorio == True %}
-                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="1900-01-01" value="{{metadato.valor}}" class="form-control inputClass" required readonly/>
                                             {% else %}
-                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="2018-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
+                                                <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="1900-01-01"  value="{{metadato.valor}}" class="form-control inputClass" readonly/>
                                             {% endif %}
                                         {% endif %}
 

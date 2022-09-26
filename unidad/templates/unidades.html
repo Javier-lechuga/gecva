@@ -23,6 +23,7 @@
 									<tr align="center">
 										<th>#</th>
 										<th>Unidad</th>
+										<th>Siglas</th>
 										<th>Descripción</th>
 										<th>Estatus</th>
 										<th>Acciones</th>
@@ -31,20 +32,26 @@
 								<tbody>
 									{% for unidad in unidades %}
 										<tr>
-											<td>{{forloop.counter}}</td>
-											<td>{{unidad.nombre}}</td>
-											<td>{{unidad.descripcion}}</td>
+											<td align="center" width="50">{{forloop.counter}}</td>
 											<td>
+												<strong>
+													<a href = "{% url "editar_unidad" pk=unidad.id %}" title="Consultar/Editar">{{unidad.nombre}}</a>
+												<strong>
+											</td>
+											<td align="center" width="50">
+												{{unidad.siglas}}
+											</td>
+											<td>{{unidad.descripcion}}</td>
+											<td align="center" width="50">
 												{% if unidad.activo == True %}
 													Activo
 												{% else %}
 													Inactiva
 												{% endif %}
 											</td>
-											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{unidad}}??')) window.location='{% url "editar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+											<td width="90">
 												{% if unidad.activo == True %}
-												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
 												{% endif %}
 											</td>
 										</tr>

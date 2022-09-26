@@ -1,0 +1,3 @@
+[
+    {"model": "unidad.Unidad", "pk": 1, "fields":{"nombre": "Administrador" , "siglas":"ADM", "descripcion": "Administración del sistema", "activo": "True", "jefe_unidad": "1"}}
+]

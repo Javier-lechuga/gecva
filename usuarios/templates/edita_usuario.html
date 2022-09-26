@@ -5,7 +5,7 @@
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}</h1>
+		<h1> {{mensaje}}: {{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</h1>
 			<form method="POST">
 				{% csrf_token %}
 				

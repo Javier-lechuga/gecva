@@ -1,0 +1,5 @@
+[
+    {"model": "rol.Rol", "pk": 1, "fields":{"nombre": "Administrador" , "descripcion": "Rol utilizado para la administración del sistema"}},
+    {"model": "rol.Rol", "pk": 2, "fields":{"nombre": "Aprobador" , "descripcion": "Rol utilizado para la aprobación de expedientes"}},
+    {"model": "rol.Rol", "pk": 3, "fields":{"nombre": "Usuario" , "descripcion": "Rol utilizado para crear y enviar documentos"}}
+]

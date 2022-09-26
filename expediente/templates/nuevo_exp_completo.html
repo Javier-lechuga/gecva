@@ -35,15 +35,9 @@
 
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
                                 <input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+                                
                                 <fieldset>
                                     <legend>Datos generales</legend>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            Identificador: 
-                                            <input type="text" class="form-control" id="identificador" name="identificador" value="" required/>
-                                        </div>
-                                    </div>
-                                    <br/>
                                     <div class="row">
                                         <div class="col-md-7">
                                             Nombre:
@@ -104,9 +98,9 @@
 
                                         {% if metadato.tipo_dato.tipo == "Fecha" %}
                                             {% if metadato.obligatorio == True %}
-                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31" value="" class="form-control inputClass" required/>
+                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="1900-01-01" value="" class="form-control inputClass" required/>
                                             {% else %}
-                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" value="2018-07-22" min="2018-01-01" max="2018-12-31" value="" class="form-control inputClass" />
+                                            <input type="date" id="{{metadato.pk}}" name="{{metadato.pk}}" min="1900-01-01" value="" class="form-control inputClass" />
                                             {% endif %}
                                         {% endif %}
 

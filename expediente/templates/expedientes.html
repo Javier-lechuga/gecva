@@ -20,6 +20,7 @@
 										<th>#</th>
 										<th>Expediente</th>
 										<th>Identificador</th>
+										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -29,9 +30,10 @@
 											<td>{{forloop.counter}}</td>
 											<td>{{expediente.nombre}}</td>
 											<td>{{expediente.identificador}}</td>
+											<td>{{expediente.estatus}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{expediente}}??')) window.location='{% url "editar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{expediente}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+												<a href = "javascript: if(confirm('Deseas editar {{expediente}}??')) window.location='{% url "editar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{expediente}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
 											</td>
 										</tr>
 									{% endfor %}

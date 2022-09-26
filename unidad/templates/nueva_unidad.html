@@ -17,7 +17,32 @@
 								<div class="row">
 									<div class="col-md-12">
 										<strong>Nombre:</strong>
+										<u>
+											{% if form.errors %}
+												{% for error in form.errors %}
+													{% if error == "nombre" %}
+														<li> <strong>Ya existe una Unidad con este {{error}}.</strong></li>
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										</u>
 										<input type="text" name="nombre" id="nombre" class="form-control" required>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Siglas:</strong>
+										<u>
+											{% if form.errors %}
+												{% for error in form.errors %}
+													{% if error == "siglas" %}
+														<li> <strong>Ya existe un/a Unidad con estas {{error}}.</strong></li>
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										</u>
+										<input type="text" name="siglas" id="siglas" class="form-control" maxlength="3" required>
 									</div>
 								</div>
 
@@ -56,20 +81,24 @@
 			</div>
 		</section>
 
-		{% if form.errors %}
-            {% for error in form.errors %}
-                {{error}}
-            {% endfor %}
-        {% endif %}
+		
 
 {%endblock %}
 
 {% block scripts %}
 
-	<script>
-		function goBack() {
-			window.history.back();
-		}
+	
+	<script type="text/javascript">
+        $(function(){
+            window.onload = function() {
+                console.log("onload");
+            }
+
+			$("#siglas").keyup(function () {  
+				$(this).val($(this).val().toUpperCase());  
+			});
+
+        });
 	</script>
 
 {% endblock %}

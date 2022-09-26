@@ -17,25 +17,32 @@ import time
 from metadato.models import Metadato
 from tipo_dato.models import TipoDato
 from tipo_expediente.models import TipoExpediente
+from usuarios.models import PerfilUser
+from expediente.views import registro_log_admin
 
 # Create your views here.
 # @login_required(redirect_field_name='login')
 def ListarMetadatos(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     metadatos = Metadato.objects.all()
-    return render(request, 'metadatos.html', {'metadatos': metadatos, 'mensaje': 'Metadatos'})
+    registro_log_admin(user_log,"Consulta",None,"Metadatos","Administrador")
+    return render(request, 'metadatos.html', {'metadatos': metadatos, 'mensaje': 'Metadatos','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
 def ListarMetadatosTipoEXp(request,pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     metadatos = Metadato.objects.filter(tipo_expediente=pk, vista=False)
     # Instanciando TipoExpediente
     tipo_expediente_dos = TipoExpediente()
     tipo_expediente_dos = TipoExpediente.objects.get(pk=pk)
     tipo = tipo_expediente_dos
     # metadatos = Metadato.objects.all()
-    return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos'})
+    registro_log_admin(user_log,"Consulta",None,"Metadato","Administrador")
+    return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
 def MetadatoTipoExp(request,pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     # return HttpResponse(request.POST.items())
     if request.method == "POST":
         form = MetadatoForm(request.POST)
@@ -72,14 +79,16 @@ def MetadatoTipoExp(request,pk):
             tipo = tipo_expediente_dos
             metadatos = Metadato.objects.filter(tipo_expediente=pk)
             # return render(request, 'metadatos.html', {'tipo': tipo,})
-            return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos'})
+            registro_log_admin(user_log,"Crea",metadato,"Metadato","Administrador")
+            return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos','user_log':user_log})
             # return redirect('/metadatos/')
     else:
         form = MetadatoForm()
-    return render(request, 'nuevo_metadato.html', {'form': form, 'nuevo': 'Nuevo'})
+    return render(request, 'nuevo_metadato.html', {'form': form, 'nuevo': 'Nuevo','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
 def NuevoMetadato(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     if request.method == "POST":
         form = MetadatoForm(request.POST)
         metadato = None
@@ -113,13 +122,15 @@ def NuevoMetadato(request):
                 base = 1,
             )
             metadato.save()
+            registro_log_admin(user_log,"Crea",metadato,"Metadato","Administrador")
             return redirect('/metadatos/')
     else:
         form = MetadatoForm()
-    return render(request, 'nuevo_metadato.html', {'form': form, 'nuevo': 'Nuevo'})
+    return render(request, 'nuevo_metadato.html', {'form': form, 'nuevo': 'Nuevo','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
 def EditarMetadato(request, pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         metadato = Metadato.objects.get(pk=pk)
         if request.method == "POST":
@@ -130,29 +141,34 @@ def EditarMetadato(request, pk):
                 # return redirect('/metadatos/')
                 tipo = metadato.tipo_expediente
                 metadatos = Metadato.objects.filter(tipo_expediente=metadato.tipo_expediente.pk)
-                return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos'})
+                registro_log_admin(user_log,"Modifica",metadato,"Metadato","Administrador")
+                return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos','user_log':user_log})
         else:
             form = MetadatoForm(instance=metadato)
-        return render(request, 'edita_metadato.html', {'form': form, 'mensaje': 'Modificar metadato'})
+        return render(request, 'edita_metadato.html', {'form': form, 'mensaje': 'Modificar metadato','user_log':user_log, 'metadato':metadato})
     except ObjectDoesNotExist:
         return redirect('/metadatos/')
 
 # @login_required(redirect_field_name='login')
 def EliminaMetadato(request, pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         metadato = Metadato.objects.get(pk=pk)
         # return redirect('/metadatos/')
         tipo = metadato.tipo_expediente
         metadatos = Metadato.objects.filter(tipo_expediente=metadato.tipo_expediente.pk)
         metadato.delete()
-        return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos'})
+        registro_log_admin(user_log,"Elimina",metadato,"Metadato","Administrador")
+        return render(request, 'metadatos.html', {'metadatos': metadatos,'tipo': tipo, 'mensaje': 'Metadatos','user_log':user_log})
     except ObjectDoesNotExist:
         return redirect('/metadatos/')
 
 # @login_required(redirect_field_name='login')
 def VerMetadato(request, pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         metadato = Metadato.objects.get(pk=pk)
-        return render(request, 'metadatos.html', {'metadatos': metadato})
+        registro_log_admin(user_log,"Consulta",metadato,"Metadato","Administrador")
+        return render(request, 'metadatos.html', {'metadatos': metadato,'user_log':user_log})
     except ObjectDoesNotExist:
         return redirect('principal')

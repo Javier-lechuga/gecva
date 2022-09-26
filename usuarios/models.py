@@ -15,3 +15,5 @@ class PerfilUser(User):
     rol = models.ForeignKey(Rol, related_name='Rol', blank=False, null=True, on_delete=models.CASCADE)
     jefe_inmediato = models.ForeignKey(User, related_name='Jefe_inmediato', blank=False, null=True, on_delete=models.CASCADE)
     unidad_user = models.ForeignKey(Unidad, related_name='Unidad_user', blank=False, null=True, on_delete=models.CASCADE)
+    transferido = models.BooleanField(verbose_name=('Transferido'), default=False)
+    deputy = models.BooleanField(verbose_name=('Deputy'), default=False)

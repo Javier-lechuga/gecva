@@ -5,24 +5,71 @@
 
 {% block content %}
 
+		
+
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
+						
 							<h1> {{etiqueta}} Crear tipo de expediente</h1>
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
-								
-								{{form}}
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Nombre:</strong>
+										<u>
+											{% if form.errors %}
+												{% for error in form.errors %}
+													{% if error == "nombre" %}
+														<li> <strong>Ya existe una Tipo de expediente con este Nombre.</strong></li>
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										</u>
+										<input type="text" name="nombre" id="nombre" class="form-control" required>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Siglas:</strong>
+										<u>
+											{% if form.errors %}
+												{% for error in form.errors %}
+													{% if error == "siglas" %}
+														<li> <strong>Ya existe un Tipo de expediente con estas Siglas.</strong></li>
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										</u>
+										<input type="text" name="siglas" id="siglas" class="form-control" maxlength="3" minlength="3" required>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<strong>Unidad:</strong>
+										<select id="unidad" name="unidad" class="form form-control" required>
+											<option  value="" selected="selected">--- SELECT ---</option>
+											{% for unidad in unidades %}
+												<option value="{{unidad.pk}}"
+													{% if tipo == current_unidad %}{% endif %}>
+													{{unidad.nombre|capfirst}}
+												</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
 							    
 								<br/>
 								<p align="center">
+									<a href = "/tipos_expedientes/" type="button" class="btn btn-primary">Regresar</a>
 									<input class="btn btn-primary" type = "submit" />
 								</p>
 							</form>
-						</div>
-						<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+						
 					</article>
 				</section>
 			</div>
@@ -33,10 +80,17 @@
 
 {% block scripts %}
 
-	<script>
-		function goBack() {
-			window.history.back();
+<script type="text/javascript">
+	$(function(){
+		window.onload = function() {
+			console.log("onload");
 		}
-	</script>
+
+		$("#siglas").keyup(function () {  
+			$(this).val($(this).val().toUpperCase());  
+		});
+
+	});
+</script>
 
 {% endblock %}

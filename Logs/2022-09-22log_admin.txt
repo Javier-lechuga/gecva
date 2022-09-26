@@ -1,0 +1,33 @@
+2022-09-22 13:25:48 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:26:04 Administrador Admin Admin Admin Crea: Tipo de Expediente: dsa
+2022-09-22 13:26:24 Administrador Admin Admin Admin Crea: Metadato: fds
+2022-09-22 13:26:34 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:26:44 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:26:47 Administrador Admin Admin Admin Elimina: Tipo de Expediente: dsa
+2022-09-22 13:26:47 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:27:00 Administrador Admin Admin Admin Consulta Unidades
+2022-09-22 13:28:32 Administrador Admin Admin Admin Genera Reporte general
+2022-09-22 13:29:06 Administrador Admin Admin Admin Genera: Reporte unidad: Recursos Humanos
+2022-09-22 13:29:24 Administrador Admin Admin Admin Genera Reporte usuario: Pruebas
+2022-09-22 13:29:53 Administrador Admin Admin Admin Genera Reporte usuarios
+2022-09-22 13:30:14 Administrador Admin Admin Admin Genera Reporte unidades
+2022-09-22 13:30:41 Administrador Admin Admin Admin Genera Reporte tipos expedientes
+2022-09-22 13:30:58 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 13:31:39 María Sánchez Treviño Admin Admin Admin Transfiere expedientes  Al usuario: Radalmc
+2022-09-22 13:33:59 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 13:36:58 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:37:02 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:42:29 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 13:45:21 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 13:46:52 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 13:49:00 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 13:49:29 Administrador Admin Admin Admin Crea: Tipo de Expediente: Prospectos de Ventas
+2022-09-22 13:50:12 Administrador Admin Admin Admin Crea: Metadato: contacto de venta
+2022-09-22 13:50:32 Administrador Admin Admin Admin Crea: Metadato: propuesta de venta
+2022-09-22 13:51:14 Administrador Admin Admin Admin Crea: Metadato: correo
+2022-09-22 13:51:33 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-22 16:18:40 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 16:19:23 Administrador Admin Admin Admin Crea Usuario: juanperez@hotmail.com
+2022-09-22 16:19:23 Administrador Admin Admin Admin Asigna al grupo Aprobadores Usuario
+2022-09-22 16:19:23 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-22 16:22:13 Luis Miguel Correa Rada Juan perez perez Transfiere expedientes  Al usuario: juanperez@hotmail.com

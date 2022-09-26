@@ -1,0 +1,15 @@
+2022-05-06 16:45:17 El usuario Luis Miguel Correa Rada se loguea en el sistema
+2022-05-06 16:45:20 El usuario Luis Miguel Correa Rada Consulta expedientes pruebas
+2022-05-06 16:45:29 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-06 16:45:36 El usuario Luis Miguel Correa Rada Consulta el expediente: SOLINF00012
+2022-05-06 16:45:40 El usuario Luis Miguel Correa Rada consulta los expedientes recibidos
+2022-05-06 16:45:45 El usuario Luis Miguel Correa Rada Consulta expedientes pruebas
+2022-05-06 16:45:49 El usuario Luis Miguel Correa Rada consulta el expediente: NOM000045
+2022-05-06 16:46:07 El usuario Luis Miguel Correa Rada modifica el expediente: NOM000045
+2022-05-06 16:46:12 El usuario Luis Miguel Correa Rada Consulta expedientes pruebas
+2022-05-06 16:46:19 El usuario Luis Miguel Correa Rada lista los tipos de expedientes
+2022-05-06 16:46:37 El usuario Luis Miguel Correa Rada crea el expediente: uiyiu
+2022-05-06 16:46:37 El usuario Luis Miguel Correa Rada Consulta expedientes pruebas
+2022-05-06 16:46:48 El usuario Luis Miguel Correa Rada elimina el expediente: uiyiu
+2022-05-06 16:46:48 El usuario Luis Miguel Correa Rada Consulta expedientes pruebas
+2022-05-06 16:50:48 El usuario Pruebas López López se loguea en el sistema

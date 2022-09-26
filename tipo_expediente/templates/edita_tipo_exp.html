@@ -5,13 +5,52 @@
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}</h1>
+		<h1> {{mensaje}}: {{tipo.nombre}}</h1>
 			<form method="POST">
 				{% csrf_token %}
-					{{ form.as_p }}
+				<div class="class">
+					<div class="col-md-12">
+						<strong>Nombre:</strong>
+						{% if error == "nombre" %}
+							<li> <strong>Ya existe una Tipo de expediente con este Nombre.</strong></li>
+						{% endif %}
+						<input type="text" class="form-control" id="nombre" name="nombre" value="{{tipo.nombre}}" required/>
+					</div>
+				</div>
 
-					<input type = "submit" class="btn btn-primary" value = "Guardar" />
-					<a href = "/tipos_expedientes" type="button" class="btn btn-primary">Cancelar</a>
+				<div class="class">
+					<div class="col-md-12">
+						<strong>Siglas:</strong>
+						{% if error == "siglas" %}
+							<li> <strong>Ya existe una Tipo de expediente con estas Siglas.</strong></li>
+						{% endif %}
+						<input type="text" class="form-control" id="siglas" name="siglas" value="{{tipo.siglas}}" maxlength="3" required/>
+					</div>
+				</div>
+
+				<div class="class">
+					<div class="col-md-12">
+						<strong>Unidad:</strong>
+						<select id="unidad" name="unidad" class="form form-control" required>
+							<option  value="" selected="selected">--- SELECT ---</option>
+							{% for unidad in unidades %}
+								<option value="{{unidad.pk}}"
+									{% if unidad == tipo.unidad %}selected="selected"{% endif %}>
+									{{unidad.nombre|capfirst}}
+								</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				{% if tipo.activo %}
+					<label><input type="checkbox" id="activo" name="activo" checked> Activo</label><br>
+				{% else %}
+					<label><input type="checkbox" id="activo" name="activo"> Activo</label><br>
+				{% endif %}
+
+				<input type = "submit" class="btn btn-primary" value = "Guardar" />
+				<a href = "/tipos_expedientes" type="button" class="btn btn-primary">Cancelar</a>
 			</form>
 	</section>
 {% endblock %}
@@ -19,9 +58,16 @@
 {% block scripts %}
 
 	<script>
-		function goBack() {
-			window.history.back();
+		$(function(){
+		window.onload = function() {
+			console.log("onload");
 		}
+
+		$("#siglas").keyup(function () {  
+			$(this).val($(this).val().toUpperCase());  
+		});
+
+	});
 	</script>
 
 {% endblock %}

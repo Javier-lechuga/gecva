@@ -1,0 +1,3 @@
+2022-09-07 17:43:00 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-09-07 17:43:03 Administrador Admin Admin Admin Consulta Unidades
+2022-09-07 17:43:05 Administrador Admin Admin Admin Consulta Usuarios

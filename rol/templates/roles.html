@@ -34,8 +34,8 @@
 											<td>{{rol.nombre}}</td>
 											<td>{{rol.descripcion}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{rol}}??')) window.location='{% url "editar_rol" pk=rol.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{rol}}??')) window.location='{% url "eliminar_rol" pk=rol.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove"></a>
+												<a href = "javascript: if(confirm('Deseas editar {{rol}}??')) window.location='{% url "editar_rol" pk=rol.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{rol}}??')) window.location='{% url "eliminar_rol" pk=rol.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
 											</td>
 										</tr>
 									{% endfor %}

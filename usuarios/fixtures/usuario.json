@@ -1,0 +1,3 @@
+[
+    {"model": "usuarios.User", "pk": 2, "fields":{"username": "Administrador", "first_name": "Admin", "last_name": "Admin", "amaterno":"Admin", "telefono":"", "email": "administrador@solusoft.com.mx", "unidad_user": "1", "rol":"1"}}
+]

@@ -1,0 +1,19 @@
+2022-09-05 13:10:57 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-05 13:10:59 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 13:11:01 Usuario Luis Miguel Correa Rada Consulta Expediente: TIDSOM0000003
+2022-09-05 13:11:04 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 13:11:07 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-09-05 13:11:10 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 13:11:12 Usuario Luis Miguel Correa Rada Consulta Expediente: TIDSOM0000002
+2022-09-05 13:11:15 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 13:11:16 Usuario Luis Miguel Correa Rada Lista Tipos de Expedientes
+2022-09-05 13:11:41 Usuario Luis Miguel Correa Rada Crea Expediente: TIDSOM0000005
+2022-09-05 13:11:41 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 13:11:44 Usuario Luis Miguel Correa Rada Consulta Expediente: TIDSOM0000005
+2022-09-05 13:11:50 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 16:46:00 Administrador Admin Admin Admin Entra Sistema
+2022-09-05 17:45:02 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-05 17:45:03 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 17:45:06 Usuario Luis Miguel Correa Rada Consulta Expediente: TIDSOM0000005
+2022-09-05 17:45:27 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-05 17:45:37 Administrador Admin Admin Admin Entra Sistema

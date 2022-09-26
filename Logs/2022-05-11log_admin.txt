@@ -1,0 +1,17 @@
+2022-05-11 10:02:41 El usuario Admin Admin Admin consulta los usuarios
+2022-05-11 10:02:51 El usuario Admin Admin Admin consulta las unidades
+2022-05-11 10:03:02 El usuario Admin Admin Admin consulta los tipos
+2022-05-11 10:03:15 El usuario Admin Admin Admin consulta las unidades
+2022-05-11 10:21:38 El usuario Admin Admin Admin consulta los usuarios
+2022-05-11 10:27:07 El usuario Admin Admin Admin consulta los tipos
+2022-05-11 10:33:12 El usuario Admin Admin Admin consulta los tipos
+2022-05-11 10:33:22 El usuario Admin Admin Admin edita el tipo de expediente: hola
+2022-05-11 10:33:26 El usuario Admin Admin Admin consulta los tipos
+2022-05-11 10:33:50 El usuario Admin Admin Admin edita el tipo de expediente: Contrato
+2022-05-11 10:33:54 El usuario Admin Admin Admin consulta los tipos
+2022-05-11 10:34:14 El usuario Admin Admin Admin edita el tipo de expediente: hola
+2022-05-11 10:34:19 El usuario Admin Admin Admin consulta los tipos
+2022-05-11 10:34:29 El usuario Admin Admin Admin consulta las unidades
+2022-05-11 10:34:33 El usuario Admin Admin Admin consulta las unidades
+2022-05-11 10:39:23 El usuario Admin Admin Admin consulta los usuarios
+2022-05-11 10:39:28 El usuario Admin Admin Admin consulta los tipos

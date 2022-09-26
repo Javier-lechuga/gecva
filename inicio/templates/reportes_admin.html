@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Principal
+{% endblock titulo %}
+
+{% block content %}
+	<div class="main container">
+		<h2>Reportes</h2>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/rep_general" type="button" class="btn btn-primary btn-block btn-lg">Reporte general</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/rep_unidades" type="button" class="btn btn-primary btn-block btn-lg">Reporte por unidad</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/rep_usuarios" type="button" class="btn btn-primary btn-block btn-lg">Reporte por usuario</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/reporte_usuarios" type="button" class="btn btn-primary btn-block btn-lg">Reporte de usuarios</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/reporte_unidades" type="button" class="btn btn-primary btn-block btn-lg">Reporte de unidades</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<p align="center">
+						<a href = "/expedientes/reporte_tipo_exp" type="button" class="btn btn-primary btn-block btn-lg">Reporte de tipos de expedientes</a>
+					</p>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+
+			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+	
+{% endblock%}

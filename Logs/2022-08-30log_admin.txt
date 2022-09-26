@@ -1,0 +1,13 @@
+2022-08-30 10:12:23 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-30 10:12:28 Administrador Admin Admin Admin Consulta Unidades
+2022-08-30 10:12:32 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-30 10:12:52 Administrador Admin Admin Admin Genera Reporte general
+2022-08-30 10:13:00 Administrador Admin Admin Admin Genera: Reporte unidad: Recursos Humanos
+2022-08-30 10:13:13 Administrador Admin Admin Admin Genera Reporte usuario: Pruebas
+2022-08-30 10:13:21 Administrador Admin Admin Admin Genera Reporte usuarios
+2022-08-30 10:13:24 Administrador Admin Admin Admin Genera Reporte unidades
+2022-08-30 10:13:28 Administrador Admin Admin Admin Genera Reporte tipos expedientes
+2022-08-30 16:38:45 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-30 16:38:48 Administrador Admin Admin Admin Consulta Unidades
+2022-08-30 16:38:51 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-30 17:57:59 Administrador Admin Admin Admin Genera: Reporte unidad: Tecnologías de Información

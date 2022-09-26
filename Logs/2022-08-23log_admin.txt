@@ -1,0 +1,13 @@
+2022-08-23 11:33:27 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-23 11:33:32 Administrador Admin Admin Admin Consulta Unidades
+2022-08-23 11:33:40 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-23 11:33:50 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-23 13:51:42 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-23 13:52:03 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-23 13:52:09 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-23 13:52:12 Administrador Admin Admin Admin Consulta Unidades
+2022-08-23 13:52:25 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-23 13:52:38 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-23 15:46:56 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-23 16:07:36 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-23 16:07:45 Administrador Admin Admin Admin Consulta Usuarios

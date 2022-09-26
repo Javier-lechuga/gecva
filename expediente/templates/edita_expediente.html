@@ -5,7 +5,7 @@
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}</h1>
+		<h1> {{mensaje}}: {{expediente.identificador}}</h1>
 			<form method="POST">
 				{% csrf_token %}
 					{{ form.as_p }}

@@ -1,0 +1,18 @@
+2022-08-29 09:58:07 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-29 09:58:11 Administrador Admin Admin Admin Consulta Unidades
+2022-08-29 09:58:13 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-29 09:59:03 Administrador Admin Admin Admin Genera Reporte general
+2022-08-29 09:59:08 Administrador Admin Admin Admin Genera: Reporte unidad: Tecnologías de Información
+2022-08-29 09:59:15 Administrador Admin Admin Admin Genera Reporte usuario: Pruebas
+2022-08-29 09:59:20 Administrador Admin Admin Admin Genera Reporte usuarios
+2022-08-29 09:59:23 Administrador Admin Admin Admin Genera Reporte unidades
+2022-08-29 09:59:25 Administrador Admin Admin Admin Genera Reporte tipos expedientes
+2022-08-29 16:01:59 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-08-29 16:02:01 Administrador Admin Admin Admin Consulta Unidades
+2022-08-29 16:02:04 Administrador Admin Admin Admin Consulta Usuarios
+2022-08-29 16:13:57 Administrador Admin Admin Admin Genera Reporte general
+2022-08-29 16:14:07 Administrador Admin Admin Admin Genera: Reporte unidad: Recursos Humanos
+2022-08-29 16:14:15 Administrador Admin Admin Admin Genera Reporte usuario: Radalmc
+2022-08-29 16:14:19 Administrador Admin Admin Admin Genera Reporte usuarios
+2022-08-29 16:14:20 Administrador Admin Admin Admin Genera Reporte unidades
+2022-08-29 16:14:22 Administrador Admin Admin Admin Genera Reporte tipos expedientes
