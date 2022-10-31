@@ -1,0 +1,320 @@
+2022-10-12 09:38:03 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 09:38:07 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-10-12 09:38:14 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 09:38:20 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-10-12 09:38:27 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 09:38:29 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 09:39:08 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 09:39:13 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 09:39:31 Usuario María Sánchez Treviño Entra Sistema
+2022-10-12 09:39:33 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:39:39  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 09:40:07 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:40:08  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 09:41:02 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:43:19 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:43:20 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:50:06 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:50:58 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:50:59 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:51:20 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:51:20 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:52:42 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-10-12 09:52:50 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-10-12 09:52:52 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:53:01 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:53:13 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-10-12 09:53:31 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-10-12 09:53:38 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:54:11 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:54:12 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:54:22 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:54:23 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:54:48 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:54:49 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:55:49 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:55:59 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 09:56:02 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000006
+2022-10-12 09:56:08 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 09:58:15 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 09:58:16 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:58:22 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 09:58:23 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 09:58:39  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 10:00:33 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 10:00:36 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 10:00:38  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 10:01:13 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 10:01:14 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 10:01:16  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 10:01:18 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 10:01:19 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 10:01:24 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 10:01:26 Usuario María Sánchez Treviño Consulta Expediente: TIDSOM0000003
+2022-10-12 10:02:02 Administrador Admin Admin Admin Entra Sistema
+2022-10-12 11:01:02 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 11:01:12 Administrador Admin Admin Admin Consulta Log usuarios
+2022-10-12 11:09:08 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 12:02:41 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 12:03:17 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 12:05:19 Usuario María Sánchez Treviño Entra Sistema
+2022-10-12 12:05:22 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:05:56 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 12:05:57 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:06:02 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 12:06:45 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:06:47 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 12:06:51 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 12:07:26 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 12:07:27 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 12:12:09 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:12:10  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 12:12:49 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:12:51  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 12:13:03 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:13:06  María Sánchez Treviño Consulta usuarios   para transferir expedientes
+2022-10-12 12:13:13 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:13:19 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 12:13:21 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 12:13:24 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 12:13:27 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 12:13:38 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-12 12:13:42 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 12:13:44 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:13:46 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:15:12 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 12:15:14 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:15:15 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:15:41 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:15:42 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:15:45 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:15:47 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:17:46 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 12:17:49  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 12:17:54 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 12:17:56 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:17:57 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:18:02 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-10-12 12:18:13 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:18:16 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 12:19:15 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:19:17 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 12:19:38 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:19:43 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:19:47 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 12:19:55 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:19:59 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 12:20:06 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 12:20:41 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 12:20:43 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 12:20:48 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 12:20:53 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 12:20:55 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 12:21:00 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 12:21:05 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 12:21:40 Administrador Admin Admin Admin Entra Sistema
+2022-10-12 12:33:26 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 12:34:30 Administrador Admin Admin Admin Consulta Log usuarios
+2022-10-12 12:34:36 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 12:41:09 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 12:44:06 Administrador Admin Admin Admin Consulta Log usuarios
+2022-10-12 13:34:00 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-12 13:34:55 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:35:07 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 13:35:15 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:35:30 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 13:35:36 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 13:35:44 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:35:56 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 13:39:08 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-12 13:39:12 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:39:14  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 13:46:54 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:46:56  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 13:52:10 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:52:12  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 13:55:35 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:55:36  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 13:57:44 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:57:46  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 13:58:23 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:58:25  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 13:58:55 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 13:58:56  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:03:22 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:03:23  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:03:43 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:03:44  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:08:04 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:08:06  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:08:17 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:08:19  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:09:12 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:09:13  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:10:56 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:10:57  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:11:48 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:11:49  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:13:02 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:13:03  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:13:58 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:14:00  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:14:56 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:14:58  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:16:41 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:16:51 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:16:53  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:30:36 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:30:41  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:32:35 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:32:43 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:32:45  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:33:36 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:33:43 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:33:45 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:33:46 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:33:48 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:34:03 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:34:04 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:34:07  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 14:34:11 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:34:12 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:34:42 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:35:07 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:35:08 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:35:11 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 14:35:26 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:35:28 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 14:35:33 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-10-12 14:35:36 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 14:35:39 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:35:46 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:36:16 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:36:19 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 14:36:22 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:36:23 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:38:33 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:38:35 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 14:38:38 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 14:38:39 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 14:38:44 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 14:38:46  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 15:25:53 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 15:25:56 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 15:25:58 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:26:18 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 15:26:20 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:26:22 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 15:26:25 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 15:26:41 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 15:27:29 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:29:00 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 15:29:42 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 15:29:45 Usuario Luis Miguel Correa Rada Consulta Expediente: TIDPB20000002
+2022-10-12 15:32:35 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:32:40 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-10-12 15:35:46 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:35:48 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000008
+2022-10-12 15:37:39 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:37:45 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:39:10 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:39:13 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:39:27 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:39:30 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:39:51 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:39:54 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:41:25 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:41:32 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:41:35 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 15:41:37 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:41:39 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHPDV0000006
+2022-10-12 15:41:41 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:41:42 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:41:46 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:44:21 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:44:24 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:45:03 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:45:06 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:45:51 Usuario Luis Miguel Correa Rada Asigna Expediente: RHHSEI00000010
+2022-10-12 15:46:03 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:46:06 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 15:46:08 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 15:46:13 Usuario Luis Miguel Correa Rada Consulta Expediente: RHHSEI00000010
+2022-10-12 15:46:26 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-12 15:46:37 Usuario María Sánchez Treviño Entra Sistema
+2022-10-12 15:46:40 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:46:47 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-12 15:50:37 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:50:46 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:50:47 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-12 15:52:20 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:52:24 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-12 15:53:47 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:55:46 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 15:56:02 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 15:56:57 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:56:59 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 15:57:05 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:57:08 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-12 15:58:02 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:58:03 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 15:58:16 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 15:58:18 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 15:58:21 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 15:58:22 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 15:59:12 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-10-12 15:59:52 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-10-12 16:01:02 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:01:05 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-10-12 16:02:04 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:02:06 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-10-12 16:02:45 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:02:47 Usuario María Sánchez Treviño Lista Tipos de Expedientes
+2022-10-12 16:03:26 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:03:30 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:03:33 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 16:13:12 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:13:15 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 16:13:20 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 16:13:47 Administrador Admin Admin Admin Entra Sistema
+2022-10-12 16:15:50 Administrador Admin Admin Admin Consulta Log administrador
+2022-10-12 16:48:29 Usuario María Sánchez Treviño Entra Sistema
+2022-10-12 16:48:31 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:50:29 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 16:50:32 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 16:50:34 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 16:53:40 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 17:03:44 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 17:04:15 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 17:04:17 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 17:04:18 Usuario María Sánchez Treviño Buscador Expedientes
+2022-10-12 17:04:59 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 17:05:00 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 17:29:06 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 17:29:24 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 17:29:54 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-12 17:30:05 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-12 17:30:12 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007
+2022-10-12 17:31:07 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-10-12 17:31:17 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-12 17:31:20 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:31:22  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 17:31:52 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:34:31 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 17:34:32 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:34:52 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 17:34:53 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:35:06 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:35:07  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 17:36:32 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:36:34  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 17:37:10 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:37:13  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 17:38:02 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:38:03 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 17:38:04 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 17:38:06 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-12 17:38:07 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-12 17:38:08 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-12 17:38:11  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-10-12 17:38:44 Administrador Admin Admin Admin Entra Sistema

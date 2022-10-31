@@ -1,0 +1,228 @@
+{% extends "new_plant.html" %}
+
+{% block titulo %}
+	Usuarios
+{% endblock titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{% endblock css %}
+
+{% block content %}
+
+	<div class="container">
+		<h1 class="mt-4"><i class="fas fa-archive"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
+
+		<section class="main container">
+			<div class="row">
+				<section class="posts col-md-12">
+					<article class="post clearfix">
+
+						{% if anuncio %}
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<div class="alert alert-success alert-dismissible fade show form-control" role="alert">
+										<strong>{{anuncio}}!!</strong>
+										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									</div>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+						{% endif %}
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fa fa-users"></i>
+                                Usuarios
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Usuario</th>
+											<th>Correo</th>
+											<th>Seleccionar</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Usuario</th>
+											<th>Correo</th>
+											<th>Seleccionar</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for usuario in usuarios %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td>
+														{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
+												</td>
+												<td>{{usuario.email}}</td>
+												<td width="90">
+													{% if usuario.is_active == True %}
+														<button type="button" class="btn btn-primary btn-sm transferir" data-bs-toggle="modal" data-bs-target="#usuarios" value="{{usuario.id}}"><i class="fa fa-exchange"></i></button>
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+					</article>
+				</section>
+			</div>
+		</section>
+		<p align="center">
+			<a href = "/expedientes/mis_expedientes" type="button" class="btn btn-secondary">Regresar</a>
+		</p>
+
+
+		<!-- Modal Usuarios-->
+        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog modal-lg" role="document" >
+				<div class="modal-content">
+				<form action="/expedientes/transferir_expedientes" method="POST">
+					{% csrf_token %}
+					<div class="modal-header">
+						<h2 class="modal-tittle">Seleccionar expediente(s)</h2>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						<div class="table-responsive">
+							<table class="table table-hover" id="usuarios2">
+								<thead>
+									<tr align="center">
+										<th>
+											<p align="center">
+												#
+											</p>
+										</th>
+										<th>
+											<p align="center">
+												Seleccionar
+											</p>
+										</th>
+										<th>
+											<p align="center">
+												Expediente
+											</p>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for expediente in expedientes %}
+										
+											<tr>
+												<td>
+													<p align="center">
+														{{forloop.counter}}
+													</p>
+												</td>
+												<td>
+													{% for seleccionado in seleccionados %}
+														{% if usuario.pk == seleccionado.id_usuario.pk %}
+														
+														{% endif %}
+													{% endfor %}
+													<p align="center">
+														<input type="checkbox" id="{{expediente.pk}}" name="expediente" class="elementTable varios" value="{{expediente.pk}}">
+													</p>
+												</td>
+												<td>
+													<p align="center">
+														{{expediente.identificador}}
+													</p>
+												</td>
+											</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" id="expedientes" name="expedientes" value="">
+						<input type="hidden" id="usuario_destino" name="usuario_destino" value="">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+						<button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+					</div>
+				</div>
+				</form>
+			</div>
+			</div>
+
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script type="text/javascript">
+
+		$(document).ready( function () {
+			$('#tablita').DataTable({
+				"paging":true,
+				"pageLength": 100,
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+			});
+		} );
+
+		$(document).ready( function () {
+            $('#usuarios2').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse":true,
+                "paging":false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                },
+            });
+        } );
+
+		
+		$('#confirmar').prop('disabled', true);
+		$( ".varios" ).change(function() {
+			$('#confirmar').removeAttr('disabled');
+		});
+
+		$("#confirmar").click(function(){
+            var idss = $(".elementTable")
+            var seleccionados = []
+            $.each(idss, function(i,value){
+                if($("#"+value.id).is(':checked')) {  
+                    seleccionados.push(value.id)
+                }
+            });
+
+            $('#expedientes').val(seleccionados)
+            console.log(seleccionados)
+            if (seleccionados.length != 0){
+                $("#forma").submit();
+            } else {
+                alert("No se han seleccionado usuarios");
+            }
+        });
+
+		$(document).on('click', '.transferir', function (event) {
+			var origin = this.value;
+			// console.log(origin)
+			// alert(origin)
+            $('#usuario_destino').val(origin)
+		});
+
+	</script>
+
+	<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+{% endblock %}

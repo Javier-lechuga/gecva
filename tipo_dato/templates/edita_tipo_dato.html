@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Tipo de dato
 {% endblock titulo %}
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}</h1>
+		<h1 class="mt-4">{{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 			<form method="POST">
 				{% csrf_token %}
 					{{ form.as_p }}

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Expediente
 {% endblock titulo %}
@@ -9,8 +9,10 @@
             <div class="container">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<h1> Detalle expediente: {{expediente.identificador}}</h1>
+                            <h1 class="mt-4"><i class="fas fa-archive"></i> {{mensaje}}</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">{{expediente.identificador}}</li>
+                            </ol>
                             <!--
                                 # @cambio
                                 # fecha : 31/03/2020
@@ -161,14 +163,12 @@
 								
 								<br/>
 								<p align="center">
+                                    <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-secondary" id="regresar" name="regresar">Regresar</a>
                                     <input id="modificar" name="modificar" class="btn btn-primary" type="button" value="Modificar" />
-                                    <input id="cancelar" name="cancelar" class="btn btn-primary" type="button" value="Cancelar" />
-                                    <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
+                                    <input id="cancelar" name="cancelar" class="btn btn-secondary" type="button" value="Cancelar" />
                                     <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
 							</form>
-						</div>
-						
 					</article>
 				</section>
             </div>

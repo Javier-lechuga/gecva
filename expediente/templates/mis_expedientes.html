@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Expedientes
@@ -12,109 +12,164 @@
 
 	<div class="container">
 		<section class="main container">
-			<div class="row">
+			<h1 class="mt-4"><i class="fas fa-archive"></i> {{mensaje}}</h1>
+			<ol class="breadcrumb mb-4">
+				<li class="breadcrumb-item active">{{mensaje}}</li>
+			</ol>
+			
+			{% if user_log.deputy %}
+				<div class="row">
+					<div class="alert alert-danger alert-dismissible fade show form-control" role="alert">
+						<strong>No se puede crear o modificar expedientes mientras el deputy esta activo!</strong>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				</div>
+			{% endif %}
+
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						<div class="row">
-							<div class="col-md-6"><h1>{{mensaje}}</h1></div>
-							<div class="col-md-6" align="right">
+							<div class="col-md-4"></div>
+							<div class="col-md-4" align="center">
+								{% if anuncio %}
+									<div class="alert alert-success alert-dismissible fade show form-control" role="alert">
+										<strong>{{anuncio}}!!</strong>
+										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									</div>
+								{% endif %}
 								{% if user_log.rol.nombre == "Aprobador" %}
-									{% if user_log.transferido == False %}
-										<button type="button" class="btn btn-primary" id="depu" data-toggle="modal" data-target="#usuarios" value="{{usuario.id}}">Deputy</button>
+								<!-- 
+									<a href = "/expedientes/transferir_usuarios" type="button" class="btn btn-primary">Transferir expedientes</a>
+								-->
+								{% endif %}
+							</div>
+							<div class="col-md-4" align="right">
+								{% if user_log.rol.nombre == "Aprobador" %}
+									{% if user_log.deputy == False %}
+										<button type="button" class="btn btn-primary" id="depu" data-bs-toggle="modal" data-bs-target="#usuarios" value="{{usuario.id}}">Deputy</button>
+									{% elif user_log.deputy == True %}
+										<a href = "javascript: if(confirm('¿Deseas terminar el deputy con: {{user_log.usuario_deputy}} {{user_log.usuario_deputy.last_name}} {{user_log.usuario_deputy.amaterno}}?')) window.location='{% url "cancela_deputy" %}'" type="button" class="btn btn-secondary" title="Terminar deputy">Terminar deputy</a>
 									{% endif %}
 								{% endif %}
 							</div>
 						</div>
-						<div class="table-responsive">
-							<table class="table table-hover" id="tablita">
-								<thead>
-									<tr align="center">
-										<th>#</th>
-                                        <th>Identificador</th>
-										<th>Expediente</th>
-                                        <th>Descripción</th>
-                                        <th>Asunto</th>
-                                        <th>Fecha creación</th>
-										<th>Estatus</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for expediente in expedientes %}
-										<tr>
-											<td align="center" width="50">{{forloop.counter}}</td>
-                                            <td>
-												<strong>
-													<a href = "{% url "ver_expediente" pk=expediente.id %}" title="Consultar">{{expediente.identificador}}</a>
-												</strong>
-											</td>
-											<td>{{expediente.nombre}}</td>
-                                            <td>{{expediente.descripcion}}</td>
-                                            <td>{{expediente.asunto}}</td>
-                                            <td width="50" align="center">{{expediente.fecha_creacion|date:"d-m-Y"}}</td>
-											<td width="50" align="center">{{expediente.estatus}}</td>
-											<td width="90" align="center">
-												{% if expediente.estatus.nombre == "Creado" %}
-													<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
-													<a href = "javascript: if(confirm('Deseas eliminar el expediente: {{expediente.identificador}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
-												{% endif %}
-												{% if expediente.estatus.nombre == "Aprobado" %}
-													
-												{% endif %}
-												{% if expediente.estatus.nombre == "Rechazado" %}
-													<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
-												{% endif %}
-												{% if expediente.estatus.nombre == "Enviado" %}
-													
-												{% endif %}
-												
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+						<div class="row">&nbsp;</div>
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-archive"></i>
+								<strong>
+                                	Mis expedientes
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Identificador</th>
+											<th>Expediente</th>
+											<th>Descripción</th>
+											<th>Asunto</th>
+											<th>Fecha creación</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Identificador</th>
+											<th>Expediente</th>
+											<th>Descripción</th>
+											<th>Asunto</th>
+											<th>Fecha creación</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for expediente in expedientes %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td>
+													<strong>
+														<a href = "{% url "ver_expediente" pk=expediente.id %}" title="Consultar">{{expediente.identificador}}</a>
+													</strong>
+												</td>
+												<td width="200">{{expediente.nombre}}</td>
+												<td width="200">{{expediente.descripcion}}</td>
+												<td width="200">{{expediente.asunto}}</td>
+												<td width="50" align="center">{{expediente.fecha_creacion|date:"d-m-Y"}}</td>
+												<td width="50" align="center">{{expediente.estatus}}</td>
+												<td width="90" align="center">
+													{% if expediente.usuario_anterior %}
+														<a href = "javascript: if(confirm('Deseas regresar el expediente: {{expediente.identificador}}??')) window.location='{% url "aceptar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary btn-sm" title="Aceptar"><i class="fa fa-check"></i></a>
+														<a href = "javascript: if(confirm('Deseas regresar el expediente: {{expediente.identificador}}??')) window.location='{% url "regresar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary btn-sm" title="Regresar"><i class="fas fa-backspace"></i></a>
+													{% else %}
+														{% if expediente.estatus.nombre == "Creado" %}
+														<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary btn-sm" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+														<a href = "javascript: if(confirm('Deseas eliminar el expediente: {{expediente.identificador}}??')) window.location='{% url "eliminar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary btn-sm" title="Desactivar"><i class="fas fa-remove"></i></a>
+														{% endif %}
+														{% if expediente.estatus.nombre == "Aprobado" %}
+															
+														{% endif %}
+														{% if expediente.estatus.nombre == "Rechazado" %}
+															<a href = "javascript: if(confirm('Deseas editar el expediente: {{expediente.identificador}}??')) window.location='{% url "detalle_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary btn-sm" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+														{% endif %}
+														{% if expediente.estatus.nombre == "Enviado" %}
+															
+														{% endif %}
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
 					</article>
 				</section>
-			</div>
+			
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
-			<a href = "{% url 'selecciona_expediente' %}" type="button" class="btn btn-primary">Nuevo expediente</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
+			{% if user_log.deputy == False %}
+				<a href = "{% url 'selecciona_expediente' %}" type="button" class="btn btn-primary">Nuevo expediente</a>
+			{% endif %}
 		</p>
 		<br/><br/>
 
 
 		<!-- Modal Usuarios-->
-        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
-			<div class="modal-dialog modal-lg" role="document" >
-				<div class="modal-content">
+        <div class="modal fade" id="usuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+			  <div class="modal-content">
 				<form action="/expedientes/deputy" method="POST">
 					{% csrf_token %}
 					<div class="modal-header">
 						<h2 class="modal-tittle">Selecciona usuario destino</h2>
-						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="table-responsive">
 							<table class="table table-hover" id="usuarios2">
 								<thead>
 									<tr align="center">
-										<th>
+										<th >
 											<p align="center">
 												#
 											</p>
 										</th>
 										<th>
 											<p align="center">
-												Seleccionar
+												Usuario
 											</p>
 										</th>
-										<th>
+										<th width="50">
 											<p align="center">
-												Usuario
+												Seleccionar
 											</p>
 										</th>
 									</tr>
@@ -128,18 +183,13 @@
 													</p>
 												</td>
 												<td>
-													{% for seleccionado in seleccionados %}
-														{% if usuario.pk == seleccionado.id_usuario.pk %}
-														
-														{% endif %}
-													{% endfor %}
 													<p align="center">
-														<input type="radio" id="{{usuario.pk}}" name="usuario_destino" class="elementTable varios" value="{{usuario.pk}}">
+														{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
 													</p>
 												</td>
 												<td>
 													<p align="center">
-														{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
+														<input type="radio" id="{{usuario.pk}}" name="usuario_destino" class="elementTable varios" value="{{usuario.pk}}">
 													</p>
 												</td>
 											</tr>
@@ -151,7 +201,7 @@
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" id="usuario_origen" name="usuario_origen" value="{{user_log.pk}}">
-						<button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 						<button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
 					</div>
 				</div>
@@ -172,7 +222,8 @@
 
 		$(document).ready( function () {
 			$('#tablita').DataTable({
-				"paging":false,
+				"paging":true,
+				"pageLength": 100,
 				"language": {
 					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
 				},
@@ -190,6 +241,11 @@
             });
         } );
 
+		$('#confirmar').prop('disabled', true);
+		$( ".varios" ).change(function() {
+			$('#confirmar').removeAttr('disabled');
+		});
+
 		$(function(){
             window.onload = function() {
                 //$("#captura").hide();
@@ -199,6 +255,8 @@
             }
 
         });
+
+		
 
 	</script>
 

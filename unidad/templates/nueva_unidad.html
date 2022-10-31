@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Unidad
 {% endblock titulo %}
@@ -10,7 +10,10 @@
 				<section class="posts col-md-12">
 					<article class="post clearfix">
 						
-							<h1> {{etiqueta}} Crear unidad</h1>
+							<h1 class="mt-4"><i class="far fa-building"></i> {{mensaje}}</h1>
+							<ol class="breadcrumb mb-4">
+								<li class="breadcrumb-item active">{{mensaje}}</li>
+							</ol>
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
 
@@ -71,8 +74,8 @@
 							    
 								<br/>
 								<p align="center">
-									<a href = "/unidad/" type="button" class="btn btn-primary">Regresar</a>
-									<input class="btn btn-primary" type = "submit" />
+									<a href = "/unidad/" type="button" class="btn btn-secondary">Regresar</a>
+									<input class="btn btn-primary" type = "submit" value="Guardar"/>
 								</p>
 							</form>
 						

@@ -2,7 +2,7 @@ from dataclasses import fields
 from django import forms
 from django.forms import ModelForm
 from django.forms import TextInput
-from expediente.models import Expediente, Expediente_aprobador, Registra_actividad, Expediente_deputy
+from expediente.models import Expediente, Expediente_aprobador, Expediente_transferido, Registra_actividad, Expediente_deputy
 
 class ExpedienteForm(forms.ModelForm):
     class Meta:
@@ -39,4 +39,9 @@ class RegistraActividadForm():
 class Expediente_deputyForm():
     class Meta:
         models = Expediente_deputy
+        fields = '__all__'
+
+class Expediente_transferidoForm():
+    class Meta:
+        models = Expediente_transferido
         fields = '__all__'

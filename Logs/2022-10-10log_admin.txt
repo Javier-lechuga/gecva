@@ -1,0 +1,9 @@
+2022-10-10 10:48:25 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-10 10:49:13 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-10 10:49:24 Administrador Admin Admin Admin Consulta Unidades
+2022-10-10 11:15:30 Administrador Admin Admin Admin Consulta Unidades
+2022-10-10 11:15:33 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-10 13:05:23 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-10 13:05:27 Administrador Admin Admin Admin Consulta Unidades
+2022-10-10 13:05:38 Administrador Admin Admin Admin Consulta Unidades
+2022-10-10 13:05:43 Administrador Admin Admin Admin Consulta Usuarios

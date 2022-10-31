@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Tipos de Expedientes
@@ -7,7 +7,10 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4"><i class="fas fa-archive"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
@@ -27,8 +30,8 @@
 							</select>
 							<br/><br/>
 							<p align="center">
-								<button class="btn btn-primary" onclick="goBack()">Regresar</button>
-								<input type="submit" name="enviar" value="enviar" class="btn btn-primary"/>
+								<button class="btn btn-secondary" onclick="goBack()">Regresar</button>
+								<input type="submit" name="enviar" value="Guardar" class="btn btn-primary"/>
 							</p>
 						</form>
 					</article>

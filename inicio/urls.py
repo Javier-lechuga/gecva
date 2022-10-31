@@ -2,7 +2,7 @@
 from django.urls import path, re_path
 from . import views
 from django.contrib.auth.views import logout_then_login
-from inicio.views import RepUsuarios, entrar, principal, ReportesMenu, RepUnidades
+from inicio.views import Privacidad, RepUsuarios, Terminos, entrar, principal, ReportesMenu, RepUnidades
 from expediente.views import ReporteGeneral
 
 
@@ -16,4 +16,7 @@ urlpatterns = [
     path('rep_usuarios/', RepUsuarios, name = "rep_usuarios"),
     path('rep_unidades/', RepUnidades, name = "rep_unidades"),
     path('rep_general/', ReporteGeneral, name = "rep_general"),
+    path('privacidad/', Privacidad, name = "privacidad"),
+    path('terminos/', Terminos, name = "terminos"),
+    
 ]

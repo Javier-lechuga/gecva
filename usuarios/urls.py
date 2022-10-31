@@ -14,5 +14,6 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/verUsuario$', VerUsuario, name= "ver_usuario"),
     # re_path(r'^(?P<pk>[0-9]+)/transferirExp$', TransferirExp, name= "transferir_exp"),
     path('transferir_exp', views.TransferirExp, name = "transferir_exp"),
+    path('perfil', views.Perfil, name = "perfil"),
 
 ]

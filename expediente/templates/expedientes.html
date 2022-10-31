@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Expedientes
@@ -7,7 +7,10 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4">{{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
@@ -45,7 +48,7 @@
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 			<a href = "{% url 'nuevo_expediente' %}" type="button" class="btn btn-primary">Nuevo expediente</a>
 		</p>
 	</div>

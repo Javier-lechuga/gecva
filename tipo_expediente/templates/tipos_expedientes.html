@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Tipos de expedientes
@@ -11,58 +11,83 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4"><i class="fas fa-archive"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<table class="table table-hover" id="tablita">
-								<thead>
-									<tr align="center">
-										<th>#</th>
-										<th>Nombre</th>
-										<th>Siglas</th>
-										<th>Unidad</th>
-										<th>Estatus</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for tipo in tipos %}
-										<tr>
-											<td align="center" width="50">{{forloop.counter}}</td>
-											<td width="300">
-												<strong>
-													<a href = "{% url "editar_tipo_exp" pk=tipo.id %}" title="Consultar/Editar">{{tipo.nombre}}</a>
-												</strong>
-											</td>
-											<td align="center" width="50">{{tipo.siglas}}</td>
-											<td align="center" width="300">{{tipo.unidad}}</td>
-											<td align="center" width="50">
-												{% if tipo.activo %}
-													<p>Activo</p>
-												{% else %}
-													<p>Inactivo</p>
-												{% endif %}
-											</td>
-											<td width="50">
-												{% if tipo.activo == True %}
-													<a href = "javascript: if(confirm('Deseas eliminar {{tipo}}??')) window.location='{% url "eliminar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
-												{% endif %}
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-archive"></i>
+								<strong>
+                                	Tipos de expedientes
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Nombre</th>
+											<th>Siglas</th>
+											<th>Unidad</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Nombre</th>
+											<th>Siglas</th>
+											<th>Unidad</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for tipo in tipos %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td width="300">
+													<strong>
+														<a href = "{% url "editar_tipo_exp" pk=tipo.id %}" title="Consultar/Editar">{{tipo.nombre}}</a>
+													</strong>
+												</td>
+												<td align="center" width="50">{{tipo.siglas}}</td>
+												<td align="center" width="300">{{tipo.unidad}}</td>
+												<td align="center" width="50">
+													{% if tipo.activo %}
+														Activo
+													{% else %}
+														Inactivo
+													{% endif %}
+												</td>
+												<td width="50" align="center">
+													{% if tipo.activo == True %}
+														<a href = "javascript: if(confirm('Deseas eliminar {{tipo}}??')) window.location='{% url "eliminar_tipo_exp" pk=tipo.id %}'" type="button" class="btn btn-primary btn-sm" title="Desactivar"><i class="fas fa-remove"></i></a>
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
 					</article>
 				</section>
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 			<a href = "{% url 'nuevo_tipo_exp' %}" type="button" class="btn btn-primary">Nuevo tipo de expediente</a>
 		</p>
 	</div>

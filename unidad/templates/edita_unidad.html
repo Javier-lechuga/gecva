@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Unidad
 {% endblock titulo %}
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}: {{unidad.nombre}}</h1>
+		<h1 class="mt-4"><i class="far fa-building"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{unidad.nombre}}</li>
+        </ol>
 			<form method="POST">
 				{% csrf_token %}
 
@@ -58,7 +61,7 @@
 					{% endif %}
 					<br/>
 					<p align="center">
-						<a href = "/unidad/" type="button" class="btn btn-primary">Regresar</a>
+						<a href = "/unidad/" type="button" class="btn btn-secondary">Regresar</a>
 						<input type = "submit" class="btn btn-primary" value = "Guardar" />
 					</p>
 			</form>

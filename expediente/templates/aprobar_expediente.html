@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Expediente
 {% endblock titulo %}
@@ -9,16 +9,27 @@
             <div class="container">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<h1> {{etiqueta}}: {{expediente.identificador}}</h1>
+                            <h1 class="mt-4"><i class="fas fa-archive"></i> {{etiqueta}}</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">{{expediente.identificador}}</li>
+                            </ol>
 							<form method="POST" class="form-horizontal" id="forma" action="/expedientes/expediente_aprob">
 								
 								{% csrf_token %}
 
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
 
+                                {% if user_log.deputy %}
+                                    <div class="row">
+                                        <div class="alert alert-danger alert-dismissible fade show form-control" role="alert">
+                                            <strong>No se puede crear o modificar expedientes mientras el deputy esta activo!</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
                                 <fieldset>
-                                    <legend>Datos generales</legend>
+                                    <legend><strong>Datos generales</strong></legend>
                                     <div class="row">
                                         <div class="col-md-3">
                                             Identificador: 
@@ -85,7 +96,7 @@
                                 </fieldset>
                                 <br/>
                                 <fieldset id="campos">
-                                    <legend>Metadatos</legend>
+                                    <legend><strong>Metadatos</strong></legend>
                                     {% for metadato in metadatos %}
 
                                         <div class="col-md-12">
@@ -142,34 +153,34 @@
 								<br/>
                                 <input type="hidden" id="expediente" name="expediente" value="{{expediente.pk}}">
 								<p align="center">
-                                    {% if expediente.estatus.pk == 5 %}
+                                    <a href = "{% url 'exp_recibidos' %}" type="button" class="btn btn-secondary" id="regresar" name="regresar">Regresar</a>
+                                    {% if estado == "Aprobado" %}
                                     
-                                    {% elif expediente.estatus.pk == 6 %}
+                                    {% elif estado == "Rechazado" %}
                                         
                                     {% else %}
-                                        <input id="aprobar" name="aprobar" class="btn btn-primary" type="button" value="Aprobar" />
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rechazo">Rechazar</button>
+                                        {% if user_log.deputy == False %}
+                                            <input id="aprobar" name="aprobar" class="btn btn-primary" type="button" value="Aprobar" />
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#rechazo">Rechazar</button>
+                                        {% endif %}
                                     {% endif %}
-                                    <a href = "{% url 'exp_recibidos' %}" type="button" class="btn btn-primary" id="regresar" name="regresar">Regresar</a>
 								</p>
 							</form>
-						</div>
-						
 					</article>
 				</section>
             </div>
 		</section>
+        
+        
 
         <!-- Modal Motivo Rechazo-->
-        <div class="modal fade" id="rechazo" role="dialog" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg" role="document" >
-                <div class="modal-content">
+        <div class="modal fade" id="rechazo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
                     <form action="/expedientes/rechazar_exp" method="POST">
                         <div class="modal-header">
                             <h2 class="modal-tittle">Motivo de rechazo</h2>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             {% csrf_token %}
@@ -179,7 +190,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
                         </div>
                     </form>

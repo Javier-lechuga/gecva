@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 <!--Ya no se utiliá se cambió la funionalidad a nuevo_exp_completo-->
 {% block titulo %}
 	Expediente
@@ -11,7 +11,10 @@
 					<article class="post clearfix">
 						<div class="table-responsive">
 							
-							<h1> {{etiqueta}} Crear metadatos</h1>
+							<h1 class="mt-4">{{mensaje}}</h1>
+							<ol class="breadcrumb mb-4">
+								<li class="breadcrumb-item active">{{mensaje}}</li>
+							</ol>
 
 							{% if bandera %}
 							<form method="POST" class="form-horizontal" action="/expedientes/guarda_metadatos_exp" enctype="multipart/form-data">
@@ -56,7 +59,7 @@
 								</div>
 								<br/>
 								<p align="center">
-									<button class="btn btn-primary" onclick="goBack()">Regresar</button>
+									<button class="btn btn-secondary" onclick="goBack()">Regresar</button>
 									<input class="btn btn-primary" type = "submit" />
 								</p>
 							</form>

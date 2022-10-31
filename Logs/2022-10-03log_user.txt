@@ -1,0 +1,11 @@
+2022-10-03 10:28:03 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-03 10:28:12 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-03 10:28:45 Usuario María Sánchez Treviño Consulta Expedientes deputy
+2022-10-03 10:29:04 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-10-03 10:29:07 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-03 10:29:12 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-03 10:32:50 Usuario María Sánchez Treviño Consulta Expedientes
+2022-10-03 10:32:52 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-03 10:32:58 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI0000011
+2022-10-03 10:33:02 Usuario María Sánchez Treviño Consulta Expediente: RHHSEI00000010
+2022-10-03 10:33:20 Usuario María Sánchez Treviño Consulta Expediente: RHHPDV0000007

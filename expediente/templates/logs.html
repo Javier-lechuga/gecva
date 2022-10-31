@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Expedientes
@@ -11,7 +11,10 @@
 {% block content %}
 
 	<div class="container">
-		<!--<h1>{{mensaje}}</h1>-->
+		<h1 class="mt-4"><i class="fas fa-book-open"></i> Logs del sistema</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Logs</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
@@ -26,38 +29,63 @@
 							</li>
 						  </ul>
 						</br>
-						<div class="table-responsive">
-							<table id="tablita" class="table table-hover">
-								<thead>
-										<th align="center" width="50">#</th>
-                                        <th align="center">Fecha</th>
-										<th align="center">Hora</th>
-                                        <th align="center">Usuario</th>
-                                        <th align="center">Actividad</th>
-                                        <th align="center">Detalle</th>
-                                        <th align="center" width="50">Objeto</th>
-								</thead>
-								<tbody>
-									{% for registro in registros %}
-										<tr>
-											<td align="center" width="50">{{forloop.counter}}</td>
-                                            <td align="center" width="90">{{registro.fecha}}</td>
-											<td align="center" width="50">{{registro.hora}}</td>
-                                            <td>{{registro.usuario.first_name}} {{registro.usuario.last_name}} {{registro.usuario.amaterno}}</td>
-                                            <td width="200" align="center">{{registro.actividad}}</td>
-                                            <td width="200" align="center">{{registro.detalle_objeto}}</td>
-                                            <td width="200" align="center">{{registro.objeto}}</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+
+
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-book-open"></i>
+								<strong>
+                                	Log del sistema
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th align="center" width="50">#</th>
+											<th align="center">Fecha</th>
+											<th align="center">Hora</th>
+											<th align="center">Usuario</th>
+											<th align="center">Actividad</th>
+											<th align="center">Detalle</th>
+											<th align="center" width="50">Objeto</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th align="center" width="50">#</th>
+											<th align="center">Fecha</th>
+											<th align="center">Hora</th>
+											<th align="center">Usuario</th>
+											<th align="center">Actividad</th>
+											<th align="center">Detalle</th>
+											<th align="center" width="50">Objeto</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for registro in registros %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td align="center" width="90">{{registro.fecha}}</td>
+												<td align="center" width="50">{{registro.hora}}</td>
+												<td>{{registro.usuario.first_name}} {{registro.usuario.last_name}} {{registro.usuario.amaterno}}</td>
+												<td width="200" align="center">{{registro.actividad}}</td>
+												<td width="200" align="center">{{registro.detalle_objeto}}</td>
+												<td width="200" align="center">{{registro.objeto}}</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
 					</article>
 				</section>
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 		</p>
 	</div>
 

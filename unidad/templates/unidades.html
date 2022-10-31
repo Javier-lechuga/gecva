@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Unidades
@@ -11,60 +11,84 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4"><i class="far fa-building"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<table class="table table-hover" id="tablita">
-								<thead>
-									<tr align="center">
-										<th>#</th>
-										<th>Unidad</th>
-										<th>Siglas</th>
-										<th>Descripción</th>
-										<th>Estatus</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for unidad in unidades %}
-										<tr>
-											<td align="center" width="50">{{forloop.counter}}</td>
-											<td>
-												<strong>
-													<a href = "{% url "editar_unidad" pk=unidad.id %}" title="Consultar/Editar">{{unidad.nombre}}</a>
-												<strong>
-											</td>
-											<td align="center" width="50">
-												{{unidad.siglas}}
-											</td>
-											<td>{{unidad.descripcion}}</td>
-											<td align="center" width="50">
-												{% if unidad.activo == True %}
-													Activo
-												{% else %}
-													Inactiva
-												{% endif %}
-											</td>
-											<td width="90">
-												{% if unidad.activo == True %}
-												<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
-												{% endif %}
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="far fa-building"></i>
+								<strong>
+                                	Unidades
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Unidad</th>
+											<th>Siglas</th>
+											<th>Descripción</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Unidad</th>
+											<th>Siglas</th>
+											<th>Descripción</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for unidad in unidades %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td>
+													<strong>
+														<a href = "{% url "editar_unidad" pk=unidad.id %}" title="Consultar/Editar">{{unidad.nombre}}</a>
+													<strong>
+												</td>
+												<td align="center" width="50">
+													{{unidad.siglas}}
+												</td>
+												<td>{{unidad.descripcion}}</td>
+												<td align="center" width="50">
+													{% if unidad.activo == True %}
+														Activo
+													{% else %}
+														Inactiva
+													{% endif %}
+												</td>
+												<td width="90" align="center">
+													{% if unidad.activo == True %}
+													<a href = "javascript: if(confirm('Deseas eliminar {{unidad}}??')) window.location='{% url "eliminar_unidad" pk=unidad.id %}'" type="button" class="btn btn-primary btn-sm" title="Desactivar"><i class="fas fa-remove"></i></a>
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
 					</article>
 				</section>
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 			<a href = "{% url 'nueva_unidad' %}" type="button" class="btn btn-primary">Nueva unidad</a>
 		</p>
 	</div>

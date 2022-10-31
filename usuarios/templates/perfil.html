@@ -1,0 +1,80 @@
+{% extends "new_plant.html" %}
+{% block titulo %}
+	Usuario
+{% endblock titulo %}
+
+{% block content %}
+	<section class="main container">
+		<h1 class="mt-4"><i class="fa fa-user"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</li>
+        </ol>
+			<form method="POST">
+				{% csrf_token %}
+				
+					<div class="row">
+						<div class="col-md-4">
+							<strong>Nombre:</strong>
+							<input type="text" class="form-control" id="first_name" name="first_name" value="{{usuario.first_name}}" readonly/>
+						</div>
+						<div class="col-md-4">
+							<strong>Apellido paterno:</strong>
+							<input type="text" class="form-control" id="last_name" name="last_name" value="{{usuario.last_name}}" readonly/>
+						</div>
+						<div class="col-md-4">
+							<strong>Apellido materno:</strong>
+							<input type="text" class="form-control" id="amaterno" name="amaterno" value="{{usuario.amaterno}}" readonly/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8">
+							<strong>Unidad:</strong>
+                            <input type="text" class="form-control" id="unidad" name="unidad" value="{{usuario.unidad_user}}" readonly/>
+						</div>
+						<div class="col-md-2">
+							<strong>Teléfono:</strong>
+							<input type="text" class="form-control" id="telefono" name="telefono" value="{{usuario.telefono}}" readonly/>
+						</div>
+						<div class="col-md-2">
+							<strong>Extensión:</strong>
+							<input type="text" class="form-control" id="extension" name="extension" value="{{usuario.extension}}" readonly/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<strong>Jefe inmediato:</strong>
+                            <input type="text" class="form-control" id="jefe_inmediato" name="jefe_inmediato" value="{{usuario.jefe_inmediato}}" readonly/>
+						</div>
+						<div class="col-md-6">
+							<strong>Tipo de cuenta:</strong>
+                            <input type="text" class="form-control" id="rol" name="rol" value="{{usuario.rol}}" readonly/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<strong>Correo electrónico:</strong>
+							<input type="email" class="form-control" id="email" name="email" value="{{usuario.email}}" readonly/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<strong>Nombre de usuario:</strong>
+							<input type="text" class="form-control" id="username" name="username" value="{{usuario.username}}" readonly/>
+						</div>
+					</div>
+                    <br>
+
+                    <p align="center">
+					    <a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
+                    </p>
+			</form>
+	</section>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

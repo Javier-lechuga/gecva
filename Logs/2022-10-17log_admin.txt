@@ -1,0 +1,42 @@
+2022-10-17 11:59:13 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-17 11:59:34 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-17 11:59:36 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-17 11:59:50 Administrador Admin Admin Admin Crea: Tipo de Expediente: dsxczcxz
+2022-10-17 12:00:01 Administrador Admin Admin Admin Crea: Metadato: xczcxz
+2022-10-17 12:00:08 Administrador Admin Admin Admin Crea: Metadato: cxzcxzcz
+2022-10-17 12:00:14 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-17 12:00:26 Administrador Admin Admin Admin Edita: Tipo de Expediente: jkdjsaljdla
+2022-10-17 12:00:34 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-17 12:00:37 Administrador Admin Admin Admin Consulta Unidades
+2022-10-17 12:01:21 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-17 12:01:36 Administrador Admin Admin Admin Elimina Usuario: juanperez@hotmail.com
+2022-10-17 12:01:36 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-17 12:01:56 Luis Miguel Correa Rada Admin Admin Admin Transfiere expedientes  Al usuario: Maria
+2022-10-17 12:02:01 Administrador Admin Admin Admin Elimina Usuario: Maria
+2022-10-17 12:02:01 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-17 12:02:51 Administrador Admin Admin Admin Genera: Reporte por unidad: Recursos Humanos
+2022-10-17 14:10:42 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 15:47:03 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 15:47:21 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
+2022-10-17 15:47:23 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
+2022-10-17 15:47:26 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-17 15:47:28 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:07:45 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:10:55 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:11:15 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:13:11 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:15:46 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:20:04 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:21:22 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:21:34 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:23:56 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:24:23 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:26:14 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-17 16:26:15 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:26:34 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:27:34 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:28:01 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:29:01 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:32:11 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 16:55:09 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-17 17:07:28 Administrador Administrador Admin Admin Consulta Usuarios

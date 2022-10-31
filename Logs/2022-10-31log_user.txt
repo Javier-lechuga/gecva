@@ -1,0 +1,194 @@
+2022-10-31 11:32:45 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 11:58:48 Usuario Carmen Lopez Lopez Buscador Expedientes
+2022-10-31 11:58:50 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 11:58:54 Usuario Carmen Lopez Lopez Consulta Expediente: CONCXC0000004
+2022-10-31 11:58:57 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:07:54 Administrador Administrador Admin Admin Entra Sistema
+2022-10-31 12:15:54 Administrador Administrador Admin Admin Consulta Log administrador
+2022-10-31 12:16:04 Administrador Administrador Admin Admin Consulta Log usuarios
+2022-10-31 12:28:09 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:28:22 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:28:24 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-10-31 12:31:53 Usuario Janeth Lopez Perez Crea Expediente: ADQPPL0000001
+2022-10-31 12:31:53 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:32:03 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:32:22 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:32:23 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:32:26 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:32:42 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000001
+2022-10-31 12:32:59 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:33:47 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:34:04 Administrador Administrador Admin Admin Entra Sistema
+2022-10-31 12:34:51 Usuario Fernanda Fernandez Fernandez Entra Sistema
+2022-10-31 12:34:53 Usuario Fernanda Fernandez Fernandez Consulta Recibidos Expedientes
+2022-10-31 12:35:08 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:35:09 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:35:13 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:35:28 Usuario Carmen Lopez Lopez Aprueba Expediente: ADQPPL0000001
+2022-10-31 12:35:35 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:35:47 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:35:49 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:37:22 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:37:24 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:37:27 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:37:42 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:37:45 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:37:47 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:38:09 Usuario Karla Perez Perez Rechaza Expediente: ADQPPL0000001
+2022-10-31 12:38:12 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:38:25 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:38:26 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:38:30 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:38:42 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:39:06 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000001
+2022-10-31 12:39:10 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:41:45 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:41:47 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-10-31 12:42:05 Usuario Janeth Lopez Perez Crea Expediente: ADQPPL0000002
+2022-10-31 12:42:05 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:42:09 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:42:14 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000002
+2022-10-31 12:42:28 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:42:29 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:42:31 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:42:47 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:42:49 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:42:52 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:43:01 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:43:03 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:43:05 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:43:09 Usuario Carmen Lopez Lopez Rechaza Expediente: ADQPPL0000002
+2022-10-31 12:43:17 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:43:19 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:43:46 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-10-31 12:43:48 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:43:52 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:43:56 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-10-31 12:44:31 Usuario Janeth Lopez Perez Crea Expediente: ADQPPL0000003
+2022-10-31 12:44:31 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:44:34 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:44:40 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000003
+2022-10-31 12:44:48 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:44:49 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:44:51 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:44:53 Usuario Carmen Lopez Lopez Aprueba Expediente: ADQPPL0000003
+2022-10-31 12:45:01 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:45:04 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:45:06 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:45:09 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:45:23 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:45:25 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:45:28 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:45:36 Usuario Karla Perez Perez Rechaza Expediente: ADQPPL0000003
+2022-10-31 12:45:43 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:45:55 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:45:57 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:46:02 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:46:11 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:46:16 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:46:32 Usuario Janeth Lopez Perez Modifica Expediente: ADQPPL0000003
+2022-10-31 12:46:36 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:46:42 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:46:50 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000003
+2022-10-31 12:47:08 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:47:09 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:47:11 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:47:13 Usuario Karla Perez Perez Aprueba Expediente: ADQPPL0000003
+2022-10-31 12:47:16 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:47:25 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:47:27 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:47:29 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:47:33 Usuario Carmen Lopez Lopez Aprueba Expediente: ADQPPL0000003
+2022-10-31 12:47:36 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:47:47 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:47:49 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:47:54 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:48:28 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:48:55 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:48:57 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:49:00 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:49:10 Usuario Janeth Lopez Perez Modifica Expediente: ADQPPL0000002
+2022-10-31 12:49:12 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:49:14 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:49:20 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000002
+2022-10-31 12:49:23 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:49:35 Administrador Administrador Admin Admin Entra Sistema
+2022-10-31 12:49:53 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:49:54 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:49:57 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:50:05 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:50:07 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:50:09 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000003
+2022-10-31 12:50:17 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:50:20 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:50:35 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:50:37 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:50:39 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:50:42 Usuario Karla Perez Perez Aprueba Expediente: ADQPPL0000002
+2022-10-31 12:50:50 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:50:52 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:50:54 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:50:56 Usuario Carmen Lopez Lopez Aprueba Expediente: ADQPPL0000002
+2022-10-31 12:51:05 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:51:07 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:51:09 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:51:25 Usuario Fernanda Fernandez Fernandez Entra Sistema
+2022-10-31 12:51:27 Usuario Fernanda Fernandez Fernandez Consulta Recibidos Expedientes
+2022-10-31 12:51:30 Usuario Fernanda Fernandez Fernandez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:51:53 Usuario Fernanda Fernandez Fernandez Rechaza Expediente: ADQPPL0000002
+2022-10-31 12:51:56 Usuario Fernanda Fernandez Fernandez Consulta Recibidos Expedientes
+2022-10-31 12:52:11 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:52:13 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:52:37 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:53:17 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:53:19 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:53:25 Usuario Janeth Lopez Perez Modifica Expediente: ADQPPL0000002
+2022-10-31 12:53:27 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:53:29 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:53:34 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000002
+2022-10-31 12:53:47 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 12:53:48 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 12:53:50 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:53:52 Usuario Karla Perez Perez Aprueba Expediente: ADQPPL0000002
+2022-10-31 12:54:01 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 12:54:03 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 12:54:06 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:54:09 Usuario Carmen Lopez Lopez Aprueba Expediente: ADQPPL0000002
+2022-10-31 12:54:19 Usuario Fernanda Fernandez Fernandez Entra Sistema
+2022-10-31 12:54:21 Usuario Fernanda Fernandez Fernandez Consulta Recibidos Expedientes
+2022-10-31 12:54:22 Usuario Fernanda Fernandez Fernandez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:54:25 Usuario Fernanda Fernandez Fernandez Aprueba Expediente: ADQPPL0000002
+2022-10-31 12:54:36 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 12:54:37 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:54:47 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:54:52 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 12:57:12 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000002
+2022-10-31 12:57:25 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 13:30:56 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 13:30:59 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 13:31:02 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-10-31 13:31:29 Usuario Janeth Lopez Perez Crea Expediente: ADQPPL0000004
+2022-10-31 13:31:29 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 13:31:32 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000004
+2022-10-31 13:31:38 Usuario Janeth Lopez Perez Asigna Expediente: ADQPPL0000004
+2022-10-31 13:31:50 Usuario Carmen Lopez Lopez Entra Sistema
+2022-10-31 13:31:52 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 13:31:55 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000004
+2022-10-31 13:33:17 Usuario Carmen Lopez Lopez Aprueba Expediente: ADQPPL0000004
+2022-10-31 13:33:25 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 13:33:28 Usuario Carmen Lopez Lopez Consulta Expediente: ADQPPL0000004
+2022-10-31 13:33:36 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-10-31 13:33:57 Usuario Karla Perez Perez Entra Sistema
+2022-10-31 13:33:58 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 13:34:00 Usuario Karla Perez Perez Consulta Expediente: ADQPPL0000004
+2022-10-31 13:34:03 Usuario Karla Perez Perez Aprueba Expediente: ADQPPL0000004
+2022-10-31 13:34:10 Usuario Karla Perez Perez Consulta Recibidos Expedientes
+2022-10-31 13:34:21 Usuario Fernanda Fernandez Fernandez Entra Sistema
+2022-10-31 13:34:23 Usuario Fernanda Fernandez Fernandez Consulta Recibidos Expedientes
+2022-10-31 13:34:25 Usuario Fernanda Fernandez Fernandez Consulta Expediente: ADQPPL0000004
+2022-10-31 13:34:29 Usuario Fernanda Fernandez Fernandez Aprueba Expediente: ADQPPL0000004
+2022-10-31 13:34:39 Usuario Janeth Lopez Perez Entra Sistema
+2022-10-31 13:34:41 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 13:34:45 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000004
+2022-10-31 13:38:06 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-10-31 13:38:07 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000004

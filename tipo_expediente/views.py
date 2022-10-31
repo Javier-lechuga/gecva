@@ -51,7 +51,7 @@ def NuevoTipoExp(request):
     else:
         form = TipoExpForm()
     unidades = Unidad.objects.all()
-    return render(request, 'nuevo_tipo_exp.html', {'form': form, 'nuevo': 'Nuevo','user_log':user_log, 'unidades': unidades})
+    return render(request, 'nuevo_tipo_exp.html', {'form': form, 'nuevo': 'Nuevo','user_log':user_log, 'unidades': unidades, 'mensaje':'Nuevo tipo de expediente'})
 
 
 # @login_required(redirect_field_name='login')

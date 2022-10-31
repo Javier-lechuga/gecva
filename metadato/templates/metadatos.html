@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Metadatos
@@ -11,37 +11,70 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}: {{tipo.nombre}}</h1>
+		<h1 class="mt-4"><i class="fas fa-archive"></i> Agregar metadatos</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{tipo.nombre}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<table class="table table-hover" id="tablita">
-								<thead>
-									<tr align="center">
-										<th>#</th>
-										<th>Nombre</th>
-										<th>Descripción</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for metadato in metadatos %}
-										<tr>
-											<td>{{forloop.counter}}</td>
-											<td>{{metadato.nombre}}</td>
-											<td>{{metadato.descripcion}}</td>
-											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{metadato}}??')) window.location='{% url "editar_metadato" pk=metadato.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{metadato}}??')) window.location='{% url "eliminar_metadato" pk=metadato.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-archive"></i>
+								<strong>
+                                	Metadatos
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Tipo</th>
+											<th>Nombre</th>
+											<th>Descripción</th>
+											<th>Obligatorio</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Tipo</th>
+											<th>Nombre</th>
+											<th>Descripción</th>
+											<th>Obligatorio</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for metadato in metadatos %}
+											<tr>
+												<td>{{forloop.counter}}</td>
+												<td>{{metadato.tipo_dato}}</td>
+												<td>{{metadato.nombre}}</td>
+												<td>{{metadato.descripcion}}</td>
+												<td>
+													{% if metadato.obligatorio == True %}
+														Si
+													{% else %}
+														No
+													{% endif %}
+												</td>
+												<td>
+													<a href = "javascript: if(confirm('Deseas editar {{metadato}}??')) window.location='{% url "editar_metadato" pk=metadato.id %}'" type="button" class="btn btn-primary btn-sm" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+													<a href = "javascript: if(confirm('Deseas eliminar {{metadato}}??')) window.location='{% url "eliminar_metadato" pk=metadato.id %}'" type="button" class="btn btn-primary btn-sm" title="Desactivar"><i class="fas fa-remove"></i></a>
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
 					</article>
 				</section>
 			</div>

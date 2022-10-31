@@ -12,10 +12,11 @@
 
 # -*- coding: utf-8 -*-
 from ensurepip import version
+from pydoc import apropos
 from django.shortcuts import render
 from estatus.models import Estatus
 import expediente
-from expediente.models import Expediente_deputy
+from expediente.models import Expediente_deputy, Expediente_transferido
 from expediente.forms import ExpedienteForm
 from django.contrib.auth.decorators import permission_required, login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -90,7 +91,8 @@ def BuscaMetadatosExp(request):
 def VerExpediente(request, pk): # para mostrar el expediente
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     usuarios = PerfilUser()
-    usuarios = PerfilUser.objects.all().exclude(is_active=False, rol=3).order_by('pk')
+    usuarios = PerfilUser.objects.filter(unidad_user=user_log.unidad_user.pk, rol=3).exclude(is_active=False, pk=user_log.pk).order_by('pk')
+    #usuarios = PerfilUser.objects.all().exclude(is_active=False, rol=3).order_by('pk')
     expediente = Expediente.objects.get(pk=pk)
     registro_log_user(user_log,"Consulta",expediente,"Expediente","Usuario")
     # now = datetime.datetime.now()
@@ -106,6 +108,11 @@ def VerExpediente(request, pk): # para mostrar el expediente
 
 
     contiene_arhivos = expediente_tine_archivos(metadatos)
+
+    if expediente.usuario_crea == user_log:
+        bandera = True
+    else:
+        bandera = False
 
     #full_url = ''.join(['http://', get_current_site(request).domain, obj.get_absolute_url()])
     #url_archivo = get_current_site(request) 
@@ -127,7 +134,8 @@ def VerExpediente(request, pk): # para mostrar el expediente
                   'etiqueta': 'Detalle expediente',
                   'seleccionados': seleccionados,
                   'contiene_arhivos' : contiene_arhivos,
-                  'user_log' : user_log
+                  'user_log' : user_log,
+                  'bandera': bandera
                   })
 
 # @login_required(redirect_field_name='login')
@@ -159,36 +167,78 @@ def ConsultaExpediente(request, pk): # para mostrar el expediente
 def AprobarExp(request, pk):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     expediente = Expediente.objects.get(pk=pk)
+    registro = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
+    if registro.id_estatus.pk == 5:
+        estado = "Aprobado"
+    elif registro.id_estatus.pk == 6:
+        estado = "Rechazado"
+    else:
+        estado = "Enviado"
     registro_log_user(user_log,"Consulta",expediente,"Expediente","Usuario")
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
-    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log})
+    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
 
 # @login_required(redirect_field_name='login')
 def ExpAprobado(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
+    unidad = Unidad.objects.get(pk=user_log.unidad_user.pk)
     estatus = Estatus()
     estatus = Estatus.objects.get(nombre="Aprobado")
     expediente = Expediente.objects.get(pk=request.POST['expediente'])
     metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
-    valor = Expediente_aprobador.objects.filter(id_expediente=expediente.pk, id_usuario=user_log.pk)
-    Expediente_aprobador.objects.filter(pk=valor.pk).update(id_estatus=estatus.pk)
-    #Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus)
-    #Expediente_aprobador.objects.filter(pk=expediente.pk, id_usuario=user_log.pk).update(id_estatus=estatus)
-    for metadato in metadatos:
-        Metadato.objects.filter(pk=metadato.pk).update(estatus=estatus)
-    metas = Metadato.objects.filter(expediente=expediente.pk)
-    contador = 0
-    for meta in metas:
-        if meta.estatus.nombre != "Aprobado":
-            break
-        else:
-            contador += 1
-    if contador == len(metas):
-        print("El archivo ya se aprobó por todos ya puede pasar al jefe de unidad")
-        #Agregar aqui la funcionalidad para enviar el expediente aprobado al jefe de unidad
+    valor = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
+    Expediente_aprobador.objects.filter(pk=valor.pk).update(id_estatus=estatus)
+    # Rol Revisor
+    if user_log.rol.pk == 3:
+        
+        for metadato in metadatos:
+            Metadato.objects.filter(pk=metadato.pk).update(estatus=estatus)
 
+        # Se obtiene la cantidad de solicitudes de aprobacion del expediente 
+        metas = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
+        
+        # Se obtienen las solicitudes aprobadas
+        aprobados = Expediente_aprobador.objects.filter(id_expediente=expediente.pk, id_estatus=5, activo=True)
+        reg_exp = Expediente_aprobador.objects.filter(id_expediente=expediente.pk).exclude(id_estatus=3)
+
+        if len(metas) == len(aprobados):
+            print("El archivo ya se aprobó por todos ya puede pasar al jefe de unidad")
+            estatus_dos = Estatus()
+            estatus_dos = Estatus.objects.get(nombre="Enviado")
+            aprobador = PerfilUser()
+            aprobador = PerfilUser.objects.get(pk=unidad.jefe_unidad.pk)
+            exp_aprobador = Expediente_aprobador.objects.create(
+                id_expediente = expediente,
+                id_usuario = aprobador,
+                id_estatus = estatus_dos,
+                activo = True,
+            )
+            exp_aprobador.save()
+
+        # if len(metas) == len(reg_exp):
+        #     print("Checado pero no aprobado al 100%")
+        #     estatus_tres = Estatus()
+        #     estatus_tres = Estatus.objects.get(nombre="Aprobado")
+        #     Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus_tres)
+
+    # Rol Aprobador
+    elif user_log.rol.pk == 2:
+
+        estatus_dos = Estatus()
+        estatus_dos = Estatus.objects.get(nombre="Aprobado")
+        Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus_dos)
+        Expediente_aprobador.objects.filter(pk=valor.pk).update(activo=False, id_estatus=estatus_dos)
+
+    registro = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
+    if registro.id_estatus.pk == 5:
+        estado = "Aprobado"
+    elif registro.id_estatus.pk == 6:
+        estado = "Rechazado"
+    else:
+        estado = "Enviado"
     registro_log_user(user_log,"Aprueba",expediente,"Expediente","Usuario")
-    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log})
+    expediente = Expediente.objects.get(pk=request.POST['expediente'])
+    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
 
 # @login_required(redirect_field_name='login')
 def RechazarExp(request):
@@ -198,16 +248,52 @@ def RechazarExp(request):
     estatus = Estatus()
     estatus = Estatus.objects.get(nombre="Rechazado")
     valor = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
-    Expediente_aprobador.objects.filter(pk=valor.pk).update(id_estatus=estatus.pk)
-    Expediente_aprobador.objects.filter(pk=valor.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
-    registro_log_user(user_log,"Rechaza",expediente,"Expediente","Usuario")
-    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log})
+    if user_log.rol.pk == 3:
+        Expediente_aprobador.objects.filter(pk=valor.pk).update(id_estatus=estatus.pk)
+        Expediente_aprobador.objects.filter(pk=valor.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
+        registro = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
+        Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus.pk)
+
+        # Se obtiene la cantidad de solicitudes de aprobacion del expediente 
+        metas = Expediente_aprobador.objects.filter(id_expediente=expediente.pk, activo=True)
+        
+        # Se obtienen las solicitudes rechazadas
+        rechazados = Expediente_aprobador.objects.filter(id_expediente=expediente.pk, id_estatus=6)
+        if len(metas) == len(rechazados):
+            print("El archivo cancelado por todos, ya se puede cancelar el expediente")
+            estatus_tres = Estatus()
+            estatus_tres = Estatus.objects.get(nombre="Rechazado")
+            Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus_tres)
+
+        if registro.id_estatus.pk == 5:
+            estado = "Aprobado"
+        elif registro.id_estatus.pk == 6:
+            estado = "Rechazado"
+        else:
+            estado = "Enviado"
+        registro_log_user(user_log,"Rechaza",expediente,"Expediente","Usuario")
+        expediente = Expediente.objects.get(pk=request.POST['expediente'])
+        return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
+    elif user_log.rol.pk == 2:
+        Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus.pk)
+        Expediente.objects.filter(pk=expediente.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
+        registro = Expediente.objects.get(pk=expediente.pk)
+        if registro.estatus.pk == 5:
+            estado = "Aprobado"
+        elif registro.estatus.pk == 6:
+            estado = "Rechazado"
+        else:
+            estado = "Enviado"
+        registro_log_user(user_log,"Rechaza",expediente,"Expediente","Usuario")
+        expediente = Expediente.objects.get(pk=request.POST['expediente'])
+        return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
+    
 
 # @login_required(redirect_field_name='login')
 def ExpRecibidos(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     registro_log_user(user_log,"Consulta Recibidos",None,"Expedientes","Usuario")
-    ids_users = Expediente_aprobador.objects.filter(id_usuario=user_log.pk)
+    ids_users = Expediente_aprobador.objects.filter(id_usuario=user_log.pk).order_by("-pk")
     recibidos = []
     for id_usr in ids_users:
         recibidos.append(id_usr)
@@ -216,16 +302,19 @@ def ExpRecibidos(request):
 # @login_required(redirect_field_name='login')
 def AsignaExpediente(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
+    # return HttpResponse(request.POST.items())
     if request.method == "POST":
         usuarios = User.objects.all().order_by('pk')
         expediente = Expediente()
         expediente = Expediente.objects.get(pk=request.POST['expediente'])
         registro_log_user(user_log,"Asigna",expediente,"Expediente","Usuario")
-        Expediente.objects.filter(pk=expediente.pk).update(estatus=3)
+        #Expediente.objects.filter(pk=expediente.pk).update(estatus=3)
         metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
         ids_usuarios_sel = request.POST['users'].split(",")
         estatus = Estatus()
-        estatus = Estatus.objects.get(pk=3)
+        estatus = Estatus.objects.get(pk=7)
+        Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus)
+        expediente = Expediente.objects.get(pk=request.POST['expediente'])
         seleccionados = []
         for usuario in ids_usuarios_sel:
             # print(usuario)
@@ -236,6 +325,7 @@ def AsignaExpediente(request):
                 id_expediente = expediente,
                 id_usuario = usr,
                 id_estatus = estatus,
+                activo = True,
             )
             exp_aprobador.save()
         va = Expediente_aprobador()
@@ -243,7 +333,7 @@ def AsignaExpediente(request):
         for v in va:
             seleccionados.append(v)
         # return HttpResponse(request.POST.items())
-        return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados, 'user_log': user_log})
+        return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados, 'user_log': user_log, 'bandera':True})
 
 # @login_required(redirect_field_name='login')
 def NuevoExpCompleto(request):
@@ -304,6 +394,9 @@ def NuevoExpCompleto(request):
         else:
             identif = user_log.unidad_user.siglas + tipo_expediente_exp.siglas + str(id_nuevo)
         print(identif)
+        # for val in request.POST.items():
+        #     print(val)
+        # return HttpResponse(request.POST.items())
         expediente = Expediente.objects.create(
             identificador = identif,
             nombre = request.POST.get('nombre',''),
@@ -327,7 +420,7 @@ def NuevoExpCompleto(request):
         metas = []
         for variable in request.POST.items():
             vars.append(variable)
-        for otro in vars[8:]:
+        for otro in vars[7:]:
             metas.append(otro)
             tipo = otro[0]
         for valor in metas:
@@ -438,6 +531,9 @@ def ModificaExpCompleto(request):
                     Metadato.objects.filter(pk=otro[0], expediente=exp).update(estatus=estatus_expediente)
 
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
+            registros = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
+            for registro in registros:
+                Expediente_aprobador.objects.get(pk=registro.pk).delete()
             registro_log_user(user_log,"Modifica",expediente,"Expediente","Usuario")
             metadatos  = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
             return render(request, 'detalle_expediente.html', {'expediente': expediente,'metadatos': metadatos, 'mensaje': 'Detalle expediente','user_log':user_log})
@@ -505,8 +601,9 @@ def ListarMisExpedientes(request):
     registro_log_user(user_log,"Consulta",None,"Expedientes","Usuario")
     user = get_user(request)
     user = request.user
-    usuarios = PerfilUser.objects.all().exclude(pk=user_log.pk)
-    expedientes = Expediente.objects.filter(usuario_crea=user).exclude(activo=False).order_by('-fecha_creacion')
+    usuarios = PerfilUser.objects.filter(unidad_user=user_log.unidad_user).exclude(pk=user_log.pk)
+    #usuarios = PerfilUser.objects.all().exclude(pk=user_log.pk)
+    expedientes = Expediente.objects.filter(usuario_crea=user, unidad=user_log.unidad_user.pk).exclude(activo=False).order_by('-fecha_creacion')
     return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Mis expedientes','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
@@ -711,8 +808,9 @@ def NuevoExpediente(request):
 def BuscaExpedientes(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     registro_log_user(user_log,"Buscador",None,"Expedientes","Usuario")
-    expedientes = Expediente.objects.all().order_by("-fecha_creacion")
-    #expedientes = Expediente.objects.all().exclude(estatus = 1)
+    #expedientes = Expediente.objects.all().order_by("-fecha_creacion")
+    expedientes = Expediente.objects.filter(unidad=user_log.unidad_user.pk).exclude(estatus=1).order_by("-fecha_creacion")
+    # expedientes = Expediente.objects.all().exclude(estatus=1).order_by("-fecha_creacion")
     return render(request, 'busca_expedientes.html', {'expedientes': expedientes, 'mensaje': 'Búsqueda de expedientes','user_log':user_log})
 
 # @login_required(redirect_field_name='login')
@@ -737,6 +835,13 @@ def LogAdministrador(request):
     registro_log_user(user_log,"Consulta",None,"Log administrador","Administrador")
     registros = Registra_actividad.objects.all().exclude(rol="Usuario").order_by("-pk")
     return render(request, 'logs.html', {'registros': registros, 'mensaje': 'Log usuarios','user_log':user_log})
+
+# @login_required(redirect_field_name='login')
+def UsuarioLog(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    registro_log_user(user_log,"Consulta",None,"Log personal","Usuario")
+    registros = Registra_actividad.objects.filter(usuario=user_log.pk).order_by("-fecha")
+    return render(request, 'log_user.html', {'registros': registros, 'mensaje': 'Log personal','user_log':user_log})
 
 def registro_log_user(usuario,actividad,objeto,detalle_objeto,rol):
     
@@ -833,13 +938,112 @@ def Deputy(request):
         #         )
         #         deputy.save()
 
-        PerfilUser.objects.filter(pk=usuario_origen.pk).update(transferido=True)
-        PerfilUser.objects.filter(pk=usuario_destino.pk).update(deputy=True)
-        registro_log_admin(user_log,"Transfiere expedientes",usuario," Al usuario",usuario_destino.first_name + " " + usuario_destino.last_name + " " + usuario_destino.amaterno)
+        #PerfilUser.objects.filter(pk=usuario_origen.pk).update(transferido=True)
+        PerfilUser.objects.filter(pk=usuario_destino.pk).update(es_deputy=True)
+        PerfilUser.objects.filter(pk=usuario_origen.pk).update(deputy=True)
+        PerfilUser.objects.filter(pk=usuario_origen.pk).update(usuario_deputy=usuario_destino)
+        user_log = PerfilUser.objects.get(pk=request.user.pk)
+        registro_log_admin(user_log,"Asigna deputy",usuario," Al usuario",usuario_destino.first_name + " " + usuario_destino.last_name + " " + usuario_destino.amaterno)
         # return HttpResponse(request.POST.items())
         return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Mis expedientes','user_log':user_log})
     except ObjectDoesNotExist:
         return redirect('principal')
+
+# @login_required(redirect_field_name='login')
+def CancelaDeputy(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    try:
+        usuarios = PerfilUser.objects.all().exclude(pk=user_log.pk)
+        expedientes_a_remover = Expediente_deputy.objects.filter(usuario_crea=user_log.pk)
+        expedientes = Expediente.objects.filter(usuario_crea=user_log.pk)
+        
+        #return HttpResponse(request.POST.items())
+        for remover in expedientes_a_remover:
+            Expediente_deputy.objects.filter(pk=remover.pk).delete()
+            #PerfilUser.objects.filter(pk=remover.deputy).update(transferido=False)
+        #PerfilUser.objects.filter(pk=usuario_origen.pk).update(transferido=True)
+        PerfilUser.objects.filter(pk=user_log.pk).update(usuario_deputy='')
+        PerfilUser.objects.filter(pk=user_log.pk).update(deputy=False)
+        PerfilUser.objects.filter(pk=user_log.usuario_deputy.pk).update(es_deputy=False)
+        registro_log_admin(user_log,"Termina deputy",user_log," del usuario",'')
+        # return HttpResponse(request.POST.items())
+        user_log = PerfilUser.objects.get(pk=request.user.pk)
+        return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Mis expedientes','user_log':user_log})
+    except ObjectDoesNotExist:
+        return redirect('principal')
+
+# @login_required(redirect_field_name='login')
+def TransferirUsuarios(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    usuarios = PerfilUser.objects.filter(is_active=True, unidad_user=user_log.unidad_user).exclude(pk=user_log.pk)
+    #usuarios = PerfilUser.objects.all().exclude(pk=user_log.pk)
+    expedientes = Expediente.objects.filter(usuario_crea=user_log)
+    
+    #return HttpResponse(request.POST.items())
+    registro_log_user(user_log,"Consulta usuarios ",None," para transferir expedientes",'')
+    return render(request, 'transferir_usuarios.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Seleccionar usuario','user_log':user_log})
+
+# @login_required(redirect_field_name='login')
+def TransferirExpedientes(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    usuarios = PerfilUser.objects.filter(is_active=True).exclude(pk=user_log.pk)
+    usuario_destino = PerfilUser.objects.get(pk=request.POST['usuario_destino'])
+    expedientes = Expediente.objects.filter(usuario_crea=user_log)
+
+    ids_exp_sel = request.POST['expedientes'].split(",")
+    for exp in ids_exp_sel:
+        expediente = Expediente.objects.get(pk=exp)
+        transferido = Expediente_transferido.objects.create(
+            expediente = expediente,
+            usuario_crea = expediente.usuario_crea,
+            usuario_asignado = usuario_destino,
+            activo = True,
+        )
+        Expediente.objects.filter(pk=expediente.pk).update(usuario_anterior=expediente.usuario_crea)
+        Expediente.objects.filter(pk=expediente.pk).update(usuario_crea=usuario_destino)
+        registro_log_user(user_log,"Transfiere ",expediente," expediente a",usuario_destino.first_name + " " + usuario_destino.last_name + " " + usuario_destino.amaterno)
+        transferido.save()
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    anuncio = "Expediente(s) transferido(s) correctamente"
+    #return HttpResponse(request.POST.items())
+    return render(request, 'transferir_usuarios.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Seleccionar usuario','user_log':user_log, 'anuncio': anuncio})
+
+# @login_required(redirect_field_name='login')
+def RegresarExpediente(request,pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    usuarios = PerfilUser.objects.filter(is_active=True).exclude(pk=user_log.pk)
+    expedientes = Expediente.objects.filter(usuario_crea=user_log)
+
+    expediente = Expediente.objects.get(pk=pk)
+    usuario_destino = expediente.usuario_anterior
+    
+    Expediente.objects.filter(pk=expediente.pk).update(usuario_anterior=None)
+    Expediente.objects.filter(pk=expediente.pk).update(usuario_crea=usuario_destino)
+    Expediente_transferido.objects.filter(expediente=expediente, usuario_asignado=user_log, activo=True).update(activo=False)
+    registro_log_user(user_log,"Regresa ",expediente," expediente a",usuario_destino.first_name + " " + usuario_destino.last_name + " " + usuario_destino.amaterno)
+
+    anuncio = "Expediente regresado correctamente"
+    #return HttpResponse(request.POST.items())
+    return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Mis expedientes','user_log':user_log, 'anuncio': anuncio})
+
+# @login_required(redirect_field_name='login')
+def AceptarExpediente(request,pk):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    usuarios = PerfilUser.objects.filter(is_active=True).exclude(pk=user_log.pk)
+    expedientes = Expediente.objects.filter(usuario_crea=user_log).exclude(activo=False).order_by('-fecha_creacion')
+
+    expediente = Expediente.objects.get(pk=pk)
+    #usuario_destino = expediente.usuario_anterior
+    
+    Expediente.objects.filter(pk=expediente.pk).update(usuario_anterior=None)
+    # Expediente.objects.filter(pk=expediente.pk).update(usuario_crea=usuario_destino)
+    Expediente_transferido.objects.filter(expediente=expediente, usuario_crea=expediente.usuario_anterior, activo=True).update(activo=False)
+    anterior = PerfilUser.objects.get(pk=expediente.usuario_anterior)
+    registro_log_user(user_log,"Acepta ",expediente," expediente del usuario",anterior.first_name + " " + anterior.last_name + " " + anterior.amaterno)
+
+    anuncio = "Expediente aceptado"
+    #return HttpResponse(request.POST.items())
+    return render(request, 'mis_expedientes.html', {'expedientes': expedientes, 'usuarios': usuarios ,'mensaje': 'Mis expedientes','user_log':user_log, 'anuncio': anuncio})
 
 from io import BytesIO
 from reportlab.pdfgen import canvas
@@ -860,7 +1064,23 @@ def ReporteUsuario(request,pk):
     usuario = PerfilUser()
     usuario = PerfilUser.objects.get(pk=pk)
 
-    registro_log_admin(user_log,"Genera",usuario,"Reporte usuario","Administrador")
+    expedientes = Expediente()
+    expedientes = Expediente.objects.filter(usuario_crea=usuario.pk)
+    total_expedientes = len(expedientes)
+
+    #Ver como dividir la lista en ciertos elementos
+    lista_buena = particionar_lista(expedientes, 3)
+
+    #Eliminamos listas vacias
+    for x in range(len(lista_buena)-1,-1,-1):
+        if lista_buena[x]:
+            print("")
+        else:
+            #print("No tiene datos")
+            lista_buena.pop(x)
+
+    #Obtenemos el numero de listas de la lista
+    total_listas = len(lista_buena)
 
     myDate = datetime.datetime.now()
     fecha_formateada = myDate.strftime("%d-%m-%Y")
@@ -872,74 +1092,76 @@ def ReporteUsuario(request,pk):
     # Create the PDF object. using the BytesIO object as its "file"
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
-    
-    # Header
-    logo = ImageReader('static\imagenes\solusoft.png')
-    c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
-
-    c.setLineWidth(.3)
-    c.setFont('Helvetica', 16)
-    c.drawString(150,725,'REPORTE DE ACTIVIDAD DEL USUARIO:')
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(30,700,usuario.first_name + " " + usuario.last_name + " " + usuario.amaterno)
-
-    c.setFont('Helvetica', 9)
-    c.drawString(470,800,'Fecha: ' + fecha_formateada)
-    #c.line(460,725,560,725)
-
-    # Table header
-    styles = getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    id = Paragraph('''#''', styleBH)
-    fecha_creacion = Paragraph('''FECHA CREACIÓN''', styleBH)
-    identificador = Paragraph('''IDENTIFICADOR''', styleBH)
-    nombre = Paragraph('''NOMBRE''', styleBH)
-    estatus = Paragraph('''ESTATUS''', styleBH)
-    
-
-    styles = getSampleStyleSheet()
-    styleN = styles["BodyText"]
-    styleN.alignment = TA_CENTER
-    styleN.fontSize = 7
-
-    width, height = A4
-    high = 675
-
-
-    expedientes = Expediente()
-    expedientes = Expediente.objects.filter(usuario_crea=usuario.pk)
-    total_expedientes = len(expedientes)
-
     index = 0
-    otro = []
-    otro.append([id, fecha_creacion, identificador, estatus, nombre])
-    for expediente in expedientes:
-        index += 1
-        fecha = expediente.fecha_creacion
-        fecha_crea = fecha.strftime("%d-%m-%Y a %H:%m hrs.")
-        otro.append([index, fecha_crea, expediente.identificador, expediente.estatus.nombre, expediente.nombre])
-        high = high - 18
+    pagina_actual = 0
 
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(400,700,"Total de expedientes: " + str(total_expedientes))
-
-    # Table size
-    table = Table(otro, colWidths=[0.9 * inch, 1.6 * inch, 1.5 * inch, 0.9 * inch, 2.5 * inch])
-    table.setStyle(TableStyle([ # Estilos de la tabla
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-        ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-    ]))
+    for lista in lista_buena:
     
-    # PDF size
-    table.wrapOn(c, width, height)
-    table.drawOn(c, 30, high)
-    #c.showPage()
-    # c.showPage() # save page
+        # Header
+        logo = ImageReader('static\imagenes\solusoft.png')
+        c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
 
+        c.setLineWidth(.3)
+        c.setFont('Helvetica', 16)
+        c.drawString(150,725,'REPORTE DE ACTIVIDAD DEL USUARIO:')
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(30,700,usuario.first_name + " " + usuario.last_name + " " + usuario.amaterno)
+
+        c.setFont('Helvetica', 9)
+        c.drawString(470,800,'Fecha: ' + fecha_formateada)
+        #c.line(460,725,560,725)
+
+        pagina_actual+=1
+        c.setFont('Helvetica', 9)
+        c.drawString(480,30,'Página ' + str(pagina_actual) +' de ' + str(total_listas))
+
+        # Table header
+        styles = getSampleStyleSheet()
+        styleBH = styles["Normal"]
+        styleBH.alignment = TA_CENTER
+        styleBH.fontSize = 10
+
+        id = Paragraph('''#''', styleBH)
+        fecha_creacion = Paragraph('''FECHA CREACIÓN''', styleBH)
+        identificador = Paragraph('''IDENTIFICADOR''', styleBH)
+        nombre = Paragraph('''NOMBRE''', styleBH)
+        estatus = Paragraph('''ESTATUS''', styleBH)
+        
+        styles = getSampleStyleSheet()
+        styleN = styles["BodyText"]
+        styleN.alignment = TA_CENTER
+        styleN.fontSize = 7
+
+        width, height = A4
+        high = 675
+
+        otro = []
+        otro.append([id, fecha_creacion, identificador, estatus, nombre])
+        for expediente in lista:
+            index += 1
+            fecha = expediente.fecha_creacion
+            fecha_crea = fecha.strftime("%d-%m-%Y a %H:%m hrs.")
+            otro.append([index, fecha_crea, expediente.identificador, expediente.estatus.nombre, expediente.nombre])
+            high = high - 18
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(400,700,"Total de expedientes: " + str(total_expedientes))
+
+        # Table size
+        table = Table(otro, colWidths=[0.9 * inch, 1.6 * inch, 1.5 * inch, 0.9 * inch, 2.5 * inch])
+        table.setStyle(TableStyle([ # Estilos de la tabla
+            ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+            ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+        ]))
+        
+        # PDF size
+        table.wrapOn(c, width, height)
+        table.drawOn(c, 30, high)
+        c.showPage()
+        # c.showPage() # save page
+
+    registro_log_admin(user_log,"Genera",usuario,"Reporte por usuario","Administrador")
     # save PDF
     c.save()
     
@@ -954,12 +1176,27 @@ def ReporteUsuario(request,pk):
 def ReporteUnidad(request,pk):
 
     user_log = PerfilUser.objects.get(pk=request.user.pk)
-    # registro_log_user(user_log,"Genera",expediente,"Reporte","Usuario")
-
+    
     unidad = Unidad()
     unidad = Unidad.objects.get(pk=pk)
 
-    registro_log_admin(user_log,"Genera",unidad,"Reporte unidad","Administrador")
+    expedientes = Expediente()
+    expedientes = Expediente.objects.filter(unidad=unidad.pk)
+    total_expedientes = len(expedientes)
+
+    #Ver como dividir la lista en ciertos elementos
+    lista_buena = particionar_lista(expedientes, 3)
+
+    #Eliminamos listas vacias
+    for x in range(len(lista_buena)-1,-1,-1):
+        if lista_buena[x]:
+            print("")
+        else:
+            #print("No tiene datos")
+            lista_buena.pop(x)
+
+    #Obtenemos el numero de listas de la lista
+    total_listas = len(lista_buena)
 
     myDate = datetime.datetime.now()
     fecha_formateada = myDate.strftime("%d-%m-%Y")
@@ -971,75 +1208,77 @@ def ReporteUnidad(request,pk):
     # Create the PDF object. using the BytesIO object as its "file"
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
-    
-    # Header
-    logo = ImageReader('static\imagenes\solusoft.png')
-    c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
-
-    c.setLineWidth(.3)
-    c.setFont('Helvetica', 16)
-    c.drawString(200,725,'REPORTE DE UNIDAD: ' + unidad.siglas)
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(30,700,unidad.nombre)
-
-    c.setFont('Helvetica', 9)
-    c.drawString(470,800,'Fecha: ' + fecha_formateada)
-    #c.line(460,725,560,725)
-
-    # Table header
-    styles = getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    id = Paragraph('''#''', styleBH)
-    fecha_creacion = Paragraph('''FECHA CREACIÓN''', styleBH)
-    identificador = Paragraph('''IDENTIFICADOR''', styleBH)
-    nombre = Paragraph('''CREADO''', styleBH)
-    estatus = Paragraph('''ESTATUS''', styleBH)
-    
-
-    styles = getSampleStyleSheet()
-    styleN = styles["BodyText"]
-    styleN.alignment = TA_CENTER
-    styleN.fontSize = 7
-
-    width, height = A4
-    high = 675
-
-
-    expedientes = Expediente()
-    expedientes = Expediente.objects.filter(unidad=unidad.pk)
-    total_expedientes = len(expedientes)
-
     index = 0
-    otro = []
-    otro.append([id, fecha_creacion, identificador, estatus, nombre])
-    for expediente in expedientes:
-        index += 1
-        fecha = expediente.fecha_creacion
-        fecha_crea = fecha.strftime("%d-%m-%Y a %H:%m hrs.")
-        nombre_crea = expediente.usuario_crea.first_name + " " + expediente.usuario_crea.last_name + " " + expediente.usuario_crea.amaterno 
-        otro.append([index, fecha_crea, expediente.identificador, expediente.estatus.nombre, nombre_crea])
-        high = high - 18
+    pagina_actual = 0
 
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(400,700,"Total de expedientes: " + str(total_expedientes))
-
-    # Table size
-    table = Table(otro, colWidths=[0.9 * inch, 1.6 * inch, 1.5 * inch, 0.9 * inch, 2.5 * inch])
-    table.setStyle(TableStyle([ # Estilos de la tabla
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-        ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-    ]))
+    for lista in lista_buena:
     
-    # PDF size
-    table.wrapOn(c, width, height)
-    table.drawOn(c, 30, high)
-    #c.showPage()
-    # c.showPage() # save page
+        # Header
+        logo = ImageReader('static\imagenes\solusoft.png')
+        c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
 
+        c.setLineWidth(.3)
+        c.setFont('Helvetica', 16)
+        c.drawString(200,725,'REPORTE DE UNIDAD: ' + unidad.siglas)
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(30,700,unidad.nombre)
+
+        c.setFont('Helvetica', 9)
+        c.drawString(470,800,'Fecha: ' + fecha_formateada)
+        #c.line(460,725,560,725)
+
+        pagina_actual+=1
+        c.setFont('Helvetica', 9)
+        c.drawString(480,30,'Página ' + str(pagina_actual) +' de ' + str(total_listas))
+
+        # Table header
+        styles = getSampleStyleSheet()
+        styleBH = styles["Normal"]
+        styleBH.alignment = TA_CENTER
+        styleBH.fontSize = 10
+
+        id = Paragraph('''#''', styleBH)
+        fecha_creacion = Paragraph('''FECHA CREACIÓN''', styleBH)
+        identificador = Paragraph('''IDENTIFICADOR''', styleBH)
+        nombre = Paragraph('''CREADO''', styleBH)
+        estatus = Paragraph('''ESTATUS''', styleBH)
+        
+        styles = getSampleStyleSheet()
+        styleN = styles["BodyText"]
+        styleN.alignment = TA_CENTER
+        styleN.fontSize = 7
+
+        width, height = A4
+        high = 675
+
+        otro = []
+        otro.append([id, fecha_creacion, identificador, estatus, nombre])
+        for expediente in lista:
+            index += 1
+            fecha = expediente.fecha_creacion
+            fecha_crea = fecha.strftime("%d-%m-%Y a %H:%m hrs.")
+            nombre_crea = expediente.usuario_crea.first_name + " " + expediente.usuario_crea.last_name + " " + expediente.usuario_crea.amaterno 
+            otro.append([index, fecha_crea, expediente.identificador, expediente.estatus.nombre, nombre_crea])
+            high = high - 18
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(400,700,"Total de expedientes: " + str(total_expedientes))
+
+        # Table size
+        table = Table(otro, colWidths=[0.9 * inch, 1.6 * inch, 1.5 * inch, 0.9 * inch, 2.5 * inch])
+        table.setStyle(TableStyle([ # Estilos de la tabla
+            ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+            ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+        ]))
+        
+        # PDF size
+        table.wrapOn(c, width, height)
+        table.drawOn(c, 30, high)
+        c.showPage()
+        # c.showPage() # save page
+
+    registro_log_admin(user_log,"Genera",unidad,"Reporte por unidad","Administrador")
     # save PDF
     c.save()
     
@@ -1050,12 +1289,31 @@ def ReporteUnidad(request,pk):
     return response
 
 # @login_required(redirect_field_name='login')
-def ReporteGeneral(request):
+def particionar_lista(lista, n): 
+    return [lista[i*n:i*n+n] for i in range(n)]
+
+# @login_required(redirect_field_name='login')
+def ReporteGeneral(request): # estes el buenos
 
     user_log = PerfilUser.objects.get(pk=request.user.pk)
-    # registro_log_user(user_log,"Genera",expediente,"Reporte","Usuario")
 
-    registro_log_admin(user_log,"Genera",None,"Reporte general","Administrador")
+    expedientes = Expediente()
+    expedientes = Expediente.objects.all()
+    total_expedientes = len(expedientes)
+
+    #Ver como dividir la lista en ciertos elementos
+    lista_buena = particionar_lista(expedientes, 3)
+
+    #Eliminamos listas vacias
+    for x in range(len(lista_buena)-1,-1,-1):
+        if lista_buena[x]:
+            print("")
+        else:
+            #print("No tiene datos")
+            lista_buena.pop(x)
+
+    #Obtenemos el numero de listas de la lista
+    total_listas = len(lista_buena)
 
     myDate = datetime.datetime.now()
     fecha_formateada = myDate.strftime("%d-%m-%Y")
@@ -1063,96 +1321,115 @@ def ReporteGeneral(request):
     # Create the HttpResponse headers with PDF
     response = HttpResponse(content_type='applicacion/pdf')
     response['Content-Disposition'] = 'attachment; filename=REPORTE-GENERAL' + fecha_formateada + '.pdf'
-    
+
     # Create the PDF object. using the BytesIO object as its "file"
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
-    
-    # Header
-    logo = ImageReader('static\imagenes\solusoft.png')
-    c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
-
-    c.setLineWidth(.3)
-    c.setFont('Helvetica', 16)
-    c.drawString(150,725,'REPORTE GENERAL DE EXPEDIENTES:')
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(30,700,'Reporte general')
-
-    c.setFont('Helvetica', 9)
-    c.drawString(470,800,'Fecha: ' + fecha_formateada)
-    #c.line(460,725,560,725)
-
-    # Table header
-    styles = getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    id = Paragraph('''#''', styleBH)
-    fecha_creacion = Paragraph('''FECHA CREACIÓN''', styleBH)
-    identificador = Paragraph('''IDENTIFICADOR''', styleBH)
-    nombre = Paragraph('''CREADO''', styleBH)
-    estatus = Paragraph('''ESTATUS''', styleBH)
-    unidad = Paragraph('''UNIDAD''', styleBH)
-    
-
-    styles = getSampleStyleSheet()
-    styleN = styles["BodyText"]
-    styleN.alignment = TA_CENTER
-    styleN.fontSize = 7
-
-    width, height = A4
-    high = 675
-
-
-    expedientes = Expediente()
-    expedientes = Expediente.objects.all()
-    total_expedientes = len(expedientes)
-
     index = 0
-    otro = []
-    otro.append([id, fecha_creacion, identificador, estatus, unidad, nombre])
-    for expediente in expedientes:
-        index += 1
-        fecha = expediente.fecha_creacion
-        fecha_crea = fecha.strftime("%d-%m-%Y a %H:%m hrs.")
-        nombre_crea = expediente.usuario_crea.first_name + " " + expediente.usuario_crea.last_name + " " + expediente.usuario_crea.amaterno 
-        otro.append([index, fecha_crea, expediente.identificador, expediente.estatus.nombre, expediente.unidad.siglas , nombre_crea])
-        high = high - 18
+    pagina_actual = 0
 
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(400,700,"Total de expedientes: " + str(total_expedientes))
+    for lista in lista_buena:
+        
+        # Header
+        logo = ImageReader('static\imagenes\solusoft.png')
+        c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
 
-    # Table size
-    table = Table(otro, colWidths=[0.9 * inch, 1.6 * inch, 1.5 * inch, 0.9 * inch, 0.7 * inch, 1.7 * inch])
-    table.setStyle(TableStyle([ # Estilos de la tabla
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-        ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-    ]))
-    
-    # PDF size
-    table.wrapOn(c, width, height)
-    table.drawOn(c, 30, high)
-    #c.showPage()
-    # c.showPage() # save page
+        c.setLineWidth(.3)
+        c.setFont('Helvetica', 16)
+        c.drawString(150,725,'REPORTE GENERAL DE EXPEDIENTES:')
 
-    # save PDF
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(30,700,'Reporte general')
+
+        c.setFont('Helvetica', 9)
+        c.drawString(470,800,'Fecha: ' + fecha_formateada)
+        #c.line(460,725,560,725)
+
+        pagina_actual+=1
+        c.setFont('Helvetica', 9)
+        c.drawString(480,30,'Página ' + str(pagina_actual) +' de ' + str(total_listas))
+
+        # Table header
+        styles = getSampleStyleSheet()
+        styleBH = styles["Normal"]
+        styleBH.alignment = TA_CENTER
+        styleBH.fontSize = 10
+
+        id = Paragraph('''#''', styleBH)
+        fecha_creacion = Paragraph('''FECHA CREACIÓN''', styleBH)
+        identificador = Paragraph('''IDENTIFICADOR''', styleBH)
+        nombre = Paragraph('''CREADO''', styleBH)
+        estatus = Paragraph('''ESTATUS''', styleBH)
+        unidad = Paragraph('''UNIDAD''', styleBH)
+            
+
+        styles = getSampleStyleSheet()
+        styleN = styles["BodyText"]
+        styleN.alignment = TA_CENTER
+        styleN.fontSize = 7
+
+        width, height = A4
+        high = 675
+
+        otro = []
+        otro.append([id, fecha_creacion, identificador, estatus, unidad, nombre])
+        #for expediente in expedientes:
+        for expediente in lista:
+            index += 1
+            fecha = expediente.fecha_creacion
+            fecha_crea = fecha.strftime("%d-%m-%Y a %H:%m hrs.")
+            nombre_crea = expediente.usuario_crea.first_name + " " + expediente.usuario_crea.last_name + " " + expediente.usuario_crea.amaterno 
+            otro.append([index, fecha_crea, expediente.identificador, expediente.estatus.nombre, expediente.unidad.siglas , nombre_crea])
+            high = high - 18
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(400,700,"Total de expedientes: " + str(total_expedientes))
+
+        # Table size
+        table = Table(otro, colWidths=[0.9 * inch, 1.6 * inch, 1.5 * inch, 0.9 * inch, 0.7 * inch, 1.7 * inch])
+        table.setStyle(TableStyle([ # Estilos de la tabla
+            ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+            ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+        ]))
+
+        # PDF size
+        table.wrapOn(c, width, height)
+        table.drawOn(c, 30, high)
+        c.showPage()
+            
+    registro_log_admin(user_log,"Genera",None,"Reporte general","Administrador")
+
     c.save()
     
     # get the value of BytesIO buffer and write response
     pdf = buffer.getvalue()
     buffer.close()
     response.write(pdf)
+
     return response
 
 # @login_required(redirect_field_name='login')
 def ReporteUsuarios(request):
 
     user_log = PerfilUser.objects.get(pk=request.user.pk)
-    # registro_log_user(user_log,"Genera",expediente,"Reporte","Usuario")
 
-    registro_log_admin(user_log,"Genera",None,"Reporte usuarios","Administrador")
+    usuarios = PerfilUser()
+    usuarios = PerfilUser.objects.all()
+    total_usuarios = len(usuarios)
+
+    #Ver como dividir la lista en ciertos elementos
+    lista_buena = particionar_lista(usuarios, 3)
+
+    #Eliminamos listas vacias
+    for x in range(len(lista_buena)-1,-1,-1):
+        if lista_buena[x]:
+            print("")
+        else:
+            #print("No tiene datos")
+            lista_buena.pop(x)
+
+    #Obtenemos el numero de listas de la lista
+    total_listas = len(lista_buena)
 
     myDate = datetime.datetime.now()
     fecha_formateada = myDate.strftime("%d-%m-%Y")
@@ -1164,87 +1441,90 @@ def ReporteUsuarios(request):
     # Create the PDF object. using the BytesIO object as its "file"
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
-    
-    # Header
-    logo = ImageReader('static\imagenes\solusoft.png')
-    c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
-
-    c.setLineWidth(.3)
-    c.setFont('Helvetica', 16)
-    c.drawString(150,725,'REPORTE DE USUARIOS:')
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(30,700,'Reporte de usuarios')
-
-    c.setFont('Helvetica', 9)
-    c.drawString(470,800,'Fecha: ' + fecha_formateada)
-    #c.line(460,725,560,725)
-
-    # Table header
-    styles = getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    id = Paragraph('''#''', styleBH)
-    nombre = Paragraph('''NOMBRE''', styleBH)
-    correo = Paragraph('''CORREO''', styleBH)
-    creado = Paragraph('''CREADO''', styleBH)
-    estatus = Paragraph('''STS''', styleBH)
-    ultimo_log = Paragraph('''ÚLTIMO LOGIN''', styleBH)
-    
-
-    styles = getSampleStyleSheet()
-    styleN = styles["BodyText"]
-    styleN.alignment = TA_CENTER
-    styleN.fontSize = 7
-
-    width, height = A4
-    high = 675
-
-    usuarios = PerfilUser()
-    usuarios = PerfilUser.objects.all()
-    total_usuarios = len(usuarios)
-
     index = 0
-    otro = []
-    otro.append([id, nombre, correo, estatus, creado, ultimo_log])
-    for usuario in usuarios:
-        index += 1
-        fecha = usuario.date_joined
-        fecha_crea = fecha.strftime("%d-%m-%Y")
-        fecha_log = usuario.last_login
-        #print(fecha_log)
-        if fecha_log == None:
-            fecha_last_log = "--"
-        else:
-            fecha_last_log = fecha_log.strftime("%d-%m-%Y %H:%m")
-        # fecha_last_log = datetime.datetime.strptime(fecha_log, '%Y-%m-%d %H:%m:%S.%f')
+    pagina_actual = 0
 
-        if usuario.is_active:
-            activo = "Activo"
-        else:
-            activo = "Inactivo"
-
-        nombre_crea = usuario.first_name + " " + usuario.last_name + " " + usuario.amaterno 
-        otro.append([index, nombre_crea, usuario.email, activo, fecha_crea, fecha_last_log])
-        high = high - 18
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(400,700,"Total de usuarios: " + str(total_usuarios))
-
-    # Table size
-    table = Table(otro, colWidths=[0.5 * inch, 2.5 * inch, 1.8 * inch, 0.6 * inch, 0.9 * inch, 1.25 * inch])
-    table.setStyle(TableStyle([ # Estilos de la tabla
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-        ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-    ]))
+    for lista in lista_buena:
     
-    # PDF size
-    table.wrapOn(c, width, height)
-    table.drawOn(c, 30, high)
-    #c.showPage()
-    # c.showPage() # save page
+        # Header
+        logo = ImageReader('static\imagenes\solusoft.png')
+        c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
+
+        c.setLineWidth(.3)
+        c.setFont('Helvetica', 16)
+        c.drawString(150,725,'REPORTE DE USUARIOS:')
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(30,700,'Reporte de usuarios')
+
+        c.setFont('Helvetica', 9)
+        c.drawString(470,800,'Fecha: ' + fecha_formateada)
+        #c.line(460,725,560,725)
+
+        pagina_actual+=1
+        c.setFont('Helvetica', 9)
+        c.drawString(480,30,'Página ' + str(pagina_actual) +' de ' + str(total_listas))
+
+        # Table header
+        styles = getSampleStyleSheet()
+        styleBH = styles["Normal"]
+        styleBH.alignment = TA_CENTER
+        styleBH.fontSize = 10
+
+        id = Paragraph('''#''', styleBH)
+        nombre = Paragraph('''NOMBRE''', styleBH)
+        correo = Paragraph('''CORREO''', styleBH)
+        creado = Paragraph('''CREADO''', styleBH)
+        estatus = Paragraph('''STS''', styleBH)
+        ultimo_log = Paragraph('''ÚLTIMO LOGIN''', styleBH)
+        
+        styles = getSampleStyleSheet()
+        styleN = styles["BodyText"]
+        styleN.alignment = TA_CENTER
+        styleN.fontSize = 7
+
+        width, height = A4
+        high = 675
+
+        otro = []
+        otro.append([id, nombre, correo, estatus, creado, ultimo_log])
+        for usuario in lista:
+            index += 1
+            fecha = usuario.date_joined
+            fecha_crea = fecha.strftime("%d-%m-%Y")
+            fecha_log = usuario.last_login
+            #print(fecha_log)
+            if fecha_log == None:
+                fecha_last_log = "--"
+            else:
+                fecha_last_log = fecha_log.strftime("%d-%m-%Y %H:%m")
+            # fecha_last_log = datetime.datetime.strptime(fecha_log, '%Y-%m-%d %H:%m:%S.%f')
+
+            if usuario.is_active:
+                activo = "Activo"
+            else:
+                activo = "Inactivo"
+
+            nombre_crea = usuario.first_name + " " + usuario.last_name + " " + usuario.amaterno 
+            otro.append([index, nombre_crea, usuario.email, activo, fecha_crea, fecha_last_log])
+            high = high - 18
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(400,700,"Total de usuarios: " + str(total_usuarios))
+
+        # Table size
+        table = Table(otro, colWidths=[0.5 * inch, 2.5 * inch, 1.8 * inch, 0.6 * inch, 0.9 * inch, 1.25 * inch])
+        table.setStyle(TableStyle([ # Estilos de la tabla
+            ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+            ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+        ]))
+        
+        # PDF size
+        table.wrapOn(c, width, height)
+        table.drawOn(c, 30, high)
+        c.showPage()
+        # c.showPage() # save page
+    registro_log_admin(user_log,"Genera",None,"Reporte de usuarios","Administrador")
 
     # save PDF
     c.save()
@@ -1259,9 +1539,24 @@ def ReporteUsuarios(request):
 def ReporteUnidades(request):
 
     user_log = PerfilUser.objects.get(pk=request.user.pk)
-    # registro_log_user(user_log,"Genera",expediente,"Reporte","Usuario")
+    
+    unidades = Unidad()
+    unidades = Unidad.objects.all()
+    total_unidades = len(unidades)
 
-    registro_log_admin(user_log,"Genera",None,"Reporte unidades","Administrador")
+    #Ver como dividir la lista en ciertos elementos
+    lista_buena = particionar_lista(unidades, 3)
+
+    #Eliminamos listas vacias
+    for x in range(len(lista_buena)-1,-1,-1):
+        if lista_buena[x]:
+            print("")
+        else:
+            #print("No tiene datos")
+            lista_buena.pop(x)
+
+    #Obtenemos el numero de listas de la lista
+    total_listas = len(lista_buena)
 
     myDate = datetime.datetime.now()
     fecha_formateada = myDate.strftime("%d-%m-%Y")
@@ -1273,74 +1568,77 @@ def ReporteUnidades(request):
     # Create the PDF object. using the BytesIO object as its "file"
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
-    
-    # Header
-    logo = ImageReader('static\imagenes\solusoft.png')
-    c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
-
-    c.setLineWidth(.3)
-    c.setFont('Helvetica', 16)
-    c.drawString(200,725,'REPORTE DE UNIDADES:')
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(30,700,'Reporte de unidades')
-
-    c.setFont('Helvetica', 9)
-    c.drawString(470,800,'Fecha: ' + fecha_formateada)
-    #c.line(460,725,560,725)
-
-    # Table header
-    styles = getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    id = Paragraph('''#''', styleBH)
-    unidad = Paragraph('''UNIDAD''', styleBH)
-    siglas = Paragraph('''SIGLAS''', styleBH)
-    estatus = Paragraph('''ESTATUS''', styleBH)
-    
-
-    styles = getSampleStyleSheet()
-    styleN = styles["BodyText"]
-    styleN.alignment = TA_CENTER
-    styleN.fontSize = 7
-
-    width, height = A4
-    high = 675
-
-    unidades = Unidad()
-    unidades = Unidad.objects.all()
-    total_unidades = len(unidades)
-
     index = 0
-    otro = []
-    otro.append([id, unidad, siglas, estatus])
-    for unidad in unidades:
-        index += 1
-        if unidad.activo:
-            activo = "Activo"
-        else:
-            activo = "Inactivo"
-        otro.append([index, unidad.nombre, unidad.siglas, activo])
-        high = high - 18
+    pagina_actual = 0
 
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(430,700,"Total de unidades: " + str(total_unidades))
-
-    # Table size
-    table = Table(otro, colWidths=[0.5 * inch, 5 * inch, 0.9 * inch, 1 * inch])
-    table.setStyle(TableStyle([ # Estilos de la tabla
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-        ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-    ]))
+    for lista in lista_buena:
     
-    # PDF size
-    table.wrapOn(c, width, height)
-    table.drawOn(c, 30, high)
-    #c.showPage()
-    # c.showPage() # save page
+        # Header
+        logo = ImageReader('static\imagenes\solusoft.png')
+        c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
 
+        c.setLineWidth(.3)
+        c.setFont('Helvetica', 16)
+        c.drawString(200,725,'REPORTE DE UNIDADES:')
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(30,700,'Reporte de unidades')
+
+        c.setFont('Helvetica', 9)
+        c.drawString(470,800,'Fecha: ' + fecha_formateada)
+        #c.line(460,725,560,725)
+
+        pagina_actual+=1
+        c.setFont('Helvetica', 9)
+        c.drawString(480,30,'Página ' + str(pagina_actual) +' de ' + str(total_listas))
+
+        # Table header
+        styles = getSampleStyleSheet()
+        styleBH = styles["Normal"]
+        styleBH.alignment = TA_CENTER
+        styleBH.fontSize = 10
+
+        id = Paragraph('''#''', styleBH)
+        unidad = Paragraph('''UNIDAD''', styleBH)
+        siglas = Paragraph('''SIGLAS''', styleBH)
+        estatus = Paragraph('''ESTATUS''', styleBH)
+        
+        styles = getSampleStyleSheet()
+        styleN = styles["BodyText"]
+        styleN.alignment = TA_CENTER
+        styleN.fontSize = 7
+
+        width, height = A4
+        high = 675
+
+        otro = []
+        otro.append([id, unidad, siglas, estatus])
+        for unidad in lista:
+            index += 1
+            if unidad.activo:
+                activo = "Activo"
+            else:
+                activo = "Inactivo"
+            otro.append([index, unidad.nombre, unidad.siglas, activo])
+            high = high - 18
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(430,700,"Total de unidades: " + str(total_unidades))
+
+        # Table size
+        table = Table(otro, colWidths=[0.5 * inch, 5 * inch, 0.9 * inch, 1 * inch])
+        table.setStyle(TableStyle([ # Estilos de la tabla
+            ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+            ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+        ]))
+        
+        # PDF size
+        table.wrapOn(c, width, height)
+        table.drawOn(c, 30, high)
+        c.showPage()
+        # c.showPage() # save page
+
+    registro_log_admin(user_log,"Genera",None,"Reporte unidades","Administrador")
     # save PDF
     c.save()
     
@@ -1354,9 +1652,24 @@ def ReporteUnidades(request):
 def ReporteTiposExpedientes(request):
 
     user_log = PerfilUser.objects.get(pk=request.user.pk)
-    # registro_log_user(user_log,"Genera",expediente,"Reporte","Usuario")
 
-    registro_log_admin(user_log,"Genera",None,"Reporte tipos expedientes","Administrador")
+    tipos_exp = TipoExpediente()
+    tipos_exp = TipoExpediente.objects.all()
+    total_tipos = len(tipos_exp)
+
+    #Ver como dividir la lista en ciertos elementos
+    lista_buena = particionar_lista(tipos_exp, 3)
+
+    #Eliminamos listas vacias
+    for x in range(len(lista_buena)-1,-1,-1):
+        if lista_buena[x]:
+            print("")
+        else:
+            #print("No tiene datos")
+            lista_buena.pop(x)
+
+    #Obtenemos el numero de listas de la lista
+    total_listas = len(lista_buena)
 
     myDate = datetime.datetime.now()
     fecha_formateada = myDate.strftime("%d-%m-%Y")
@@ -1368,74 +1681,82 @@ def ReporteTiposExpedientes(request):
     # Create the PDF object. using the BytesIO object as its "file"
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
-    
-    # Header
-    logo = ImageReader('static\imagenes\solusoft.png')
-    c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
-
-    c.setLineWidth(.3)
-    c.setFont('Helvetica', 16)
-    c.drawString(170,725,'REPORTE TIPOS DE EXPEDIENTES:')
-
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(30,700,'Reporte tipos de expedientes')
-
-    c.setFont('Helvetica', 9)
-    c.drawString(470,800,'Fecha: ' + fecha_formateada)
-    #c.line(460,725,560,725)
-
-    # Table header
-    styles = getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    id = Paragraph('''#''', styleBH)
-    tipo_e = Paragraph('''TIPO DE EXPEDIENTE''', styleBH)
-    siglas = Paragraph('''SIGLAS''', styleBH)
-    estatus = Paragraph('''ESTATUS''', styleBH)
-    
-
-    styles = getSampleStyleSheet()
-    styleN = styles["BodyText"]
-    styleN.alignment = TA_CENTER
-    styleN.fontSize = 7
-
-    width, height = A4
-    high = 675
-
-    tipos_exp = TipoExpediente()
-    tipos_exp = TipoExpediente.objects.all()
-    total_tipos = len(tipos_exp)
-
     index = 0
-    otro = []
-    otro.append([id, tipo_e, siglas, estatus])
-    for tipo in tipos_exp:
-        index += 1
-        if tipo.activo:
-            activo = "Activo"
-        else:
-            activo = "Inactivo"
-        otro.append([index, tipo.nombre, tipo.siglas, activo])
-        high = high - 18
+    pagina_actual = 0
 
-    c.setFont('Helvetica-Bold', 12)
-    c.drawString(380,700,"Total tipos de expedientes: " + str(total_tipos))
-
-    # Table size
-    table = Table(otro, colWidths=[0.5 * inch, 5 * inch, 0.9 * inch, 1 * inch])
-    table.setStyle(TableStyle([ # Estilos de la tabla
-        ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-        ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-    ]))
+    for lista in lista_buena:
     
-    # PDF size
-    table.wrapOn(c, width, height)
-    table.drawOn(c, 30, high)
-    #c.showPage()
-    # c.showPage() # save page
+        # Header
+        logo = ImageReader('static\imagenes\solusoft.png')
+        c.drawImage(logo,200,750,width=200,height=66.62,mask='auto')
 
+        c.setLineWidth(.3)
+        c.setFont('Helvetica', 16)
+        c.drawString(170,725,'REPORTE TIPOS DE EXPEDIENTES:')
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(30,700,'Reporte tipos de expedientes')
+
+        c.setFont('Helvetica', 9)
+        c.drawString(470,800,'Fecha: ' + fecha_formateada)
+        #c.line(460,725,560,725)
+
+        pagina_actual+=1
+        c.setFont('Helvetica', 9)
+        c.drawString(480,30,'Página ' + str(pagina_actual) +' de ' + str(total_listas))
+
+        # Table header
+        styles = getSampleStyleSheet()
+        styleBH = styles["Normal"]
+        styleBH.alignment = TA_CENTER
+        styleBH.fontSize = 10
+
+        id = Paragraph('''#''', styleBH)
+        tipo_e = Paragraph('''TIPO DE EXPEDIENTE''', styleBH)
+        siglas = Paragraph('''SIGLAS''', styleBH)
+        unid = Paragraph('''UNIDAD''', styleBH)
+        estatus = Paragraph('''ESTATUS''', styleBH)
+        
+        styles = getSampleStyleSheet()
+        styleN = styles["BodyText"]
+        styleN.alignment = TA_CENTER
+        styleN.fontSize = 7
+
+        width, height = A4
+        high = 675
+
+        otro = []
+        otro.append([id, tipo_e, siglas, unid, estatus])
+        for tipo in lista:
+            index += 1
+            if tipo.activo:
+                activo = "Activo"
+            else:
+                activo = "Inactivo"
+            if tipo.unidad:
+                id_unidad = Unidad.objects.get(pk=tipo.unidad.pk)
+                siglas_unidad = id_unidad.siglas
+            else:
+                siglas_unidad = ""
+            otro.append([index, tipo.nombre, tipo.siglas, siglas_unidad, activo])
+            high = high - 18
+
+        c.setFont('Helvetica-Bold', 12)
+        c.drawString(380,700,"Total tipos de expedientes: " + str(total_tipos))
+
+        # Table size
+        table = Table(otro, colWidths=[0.5 * inch, 4.2 * inch, 0.9 * inch, 0.9 * inch, 1 * inch])
+        table.setStyle(TableStyle([ # Estilos de la tabla
+            ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+            ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+        ]))
+        
+        # PDF size
+        table.wrapOn(c, width, height)
+        table.drawOn(c, 30, high)
+        c.showPage()
+
+    registro_log_admin(user_log,"Genera",None,"Reporte tipos expedientes","Administrador")
     # save PDF
     c.save()
     

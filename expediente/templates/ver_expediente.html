@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Expediente
@@ -14,8 +14,10 @@
             <div class="container">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<h1> {{etiqueta}}: {{expediente.identificador}}</h1>
+                            <h1 class="mt-4"><i class="fas fa-archive"></i> Detalle del expediente</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">{{expediente.identificador}}</li>
+                            </ol>
                             <!--
                                 # @cambio
                                 # fecha : 04/04/2020
@@ -34,8 +36,17 @@
 
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
 
+                                {% if user_log.deputy %}
+                                    <div class="row">
+                                        <div class="alert alert-danger alert-dismissible fade show form-control" role="alert">
+                                            <strong>No se puede crear o modificar expedientes mientras el deputy esta activo!</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
                                 <fieldset>
-                                    <legend>Datos generales</legend>
+                                    <legend><strong>Datos generales</strong></legend>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <strong>Identificador: </strong>
@@ -102,7 +113,7 @@
                                 </fieldset>
                                 <br/>
                                 <fieldset id="campos">
-                                    <legend>Metadatos</legend>
+                                    <legend><strong>Metadatos</strong></legend>
                                     {% for metadato in metadatos %}
                                         <div class="col-md-12">
                                             <strong>{{metadato.nombre}}:</strong>
@@ -164,82 +175,89 @@
 								
 								<br/>
 								<p align="center">
-                                    {% if expediente.estatus.nombre == "Creado" %}
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Solicitar aprobación</button>
-                                    {% endif %}
-                                    {% if bandera == True %}
-                                        <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-primary id="regresar" name="regresar">Regresar</a>
+                                    {% if expediente.usuario_anterior %}
+                                        <a href = "javascript: if(confirm('Deseas aceptar el expediente: {{expediente.identificador}}??')) window.location='{% url "aceptar_expediente" pk=expediente.id %}'" type="button" class="btn btn-primary" title="Aceptar">Aceptar expediente</a>
+                                        <a href = "/expedientes/mis_expedientes" type="button" class="btn btn-primary">Regresar</a>
                                     {% else %}
-                                        <a href = "/expedientes/recibidos_deputy" type="button" class="btn btn-primary">Regresar</a>
+                                        
+                                        {% if bandera == True %}
+                                            <a href = "{% url 'mis_expedientes' %}" type="button" class="btn btn-secondary id="regresar" name="regresar">Regresar</a>
+                                        {% else %}
+                                            <a href = "/expedientes/recibidos_deputy" type="button" class="btn btn-secondary">Regresar</a>
+                                        {% endif %}
+                                        {% if expediente.estatus.nombre == "Creado" %}
+                                            {% if user_log.deputy == False %}
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuarios">Solicitar aprobación</button>
+                                            {% endif %}
+                                        {% endif %}
+                                        <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
                                     {% endif %}
-                                    <input id="subir" class="btn btn-primary" type="submit" value="Guardar"/>
 								</p>
 
                                 {% if seleccionados %}
                                     <fieldset id="campos">
-                                    <legend>Asignado</legend>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" id="seleccionados">
+                                    <legend><strong>Asignado</strong></legend>
+
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <i class="fa fa-users"></i>
+                                            <strong>
+                                                Usuarios
+                                            </strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="datatablesSimple">
                                                 <thead>
-                                                    <tr align="center">
-                                                        <th>
-                                                            <p align="center">
-                                                                #
-                                                            </p>
-                                                        </th>
-                                                        <th>
-                                                            <p align="center">
-                                                                Usuario
-                                                            </p>
-                                                        </th>
-                                                        <th>
-                                                            <p align="center">
-                                                                Estatus
-                                                            </p>
-                                                        </th>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Usuario</th>
+                                                        <th>Estatus</th>
+                                                        <th>Motivo</th>
                                                     </tr>
                                                 </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Usuario</th>
+                                                        <th>Estatus</th>
+                                                        <th>Motivo</th>
+                                                    </tr>
+                                                </tfoot>
                                                 <tbody>
                                                     {% for seleccionado in seleccionados %}
-                                                    <tr>
-                                                        <td>
-                                                            <p align="center">
-                                                                {{forloop.counter}}
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p align="center">
-                                                                {{seleccionado.id_usuario.first_name}} {{seleccionado.id_usuario.last_name}}
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p align="center">
-                                                                {{seleccionado.id_estatus.nombre}}
-                                                            </p>
-                                                        </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>{{forloop.counter}}</td>
+                                                            <td>{{seleccionado.id_usuario.first_name}} {{seleccionado.id_usuario.last_name}} {{seleccionado.id_usuario.amaterno}}</td>
+                                                            <td>{{seleccionado.id_estatus.nombre}}</td>
+                                                            <td>
+                                                                {% if seleccionado.motivo_rechazo == None %}
+                                                                    --
+                                                                {% else %}
+                                                                    {{seleccionado.motivo_rechazo}}
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
                                                     {% endfor %}
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+
                                     </fieldset>
                                 {% endif %}
 							</form>
-						</div>
 					</article>
 				</section>
             </div>
 		</section>
 
         <!-- Modal Usuarios-->
-        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-lg" role="document" >
-            <div class="modal-content">
+        <div class="modal fade" id="usuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-tittle">Seleccionar usuarios</h2>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
@@ -297,7 +315,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
                 </div>
             </div>

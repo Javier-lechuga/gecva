@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Roles
@@ -11,7 +11,10 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4">{{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
@@ -34,8 +37,8 @@
 											<td>{{rol.nombre}}</td>
 											<td>{{rol.descripcion}}</td>
 											<td>
-												<a href = "javascript: if(confirm('Deseas editar {{rol}}??')) window.location='{% url "editar_rol" pk=rol.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-pencil" title="Editar"></a>
-												<a href = "javascript: if(confirm('Deseas eliminar {{rol}}??')) window.location='{% url "eliminar_rol" pk=rol.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
+												<a href = "javascript: if(confirm('Deseas editar {{rol}}??')) window.location='{% url "editar_rol" pk=rol.id %}'" type="button" class="btn btn-primary fas fa-pencil-alt" title="Editar"></a>
+												<a href = "javascript: if(confirm('Deseas eliminar {{rol}}??')) window.location='{% url "eliminar_rol" pk=rol.id %}'" type="button" class="btn btn-primary fas fa-remove" title="Desactivar"></a>
 											</td>
 										</tr>
 									{% endfor %}
@@ -47,7 +50,7 @@
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 			<a href = "{% url 'nuevo_rol' %}" type="button" class="btn btn-primary">Nuevo rol</a>
 		</p>
 	</div>

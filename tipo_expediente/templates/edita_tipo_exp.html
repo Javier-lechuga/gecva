@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Tipo de expediente
 {% endblock titulo %}
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}: {{tipo.nombre}}</h1>
+		<h1 class="mt-4"><i class="fas fa-archive"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{tipo.nombre}}</li>
+        </ol>
 			<form method="POST">
 				{% csrf_token %}
 				<div class="class">
@@ -49,8 +52,16 @@
 					<label><input type="checkbox" id="activo" name="activo"> Activo</label><br>
 				{% endif %}
 
-				<input type = "submit" class="btn btn-primary" value = "Guardar" />
-				<a href = "/tipos_expedientes" type="button" class="btn btn-primary">Cancelar</a>
+
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4" align="center">
+						<a href = "/tipos_expedientes" type="button" class="btn btn-secondary">Cancelar</a>
+						<input type = "submit" class="btn btn-primary" value = "Guardar" />
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+				
 			</form>
 	</section>
 {% endblock %}

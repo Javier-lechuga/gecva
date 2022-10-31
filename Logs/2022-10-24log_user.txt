@@ -1,0 +1,120 @@
+2022-10-24 10:13:43 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-24 10:13:51 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-24 10:14:35 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000006
+2022-10-24 10:14:38 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-24 10:14:40 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000006
+2022-10-24 10:15:21 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-24 10:15:22 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000006
+2022-10-24 10:15:27 Usuario Luis Miguel Correa Rada Buscador Expedientes
+2022-10-24 10:15:29 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000005
+2022-10-24 10:31:33 Administrador Administrador Admin Admin Entra Sistema
+2022-10-24 12:01:55 Administrador Administrador Admin Admin Consulta Log administrador
+2022-10-24 12:21:01 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-24 12:21:03 Usuario Luis Miguel Correa Rada Consulta Expedientes deputy
+2022-10-24 12:21:05 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-24 12:21:09 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-24 12:21:28 Usuario Ana Treviño Treviño Entra Sistema
+2022-10-24 12:21:30 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 12:21:31 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 12:22:37 Usuario Juan Robles Robles Entra Sistema
+2022-10-24 12:22:40 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 12:22:43 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000006
+2022-10-24 12:22:46 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 12:22:47 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000005
+2022-10-24 12:22:49 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 12:22:51 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000004
+2022-10-24 12:22:53 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 12:22:54 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000001
+2022-10-24 12:22:56 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 12:27:33 Administrador Administrador Admin Admin Entra Sistema
+2022-10-24 12:30:12 Usuario Martha Martinez Martinez Entra Sistema
+2022-10-24 12:30:17 Usuario Martha Martinez Martinez Consulta Expedientes deputy
+2022-10-24 12:30:18 Usuario Martha Martinez Martinez Consulta Recibidos Expedientes
+2022-10-24 12:30:57 Usuario Martha Martinez Martinez Consulta Expedientes
+2022-10-24 12:30:59 Usuario Martha Martinez Martinez Lista Tipos de Expedientes
+2022-10-24 12:31:38 Usuario Martha Martinez Martinez Crea Expediente: UTISEC0000008
+2022-10-24 12:31:38 Usuario Martha Martinez Martinez Consulta Expedientes
+2022-10-24 12:50:36 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-24 12:50:38 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-24 12:50:40 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000001
+2022-10-24 12:58:05 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-24 12:58:07 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-24 12:58:08 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000001
+2022-10-24 12:58:12 Usuario Luis Miguel Correa Rada Consulta Recibidos Expedientes
+2022-10-24 12:58:18 Usuario Luis Miguel Correa Rada Consulta Expediente: UTISEC0000001
+2022-10-24 12:58:41 Usuario Ana Treviño Treviño Entra Sistema
+2022-10-24 12:58:44 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 12:58:47 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 12:58:54 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 12:58:58 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 12:59:08 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 12:59:10 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 12:59:12 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 12:59:14 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 13:09:17 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 13:09:20 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 13:09:20 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 13:10:10 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-24 13:10:14 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-24 13:10:29 Usuario Ana Treviño Treviño Entra Sistema
+2022-10-24 13:10:32 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:23:31 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-24 16:23:35 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-24 16:24:08 Usuario Ana Treviño Treviño Entra Sistema
+2022-10-24 16:24:10 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 16:24:14 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:24:20 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:24:22 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 16:24:25 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 16:24:33 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:27:48 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:28:00 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:28:03 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:28:10 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:28:12 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 16:28:15 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 16:28:20 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:28:55 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:40:08 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 16:40:13 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:40:16 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 16:40:19 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:40:26 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 16:40:28 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:43:44 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:43:46 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:43:48 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000007
+2022-10-24 16:43:50 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:43:53 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:50:15 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:50:20 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:50:25 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 16:50:29 Usuario Ana Treviño Treviño Consulta Expedientes deputy
+2022-10-24 16:50:31 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 17:03:55 Usuario Ana Treviño Treviño Buscador Expedientes
+2022-10-24 17:04:47 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 17:05:05 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-10-24 17:05:07 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-10-24 17:45:32 Usuario Juan Robles Robles Entra Sistema
+2022-10-24 17:45:42 Usuario Ana Treviño Treviño Entra Sistema
+2022-10-24 17:45:49 Usuario Ana Treviño Treviño Consulta Expedientes
+2022-10-24 17:45:52 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 17:45:55 Usuario Ana Treviño Treviño Consulta Expediente: UTISEC0000005
+2022-10-24 17:46:02 Usuario Ana Treviño Treviño Consulta Recibidos Expedientes
+2022-10-24 17:46:11 Usuario Martha Martinez Martinez Entra Sistema
+2022-10-24 17:46:13 Usuario Martha Martinez Martinez Consulta Expedientes
+2022-10-24 17:46:18 Usuario Martha Martinez Martinez Consulta Expediente: UTISEC0000008
+2022-10-24 17:46:25 Usuario Martha Martinez Martinez Asigna Expediente: UTISEC0000008
+2022-10-24 17:46:30 Usuario Martha Martinez Martinez Consulta Expedientes
+2022-10-24 17:46:41 Usuario Juan Robles Robles Entra Sistema
+2022-10-24 17:46:44 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 17:46:52 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000008
+2022-10-24 17:47:12 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 17:47:14 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000006
+2022-10-24 17:47:16 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 17:47:17 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000005
+2022-10-24 17:47:19 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 17:47:21 Usuario Juan Robles Robles Consulta Expediente: UTISEC0000001
+2022-10-24 17:47:23 Usuario Juan Robles Robles Consulta Recibidos Expedientes
+2022-10-24 17:49:37 Usuario Juan Robles Robles Consulta Expedientes
+2022-10-24 18:03:20 Usuario Juan Robles Robles Consulta Expedientes

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Usuario
 {% endblock titulo %}
@@ -6,124 +6,207 @@
 {% block content %}
 
 		<section class="main container">
-			<div class="row">
-				<section class="posts col-md-12">
 					<article class="post clearfix">
 						
-							<h1> {{etiqueta}} Crear usuario</h1>
+							<h1 class="mt-4"><i class="fa fa-users"></i> {{mensaje}}</h1>
+							<ol class="breadcrumb mb-4">
+								<li class="breadcrumb-item active">{{mensaje}}</li>
+							</ol>
+
+							{% if error %}
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<div class="alert alert-warning alert-dismissible fade show form-control" role="alert">
+										<strong>{{error}}!!</strong>
+										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									</div>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							{% endif %}
+
 							<form method="POST" class="form-horizontal">
 								{% csrf_token %}
 
 								<div class="row">
-									<div class="col-md-12">
-										<div class="col-md-4">
-											<strong>Nombre:</strong>
-											<input type="text" class="form-control" id="first_name" name="first_name" value="" required/>
-										</div>
-										<div class="col-md-4">
-											<strong>Apellido paterno:</strong>
-											<input type="text" class="form-control" id="last_name" name="last_name" value="" required/>
-										</div>
-										<div class="col-md-4">
-											<strong>Apellido materno:</strong>
-											<input type="text" class="form-control" id="amaterno" name="amaterno" value="" required/>
-										</div>
+									<div class="col-md-4">
+										<strong>Nombre:</strong>
+										<input type="text" class="form-control" id="first_name" name="first_name" value="" required/>
+									</div>
+									<div class="col-md-4">
+										<strong>Apellido paterno:</strong>
+										<input type="text" class="form-control" id="last_name" name="last_name" value="" required/>
+									</div>
+									<div class="col-md-4">
+										<strong>Apellido materno:</strong>
+										<input type="text" class="form-control" id="amaterno" name="amaterno" value="" required/>
 									</div>
 								</div>
 
 								<div class="row">
-									<div class="col-md-12">
-										<div class="col-md-8">
-											<strong>Unidad:</strong>
-											<select id="unidad_user" name="unidad_user" class="form form-control" required>
-												<option  value="" selected="selected">--- SELECT ---</option>
+									<div class="col-md-7">
+										<strong>Unidad:</strong>
+										<select id="unidad_user" name="unidad_user" class="form form-control" required>
+											<option  value="" selected="selected">--- SELECT ---</option>
 												{% for unidad in unidades %}
 													<option value="{{unidad.pk}}"
-														{% if tipo == current_unidad %}{% endif %}>
-														{{unidad.nombre|capfirst}}
-													</option>
+													{% if tipo == current_unidad %}{% endif %}>
+													{{unidad.nombre|capfirst}}
+											</option>
 												{% endfor %}
-											</select>
-										</div>
-										<div class="col-md-2">
-											<strong>Teléfono:</strong>
-											<input type="text" class="form-control" id="telefono" name="telefono" value="" required/>
-										</div>
-										<div class="col-md-2">
-											<strong>Extensión:</strong>
-											<input type="text" class="form-control" id="extension" name="extension" value=""/>
-										</div>
+										</select>
+									</div>
+									<div class="col-md-1">
+										<strong>&nbsp;</strong>
+										<button type="button" class="btn btn-secondary form-control" data-bs-toggle="modal" data-bs-target="#nueva_unidad" value="{{usuario.id}}" title="Agregar unidad"><i class="far fa-building"></i></button>
+									</div>
+									
+									<div class="col-md-2">
+										<strong>Teléfono:</strong>
+										<input type="text" class="form-control" id="telefono" name="telefono" value="" required/>
+									</div>
+									<div class="col-md-2">
+										<strong>Extensión:</strong>
+										<input type="text" class="form-control" id="extension" name="extension" value=""/>
 									</div>
 								</div>
 
 								<div class="row">
-									<div class="col-md-12">
-										<div class="col-md-6">
-											<strong>Jefe inmediato:</strong>
-											<select id="jefe_inmediato" name="jefe_inmediato" class="form form-control">
-												<option  value="" selected="selected">--- SELECT ---</option>
+									<div class="col-md-6">
+										<strong>Jefe inmediato:</strong>
+										<select id="jefe_inmediato" name="jefe_inmediato" class="form form-control">
+											<option  value="" selected="selected">--- SELECT ---</option>
 												{% for usuario in usuarios %}
 													<option value="{{usuario.pk}}"
-														{% if tipo == current_usuario %}{% endif %}>
-														{{usuario.first_name|capfirst}} {{usuario.last_name|capfirst}}
-													</option>
+													{% if tipo == current_usuario %}{% endif %}>
+													{{usuario.first_name|capfirst}} {{usuario.last_name|capfirst}}
+											</option>
 												{% endfor %}
-											</select>
-										</div>
-										<div class="col-md-6">
-											<strong>Tipo de cuenta:</strong>
-											<select id="rol" name="rol" class="form form-control" required>
-												<option  value="" selected="selected">--- SELECT ---</option>
+										</select>
+									</div>
+									<div class="col-md-6">
+										<strong>Tipo de cuenta:</strong>
+										<select id="rol" name="rol" class="form form-control" required>
+											<option  value="" selected="selected">--- SELECT ---</option>
 												{% for rol in roles %}
 													<option value="{{rol.pk}}"
-														{% if tipo == current_tipo %}{% endif %}>
-														{{rol.nombre|capfirst}}
-													</option>
+													{% if tipo == current_tipo %}{% endif %}>
+													{{rol.nombre|capfirst}}
+											</option>
 												{% endfor %}
-											</select>
-										</div>
+										</select>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-12">
-										<div class="col-md-12">
-											<strong>Correo electrónico:</strong>
-											<input type="email" class="form-control" id="email" name="email" value="" required/>
-										</div>
+										<strong>Correo electrónico:</strong>
+										<input type="email" class="form-control" id="email" name="email" value="" required/>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-12">
-										<div class="col-md-12">
-											<strong>Nombre de usuario:</strong>
-											<input type="text" class="form-control" id="username" name="username" value="" required/>
-										</div>
+										<strong>Nombre de usuario:</strong>
+										<input type="text" class="form-control" id="username" name="username" value="" required/>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-12">
-										<div class="col-md-12">
-											<strong>Contraseña:</strong>
-											<input type="password" class="form-control" id="password" name="password" value="" required/>
-										</div>
+										<strong>Contraseña:</strong>
+										<input type="password" class="form-control" id="password" name="password" value="" required/>
 									</div>
 								</div>
 							    
 								<br/>
 								<p align="center">
-									<a href = "/usuarios/" type="button" class="btn btn-primary">Regresar</a>
-									<input class="btn btn-primary" type = "submit" />
+									<a href = "/usuarios/" type="button" class="btn btn-secondary">Regresar</a>
+									<input class="btn btn-primary" type = "submit" value="Guardar" />
 								</p>
 							</form>
 						
 						
 					</article>
-				</section>
-			</div>
 		</section>
+
+		<!-- Modal Nueva Unidad-->
+        <div class="modal fade" id="nueva_unidad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                    <form action="/unidades/unidad_nueva" method="POST">
+                        <div class="modal-header">
+                            <h2 class="modal-tittle"><li class="far fa-building"></li> Nueva unidad</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            
+							<div class="row">
+								<div class="col-md-12">
+									<strong>Nombre:</strong>
+									<u>
+										{% if form.errors %}
+											{% for error in form.errors %}
+												{% if error == "nombre" %}
+													<li> <strong>Ya existe una Unidad con este {{error}}.</strong></li>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									</u>
+									<input type="text" name="nombre" id="nombre" class="form-control" required>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<strong>Siglas:</strong>
+									<u>
+										{% if form.errors %}
+											{% for error in form.errors %}
+												{% if error == "siglas" %}
+													<li> <strong>Ya existe un/a Unidad con estas {{error}}.</strong></li>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									</u>
+									<input type="text" name="siglas" id="siglas" class="form-control" maxlength="3" required>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<strong>Descripción:</strong>
+									<input type="text" name="descripcion" id="descripcion" class="form-control">
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-12">
+									<strong>Jefe de unidad:</strong>
+									<select id="jefe_unidad" name="jefe_unidad" class="form form-control">
+										<option  value="" selected="selected">--- SELECT ---</option>
+										{% for usuario in usuarios %}
+											<option value="{{usuario.pk}}"
+												{% if usuario == current_usuario %}{% endif %}>
+												{{usuario.first_name|capfirst}} {{usuario.last_name|capfirst}} {{usuario.amaterno|capfirst}}
+											</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 		{% if perfil_form.errors %}
             {% for error in perfil_form.errors %}
@@ -136,10 +219,17 @@
 
 {% block scripts %}
 
-	<script>
-		function goBack() {
-			window.history.back();
+<script type="text/javascript">
+	$(function(){
+		window.onload = function() {
+			console.log("onload");
 		}
-	</script>
+
+		$("#siglas").keyup(function () {  
+			$(this).val($(this).val().toUpperCase());  
+		});
+
+	});
+</script>
 
 {% endblock %}

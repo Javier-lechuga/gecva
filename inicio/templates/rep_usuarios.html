@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Usuarios
@@ -11,48 +11,68 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4"><i class="fas fa-file-alt"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
 
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<table class="table table-hover" id="tablita">
-								<thead>
-									<tr align="center">
-										<th>#</th>
-										<th>Usuario</th>
-										<th>Correo</th>
-										<th>Seleccionar</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for usuario in usuarios %}
-										<tr>
-											<td align="center" width="50">{{forloop.counter}}</td>
-											<td>
-												<strong>
-													{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
-												</strong>
-											</td>
-											<td>{{usuario.email}}</td>
-											<td width="90">
-												{% if usuario.is_active == True %}
-													<a href = "javascript: if(confirm('Deseas generar el reporte del usuario: {{usuario}}??')) window.location='{% url "reporte_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-list-alt" title="Generar reporte"></a>
-												{% endif %}
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fa fa-users"></i>
+								<strong>
+                                	Usuarios
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Usuario</th>
+											<th>Correo</th>
+											<th>Unidad</th>
+											<th>Seleccionar</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Usuario</th>
+											<th>Correo</th>
+											<th>Unidad</th>
+											<th>Seleccionar</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for usuario in usuarios %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td>{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</td>
+												<td>{{usuario.email}}</td>
+												<td>{{usuario.unidad_user}}</td>
+												<td width="90" align="center">
+													{% if usuario.is_active == True %}
+														<a href = "{% url "reporte_usuario" pk=usuario.id %}" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fas fa-file-download"></i></a>
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
 					</article>
 				</section>
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/reportes_menu" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/reportes_menu" type="button" class="btn btn-secondary">Regresar</a>
 		</p>
 	</div>
 

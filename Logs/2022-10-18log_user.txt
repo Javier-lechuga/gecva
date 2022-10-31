@@ -1,0 +1,72 @@
+2022-10-18 10:41:22 Usuario Administrador Admin Admin Consulta Log personal
+2022-10-18 12:02:06 Usuario Maria Pérez Pérez Entra Sistema
+2022-10-18 12:02:08 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 12:02:09 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 12:02:10 Usuario Maria Pérez Pérez Buscador Expedientes
+2022-10-18 12:02:12 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 12:02:13 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 12:02:47 Administrador Administrador Admin Admin Entra Sistema
+2022-10-18 13:01:03 Usuario Juan Robles Robles Entra Sistema
+2022-10-18 13:01:16 Usuario Pedro Hernández Hernández Entra Sistema
+2022-10-18 13:02:06 Usuario Pedro Hernández Hernández Consulta Expedientes
+2022-10-18 13:02:10 Usuario Pedro Hernández Hernández Consulta Recibidos Expedientes
+2022-10-18 13:02:11 Usuario Pedro Hernández Hernández Buscador Expedientes
+2022-10-18 13:02:36 Administrador Administrador Admin Admin Entra Sistema
+2022-10-18 13:08:52 Usuario Administrador Admin Admin Consulta Expedientes
+2022-10-18 13:13:34 Usuario Administrador Admin Admin Consulta Recibidos Expedientes
+2022-10-18 13:13:37 Usuario Administrador Admin Admin Consulta Expedientes
+2022-10-18 13:18:59 Usuario Maria Pérez Pérez Entra Sistema
+2022-10-18 13:19:02 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:19:06 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 13:22:17 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:22:34 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:24:24 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:24:27 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 13:24:30 Usuario Maria Pérez Pérez Consulta Expedientes deputy
+2022-10-18 13:24:32 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 13:25:11 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 13:25:13 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:25:17 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:25:48 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:31:41 Usuario Maria Pérez Pérez Consulta Expedientes deputy
+2022-10-18 13:31:46 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 13:31:49 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 13:31:53 Usuario Maria Pérez Pérez Consulta Expedientes deputy
+2022-10-18 13:31:54 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 13:37:46 Administrador Administrador Admin Admin Entra Sistema
+2022-10-18 14:00:15 Usuario Maria Pérez Pérez Entra Sistema
+2022-10-18 14:00:26 Administrador Administrador Admin Admin Entra Sistema
+2022-10-18 14:25:53 Usuario Maria Pérez Pérez Entra Sistema
+2022-10-18 14:26:28 Administrador Administrador Admin Admin Entra Sistema
+2022-10-18 16:01:40 Administrador Administrador Admin Admin Consulta Log administrador
+2022-10-18 16:12:52 Administrador Administrador Admin Admin Consulta Log administrador
+2022-10-18 16:41:32 Usuario Maria Pérez Pérez Entra Sistema
+2022-10-18 16:41:34 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 16:41:36 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 16:41:38 Usuario Maria Pérez Pérez Buscador Expedientes
+2022-10-18 16:41:41 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 16:41:42 Usuario Maria Pérez Pérez Consulta Expedientes deputy
+2022-10-18 16:41:47 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 16:41:50 Usuario Maria Pérez Pérez Lista Tipos de Expedientes
+2022-10-18 16:42:10 Usuario Pedro Hernández Hernández Entra Sistema
+2022-10-18 16:42:13 Usuario Pedro Hernández Hernández Consulta Expedientes
+2022-10-18 16:42:15 Usuario Pedro Hernández Hernández Lista Tipos de Expedientes
+2022-10-18 16:42:30 Usuario Juan Robles Robles Entra Sistema
+2022-10-18 16:42:31 Usuario Juan Robles Robles Consulta Expedientes
+2022-10-18 16:42:33 Usuario Juan Robles Robles Lista Tipos de Expedientes
+2022-10-18 16:43:16 Administrador Administrador Admin Admin Entra Sistema
+2022-10-18 17:15:47 Administrador Administrador Admin Admin Consulta Log administrador
+2022-10-18 17:16:28 Administrador Administrador Admin Admin Consulta Log administrador
+2022-10-18 17:19:55 Usuario Maria Pérez Pérez Entra Sistema
+2022-10-18 17:19:58 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 17:25:56 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 17:25:59 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 17:26:28 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 17:26:29 Usuario Maria Pérez Pérez Consulta Expedientes
+2022-10-18 17:26:32 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 17:26:53 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 17:26:55 Usuario Maria Pérez Pérez Consulta Expedientes deputy
+2022-10-18 17:26:57 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes
+2022-10-18 17:26:59 Usuario Maria Pérez Pérez Buscador Expedientes
+2022-10-18 17:27:55 Usuario Maria Pérez Pérez Buscador Expedientes
+2022-10-18 17:28:39 Administrador Administrador Admin Admin Entra Sistema

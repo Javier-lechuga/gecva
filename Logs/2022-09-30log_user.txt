@@ -1,0 +1,32 @@
+2022-09-30 11:00:41 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-30 11:00:43  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-09-30 11:00:46 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-30 14:10:57 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-30 14:11:52 Usuario María Sánchez Treviño Entra Sistema
+2022-09-30 14:11:53 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:12:18 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:13:08 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:13:42 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:13:51 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:13:57 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:14:04 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:14:10 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:14:17 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:14:23 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:14:30 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 14:19:15 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 17:18:38 Usuario María Sánchez Treviño Consulta Recibidos Expedientes
+2022-09-30 17:18:40 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 17:19:31 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 17:25:39 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 17:43:14 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 17:44:39 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 18:08:43 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 18:10:41 Usuario María Sánchez Treviño Consulta Expedientes
+2022-09-30 18:10:45 Luis Miguel Correa Rada María Sánchez Treviño Regresa   expediente a: RHHSEI00000010
+2022-09-30 18:10:55 Usuario Luis Miguel Correa Rada Entra Sistema
+2022-09-30 18:10:56 Usuario Luis Miguel Correa Rada Consulta Expedientes
+2022-09-30 18:11:35  Luis Miguel Correa Rada Consulta usuarios   para transferir expedientes
+2022-09-30 18:11:48 María Sánchez Treviño Luis Miguel Correa Rada Transfiere   expediente a: RHHSEI00000010
+2022-09-30 18:11:57 Usuario María Sánchez Treviño Entra Sistema
+2022-09-30 18:11:58 Usuario María Sánchez Treviño Consulta Expedientes

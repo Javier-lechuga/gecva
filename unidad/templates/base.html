@@ -10,13 +10,34 @@
 
 	<link rel="icon" type="image/png" href="{% static 'imagenes/2.ico' %}" />
 
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
 	{% block css %}
 
 	{% endblock %}
 
-    <title>GECVA</title>
+    <title>ProcessFile</title>
 </head>
 <body>
+
+	<div id="sidebar">
+		<div id="stoggle-boton">
+			<span>&#9776;</span>
+		</div>
+		<ul>
+			<li>
+				<img src="{% static "imagenes/solusoft.png" %}" alt="ProcessFile" class="logo">
+			</li>
+			<li>Opción 1</li>
+			<li>Opción 2</li>
+			<li>Opción 3</li>
+			<li>Opción 4</li>
+		</ul>
+	</div>
+
+
+
     <header>
 		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 			<div class="container">
@@ -100,7 +121,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="col-md-4">
-						<h1>GECVA</h1>
+						<img height="90px" width="350px" src="{% static "imagenes/Process.png" %}" >
 					</div>
 					<div class="col-md-8">
 						<p align="right">
@@ -132,6 +153,9 @@
 	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/funciones.js' %}"></script>
+
+
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
 	{% block scripts %}
 

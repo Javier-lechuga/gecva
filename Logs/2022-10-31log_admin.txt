@@ -1,0 +1,36 @@
+2022-10-31 12:08:03 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:08:41 Administrador Administrador Admin Admin Edita Usuario: Pedro
+2022-10-31 12:08:41 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:09:05 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:15:38 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
+2022-10-31 12:15:42 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:15:47 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:16:24 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:20:30 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:20:55 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:20:57 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:21:17 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:22:19 Administrador Administrador Admin Admin Crea: Unidad: Adquisiciones
+2022-10-31 12:22:23 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:22:27 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:22:30 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:22:47 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:23:10 Administrador Administrador Admin Admin Edita Usuario: Fernanda
+2022-10-31 12:23:10 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:23:19 Administrador Administrador Admin Admin Edita Usuario: Karla
+2022-10-31 12:23:19 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:23:27 Administrador Administrador Admin Admin Edita Usuario: Carmen
+2022-10-31 12:23:27 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:23:46 Administrador Administrador Admin Admin Edita Usuario: Janeth
+2022-10-31 12:23:46 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:23:58 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
+2022-10-31 12:25:12 Administrador Administrador Admin Admin Crea: Tipo de Expediente: Papelería
+2022-10-31 12:26:15 Administrador Administrador Admin Admin Crea: Metadato: Periodo
+2022-10-31 12:27:25 Administrador Administrador Admin Admin Crea: Metadato: Artículos
+2022-10-31 12:27:46 Administrador Administrador Admin Admin Crea: Metadato: Factura
+2022-10-31 12:27:55 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
+2022-10-31 12:34:06 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:34:06 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 12:49:36 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 12:49:42 Administrador Administrador Admin Admin Modifica: Unidad: Adquisiciones
+2022-10-31 12:49:42 Administrador Administrador Admin Admin Consulta Unidades

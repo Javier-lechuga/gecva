@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Principal
@@ -6,69 +6,84 @@
 
 {% block content %}
 	<div class="main container">
-		<h2>Reportes</h2>
+		<h1 class="mt-4"><i class="fas fa-file-alt"></i> Reportes</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Reportes del sistema</li>
+        </ol>
 
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<p align="center">
-						<a href = "/rep_general" type="button" class="btn btn-primary btn-block btn-lg">Reporte general</a>
-					</p>
-				</div>
-				<div class="col-md-4"></div>
+
+		<div class="card mb-4">
+			<div class="card-header">
+				<i class="fas fa-file-alt"></i>
+				<strong>
+					Reportes
+				</strong>
 			</div>
-
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<p align="center">
-						<a href = "/rep_unidades" type="button" class="btn btn-primary btn-block btn-lg">Reporte por unidad</a>
-					</p>
-				</div>
-				<div class="col-md-4"></div>
+			<div class="card-body">
+				<table id="datatablesSimple">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Reporte</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>#</th>
+							<th>Reporte</th>
+							<th>Acciones</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<td width="50" align="center">1</td>
+							<td>Reporte general</td>
+							<td width="90" align="center">
+								<a href = "/rep_general" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fas fa-file-download"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="50" align="center">2</td>
+							<td>Reporte de usuarios</td>
+							<td width="90" align="center">
+								<a href = "/expedientes/reporte_usuarios" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fas fa-file-download"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="50" align="center">3</td>
+							<td>Reporte de unidades</td>
+							<td width="90" align="center">
+								<a href = "/expedientes/reporte_unidades" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fas fa-file-download"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="50" align="center">4</td>
+							<td>Reporte de tipos de expedientes</td>
+							<td width="90" align="center">
+								<a href = "/expedientes/reporte_tipo_exp" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fas fa-file-download"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="50" align="center">5</td>
+							<td>Reporte por unidad</td>
+							<td width="90" align="center">
+								<a href = "/rep_unidades" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fa fa-list-ul"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="50" align="center">6</td>
+							<td>Reporte por usuario</td>
+							<td width="90" align="center">
+								<a href = "/rep_usuarios" type="button" class="btn btn-primary btn-sm" title="Generar"><i class="fa fa-list-ul"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
+		</div>
 
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<p align="center">
-						<a href = "/rep_usuarios" type="button" class="btn btn-primary btn-block btn-lg">Reporte por usuario</a>
-					</p>
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<p align="center">
-						<a href = "/expedientes/reporte_usuarios" type="button" class="btn btn-primary btn-block btn-lg">Reporte de usuarios</a>
-					</p>
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<p align="center">
-						<a href = "/expedientes/reporte_unidades" type="button" class="btn btn-primary btn-block btn-lg">Reporte de unidades</a>
-					</p>
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<p align="center">
-						<a href = "/expedientes/reporte_tipo_exp" type="button" class="btn btn-primary btn-block btn-lg">Reporte de tipos de expedientes</a>
-					</p>
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+		<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 
 	</div>
 

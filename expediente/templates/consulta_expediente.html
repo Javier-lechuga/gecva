@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Expediente
@@ -14,8 +14,11 @@
             <div class="container">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<h1> {{etiqueta}}: {{expediente.identificador}}</h1>
+                            <h1 class="mt-4"><i class="fas fa-archive"></i> {{etiqueta}}</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">{{expediente.identificador}}</li>
+                            </ol>
+
                             <form method="POST" id="forma" class="form-horizontal" action="/expedientes/asigna_expediente" enctype="multipart/form-data">    
 								{% csrf_token %}
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
@@ -146,10 +149,17 @@
                                 {% if seleccionados %}
                                     <fieldset id="campos">
                                     <legend>Asignado a:</legend>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" id="seleccionados">
+
+
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <i class="fa fa-users"></i>
+                                            Usuarios
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="datatablesSimple">
                                                 <thead>
-                                                    <tr align="center">
+                                                    <tr>
                                                         <th>
                                                             <p align="center">
                                                                 #
@@ -167,6 +177,25 @@
                                                         </th>
                                                     </tr>
                                                 </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>
+                                                            <p align="center">
+                                                                #
+                                                            </p>
+                                                        </th>
+                                                        <th>
+                                                            <p align="center">
+                                                                Usuario
+                                                            </p>
+                                                        </th>
+                                                        <th>
+                                                            <p align="center">
+                                                                Estatus
+                                                            </p>
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                                 <tbody>
                                                     {% for seleccionado in seleccionados %}
                                                     <tr>
@@ -190,16 +219,17 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+
                                     </fieldset>
                                 {% else %}
                                     <p align="center"><strong>Expediente sin asignar</strong></p>
                                 {% endif %}
                                 <br/>
 								<p align="center">
-                                    <a href = "/expedientes/busca_expedientes" type="button" class="btn btn-primary">Regresar</a>
+                                    <a href = "/expedientes/busca_expedientes" type="button" class="btn btn-secondary">Regresar</a>
 								</p>
 							</form>
-						</div>
 					</article>
 				</section>
             </div>

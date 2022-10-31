@@ -1,16 +1,18 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 {% block titulo %}
 	Usuario
 {% endblock titulo %}
 
 {% block content %}
 	<section class="main container">
-		<h1> {{mensaje}}: {{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</h1>
+		<h1 class="mt-4"><i class="fa fa-users"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</li>
+        </ol>
 			<form method="POST">
 				{% csrf_token %}
 				
 					<div class="row">
-						<div class="col-md-12">
 							<div class="col-md-4">
 								<strong>Nombre:</strong>
 								<input type="text" class="form-control" id="first_name" name="first_name" value="{{usuario.first_name}}" required/>
@@ -23,11 +25,9 @@
 								<strong>Apellido materno:</strong>
 								<input type="text" class="form-control" id="amaterno" name="amaterno" value="{{usuario.amaterno}}" required/>
 							</div>
-						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
 							<div class="col-md-8">
 								<strong>Unidad:</strong>
 								<select id="unidad_user" name="unidad_user" class="form form-control" required>
@@ -48,11 +48,9 @@
 								<strong>Extensión:</strong>
 								<input type="text" class="form-control" id="extension" name="extension" value="{{usuario.extension}}"/>
 							</div>
-						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
 							<div class="col-md-6">
 								<strong>Jefe inmediato:</strong>
 								<select id="jefe_inmediato" name="jefe_inmediato" class="form form-control" required>
@@ -77,33 +75,26 @@
 									{% endfor %}
 								</select>
 							</div>
-						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12">
-							<div class="col-md-12">
 								<strong>Correo electrónico:</strong>
 								<input type="email" class="form-control" id="email" name="email" value="{{usuario.email}}" required/>
-							</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12">
-							<div class="col-md-12">
 								<strong>Nombre de usuario:</strong>
 								<input type="text" class="form-control" id="username" name="username" value="{{usuario.username}}" required/>
-							</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12">
-							<div class="col-md-12">
 								<strong>Contraseña:</strong>
 								<input type="password" class="form-control" id="password" name="password" value="" required/>
-							</div>
 						</div>
 					</div>
 					{% if usuario.is_active %}
@@ -113,18 +104,12 @@
 					{% endif %}
 					
 					
-					<a href = "/usuarios/" type="button" class="btn btn-primary">Regresar</a>
+					<a href = "/usuarios/" type="button" class="btn btn-secondary">Regresar</a>
 					<input type = "submit" class="btn btn-primary" value = "Guardar" />
 			</form>
 	</section>
 {% endblock %}
 
 {% block scripts %}
-
-	<script>
-		function goBack() {
-			window.history.back();
-		}
-	</script>
 
 {% endblock %}

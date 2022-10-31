@@ -1,7 +1,7 @@
 #   from django.conf.urls import url
 from django.urls import path, re_path
 from . import views
-from expediente.views import AprobarExp, BuscaMetadatosExp, EditarExpediente, EliminarExpediente,NuevoExpediente, SeleccionaTipoExp, VerExpediente
+from expediente.views import AceptarExpediente, AprobarExp, BuscaMetadatosExp, EditarExpediente, EliminarExpediente,NuevoExpediente, RegresarExpediente, SeleccionaTipoExp, VerExpediente
 from expediente.views import ListarExpedientes, SeleccionaTipoExp, MuestraCamposExp, ListaMetadatosExp, GuardaMetadatosExp, ExpRecibidos
 from expediente.views import ListarMisExpedientes, DetalleExpediente, ModificaExpCompleto, NuevoExpCompleto, BuscaMetadatosExp, AprobarExp, ExpAprobado, BuscaExpedientes, ConsultaExpediente
 from expediente.views import LogUsuario, LogAdministrador, ReporteUsuario, ReporteUnidad
@@ -47,6 +47,12 @@ urlpatterns = [
     path('reporte_tipo_exp', views.ReporteTiposExpedientes, name = "reporte_tipo_exp"),
     path('recibidos_deputy', views.RecibidosDeputy, name = "recibidos_deputy"),
     path('deputy', views.Deputy, name = "deputy"),
+    path('cancela_deputy', views.CancelaDeputy, name = "cancela_deputy"),
+    path('transferir_usuarios', views.TransferirUsuarios, name = "transferir_usuarios"),
+    path('transferir_expedientes', views.TransferirExpedientes, name = "transferir_expedientes"),
+    re_path(r'^(?P<pk>[0-9]+)/regresarExpediente$', RegresarExpediente, name= "regresar_expediente"),
+    re_path(r'^(?P<pk>[0-9]+)/aceptarExpediente$', AceptarExpediente, name= "aceptar_expediente"),
+    path('usuario_log', views.UsuarioLog, name = "usuario_log"),
 ]
 
 # 

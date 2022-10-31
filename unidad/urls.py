@@ -16,6 +16,7 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/eliminarUnidad', EliminarUnidad, name= "eliminar_unidad"),
     re_path(r'^(?P<pk>[0-9]+)/editarUnidad', EditarUnidad, name= "editar_unidad"),
     re_path(r'^(?P<pk>[0-9]+)/verPlantilla$', VerUnidad, name= "ver_unidad"),
+    path('unidad_nueva', views.UnidadNuevaDesdeUsuario, name = "unidad_nueva"),
 
 
 ]

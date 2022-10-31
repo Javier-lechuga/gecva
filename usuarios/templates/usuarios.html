@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "new_plant.html" %}
 
 {% block titulo %}
 	Usuarios
@@ -11,75 +11,116 @@
 {% block content %}
 
 	<div class="container">
-		<h1>{{mensaje}}</h1>
+		<h1 class="mt-4"><i class="fa fa-users"></i> {{mensaje}}</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">{{mensaje}}</li>
+        </ol>
+
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8" align="center">
+				{% if alerta %}
+					<div class="alert alert-danger alert-dismissible fade show form-control" role="alert">
+						<strong>{{alerta}}!!</strong>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-md-2"></div>
+		</div>
 
 		<section class="main container">
 			<div class="row">
 				<section class="posts col-md-12">
 					<article class="post clearfix">
-						<div class="table-responsive">
-							<table class="table table-hover" id="tablita">
-								<thead>
-									<tr align="center">
-										<th>#</th>
-										<th>Usuario</th>
-										<th>Correo</th>
-										<th>Estatus</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for usuario in usuarios %}
-										<tr>
-											<td align="center" width="50">{{forloop.counter}}</td>
-											<td>
-												<strong>
-													<a href = "{% url "editar_usuario" pk=usuario.id %}" title="Consultar/Editar">{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</a>
-												</strong>
-											</td>
-											<td>{{usuario.email}}</td>
-											<td align="center" width="50">
-												{% if usuario.is_active == True %}
-													Activo
-												{% else %}
-													Inactivo
-												{% endif %}
-											</td>
-											<td width="90">
-												{% if usuario.is_active == True %}
-													{% if usuario.transferido == True %}
-														<a href = "javascript: if(confirm('Desactivar el usuario: {{usuario}}??')) window.location='{% url "eliminar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary glyphicon glyphicon-remove" title="Desactivar"></a>
+
+						<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fa fa-users"></i>
+								<strong>
+                                	Usuarios
+								</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+											<th>#</th>
+											<th>Usuario</th>
+											<th>Correo</th>
+											<th>Unidad</th>
+											<th>Rol</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+											<th>Usuario</th>
+											<th>Correo</th>
+											<th>Unidad</th>
+											<th>Rol</th>
+											<th>Estatus</th>
+											<th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										{% for usuario in usuarios %}
+											<tr>
+												<td align="center" width="50">{{forloop.counter}}</td>
+												<td align="left" width="250">
+													<strong>
+														<a href = "{% url "editar_usuario" pk=usuario.id %}" title="Consultar/Editar">{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}</a>
+													</strong>
+												</td>
+												<td>{{usuario.email}}</td>
+												<td>{{usuario.unidad_user}}</td>
+												<td>{{usuario.rol}}</td>
+												<td align="center" width="50">
+													{% if usuario.is_active == True %}
+														Activo
 													{% else %}
-														<button type="button" class="btn btn-primary glyphicon glyphicon-transfer transferir" data-toggle="modal" data-target="#usuarios" value="{{usuario.id}}"></button>
+														Inactivo
 													{% endif %}
-												{% endif %}
-											</td>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+												</td>
+												<td align="center" width="50">
+													{% if usuario.is_active == True %}
+														{% if usuario.transferido == True %}
+															<a href = "javascript: if(confirm('Desactivar el usuario: {{usuario}}??')) window.location='{% url "eliminar_usuario" pk=usuario.id %}'" type="button" class="btn btn-primary btn-sm" title="Desactivar"><i class="fas fa-remove"></i></a>
+														{% else %}
+															<button type="button" class="btn btn-primary btn-sm transferir" data-bs-toggle="modal" data-bs-target="#usuarios" value="{{usuario.id}}" title="Transferir expedientes"><i class="fa fa-exchange"></i></button>
+														{% endif %}
+													{% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
 					</article>
 				</section>
 			</div>
 		</section>
 		<p align="center">
-			<a href = "/principal/" type="button" class="btn btn-primary">Regresar</a>
+			<a href = "/principal/" type="button" class="btn btn-secondary">Regresar</a>
 			<a href = "{% url 'nuevo_usuario' %}" type="button" class="btn btn-primary">Nuevo usuario</a>
 		</p>
 
 
+		
+
 		<!-- Modal Usuarios-->
-        <div class="modal fade" id="usuarios" role="dialog" aria-hidden="true" style="display: none;">
-			<div class="modal-dialog modal-lg" role="document" >
-				<div class="modal-content">
+        <div class="modal fade" id="usuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+			  <div class="modal-content">
 				<form action="/usuarios/transferir_exp" method="POST">
 					{% csrf_token %}
 					<div class="modal-header">
 						<h2 class="modal-tittle">Selecciona usuario destino</h2>
-						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="table-responsive">
@@ -101,6 +142,11 @@
 												Usuario
 											</p>
 										</th>
+										<th>
+											<p align="center">
+												Unidad
+											</p>
+										</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -109,16 +155,11 @@
 										{% if request.user.pk != usuario.pk %}
 											<tr>
 												<td>
-													<p align="center">
+													<p align="center" width="30">
 														{{forloop.counter}}
 													</p>
 												</td>
-												<td>
-													{% for seleccionado in seleccionados %}
-														{% if usuario.pk == seleccionado.id_usuario.pk %}
-														
-														{% endif %}
-													{% endfor %}
+												<td align="center" width="30">
 													<p align="center">
 														<input type="radio" id="{{usuario.pk}}" name="usuario_destino" class="elementTable varios" value="{{usuario.pk}}">
 													</p>
@@ -127,6 +168,9 @@
 													<p align="center">
 														{{usuario.first_name}} {{usuario.last_name}} {{usuario.amaterno}}
 													</p>
+												</td>
+												<td align="left">
+													{{usuario.unidad_user}}
 												</td>
 											</tr>
 										{% endif %}
@@ -139,7 +183,7 @@
 					<div class="modal-footer">
 						<input type="hidden" id="users" name="users" value="">
 						<input type="hidden" id="usuario_origen" name="usuario_origen" value="">
-						<button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 						<button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
 					</div>
 				</div>
@@ -153,22 +197,7 @@
 
 {% block scripts %}
 
-	<script>
-		function goBack() {
-			window.history.back();
-		}
-	</script>
-
 	<script type="text/javascript">
-
-		$(document).ready( function () {
-			$('#tablita').DataTable({
-				"paging":false,
-				"language": {
-					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
-				},
-			});
-		} );
 
 		$(document).ready( function () {
             $('#usuarios2').DataTable({
@@ -205,14 +234,12 @@
             }
         });
 
-		$(".transferir").click(function(){
-            //var origin = $("#otro")
+		$(document).on('click', '.transferir', function (event) {
 			var origin = this.value;
-			//alert(origin)
-            $('#usuario_origen').val(origin)
-            // console.log(origin)
+			// console.log(origin)
 			// alert(origin)
-        });
+            $('#usuario_origen').val(origin)
+		});
 
 	</script>
 

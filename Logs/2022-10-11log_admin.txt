@@ -1,0 +1,185 @@
+2022-10-11 10:18:12 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 10:19:54 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:20:07 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:20:10 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 10:20:13 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:20:56 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:21:31 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:22:57 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 10:22:59 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:23:42 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:25:42 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:26:39 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:26:46 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 10:28:48 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 10:28:50 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 10:29:33 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 10:29:36 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:18:25 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:26:28 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:26:50 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:33:16 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:38:42 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:39:15 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:39:34 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:39:45 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:41:57 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:42:45 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:44:03 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:44:40 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:50:38 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:51:51 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:53:09 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:53:23 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 12:53:58 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 12:59:02 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 13:00:29 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 13:00:33 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 13:00:36 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 13:06:55 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 13:08:33 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 13:09:47 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 13:12:26 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 13:13:01 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 14:07:50 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 14:07:55 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 14:08:09 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 14:08:18 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 14:08:32 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 14:08:56 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 14:59:16 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 14:59:33 Administrador Admin Admin Admin Crea: Tipo de Expediente: llllllllllllll
+2022-10-11 15:00:05 Administrador Admin Admin Admin Crea: Metadato: llllllllll
+2022-10-11 15:00:21 Administrador Admin Admin Admin Crea: Metadato: ooooooooooooooooooo
+2022-10-11 15:00:28 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:04:38 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:04:39 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:14:15 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:15:14 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:24:06 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:24:08 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:31:32 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:31:49 Administrador Admin Admin Admin Crea: Unidad: ddddddddddddd
+2022-10-11 15:32:04 Administrador Admin Admin Admin Crea: Unidad: jjjjjjjjjjjjj
+2022-10-11 15:32:22 Administrador Admin Admin Admin Crea: Unidad: weq
+2022-10-11 15:32:30 Administrador Admin Admin Admin Genera Reporte general
+2022-10-11 15:32:41 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:53:34 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:53:36 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:54:27 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:54:28 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:55:25 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:55:26 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:57:45 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 15:57:47 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 15:58:41 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:00:46 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:00:48 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:08:47 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:32:24 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:32:29 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:32:33 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:34:21 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:34:37 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:34:44 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:34:58 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:35:00 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:35:03 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 16:36:14 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:36:16 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 16:36:33 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 16:38:44 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:50:54 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 16:52:58 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:54:07 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:54:08 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:58:33 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:58:39 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:58:46 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:59:25 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:59:26 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:59:29 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 16:59:55 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 16:59:57 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 16:59:59 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:00:28 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:08:46 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:17:46 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:17:50 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:17:58 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:18:02 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:18:09 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:18:12 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:23:24 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:23:39 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:25:03 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:25:05 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:25:06 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:26:19 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:26:46 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:27:22 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:27:24 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:27:29 Administrador Admin Admin Admin Elimina: Tipo de Expediente: llllllllllllll
+2022-10-11 17:27:29 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:27:43 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:27:45 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:29:22 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:29:24 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:29:47 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:29:49 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:30:32 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:30:33 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:30:43 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:30:45 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:32:53 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:32:59 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:33:01 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:33:43 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:33:45 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:33:50 Administrador Admin Admin Admin Elimina: Unidad: weq
+2022-10-11 17:33:50 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:33:53 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:34:53 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:49:59 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:50:01 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:50:03 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:50:04 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:51:03 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:51:04 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:52:04 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:52:05 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:55:05 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:55:06 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:55:20 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:55:24 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:55:26 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 17:57:14 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:58:14 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:58:15 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 17:59:01 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:59:04 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 17:59:06 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:00:38 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:00:39 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:00:57 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:00:57 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:01:40 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:01:41 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:02:04 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:02:19 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 18:02:21 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:02:38 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 18:02:58 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:02:59 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 18:03:10 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:03:17 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:03:22 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 18:05:14 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:05:22 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:05:27 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 18:07:44 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:07:52 Administrador Admin Admin Admin Consulta Tipos de Expedientes
+2022-10-11 18:07:53 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:07:56 Administrador Admin Admin Admin Consulta Unidades
+2022-10-11 18:07:57 Administrador Admin Admin Admin Consulta Usuarios
+2022-10-11 18:08:07 Administrador Admin Admin Admin Consulta Usuarios

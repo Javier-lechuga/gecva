@@ -68,3 +68,7 @@
 2022-09-26 15:50:45 Administrador Admin Admin Admin Consulta Usuarios
 2022-09-26 15:54:34 Administrador Admin Admin Admin Consulta Usuarios
 2022-09-26 15:54:44 Luis Miguel Correa Rada Admin Admin Admin Transfiere expedientes  Al usuario: Maria
+2022-09-26 17:42:04 Administrador Admin Admin Admin Consulta Usuarios
+2022-09-26 17:43:09 Administrador Admin Admin Admin Crea Usuario: Pedro
+2022-09-26 17:43:09 Administrador Admin Admin Admin Asigna al grupo Aprobadores Usuario
+2022-09-26 17:43:09 Administrador Admin Admin Admin Consulta Usuarios
