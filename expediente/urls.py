@@ -53,6 +53,8 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/regresarExpediente$', RegresarExpediente, name= "regresar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/aceptarExpediente$', AceptarExpediente, name= "aceptar_expediente"),
     path('usuario_log', views.UsuarioLog, name = "usuario_log"),
+    path('carga_xml', views.CargaXml, name = "carga_xml"),
+    path('carga_datos_xml', views.CargaDatosXml, name = "carga_datos_xml"),
 ]
 
 # 

@@ -25,4 +25,33 @@ class Metadato(models.Model):
     base = models.IntegerField(default=0)
 
     def __str__(self):
-            return self.nombre
+        return self.nombre
+
+class Xml_metadato(models.Model):
+
+    expediente = models.ForeignKey(Expediente, related_name='expediente_xml', blank=True, null=True, on_delete=models.CASCADE)
+
+    # Datos generales
+    fecha_xml = models.DateTimeField(u'fecha_xml',null=True)
+    folio = models.CharField(u'folio_xml', max_length=245, null=True)
+    cond_pago = models.CharField(u'pago_xml', max_length=245, null=True)
+    moneda = models.CharField(u'moneda_xml', max_length=245, null=True)
+    tipo_comprobante = models.CharField(u'comprobante_xml', max_length=245, null=True)
+    metodo_pago = models.CharField(u'metodo_xml', max_length=245, null=True)
+    lugar_exp = models.CharField(u'lugar_xml', max_length=245, null=True)
+    subtotal = models.CharField(u'subtotal_xml', max_length=245, null=True)
+    descuento = models.CharField(u'descuento_xml', max_length=245, null=True)
+    total = models.CharField(u'total_xml', max_length=245, null=True)
+
+    # Datos emisor
+    rfc_emisor = models.CharField(u'rfc_emisor_xml', max_length=245, null=True)
+    nombre_emisor = models.CharField(u'nombre_emisor_xml', max_length=245, null=True)
+    regimen_fiscal_emisor = models.CharField(u'regimen_emisor_xml', max_length=245, null=True)
+
+    # Datos receptor
+    rfc_receptor = models.CharField(u'rfc_receptor_xml', max_length=245, null=True)
+    nombre_receptor = models.CharField(u'nombre_receptor_xml', max_length=245, null=True)
+    regimen_fiscal_receptor = models.CharField(u'regimen_receptor_xml', max_length=245, null=True)
+    
+    def __str__(self):
+      return self.expediente.identificador

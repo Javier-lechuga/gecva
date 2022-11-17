@@ -3,5 +3,6 @@
     {"model": "tipo_dato.TipoDato", "pk":2, "fields":{"tipo": "Numérico"}},
     {"model": "tipo_dato.TipoDato", "pk":3, "fields":{"tipo": "Fecha"}},
     {"model": "tipo_dato.TipoDato", "pk":4, "fields":{"tipo": "Texto"}},
-    {"model": "tipo_dato.TipoDato", "pk":5, "fields":{"tipo": "Correo electrónico"}}
+    {"model": "tipo_dato.TipoDato", "pk":5, "fields":{"tipo": "Correo electrónico"}},
+    {"model": "tipo_dato.TipoDato", "pk":6, "fields":{"tipo": "XML"}}
 ]

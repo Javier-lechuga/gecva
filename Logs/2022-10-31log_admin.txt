@@ -34,3 +34,9 @@
 2022-10-31 12:49:36 Administrador Administrador Admin Admin Consulta Unidades
 2022-10-31 12:49:42 Administrador Administrador Admin Admin Modifica: Unidad: Adquisiciones
 2022-10-31 12:49:42 Administrador Administrador Admin Admin Consulta Unidades
+2022-10-31 15:16:10 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 15:16:55 Administrador Administrador Admin Admin Crea Usuario: Javier
+2022-10-31 15:16:55 Administrador Administrador Admin Admin Asigna al grupo Aprobadores Usuario
+2022-10-31 15:16:55 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 15:17:07 Administrador Administrador Admin Admin Consulta Usuarios
+2022-10-31 15:47:31 Administrador Administrador Admin Admin Consulta Usuarios

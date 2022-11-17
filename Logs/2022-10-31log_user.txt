@@ -192,3 +192,4 @@
 2022-10-31 13:34:45 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000004
 2022-10-31 13:38:06 Usuario Janeth Lopez Perez Consulta Expedientes
 2022-10-31 13:38:07 Usuario Janeth Lopez Perez Consulta Expediente: ADQPPL0000004
+2022-10-31 15:16:08 Administrador Administrador Admin Admin Entra Sistema

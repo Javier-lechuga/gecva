@@ -36,6 +36,15 @@
 
                                 <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
                                 <input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+                                <input type="hidden" id="archivo_xml" name="archivo_xml" value="{{archivo_xml}}"/>
+                                <input type="hidden" id="url_final" name="url_final" value="{{url_final}}"/>
+
+                                {% for valor in metadatos %}
+                                    {% if valor.tipo_dato.tipo == "XML" %}
+                                        <br>
+                                        <input name="metadato" id="metadato" type="hidden" value="{{valor.pk}}" />
+                                    {% endif %}
+                                {% endfor %}
                                 
                                 <fieldset>
                                     <legend>Datos generales</legend>
@@ -63,9 +72,221 @@
                                             <input type="text" class="form-control" id="asunto" name="asunto" value="" required/>
                                         </div>
                                     </div>
-                                    <br/>
                                 </fieldset>
+                                
+
+                                {% for comp in comprobante %}
                                 <br/>
+                                    <input type="hidden" id="subtotal_xml" name="subtotal_xml" value="{{comp.SubTotal}}"/>
+                                    <input type="hidden" id="total_xml" name="total_xml" value="{{comp.Total}}"/>
+                                    
+                                    {% if comp.Descuento %}
+                                        <input type="hidden" id="descuento_xml" name="descuento_xml" value="{{comp.Descuento}}"/>
+                                    {% endif %}
+                                                <fieldset>
+                                                    <legend><strong>Resumen factura</strong></legend>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <strong>Fecha: </strong>
+                                                            <input type="text" class="form-control" id="fecha_xml" name="fecha_xml" value="{{comp.Fecha}}" readonly/>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Folio:</strong>
+                                                            <input type="text" class="form-control" id="folio_xml" name="folio_xml" value="{{comp.Folio}}" readonly/>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <strong>Condiciones de pago: </strong>
+                                                            <input type="text" class="form-control" id="pago_xml" name="pago_xml" value="{{comp.CondicionesDePago}}" readonly/>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <strong>moneda:</strong>
+                                                            <input type="text" class="form-control" id="moneda_xml" name="moneda_xml" value="{{comp.Moneda}}" readonly/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <strong>Tipo de comprobante:</strong>
+                                                            <input type="text" class="form-control" id="comprobante_xml" name="comprobante_xml" value="{{comp.TipoDeComprobante}}" readonly/>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <strong>Metodo de pago:</strong>
+                                                            <input type="text" class="form-control" id="metodo_xml" name="metodo_xml" value="{{comp.MetodoPago}}" readonly/>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <strong>lugar de expedición:</strong>
+                                                            <input type="text" class="form-control" id="lugar_xml" name="lugar_xml" value="{{comp.LugarExpedicion}}" readonly/>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                        {% endfor %}
+                                        <br/>
+                                    
+                                        {% for em in emisor %}
+
+                                            <fieldset>
+                                                <legend><strong>Datos del emisor</strong></legend>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <strong>R.F.C.: </strong>
+                                                        <input type="text" class="form-control" id="rfc_emisor" name="rfc_emisor" value="{{em.Rfc}}" readonly/>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <strong>Nombre:</strong>
+                                                        <input type="text" class="form-control" id="nombre_emisor" name="nombre_emisor" value="{{em.Nombre}}" readonly/>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <strong>Regimen fiscal: </strong>
+                                                        <input type="text" class="form-control" id="regimen_emisor" name="regimen_emisor" value="{{em.RegimenFiscal}}" readonly/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+
+                                        {% endfor %}
+
+                                        
+
+                                        {% for rec in receptor %}
+                                        <br>
+
+                                            <fieldset>
+                                                <legend><strong>Datos del receptor</strong></legend>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <strong>R.F.C.: </strong>
+                                                        <input type="text" class="form-control" id="rfc_receptor" name="rfc_receptor" value="{{rec.Rfc}}" readonly/>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <strong>Nombre:</strong>
+                                                        <input type="text" class="form-control" id="nombre_receptor" name="nombre_receptor" value="{{rec.Nombre}}" readonly/>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <strong>Regimen fiscal: </strong>
+                                                        <input type="text" class="form-control" id="usoCFDI_receptor" name="usoCFDI_receptor" value="{{rec.UsoCFDI}}" readonly/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+
+                                        {% endfor %}
+
+                                        
+
+                                        {% if conceptos %}
+                                        
+                                        <br>
+                                        <fieldset>
+                                            <legend><strong>Conceptos</strong></legend>
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                
+                                            </div>
+                                            <div class="card-body">
+                                                <table id="datatablesSimple">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Clave</th>
+                                                            <th>Descripción</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Unidad</th>
+                                                            <th>Valor unitario</th>
+                                                            <th>Importe</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Clave</th>
+                                                            <th>Descripción</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Unidad</th>
+                                                            <th>Valor unitario</th>
+                                                            <th>Importe</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                        {% for con in conceptos %}
+                                                            <tr>
+                                                                <td align="center" width="50">{{forloop.counter}}</td>
+                                                                <td width="100" align="center">
+                                                                    {{con.ClaveProdServ}}
+                                                                </td>
+                                                                <td>
+                                                                    {{con.Descripcion}}
+                                                                </td>
+                                                                <td width="100" align="center">
+                                                                    {{con.Cantidad}}
+                                                                </td>
+                                                                <td width="100" align="center">
+                                                                    {{con.Unidad}}
+                                                                </td>
+                                                                <td width="100" align="center">
+                                                                    {{con.ValorUnitario}}
+                                                                </td>
+                                                                <td width="100" align="center">
+                                                                    {{con.Importe}}
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                            <tr>
+                                                                {% for comp in comprobante %}
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td align="center"><strong>Subtotal</strong></td>
+                                                                    <td align="center"><strong>{{comp.SubTotal}}</strong></td>
+                                                                {% endfor %}
+                                                            </tr>
+                                                            {% for val in comprobante %}
+                                                                {% if val.Descuento != False %}
+                                                                <tr>
+                                                                    {% for comp in comprobante %}
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td align="center"><strong>Descuento</strong></td>
+                                                                        <td align="center"><strong>{{comp.Descuento}}</strong></td>
+                                                                    {% endfor %}
+                                                                </tr>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                            
+                                                            <tr>
+                                                                {% for d in traslados %}
+                                                                    {% if forloop.last %}
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td align="center"><strong>IVA</strong></td>
+                                                                        <td align="center"><strong>{{d.Importe}}</strong></td>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                {% for comp in comprobante %}
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td align="center"><strong>Total</strong></td>
+                                                                    <td align="center"><strong>{{comp.Total}}</strong></td>
+                                                                {% endfor %}
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        </fieldset>
+                                        {% endif %}
+
                                 <fieldset id="campos">
                                     <legend>Metadatos</legend>
                                     {% for metadato in metadatos %}
@@ -83,17 +304,24 @@
                                         {% if metadato.tipo_dato.tipo == "Archivo" %}
                                             <label for="avatar">Seleccionar archivo:</label>
                                             {% if metadato.obligatorio == True %}
-                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="" class="form-control inputClass" required/>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" value="" class="form-control inputClass" required/>
                                             {% else %}
-                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept="image/png, image/jpeg" value="" class="form-control inputClass"/>
+                                                <input type="file" id="{{metadato.pk}}" name="{{metadato.pk}}" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" value="" class="form-control inputClass"/>
                                             {% endif %}
+                                        {% endif %}
+
+                                        
+                                        {% if metadato.tipo_dato.tipo == "XML" %}
+                                            <br>
+                                            <input name="{{metadato.pk}}" id="{{metadato.pk}}" type="hidden" value="{{metadato.pk}}" />
+                                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#factura_xml">Cargar XML</button>
                                         {% endif %}
 
                                         {% if metadato.tipo_dato.tipo == "Numérico" %}
                                             {% if metadato.obligatorio == True %}
-                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" class="form-control inputClass" required/>
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" step=".01" class="form-control inputClass" required/>
                                             {% else %}
-                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" class="form-control inputClass" />
+                                                <input type="number" id="{{metadato.pk}}" name="{{metadato.pk}}" min="0" max="10000000" value="" step=".01" class="form-control inputClass" />
                                             {% endif %}
                                         {% endif %}
 
@@ -143,15 +371,60 @@
             {% endfor %}
         {% endif %}
 
+        <!-- Modal Usuarios-->
+        <div class="modal fade" id="factura_xml" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <form method="POST" action="/expedientes/carga_datos_xml" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h2 class="modal-tittle">Cargar factura XML</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <input type="file" id="factura" name="factura" accept="text/xml" value="{{archivo_xml}}" class="form-control inputClass es_xml" value="" required/>
+                    <input name="expediente" id="expediente" type="hidden" value="{{expediente.pk}}" />
+                    <input name="tipo" id="tipo" type="hidden" value="{{tipo.pk}}" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" id="confirmar" type="submit">Confirmar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
 
 {%endblock %}
 
 {% block scripts %}
 
-	<script>
-		function goBack() {
-			window.history.back();
-		}
+    <script type="text/javascript">
+
+        $(function(){
+            window.onload = function() {
+                console.log("onload");
+                $("#mostrar").hide();
+                $("#cargar").hide();
+            }
+        });
+
+
+        $(".es_xml").on("change",function(){
+            // alert("Si entra")
+            console.log("Si entra")
+            $("#mostrar").show();
+            $("#cargar").show();
+        });
+
+        $("#subida").click(function(){
+            alert("Si entra")
+            $("#archive").submit();
+        });
+
+        
+
 	</script>
 
 {% endblock %}

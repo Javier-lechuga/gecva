@@ -1,0 +1,42 @@
+2022-11-17 10:44:00 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 10:44:07 Usuario Janeth Lopez Perez Elimina Expediente: PVRCXP0000004
+2022-11-17 10:44:07 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 10:52:24 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 10:52:26 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-17 10:53:00 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000032
+2022-11-17 12:02:14 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:02:17 Usuario Janeth Lopez Perez Elimina Expediente: PVRPB20000032
+2022-11-17 12:02:17 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:02:19 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-17 12:02:41 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000033
+2022-11-17 12:07:06 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000034
+2022-11-17 12:08:06 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000035
+2022-11-17 12:08:45 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000036
+2022-11-17 12:09:42 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000037
+2022-11-17 12:11:02 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000038
+2022-11-17 12:14:27 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000039
+2022-11-17 12:16:15 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:16:18 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-17 12:16:48 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000040
+2022-11-17 12:17:57 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000041
+2022-11-17 12:19:07 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000042
+2022-11-17 12:21:19 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000043
+2022-11-17 12:23:13 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000044
+2022-11-17 12:24:00 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000045
+2022-11-17 12:24:26 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000046
+2022-11-17 12:24:26 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:24:50 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000046
+2022-11-17 12:27:11 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:27:14 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-17 12:27:36 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000047
+2022-11-17 12:27:36 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:28:06 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000047
+2022-11-17 12:34:55 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:34:58 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-17 12:35:24 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000048
+2022-11-17 12:36:35 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000049
+2022-11-17 12:36:43 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:36:45 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-17 12:37:07 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000050
+2022-11-17 12:37:07 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 12:37:12 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050

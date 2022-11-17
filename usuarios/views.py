@@ -64,7 +64,7 @@ def NuevoUsuario(request):
             except:
                 # Si no tiene jefe inmediato se asigna el administrador
                 jefe_inmediato_dos = user_log
-            #jefe_inmediato_dos = User.objects.get(pk=1)
+                #jefe_inmediato_dos = User.objects.get(pk=1)
             # Instanciando Unidad
             unidad_dos = Unidad()
             unidad_dos = Unidad.objects.get(pk=request.POST['unidad_user'])

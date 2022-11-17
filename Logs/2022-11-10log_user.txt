@@ -1,0 +1,39 @@
+2022-11-10 09:35:25 Usuario Administrador Admin Admin Carga datos de XML
+2022-11-10 10:37:47 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-10 10:37:50 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 10:37:52 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 11:44:57 Administrador Administrador Admin Admin Entra Sistema
+2022-11-10 11:46:21 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-10 11:46:23 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 11:46:24 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 11:59:40 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 11:59:42 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:15:51 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:15:52 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:18:05 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:18:07 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:22:25 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:22:27 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:27:37 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:28:02 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:28:04 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:29:55 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:29:56 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:30:33 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:30:35 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:48:04 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:48:06 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:51:10 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:51:12 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 12:51:46 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 12:51:48 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 13:38:04 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 13:54:56 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 13:54:58 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 13:55:33 Usuario Janeth Lopez Perez Carga datos de XML
+2022-11-10 13:56:29 Usuario Janeth Lopez Perez Carga datos de XML
+2022-11-10 13:57:31 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 13:57:34 Usuario Janeth Lopez Perez Lista Tipos de Expedientes
+2022-11-10 13:58:06 Usuario Janeth Lopez Perez Carga datos de XML
+2022-11-10 13:58:20 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-10 13:58:22 Usuario Janeth Lopez Perez Lista Tipos de Expedientes

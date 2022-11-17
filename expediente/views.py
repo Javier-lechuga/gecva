@@ -31,7 +31,7 @@ import time
 
 from expediente.models import Expediente, Expediente_aprobador, Registra_actividad
 from metadato.forms import MetadatoForm
-from metadato.models import Metadato
+from metadato.models import Metadato, Xml_metadato
 from tipo_dato.models import TipoDato
 import tipo_expediente
 from tipo_expediente.models import TipoExpediente
@@ -88,6 +88,188 @@ def BuscaMetadatosExp(request):
                   })
 
 # @login_required(redirect_field_name='login')
+def CargaDatosXml(request):
+    #raise Exception("Error")
+    #return HttpResponse(request.FILES.items())
+    #return HttpResponse(request.POST.items())
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    metadatos = Metadato.objects.filter(tipo_expediente=request.POST['tipo'], base =1)
+    expediente = ExpedienteForm()
+    tipo = TipoExpediente()
+    tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
+    contiene_arhivos = expediente_tine_archivos(metadatos)
+    archivo_xml = ""
+    # valores retornados:
+    #   tipo : tipo                     // El tipo de expediente
+    #   expediente : definir            // definir el tipo
+    #   metadatos : metadatos           // tupla con los metadatos que componen el expediente
+    #   mensaje : 'metadatos'           // Mensaje a mostrar en la pagina
+    #   contiene_archivos : bool        // variable auxiliar que representa si el expediente
+    #                                      tiene un metadato del tipo Archivo.
+
+    if not request.FILES:
+        pass
+    else:
+        for metadato_archivo in request.FILES.items():
+            # crear el directorio con el id del expediente, nombre del metadato y version,
+            # la version simpre sera 1 cuando se crea un metadato nuevo
+            #   ejemplo : ./media/nombre_metadato/pk_expediente/v1/
+            #print(metadato_archivo)
+            #
+            archivo_xml = metadato_archivo[1]
+            nombre_metadato = "factura"
+            pk_expediente = "temporal"
+            ruta_archivo = crea_carpeta('./media/'+pk_expediente+'/'+nombre_metadato+'/v1/')
+            url_archivo = guardar_archivo(ruta_archivo,metadato_archivo[1])
+            # se elimina el primer caracter de lacadena '.' para poder guardar la url 
+            url_archivo = url_archivo[1:]
+            url_final = "." + str(url_archivo)
+            xml= open(url_final,"r")
+
+            #return HttpResponse(request.FILES.items())
+
+    #xml= open("facturas/18043.xml","r")
+    #with open("C:/Users/Solusoft/OneDrive/Escritorio/gecva/static/facturas/8021215300.xml","rb") as f:
+        #xml= open(str(f))
+        #xml= open("C:/Users/Solusoft/OneDrive/Escritorio/gecva/static/facturas/8021215300.xml","r")
+
+    #return HttpResponse(request.POST.items())
+    
+    mytree=minidom.parse(xml)
+
+    comprobante = []
+
+    # Comprobante
+    tagname=mytree.getElementsByTagName('cfdi:Comprobante')[0]
+    fecha= tagname.attributes['Fecha'].value
+    folio= tagname.attributes['Folio'].value
+    condicionesDePago= tagname.attributes['CondicionesDePago'].value
+    subTotal= tagname.attributes['SubTotal'].value
+    moneda= tagname.attributes['Moneda'].value
+    total1= tagname.attributes['Total'].value
+    tipoDeComprobante= tagname.attributes['TipoDeComprobante'].value
+    metodoPago= tagname.attributes['MetodoPago'].value
+    lugarExpedicion= tagname.attributes['LugarExpedicion'].value
+    try:
+        descuento = tagname.attributes['Descuento'].value
+        print(descuento)
+    except:
+        descuento = False
+        #print(descuento)
+
+    comprobante.append({
+                        "Comprobante":1,
+                        "Fecha":fecha, 
+                        "Folio":folio,
+                        "CondicionesDePago":condicionesDePago,
+                        "SubTotal":subTotal,
+                        "Moneda":moneda,
+                        "Total":total1,
+                        "TipoDeComprobante":tipoDeComprobante,
+                        "MetodoPago":metodoPago,
+                        "LugarExpedicion":lugarExpedicion,
+                        "Descuento":descuento,
+                        })
+
+    # Emisor
+    emisor = []
+    tagname=mytree.getElementsByTagName('cfdi:Emisor')[0]
+    rfc= tagname.attributes['Rfc'].value
+    nombre= tagname.attributes['Nombre'].value
+    regimenFiscal= tagname.attributes['RegimenFiscal'].value
+
+    emisor.append({
+                        "Emisor":1,
+                        "Rfc":rfc, 
+                        "Nombre":nombre,
+                        "RegimenFiscal":regimenFiscal,
+                        })
+
+    # Receptor
+    receptor = []
+    tagname=mytree.getElementsByTagName('cfdi:Receptor')[0]
+    rfc= tagname.attributes['Rfc'].value
+    nombre= tagname.attributes['Nombre'].value
+    usoCFDI= tagname.attributes['UsoCFDI'].value
+
+    receptor.append({
+                        "Receptor":1,
+                        "Rfc":rfc, 
+                        "Nombre":nombre,
+                        "UsoCFDI":usoCFDI,
+                        })
+
+    no_conceptos=mytree.getElementsByTagName('cfdi:Concepto')
+
+    conceptos = []
+
+    for i in range(len(no_conceptos)):
+
+        # Concepto
+        concepto=mytree.getElementsByTagName('cfdi:Concepto')[i]
+        claveProdServ= concepto.attributes['ClaveProdServ'].value
+        noIdentificacion= concepto.attributes['NoIdentificacion'].value
+        cantidad= concepto.attributes['Cantidad'].value
+        claveUnidad= concepto.attributes['ClaveUnidad'].value
+        unidad= concepto.attributes['Unidad'].value
+        descripcion= concepto.attributes['Descripcion'].value
+        valorUnitario= concepto.attributes['ValorUnitario'].value
+        importe= concepto.attributes['Importe'].value
+
+        conceptos.append({
+                        "concepto":i,
+                        "ClaveProdServ":claveProdServ, 
+                        "NoIdentificacion":noIdentificacion,
+                        "Cantidad":cantidad,
+                        "ClaveUnidad":claveUnidad,
+                        "Unidad":unidad,
+                        "Descripcion":descripcion,
+                        "ValorUnitario":valorUnitario,
+                        "Importe":importe,
+                        })
+
+    no_traslados=mytree.getElementsByTagName('cfdi:Traslados')
+
+    traslados = []
+
+    for i in range(len(no_traslados)):
+
+        # Concepto
+        traslado=mytree.getElementsByTagName('cfdi:Traslado')[i]
+        impuesto= traslado.attributes['Impuesto'].value
+        tipoFactor= traslado.attributes['TipoFactor'].value
+        tasaOCuota= traslado.attributes['TasaOCuota'].value
+        importe= traslado.attributes['Importe'].value
+
+        traslados.append({
+                        "traslado":i,
+                        "Impuesto":impuesto, 
+                        "TipoFactor":tipoFactor,
+                        "TasaOCuota":tasaOCuota,
+                        "Importe":importe,
+                        })
+
+    # print(comprobante)
+
+    return render(request,
+                  'nuevo_exp_completo.html',
+                  {
+                    'comprobante': comprobante,
+                    'emisor':emisor,
+                    'receptor':receptor,
+                    'conceptos':conceptos,
+                    'traslados':traslados,
+                    'tipo': tipo,
+                    'expediente': expediente,
+                    'metadatos': metadatos,
+                    'mensaje': 'Nuevo expediente',
+                    'contiene_archivos' : contiene_arhivos,
+                    'user_log': user_log,
+                    'archivo_xml': archivo_xml,
+                    'url_final' : url_final
+                  })
+
+# @login_required(redirect_field_name='login')
 def VerExpediente(request, pk): # para mostrar el expediente
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     usuarios = PerfilUser()
@@ -126,16 +308,91 @@ def VerExpediente(request, pk): # para mostrar el expediente
     #   contiene_arhivos : boolean      // variable auxiliar que representa si el expediente
     #                                      tiene un metadato del tipo Archivo.
 
+    
+    comprobante = []
+    emisor = []
+    receptor = []
+
+    try:
+        factura_xml = Xml_metadato.objects.get(expediente=expediente.pk)
+        print(factura_xml)
+    except:
+        factura_xml = False
+        print("El expediente no contiene factura XML")
+
+    if (factura_xml):
+        # Comprobante
+        fecha= factura_xml.fecha_xml
+        folio= factura_xml.folio
+        condicionesDePago= factura_xml.cond_pago
+        subTotal= factura_xml.subtotal
+        moneda= factura_xml.moneda
+        total1= factura_xml.total
+        tipoDeComprobante= factura_xml.tipo_comprobante
+        metodoPago= factura_xml.metodo_pago
+        lugarExpedicion= factura_xml.lugar_exp
+        try:
+            descuento = factura_xml.descuento
+            print(descuento)
+        except:
+            descuento = False
+            #print(descuento)
+
+        comprobante.append({
+                            "Comprobante":1,
+                            "Fecha":fecha, 
+                            "Folio":folio,
+                            "CondicionesDePago":condicionesDePago,
+                            "SubTotal":subTotal,
+                            "Moneda":moneda,
+                            "Total":total1,
+                            "TipoDeComprobante":tipoDeComprobante,
+                            "MetodoPago":metodoPago,
+                            "LugarExpedicion":lugarExpedicion,
+                            "Descuento":descuento,
+                            })
+
+        # Emisor
+        rfc_emisor= factura_xml.rfc_emisor
+        nombre_emisor= factura_xml.nombre_emisor
+        regimenFiscal_emisor= factura_xml.regimen_fiscal_emisor
+
+        emisor.append({
+                            "Emisor":1,
+                            "Rfc":rfc_emisor, 
+                            "Nombre":nombre_emisor,
+                            "RegimenFiscal":regimenFiscal_emisor,
+                            })
+
+        # Receptor
+        rfc_receptor= factura_xml.rfc_receptor
+        nombre_receptor= factura_xml.nombre_receptor
+        usoCFDI_receptor= factura_xml.regimen_fiscal_receptor
+
+        receptor.append({
+                            "Receptor":1,
+                            "Rfc":rfc_receptor, 
+                            "Nombre":nombre_receptor,
+                            "UsoCFDI":usoCFDI_receptor,
+                            })
+        print(comprobante)
+        print(emisor)
+        print(receptor)
+    
+
     return render(request,
                  'ver_expediente.html',
-                 {'expediente': expediente,
-                  'metadatos': metadatos,
-                  'usuarios': usuarios,
-                  'etiqueta': 'Detalle expediente',
-                  'seleccionados': seleccionados,
-                  'contiene_arhivos' : contiene_arhivos,
-                  'user_log' : user_log,
-                  'bandera': bandera
+                 {  'comprobante': comprobante,
+                    'emisor' : emisor,
+                    'receptor' : receptor,
+                    'expediente': expediente,
+                    'metadatos': metadatos,
+                    'usuarios': usuarios,
+                    'etiqueta': 'Detalle expediente',
+                    'seleccionados': seleccionados,
+                    'contiene_arhivos' : contiene_arhivos,
+                    'user_log' : user_log,
+                    'bandera': bandera
                   })
 
 # @login_required(redirect_field_name='login')
@@ -334,12 +591,12 @@ def AsignaExpediente(request):
             seleccionados.append(v)
         # return HttpResponse(request.POST.items())
         return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados, 'user_log': user_log, 'bandera':True})
-
+import shutil
 # @login_required(redirect_field_name='login')
 def NuevoExpCompleto(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     if request.method == "POST":
-        #return HttpResponse(request.POST.items())
+        # return HttpResponse(request.POST.items())
         form = ExpedienteForm(request.POST)
         expediente = None
         # CREANDO EL EXPEDIENTE
@@ -420,14 +677,21 @@ def NuevoExpCompleto(request):
         metas = []
         for variable in request.POST.items():
             vars.append(variable)
-        for otro in vars[7:]:
-            metas.append(otro)
-            tipo = otro[0]
+        if type(vars[8:]) == int:
+            for otro in vars[8:]:
+                metas.append(otro)
+                tipo = otro[0]
+        elif type(vars[23:]) == int:
+            for otro in vars[8:]:
+                metas.append(otro)
+                tipo = otro[0]
         for valor in metas:
             #Instanciando Metadato
             meta = Metadato()
+            # print("Aqui esta el valor")
+            # print(valor[0])
+            # return HttpResponse(request.POST.items())
             meta = Metadato.objects.get(pk=valor[0])
-            # print(valor)
             # print(meta)
             metadato = Metadato.objects.create(
                 nombre = meta.nombre,
@@ -441,7 +705,36 @@ def NuevoExpCompleto(request):
                 expediente = nuevo_expediente,
             )
             metadato.save()
-        # Guardando metadatos con archivos, 
+        # Guardando metadatos con archivos,
+        if request.POST.get('metadato',''):
+            metadato = Metadato()
+            metadato = Metadato.objects.get(pk=request.POST.get('metadato',''))
+            nombre_metadato = metadato.nombre
+            pk_expediente = str(nuevo_expediente.pk)
+            url_final = "./media/temporal/factura/v1/" + str(request.POST.get('archivo_xml',''))
+            ruta_archivo = crea_carpeta('./media/'+pk_expediente+'/'+nombre_metadato+'/v1/')
+            ruta_archivo = ruta_archivo + str(request.POST.get('archivo_xml',''))
+            print(ruta_archivo)
+            shutil.move(url_final, ruta_archivo)
+            url_archivo = ruta_archivo[1:]
+            print(url_archivo)
+            #crear el metadato
+            metadato = Metadato()
+            metadato = Metadato.objects.get(pk=request.POST.get('metadato',''),)
+            nuevo_metadato = Metadato.objects.create(
+                nombre = metadato.nombre,
+                descripcion = metadato.descripcion,
+                obligatorio = metadato.obligatorio,
+                valor = url_archivo,
+                version = 1,
+                tipo_dato = metadato.tipo_dato,
+                tipo_expediente = metadato.tipo_expediente,
+                estatus = metadato.estatus,
+                expediente = nuevo_expediente,
+            )
+            nuevo_metadato.save()
+        else:
+            print("No viene el metadato")
         if not request.FILES:
             pass
         else:
@@ -470,6 +763,43 @@ def NuevoExpCompleto(request):
                     expediente = nuevo_expediente,    
                 )
                 nuevo_metadato.save()
+                
+                # Agregar el if si el expediente contiene XML
+                if (request.POST.get('fecha_xml','')):
+                    # Creando el XML
+                    exp_xml = Expediente()
+                    exp_xml = Expediente.objects.get(pk=nuevo_expediente.pk)
+                    xml_metadato = Xml_metadato.objects.create(
+
+                        expediente = exp_xml,
+
+                        # Datos generales
+                        fecha_xml = request.POST.get('fecha_xml',''),
+                        folio = request.POST.get('folio_xml',''),
+                        cond_pago = request.POST.get('pago_xml',''),
+                        moneda = request.POST.get('moneda_xml',''),
+                        tipo_comprobante = request.POST.get('comprobante_xml',''),
+                        metodo_pago = request.POST.get('metodo_xml',''),
+                        lugar_exp = request.POST.get('lugar_xml',''),
+                        subtotal = request.POST.get('subtotal_xml',''),
+                        descuento = request.POST.get('descuento_xml',''),
+                        total = request.POST.get('total_xml',''),
+
+                        # Datos emisor
+                        rfc_emisor = request.POST.get('rfc_emisor',''),
+                        nombre_emisor = request.POST.get('nombre_emisor',''),
+                        regimen_fiscal_emisor = request.POST.get('regimen_emisor',''),
+
+                        # Datos receptor
+                        rfc_receptor = request.POST.get('rfc_receptor',''),
+                        nombre_receptor = request.POST.get('nombre_receptor',''),
+                        regimen_fiscal_receptor = request.POST.get('usoCFDI_receptor',''),
+
+                    )
+                    xml_metadato.save()
+
+
+        #return HttpResponse(request.POST.items())
         return redirect('/expedientes/mis_expedientes')
     else:
         form = ExpedienteForm()
@@ -565,9 +895,83 @@ def DetalleExpediente(request, pk): #muestra expediente para ser modificado
     #   expediente : Expedinte        // Expediente seleccionado
     #   metadatos  : Metadaros[]      // Tupla con los metadatos del expediente
     #   mensaje    : String           // Mensaje a mostrar en la pagina
+
+        comprobante = []
+        emisor = []
+        receptor = []
+
+        try:
+            factura_xml = Xml_metadato.objects.get(expediente=expediente.pk)
+            print(factura_xml)
+        except:
+            factura_xml = False
+            print("El expediente no contiene factura XML")
+
+        if (factura_xml):
+            # Comprobante
+            fecha= factura_xml.fecha_xml
+            folio= factura_xml.folio
+            condicionesDePago= factura_xml.cond_pago
+            subTotal= factura_xml.subtotal
+            moneda= factura_xml.moneda
+            total1= factura_xml.total
+            tipoDeComprobante= factura_xml.tipo_comprobante
+            metodoPago= factura_xml.metodo_pago
+            lugarExpedicion= factura_xml.lugar_exp
+            try:
+                descuento = factura_xml.descuento
+                print(descuento)
+            except:
+                descuento = False
+                #print(descuento)
+
+            comprobante.append({
+                                "Comprobante":1,
+                                "Fecha":fecha, 
+                                "Folio":folio,
+                                "CondicionesDePago":condicionesDePago,
+                                "SubTotal":subTotal,
+                                "Moneda":moneda,
+                                "Total":total1,
+                                "TipoDeComprobante":tipoDeComprobante,
+                                "MetodoPago":metodoPago,
+                                "LugarExpedicion":lugarExpedicion,
+                                "Descuento":descuento,
+                                })
+
+            # Emisor
+            rfc_emisor= factura_xml.rfc_emisor
+            nombre_emisor= factura_xml.nombre_emisor
+            regimenFiscal_emisor= factura_xml.regimen_fiscal_emisor
+
+            emisor.append({
+                                "Emisor":1,
+                                "Rfc":rfc_emisor, 
+                                "Nombre":nombre_emisor,
+                                "RegimenFiscal":regimenFiscal_emisor,
+                                })
+
+            # Receptor
+            rfc_receptor= factura_xml.rfc_receptor
+            nombre_receptor= factura_xml.nombre_receptor
+            usoCFDI_receptor= factura_xml.regimen_fiscal_receptor
+
+            receptor.append({
+                                "Receptor":1,
+                                "Rfc":rfc_receptor, 
+                                "Nombre":nombre_receptor,
+                                "UsoCFDI":usoCFDI_receptor,
+                                })
+            print(comprobante)
+            print(emisor)
+            print(receptor)
+
         return render(request, 
                       'detalle_expediente.html', 
-                       {'expediente': expediente, 
+                       {'comprobante': comprobante,
+                        'emisor': emisor,
+                        'receptor': receptor,
+                        'expediente': expediente, 
                         'metadatos': metadatos, 
                         'mensaje': 'Detalle expediente',
                         'user_log': user_log,
@@ -821,6 +1225,192 @@ def RecibidosDeputy(request):
     registro_log_user(user_log,"Consulta",None,"Expedientes deputy","Usuario")
     # registros = Registra_actividad.objects.all().exclude(rol="Usuario").order_by("-pk")
     return render(request, 'exp_deputy.html', {'recibidos': recibidos, 'mensaje': 'Expedientes deputy','user_log':user_log, 'bandera' : True})
+
+from xml.dom import minidom
+
+# @login_required(redirect_field_name='login')
+def CargaXml(request):
+    user_log = PerfilUser.objects.get(pk=request.user.pk)
+    
+    #xml= open("facturas/18043.xml","r")
+    xml= open("C:/Users/Solusoft/OneDrive/Escritorio/gecva/static/facturas/8021215300.xml","r")
+    
+    mytree=minidom.parse(xml)
+
+    comprobante = []
+
+    # Comprobante
+    #print("Datos del Comprobante")
+    tagname=mytree.getElementsByTagName('cfdi:Comprobante')[0]
+    fecha= tagname.attributes['Fecha'].value
+    #comprobante.append({"Fecha":fecha})
+    #print(fecha)
+    folio= tagname.attributes['Folio'].value
+    #print(folio)
+    #comprobante.append({"Folio":folio})
+    condicionesDePago= tagname.attributes['CondicionesDePago'].value
+    #print(condicionesDePago)
+    #comprobante.append({"CondicionesDePago":condicionesDePago})
+    subTotal= tagname.attributes['SubTotal'].value
+    #print(subTotal)
+    #comprobante.append({"SubTotal":subTotal})
+    #descuento1= tagname.attributes['Descuento'].value
+    #print(descuento1)
+    moneda= tagname.attributes['Moneda'].value
+    #print(moneda)
+    #comprobante.append({"Moneda":moneda})
+    total1= tagname.attributes['Total'].value
+    #print(total1)
+    #comprobante.append({"Total":total1})
+    tipoDeComprobante= tagname.attributes['TipoDeComprobante'].value
+    #print(tipoDeComprobante)
+    #comprobante.append({"TipoDeComprobante":tipoDeComprobante})
+    #exportacion= tagname.attributes['Exportacion'].value
+    #print(exportacion)
+    metodoPago= tagname.attributes['MetodoPago'].value
+    #print(metodoPago)
+    #comprobante.append({"MetodoPago":metodoPago})
+    lugarExpedicion= tagname.attributes['LugarExpedicion'].value
+    #print(lugarExpedicion)
+    #comprobante.append({"LugarExpedicion":lugarExpedicion})
+    #exportacion= tagname.attributes['Exportacion'].value
+    #print(exportacion)
+    try:
+        descuento = tagname.attributes['Descuento'].value
+        print(descuento)
+    except:
+        descuento = False
+        print(descuento)
+
+    comprobante.append({
+                        "Comprobante":1,
+                        "Fecha":fecha, 
+                        "Folio":folio,
+                        "CondicionesDePago":condicionesDePago,
+                        "SubTotal":subTotal,
+                        "Moneda":moneda,
+                        "Total":total1,
+                        "TipoDeComprobante":tipoDeComprobante,
+                        "MetodoPago":metodoPago,
+                        "LugarExpedicion":lugarExpedicion,
+                        "Descuento":descuento,
+                        })
+
+    # Emisor
+    emisor = []
+    #print("Datos del emisor")
+    tagname=mytree.getElementsByTagName('cfdi:Emisor')[0]
+    # print(tagname)
+    rfc= tagname.attributes['Rfc'].value
+    #print(rfc)
+    nombre= tagname.attributes['Nombre'].value
+    #print(nombre)
+    regimenFiscal= tagname.attributes['RegimenFiscal'].value
+    #print(regimenFiscal)
+
+    emisor.append({
+                        "Emisor":1,
+                        "Rfc":rfc, 
+                        "Nombre":nombre,
+                        "RegimenFiscal":regimenFiscal,
+                        })
+
+    # Receptor
+    receptor = []
+    #print("Datos del Receptor")
+    tagname=mytree.getElementsByTagName('cfdi:Receptor')[0]
+    rfc= tagname.attributes['Rfc'].value
+    #print(rfc)
+    nombre= tagname.attributes['Nombre'].value
+    #print(nombre)
+    usoCFDI= tagname.attributes['UsoCFDI'].value
+    #print(usoCFDI)
+
+    receptor.append({
+                        "Receptor":1,
+                        "Rfc":rfc, 
+                        "Nombre":nombre,
+                        "UsoCFDI":usoCFDI,
+                        })
+
+    no_conceptos=mytree.getElementsByTagName('cfdi:Concepto')
+
+    conceptos = []
+
+    for i in range(len(no_conceptos)):
+
+        # Concepto
+        #print("Datos del Concepto")
+        concepto=mytree.getElementsByTagName('cfdi:Concepto')[i]
+        claveProdServ= concepto.attributes['ClaveProdServ'].value
+        #print(claveProdServ)
+        noIdentificacion= concepto.attributes['NoIdentificacion'].value
+        #print(noIdentificacion)
+        cantidad= concepto.attributes['Cantidad'].value
+        #print(cantidad)
+        claveUnidad= concepto.attributes['ClaveUnidad'].value
+        #print(claveUnidad)
+        unidad= concepto.attributes['Unidad'].value
+        #print(unidad)
+        descripcion= concepto.attributes['Descripcion'].value
+        #print(descripcion)
+        valorUnitario= concepto.attributes['ValorUnitario'].value
+        #print(valorUnitario)
+        importe= concepto.attributes['Importe'].value
+        #print(importe)
+        
+        
+        #objetoImp= concepto.attributes['ObjetoImp'].value
+        #print(objetoImp)
+
+        conceptos.append({
+                        "concepto":i,
+                        "ClaveProdServ":claveProdServ, 
+                        "NoIdentificacion":noIdentificacion,
+                        "Cantidad":cantidad,
+                        "ClaveUnidad":claveUnidad,
+                        "Unidad":unidad,
+                        "Descripcion":descripcion,
+                        "ValorUnitario":valorUnitario,
+                        "Importe":importe,
+                        })
+
+    #comprobante.append(conceptos)
+
+    no_traslados=mytree.getElementsByTagName('cfdi:Traslados')
+
+    traslados = []
+
+    for i in range(len(no_traslados)):
+
+        # Concepto
+        #print("Datos del Concepto")
+        traslado=mytree.getElementsByTagName('cfdi:Traslado')[i]
+        impuesto= traslado.attributes['Impuesto'].value
+        #print(impuesto)
+        tipoFactor= traslado.attributes['TipoFactor'].value
+        #print(tipoFactor)
+        tasaOCuota= traslado.attributes['TasaOCuota'].value
+        #print(tasaOCuota)
+        importe= traslado.attributes['Importe'].value
+        #print(importe)
+
+        traslados.append({
+                        "traslado":i,
+                        "Impuesto":impuesto, 
+                        "TipoFactor":tipoFactor,
+                        "TasaOCuota":tasaOCuota,
+                        "Importe":importe,
+                        })
+
+    #comprobante.append(traslados)
+
+    #print("Aqui se encuentra el comprobante")
+    #print(comprobante)
+
+
+    registro_log_user(user_log,"Carga",None,"datos de XML","Usuario")
+    return render(request, 'carga_xml.html', {'comprobante': comprobante, 'emisor':emisor, 'receptor':receptor, 'conceptos':conceptos, 'traslados':traslados,'user_log':user_log, 'etiqueta':"Detalle XML"})
 
 # @login_required(redirect_field_name='login')
 def LogUsuario(request):
