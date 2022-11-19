@@ -11,9 +11,8 @@ urlpatterns = [
     path('nuevo_usuario', views.NuevoUsuario, name = "nuevo_usuario"),
     re_path(r'^(?P<pk>[0-9]+)/eliminarUsuario', EliminarUsuario, name= "eliminar_usuario"),
     re_path(r'^(?P<pk>[0-9]+)/editarUsuario', EditarUsuario, name= "editar_usuario"),
-    re_path(r'^(?P<pk>[0-9]+)/verUsuario$', VerUsuario, name= "ver_usuario"),
-    # re_path(r'^(?P<pk>[0-9]+)/transferirExp$', TransferirExp, name= "transferir_exp"),
-    path('transferir_exp', views.TransferirExp, name = "transferir_exp"),
+    re_path(r'^(?P<pk>[0-9]+)/verUsuario$', VerUsuario, name= "ver_usuario"), # No se usa
+    path('transferir_exp', views.TransferirExp, name = "transferir_exp"), # Para transferir los expedientes al Deputy
     path('perfil', views.Perfil, name = "perfil"),
 
 ]

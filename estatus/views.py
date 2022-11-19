@@ -14,6 +14,10 @@ from estatus.models import Estatus
 from usuarios.models import PerfilUser
 from expediente.views import registro_log_admin
 
+# No se puede acceder a las vistas a menos que se este logueado en el sistema
+# Falta configurar el LOG en los perfiles
+# Nota en lugar de esta funcionalida se implementaron las "Fixtures" se recomienda seguir utilizandolas
+
 # Create your views here.
 # @login_required(redirect_field_name='login')
 def ListarEstatus(request):
@@ -72,7 +76,7 @@ def EliminarEstatus(request, pk):
         return redirect('/estatus/')
 
 # @login_required(redirect_field_name='login')
-def VerEstatus(request, pk):
+def VerEstatus(request, pk): # No se usa
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         estatus = Estatus.objects.get(pk=pk)

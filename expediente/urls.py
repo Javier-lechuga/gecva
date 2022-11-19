@@ -12,17 +12,17 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     ###############   Expedientes   #########################
-    path('', views.ListarExpedientes, name = "listar_expedientes"),
+    path('', views.ListarExpedientes, name = "listar_expedientes"), # Se usaba en la version anterior
     path('selecciona_expediente', views.SeleccionaTipoExp, name = "selecciona_expediente"),
-    path('nuevo_expediente', views.NuevoExpediente, name = "nuevo_expediente"),
+    path('nuevo_expediente', views.NuevoExpediente, name = "nuevo_expediente"), # No se usa
     path('nuevo_exp_completo', views.NuevoExpCompleto, name = "nuevo_exp_completo"),
-    path('muestra_campos_exp', views.MuestraCamposExp, name = "muestra_campos_exp"),
+    path('muestra_campos_exp', views.MuestraCamposExp, name = "muestra_campos_exp"), # No se usa en esta versión
     path('lista_metadatos_exp', views.ListaMetadatosExp, name = "lista_metadatos_exp"),
-    path('guarda_metadatos_exp', views.GuardaMetadatosExp, name = "guarda_metadatos_exp"),
+    path('guarda_metadatos_exp', views.GuardaMetadatosExp, name = "guarda_metadatos_exp"), # No se usa
     path('mis_expedientes', views.ListarMisExpedientes, name = "mis_expedientes"),
     path('modifica_exp_completo', views.ModificaExpCompleto, name = "modifica_exp_completo"),
     path('busca_metadatos_exp', views.BuscaMetadatosExp, name = "busca_metadatos_exp"),
-    path('ver_expediente', views.VerExpediente, name = "ver_expediente"),
+    path('ver_expediente', views.VerExpediente, name = "ver_expediente"), # No se usa este path
     path('asigna_expediente', views.AsignaExpediente, name = "asigna_expediente"),
     path('exp_recibidos', views.ExpRecibidos, name = "exp_recibidos"),
     path('busca_expedientes', views.BuscaExpedientes, name = "busca_expedientes"),
@@ -32,7 +32,7 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/detalleExpediente', DetalleExpediente, name= "detalle_expediente"),
     # re_path(r'^(?P<pk>[0-9]+)/verExpediente', DetalleExpediente, name= "ver_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/eliminarExpediente', EliminarExpediente, name= "eliminar_expediente"),
-    re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"),
+    re_path(r'^(?P<pk>[0-9]+)/editarExpediente', EditarExpediente, name= "editar_expediente"), # No se usa en esta versión
     re_path(r'^(?P<pk>[0-9]+)/verExpediente$', VerExpediente, name= "ver_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/consultaExpediente$', ConsultaExpediente, name= "consulta_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/aprobarExp$', AprobarExp, name= "aprobar_exp"),
@@ -53,7 +53,7 @@ urlpatterns = [
     re_path(r'^(?P<pk>[0-9]+)/regresarExpediente$', RegresarExpediente, name= "regresar_expediente"),
     re_path(r'^(?P<pk>[0-9]+)/aceptarExpediente$', AceptarExpediente, name= "aceptar_expediente"),
     path('usuario_log', views.UsuarioLog, name = "usuario_log"),
-    path('carga_xml', views.CargaXml, name = "carga_xml"),
+    path('carga_xml', views.CargaXml, name = "carga_xml"), # Utilizado para el desarrollo de la lectura del XML
     path('carga_datos_xml', views.CargaDatosXml, name = "carga_datos_xml"),
 ]
 

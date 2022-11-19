@@ -14,10 +14,11 @@ from expediente.models import Expediente_deputy
 from django.contrib.auth.models import User, Group, Permission
 from expediente.views import registro_log_admin
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.decorators import permission_required, login_required
 
 # Create your views here.
 
-# @login_required(redirect_field_name='login')
+#@login_required(redirect_field_name='login')
 def ListarUsuarios(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     usuarios = PerfilUser.objects.all()
@@ -169,7 +170,7 @@ def EliminarUsuario(request, pk):
         return redirect('/usuarios/')
 
 # @login_required(redirect_field_name='login')
-def VerUsuario(request, pk):
+def VerUsuario(request, pk): # No se usa
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         usuario = PerfilUser.objects.get(pk=pk)
@@ -180,7 +181,7 @@ def VerUsuario(request, pk):
 
 
 # @login_required(redirect_field_name='login')
-def TransferirExp(request):
+def TransferirExp(request): # Para transfereir los expedientes al Deputy
     user_log = PerfilUser.objects.get(pk=request.user.pk)
 
     try:

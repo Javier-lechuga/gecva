@@ -47,14 +47,16 @@ def principal(request):
         tipos_expedientes = TipoExpediente.objects.all()
         unidades = Unidad.objects.all()
         usuarios = PerfilUser.objects.all()
+        # Agregar graficas aquí
         return render(request, 'principal.html',{'user_log': user_log, 'tipos_exp': len(tipos_expedientes), 'unidades': len(unidades), 'usuarios':len(usuarios)})
     else:
-        expedientes = Expediente.objects.filter(usuario_crea=user_log).exclude(activo=False)
+        expedientes = Expediente.objects.filter(usuario_crea=user_log, unidad=user_log.unidad_user).exclude(activo=False)
         ids_users = Expediente_aprobador.objects.filter(id_usuario=user_log.pk)
         recibidos = []
         for id_usr in ids_users:
             recibidos.append(id_usr)
         deputy = Expediente_deputy.objects.filter(deputy=user_log)
+        # Agregar graficas aquí
         return render(request, 'principal.html',{'user_log': user_log, 'expedientes': len(expedientes), 'recibidos': len(recibidos), 'deputy':len(deputy)})
     
 

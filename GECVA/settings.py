@@ -136,6 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+# Requerido para los archivos statics Imagenes, css, boostrap y javascript
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
@@ -151,6 +152,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Auth_user_model = 'usuarios.PerfilUser' # donde los usuarios son el nombre de la aplicación, el usuario es un nombre de clase de modelo
 
+# Requerido poara el loguin en el sistema
 LOGIN_URL = reverse_lazy('login_sistema')
 LOGOUT_URL = reverse_lazy('inicio')
 LOGIN_REDIRECT_URL = reverse_lazy('principal')

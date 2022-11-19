@@ -141,6 +141,12 @@
                                 </a>
 
                                 <!--Expedientes recibidos-->
+                                <a class="nav-link" href="/expedientes/recibidos_deputy">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-inbox"></i></div>
+                                    Deputy
+                                </a>
+
+                                <!--Expedientes recibidos-->
                                 <a class="nav-link" href="/expedientes/busca_expedientes">
                                     <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
                                     Búscar expediente
@@ -149,7 +155,7 @@
                             {% endif %}
 
 
-                            <!--
+                            <!-- Funcionalidad oroginal de la plantilla que no ha sido utilizada
                             <div class="sb-sidenav-menu-heading">Expedientes</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -212,7 +218,7 @@
 
                         {% endblock %}
 
-                        <!--
+                        <!-- Funcionalidad para las graficas
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
@@ -801,6 +807,8 @@
         <script type="text/javascript" src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
 
         <script>
+            // Se esta trabajando la funcionalida de abajo como alternativa para cambiar el texto de las tablas de ingles a español
+            // Por el momento cambia la vista de las tablas y no quita las etiquetas en eingles 
             // $(document).ready(function() { 
 			// $('#datatablesSimple').dataTable( { 
 			// 	"language": {

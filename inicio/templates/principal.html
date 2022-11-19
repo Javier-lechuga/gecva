@@ -1,4 +1,4 @@
-{% extends "new_plant.html" %}
+{% extends "new_plant.html" %} <!--Unidad/Templates/new_plant-->
 
 {% block titulo %}
 	Principal
@@ -40,12 +40,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xl-4 col-md-12">
+                                <div class="card bg-secondary text-white mb-4">
+                                    <div class="card-body"><i class="fas fa-file-alt"></i> <strong>Reportes</strong></div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/reportes_menu/">Detalle</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     {% else %}
                         <div class="row">
                             <div class="col-xl-4 col-md-12">
                                 <div class="card bg-secondary text-white mb-4">
-                                    <div class="card-body"><i class="fas fa-archive"></i> <strong>Expedientes creados</strong></div>
+                                    <div class="card-body"><i class="fas fa-archive"></i> <strong>Mis expedientes</strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="/expedientes/mis_expedientes">{{expedientes}} Detalle</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -54,7 +63,7 @@
                             </div>
                             <div class="col-xl-4 col-md-12">
                                 <div class="card bg-secondary text-white mb-4">
-                                    <div class="card-body"><i class="fas fa-inbox"></i> <strong>Expedientes recibidos</strong></div>
+                                    <div class="card-body"><i class="fas fa-inbox"></i> <strong>Bandeja de entrada</strong></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="/expedientes/exp_recibidos">{{recibidos}} Detalle</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -73,7 +82,7 @@
                         </div>
                     {% endif %}
                         
-
+                        <!-- Funcionalidad para graficas-->
                         <!--<div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
@@ -590,6 +599,7 @@
                         </div>-->
 
 		<!--
+        En un inicio se usaba esta funcionalida para entrar a los modulos del sistema en base a botones
 		{% if user_log.rol.nombre == "Administrador" %}
 			<div class="row">
 				<div class="col-md-4"></div>

@@ -32,6 +32,7 @@ import time
 from expediente.models import Expediente, Expediente_aprobador, Registra_actividad
 from metadato.forms import MetadatoForm
 from metadato.models import Metadato, Xml_metadato
+from rol.models import Rol
 from tipo_dato.models import TipoDato
 import tipo_expediente
 from tipo_expediente.models import TipoExpediente
@@ -44,10 +45,11 @@ from usuarios.models import PerfilUser
 from os import path
 from os import makedirs
 from genericpath import exists
+import shutil
 
 # Create your views here.
 # @login_required(redirect_field_name='login')
-def ListarExpedientes(request):
+def ListarExpedientes(request): # Se usaba en la versión anterior
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     registro_log_user(user_log,"Consulta",None,"Expedientes","Usuario")
     expedientes = Expediente.objects.all()
@@ -425,15 +427,88 @@ def AprobarExp(request, pk):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     expediente = Expediente.objects.get(pk=pk)
     registro = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
-    if registro.id_estatus.pk == 5:
+    if registro.id_estatus.pk == 5: # Aprobado
         estado = "Aprobado"
-    elif registro.id_estatus.pk == 6:
+    elif registro.id_estatus.pk == 6: # Rechazado
         estado = "Rechazado"
-    else:
-        estado = "Enviado"
+    else: # Enviado
+        estado = "Enviado" 
     registro_log_user(user_log,"Consulta",expediente,"Expediente","Usuario")
     metadatos = Metadato.objects.filter(expediente=pk).order_by('pk')
-    return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
+    
+    comprobante = []
+    emisor = []
+    receptor = []
+
+    try:
+        factura_xml = Xml_metadato.objects.get(expediente=expediente.pk)
+        print(factura_xml)
+    except:
+        factura_xml = False
+        print("El expediente no contiene factura XML")
+
+    if (factura_xml):
+        # Comprobante
+        fecha= factura_xml.fecha_xml
+        folio= factura_xml.folio
+        condicionesDePago= factura_xml.cond_pago
+        subTotal= factura_xml.subtotal
+        moneda= factura_xml.moneda
+        total1= factura_xml.total
+        tipoDeComprobante= factura_xml.tipo_comprobante
+        metodoPago= factura_xml.metodo_pago
+        lugarExpedicion= factura_xml.lugar_exp
+        try:
+            descuento = factura_xml.descuento
+            print(descuento)
+        except:
+            descuento = False
+            #print(descuento)
+
+        comprobante.append({
+                                "Comprobante":1,
+                                "Fecha":fecha, 
+                                "Folio":folio,
+                                "CondicionesDePago":condicionesDePago,
+                                "SubTotal":subTotal,
+                                "Moneda":moneda,
+                                "Total":total1,
+                                "TipoDeComprobante":tipoDeComprobante,
+                                "MetodoPago":metodoPago,
+                                "LugarExpedicion":lugarExpedicion,
+                                "Descuento":descuento,
+                            })
+
+            # Emisor
+        rfc_emisor= factura_xml.rfc_emisor
+        nombre_emisor= factura_xml.nombre_emisor
+        regimenFiscal_emisor= factura_xml.regimen_fiscal_emisor
+
+        emisor.append({
+                                "Emisor":1,
+                                "Rfc":rfc_emisor, 
+                                "Nombre":nombre_emisor,
+                                "RegimenFiscal":regimenFiscal_emisor,
+                        })
+
+            # Receptor
+        rfc_receptor= factura_xml.rfc_receptor
+        nombre_receptor= factura_xml.nombre_receptor
+        usoCFDI_receptor= factura_xml.regimen_fiscal_receptor
+
+        receptor.append({
+                                "Receptor":1,
+                                "Rfc":rfc_receptor, 
+                                "Nombre":nombre_receptor,
+                                "UsoCFDI":usoCFDI_receptor,
+                        })
+        print(comprobante)
+        print(emisor)
+        print(receptor)
+       
+
+
+    return render(request, 'aprobar_expediente.html', {'comprobante': comprobante, 'emisor': emisor, 'receptor': receptor, 'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
 
 # @login_required(redirect_field_name='login')
 def ExpAprobado(request):
@@ -446,7 +521,7 @@ def ExpAprobado(request):
     valor = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
     Expediente_aprobador.objects.filter(pk=valor.pk).update(id_estatus=estatus)
     # Rol Revisor
-    if user_log.rol.pk == 3:
+    if user_log.rol.pk == 3: # Revisor
         
         for metadato in metadatos:
             Metadato.objects.filter(pk=metadato.pk).update(estatus=estatus)
@@ -461,7 +536,7 @@ def ExpAprobado(request):
         if len(metas) == len(aprobados):
             print("El archivo ya se aprobó por todos ya puede pasar al jefe de unidad")
             estatus_dos = Estatus()
-            estatus_dos = Estatus.objects.get(nombre="Enviado")
+            estatus_dos = Estatus.objects.get(nombre="Aprobación")
             aprobador = PerfilUser()
             aprobador = PerfilUser.objects.get(pk=unidad.jefe_unidad.pk)
             exp_aprobador = Expediente_aprobador.objects.create(
@@ -479,7 +554,7 @@ def ExpAprobado(request):
         #     Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus_tres)
 
     # Rol Aprobador
-    elif user_log.rol.pk == 2:
+    elif user_log.rol.pk == 2: # Aprobador
 
         estatus_dos = Estatus()
         estatus_dos = Estatus.objects.get(nombre="Aprobado")
@@ -499,13 +574,14 @@ def ExpAprobado(request):
 
 # @login_required(redirect_field_name='login')
 def RechazarExp(request):
+    REVISOR = Rol.objects.get(pk=3).pk
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     expediente = Expediente.objects.get(pk=request.POST['expediente'])
     metadatos = Metadato.objects.filter(expediente=expediente.pk).order_by('pk')
     estatus = Estatus()
     estatus = Estatus.objects.get(nombre="Rechazado")
     valor = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
-    if user_log.rol.pk == 3:
+    if user_log.rol.pk == REVISOR: # Revisor
         Expediente_aprobador.objects.filter(pk=valor.pk).update(id_estatus=estatus.pk)
         Expediente_aprobador.objects.filter(pk=valor.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
         registro = Expediente_aprobador.objects.get(id_expediente=expediente.pk, id_usuario=user_log.pk)
@@ -522,16 +598,16 @@ def RechazarExp(request):
             estatus_tres = Estatus.objects.get(nombre="Rechazado")
             Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus_tres)
 
-        if registro.id_estatus.pk == 5:
+        if registro.id_estatus.pk == 5: # Aprobado
             estado = "Aprobado"
-        elif registro.id_estatus.pk == 6:
+        elif registro.id_estatus.pk == 6: # Rechazado
             estado = "Rechazado"
         else:
-            estado = "Enviado"
+            estado = "Enviado" # Enviado
         registro_log_user(user_log,"Rechaza",expediente,"Expediente","Usuario")
         expediente = Expediente.objects.get(pk=request.POST['expediente'])
         return render(request, 'aprobar_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'etiqueta': 'Expediente recibido','user_log':user_log, 'estado':estado})
-    elif user_log.rol.pk == 2:
+    elif user_log.rol.pk == 2: # Aprobador
         Expediente.objects.filter(pk=expediente.pk).update(estatus=estatus.pk)
         Expediente.objects.filter(pk=expediente.pk).update(motivo_rechazo=request.POST['motivo_rechazo'])
         registro = Expediente.objects.get(pk=expediente.pk)
@@ -585,13 +661,14 @@ def AsignaExpediente(request):
                 activo = True,
             )
             exp_aprobador.save()
-        va = Expediente_aprobador()
-        va = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
-        for v in va:
-            seleccionados.append(v)
+        total_asignaciones = Expediente_aprobador()
+        total_asignaciones = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
+        for asignacion in total_asignaciones:
+            seleccionados.append(asignacion)
         # return HttpResponse(request.POST.items())
         return render(request, 'ver_expediente.html', {'expediente': expediente, 'metadatos': metadatos, 'usuarios': usuarios, 'etiqueta': 'Detalle expediente', 'seleccionados': seleccionados, 'user_log': user_log, 'bandera':True})
-import shutil
+
+
 # @login_required(redirect_field_name='login')
 def NuevoExpCompleto(request):
     user_log = PerfilUser.objects.get(pk=request.user.pk)
@@ -677,12 +754,12 @@ def NuevoExpCompleto(request):
         metas = []
         for variable in request.POST.items():
             vars.append(variable)
-        if type(vars[8:]) == int:
+        if type(vars[8:]) == int: # Expediente sin XML, del 8 en adelante empiezan los metadatos
             for otro in vars[8:]:
                 metas.append(otro)
                 tipo = otro[0]
-        elif type(vars[23:]) == int:
-            for otro in vars[8:]:
+        elif type(vars[23:]) == int: # Expediente con XML, del 23 en adelante empiezan los metadatos
+            for otro in vars[23:]:
                 metas.append(otro)
                 tipo = otro[0]
         for valor in metas:
@@ -705,7 +782,7 @@ def NuevoExpCompleto(request):
                 expediente = nuevo_expediente,
             )
             metadato.save()
-        # Guardando metadatos con archivos,
+        # Guardando metadatos con archivos XML,
         if request.POST.get('metadato',''):
             metadato = Metadato()
             metadato = Metadato.objects.get(pk=request.POST.get('metadato',''))
@@ -851,14 +928,33 @@ def ModificaExpCompleto(request):
             for variable in request.POST.items():
                 vars.append(variable)
             print(vars)
-            for otro in vars[13:]:       
-                #solo realizar actualizacion si no se trata de metadatos de tipo archivo 
-                if Metadato.objects.get(pk=otro[0]).tipo_dato.tipo == "Archivo":
-                    pass
-                else:
-                    Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
-                    Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
-                    Metadato.objects.filter(pk=otro[0], expediente=exp).update(estatus=estatus_expediente)
+            #return HttpResponse(request.POST.items())
+            if type(vars[8:]) == int:
+                for otro in vars[8:]:       
+                    #solo realizar actualizacion si no se trata de metadatos de tipo archivo 
+                    if Metadato.objects.get(pk=otro[0]).tipo_dato.tipo == "XML":
+                        pass
+                    else:
+                        Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
+                        Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
+                        Metadato.objects.filter(pk=otro[0], expediente=exp).update(estatus=estatus_expediente)
+            elif type(vars[23:]) == int:
+                for otro in vars[23:]:       
+                    #solo realizar actualizacion si no se trata de metadatos de tipo archivo 
+                    if Metadato.objects.get(pk=otro[0]).tipo_dato.tipo == "XML":
+                        pass
+                    else:
+                        Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
+                        Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
+                        Metadato.objects.filter(pk=otro[0], expediente=exp).update(estatus=estatus_expediente)
+            # for otro in vars[13:]:       
+            #     #solo realizar actualizacion si no se trata de metadatos de tipo archivo 
+            #     if Metadato.objects.get(pk=otro[0]).tipo_dato.tipo == "Archivo":
+            #         pass
+            #     else:
+            #         Metadato.objects.filter(pk=otro[0], expediente=exp).update(valor=otro[1])
+            #         Metadato.objects.filter(pk=otro[0], expediente=exp).update(version=2)
+            #         Metadato.objects.filter(pk=otro[0], expediente=exp).update(estatus=estatus_expediente)
 
             expediente = Expediente.objects.get(pk=request.POST.get('expediente',''))
             registros = Expediente_aprobador.objects.filter(id_expediente=expediente.pk)
@@ -988,7 +1084,7 @@ def DetalleExpediente(request, pk): #muestra expediente para ser modificado
         #
 
 # @login_required(redirect_field_name='login')
-def GuardaMetadatosExp(request):
+def GuardaMetadatosExp(request): # No se usa
     
     vars = []
     for variable in request.POST.items():
@@ -1041,7 +1137,7 @@ def ListaMetadatosExp(request):
                      })
 
 # @login_required(redirect_field_name='login')
-def MuestraCamposExp(request):
+def MuestraCamposExp(request): #No se usa en esta version
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     tipo = TipoExpediente()
     tipo = TipoExpediente.objects.get(pk=request.POST['tipo'])
@@ -1060,7 +1156,7 @@ def SeleccionaTipoExp(request):
     
 
 # @login_required(redirect_field_name='login')
-def EditarExpediente(request, pk):
+def EditarExpediente(request, pk): # No se usa en esta version
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         expediente = Expediente.objects.get(pk=pk)
@@ -1159,7 +1255,7 @@ def expediente_tine_archivos(metadatos): # parametros
 #   en sulugar se usa la funcion NuevoExpCompleto 
 #    
 # @login_required(redirect_field_name='login')
-def NuevoExpediente(request): 
+def NuevoExpediente(request): # No se usa
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     if request.method == "POST":
         form = ExpedienteForm(request.POST)
@@ -1892,7 +1988,7 @@ def ReporteGeneral(request): # estes el buenos
     total_expedientes = len(expedientes)
 
     #Ver como dividir la lista en ciertos elementos
-    lista_buena = particionar_lista(expedientes, 3)
+    lista_buena = particionar_lista(expedientes, 10)
 
     #Eliminamos listas vacias
     for x in range(len(lista_buena)-1,-1,-1):

@@ -3,8 +3,9 @@ from django.urls import path, re_path
 from . import views
 from tipo_dato.views import EditarTipoDato, EliminarTipoDato, NuevoTipoDato, VerTipoDato, ListarTiposDatos
 
-
-
+# Este modulo solo requiere tener activado el modelo, se creo el CRUD para cuestiones de pruebas en las primeras etapas
+# Por lo que no es necesario para el funcionamiento del sistema las siguientes url y sus correspondientes vistas
+# Todas las vistas de este modulo no deberia de ser accesibles por el usuario, ya que se implementan por "Fixtures"
 
 urlpatterns = [
 

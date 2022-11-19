@@ -139,7 +139,7 @@ def EliminarUnidad(request, pk):
         return redirect('/unidad/')
 
 # @login_required(redirect_field_name='login')
-def VerUnidad(request, pk):
+def VerUnidad(request, pk): # No se usa
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         unidad = Unidad.objects.get(pk=pk)

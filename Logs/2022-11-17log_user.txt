@@ -40,3 +40,132 @@
 2022-11-17 12:37:07 Usuario Janeth Lopez Perez Crea Expediente: PVRPB20000050
 2022-11-17 12:37:07 Usuario Janeth Lopez Perez Consulta Expedientes
 2022-11-17 12:37:12 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 15:35:09 Administrador Administrador Admin Admin Entra Sistema
+2022-11-17 16:20:06 Administrador Administrador Admin Admin Consulta Log administrador
+2022-11-17 16:20:28 Administrador Administrador Admin Admin Consulta Log usuarios
+2022-11-17 16:21:57 Administrador Administrador Admin Admin Consulta Log administrador
+2022-11-17 16:22:04 Administrador Administrador Admin Admin Consulta Log usuarios
+2022-11-17 16:24:07 Usuario Administrador Admin Admin Consulta Log personal
+2022-11-17 16:24:25 Administrador Administrador Admin Admin Entra Sistema
+2022-11-17 16:28:10 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 16:28:21 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:29:24 Administrador Administrador Admin Admin Entra Sistema
+2022-11-17 16:31:28 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 16:31:32 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:32:48 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:33:47 Usuario Janeth Lopez Perez Consulta Recibidos Expedientes
+2022-11-17 16:33:48 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:33:51 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:33:55 Usuario Janeth Lopez Perez Consulta Expedientes deputy
+2022-11-17 16:33:57 Usuario Janeth Lopez Perez Consulta Recibidos Expedientes
+2022-11-17 16:34:00 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:38:04 Usuario Janeth Lopez Perez Elimina Expediente: PVRPB20000048
+2022-11-17 16:38:04 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:38:16 Administrador Administrador Admin Admin Entra Sistema
+2022-11-17 16:39:49 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 16:39:51 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:40:17 Usuario Janeth Lopez Perez Consulta Recibidos Expedientes
+2022-11-17 16:40:20 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:40:32 Usuario Janeth Lopez Perez Consulta Recibidos Expedientes
+2022-11-17 16:40:33 Usuario Janeth Lopez Perez Buscador Expedientes
+2022-11-17 16:40:55 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:41:30 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:42:17 Usuario Janeth Lopez Perez Asigna Expediente: PVRPB20000050
+2022-11-17 16:42:24 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:42:29 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000049
+2022-11-17 16:42:50 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:42:56 Usuario Janeth Lopez Perez Buscador Expedientes
+2022-11-17 16:43:49 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:43:52 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000049
+2022-11-17 16:44:07 Usuario Karla Perez Perez Entra Sistema
+2022-11-17 16:44:09 Usuario Karla Perez Perez Buscador Expedientes
+2022-11-17 16:44:13 Usuario Karla Perez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:44:58 Usuario Carmen Lopez Lopez Entra Sistema
+2022-11-17 16:45:19 Usuario Carmen Lopez Lopez Consulta Expedientes
+2022-11-17 16:45:46 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 16:45:53 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 16:46:00 Usuario Carmen Lopez Lopez Consulta Expediente: PVRPB20000050
+2022-11-17 16:46:17 Usuario Carmen Lopez Lopez Rechaza Expediente: PVRPB20000050
+2022-11-17 16:46:20 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 16:46:26 Usuario Carmen Lopez Lopez Consulta Expediente: PVRPB20000050
+2022-11-17 16:46:34 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 16:46:46 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 16:46:48 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:46:57 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:47:15 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:47:27 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:56:28 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:56:31 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:56:38 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:56:40 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000049
+2022-11-17 16:56:44 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:56:49 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:57:13 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:57:16 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:57:21 Usuario Janeth Lopez Perez Modifica Expediente: PVRPB20000050
+2022-11-17 16:57:26 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:57:29 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:57:36 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:58:12 Usuario Janeth Lopez Perez Buscador Expedientes
+2022-11-17 16:58:47 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 16:59:32 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 16:59:39 Usuario Janeth Lopez Perez Asigna Expediente: PVRPB20000050
+2022-11-17 16:59:52 Usuario Carmen Lopez Lopez Entra Sistema
+2022-11-17 16:59:54 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 16:59:57 Usuario Carmen Lopez Lopez Consulta Expediente: PVRPB20000050
+2022-11-17 17:04:28 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 17:04:31 Usuario Carmen Lopez Lopez Consulta Expediente: PVRPB20000050
+2022-11-17 17:13:19 Usuario Carmen Lopez Lopez Consulta Expedientes
+2022-11-17 17:13:21 Usuario Carmen Lopez Lopez Consulta Expedientes
+2022-11-17 17:13:24 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 17:13:26 Usuario Carmen Lopez Lopez Consulta Expediente: PVRPB20000050
+2022-11-17 17:13:44 Usuario Carmen Lopez Lopez Aprueba Expediente: PVRPB20000050
+2022-11-17 17:13:49 Usuario Carmen Lopez Lopez Consulta Recibidos Expedientes
+2022-11-17 17:13:57 Usuario Carmen Lopez Lopez Consulta Expediente: PVRPB20000050
+2022-11-17 17:14:22 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 17:14:23 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 17:14:28 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 17:16:43 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 17:17:10 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000050
+2022-11-17 17:17:26 Usuario Janeth Lopez Perez Consulta Expedientes
+2022-11-17 17:18:15 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000049
+2022-11-17 17:18:38 Usuario Janeth Lopez Perez Consulta Recibidos Expedientes
+2022-11-17 17:18:44 Usuario Janeth Lopez Perez Buscador Expedientes
+2022-11-17 17:41:20 Usuario Rodrigo Iglesias Quiroz Entra Sistema
+2022-11-17 17:41:32 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:41:33 Usuario Rodrigo Iglesias Quiroz Lista Tipos de Expedientes
+2022-11-17 17:42:05 Usuario Rodrigo Iglesias Quiroz Crea Expediente: PVRPB20000051
+2022-11-17 17:42:05 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:42:07 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000051
+2022-11-17 17:43:08 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:43:18 Usuario Rodrigo Iglesias Quiroz Consulta Recibidos Expedientes
+2022-11-17 17:43:24 Usuario Rodrigo Iglesias Quiroz Buscador Expedientes
+2022-11-17 17:43:31 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000050
+2022-11-17 17:44:27 Usuario Rodrigo Iglesias Quiroz Buscador Expedientes
+2022-11-17 17:44:32 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:44:34 Usuario Rodrigo Iglesias Quiroz Consulta Recibidos Expedientes
+2022-11-17 17:44:37 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRCXP0000001
+2022-11-17 17:44:40 Usuario Rodrigo Iglesias Quiroz Consulta Recibidos Expedientes
+2022-11-17 17:44:42 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000050
+2022-11-17 17:44:53 Usuario Rodrigo Iglesias Quiroz Consulta Recibidos Expedientes
+2022-11-17 17:45:19 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000050
+2022-11-17 17:46:11 Usuario Rodrigo Iglesias Quiroz Aprueba Expediente: PVRPB20000050
+2022-11-17 17:46:16 Usuario Rodrigo Iglesias Quiroz Consulta Recibidos Expedientes
+2022-11-17 17:46:25 Usuario Rodrigo Iglesias Quiroz Buscador Expedientes
+2022-11-17 17:46:28 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000050
+2022-11-17 17:46:37 Usuario Rodrigo Iglesias Quiroz Buscador Expedientes
+2022-11-17 17:47:19 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:48:18 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:48:24 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000051
+2022-11-17 17:48:35 Usuario Rodrigo Iglesias Quiroz Consulta Expediente: PVRPB20000051
+2022-11-17 17:48:35 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:51:09 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:51:24 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 17:51:26 Usuario Janeth Lopez Perez Consulta Expedientes deputy
+2022-11-17 17:51:40 Usuario Janeth Lopez Perez Consulta Expediente: PVRPB20000051
+2022-11-17 17:51:47 Usuario Janeth Lopez Perez Consulta Expedientes deputy
+2022-11-17 17:52:03 Usuario Janeth Lopez Perez Consulta Expedientes deputy
+2022-11-17 17:52:15 Usuario Rodrigo Iglesias Quiroz Entra Sistema
+2022-11-17 17:52:17 Usuario Rodrigo Iglesias Quiroz Consulta Expedientes
+2022-11-17 17:52:37 Usuario Janeth Lopez Perez Entra Sistema
+2022-11-17 17:52:40 Usuario Janeth Lopez Perez Consulta Expedientes deputy

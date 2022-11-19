@@ -1,4 +1,4 @@
-{% extends "new_plant.html" %}
+{% extends "new_plant.html" %} <!--Se uso para el desarrollo de la funcionalida de carga del XML, puede ser utilizado para mostrar la factura completa-->
 {% block titulo %}
 	Expediente
 {% endblock titulo %}
@@ -237,28 +237,5 @@
 {%endblock %}
 
 {% block scripts %}
-
-	<script>
-		function goBack() {
-			window.history.back();
-		}
-	</script>
-
-    <script type="text/javascript">
-        $(function(){
-            window.onload = function() {
-                console.log("onload");
-                $("#subir").hide();
-                $("#cancelar").hide();
-                $(".archive").hide();
-            }
-        });
-
-        $("#aprobar").click(function(){
-            console.log("Aprobado")
-            $("#forma").submit();
-        });
-
-    </script>
 
 {% endblock %}

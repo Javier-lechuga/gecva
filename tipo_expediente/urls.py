@@ -13,7 +13,7 @@ urlpatterns = [
     path('nuevo_tipo_exp', views.NuevoTipoExp, name = "nuevo_tipo_exp"),
     re_path(r'^(?P<pk>[0-9]+)/eliminarTipoExp', EliminarTipoExp, name= "eliminar_tipo_exp"),
     re_path(r'^(?P<pk>[0-9]+)/editarTipoExp', EditarTipoExp, name= "editar_tipo_exp"),
-    re_path(r'^(?P<pk>[0-9]+)/verTipoExp$', VerTipoExp, name= "ver_tipo_exp"),
+    re_path(r'^(?P<pk>[0-9]+)/verTipoExp$', VerTipoExp, name= "ver_tipo_exp"), # No deberia ser accesible por el usuario
 
 
 ]

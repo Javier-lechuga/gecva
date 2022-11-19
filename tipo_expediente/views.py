@@ -100,7 +100,7 @@ def EliminarTipoExp(request, pk):
         return redirect('/tipos_expedientes/')
 
 # @login_required(redirect_field_name='login')
-def VerTipoExp(request, pk):
+def VerTipoExp(request, pk): # No se usa
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         tipo = TipoExpediente.objects.get(pk=pk)

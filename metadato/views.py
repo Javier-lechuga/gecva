@@ -22,7 +22,7 @@ from expediente.views import registro_log_admin
 
 # Create your views here.
 # @login_required(redirect_field_name='login')
-def ListarMetadatos(request):
+def ListarMetadatos(request): # No se utiliza en esta versión
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     metadatos = Metadato.objects.all()
     registro_log_admin(user_log,"Consulta",None,"Metadatos","Administrador")
@@ -166,7 +166,7 @@ def EliminaMetadato(request, pk):
         return redirect('/metadatos/')
 
 # @login_required(redirect_field_name='login')
-def VerMetadato(request, pk):
+def VerMetadato(request, pk): # Nunca se consulta el metadato, solo se edita
     user_log = PerfilUser.objects.get(pk=request.user.pk)
     try:
         metadato = Metadato.objects.get(pk=pk)

@@ -5,6 +5,7 @@
     {"model": "estatus.Estatus", "pk": 4, "fields":{"nombre": "Recibido" , "es_doc": "True"}},
     {"model": "estatus.Estatus", "pk": 5, "fields":{"nombre": "Aprobado" , "es_doc": "True"}},
     {"model": "estatus.Estatus", "pk": 6, "fields":{"nombre": "Rechazado", "es_doc": "True"}},
-    {"model": "estatus.Estatus", "pk": 7, "fields":{"nombre": "Revisión", "es_doc": "True"}}
+    {"model": "estatus.Estatus", "pk": 7, "fields":{"nombre": "Revisión", "es_doc": "True"}},
+    {"model": "estatus.Estatus", "pk": 8, "fields":{"nombre": "Aprobación", "es_doc": "True"}}
 ]
 
