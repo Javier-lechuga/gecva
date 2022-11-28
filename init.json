@@ -1,0 +1,79 @@
+[
+    { 
+        "_comment": "Creación del usuario raiz, con el nombre Administrador y clave admin",
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "Administrador",
+            "password": "pbkdf2_sha256$390000$mPu0O7UPketZE7wqBo0A4D$hu/DGjVZ6cl1czgGNIJLaipskmUdTqFeTKD3AVf9Gq4=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "_comment": "Creación del rol Administrador",
+        "model": "rol.Rol",
+        "pk": 1,
+        "fields":{
+            "nombre": "Administrador",
+            "descripcion": "Rol utilizado para la administración del sistema"
+        }
+    },
+    {
+        "_comment": "Creación del rol Aprobador",
+        "model": "rol.Rol",
+        "pk": 2,
+        "fields":{
+            "nombre": "Aprobador",
+            "descripcion": "Rol utilizado para la aprobación de expedientes, solo jefes de área"
+        }
+    },
+    {
+        "_comment": "Creación del rol Revisor",
+        "model": "rol.Rol",
+        "pk": 3,
+        "fields":{
+            "nombre": "Revisor",
+            "descripcion": "Rol utilizado para crear y revisar"
+        }
+    },
+    {
+        "_comment": "Creación del rol Usuario",
+        "model": "rol.Rol",
+        "pk": 4,
+        "fields":{
+            "nombre": "Usuario",
+            "descripcion": "Rol utilizado para crear y enviar documentos"
+        }
+    },
+    {
+        "_comment": "Creando la unidad Administrador",
+        "model": "unidad.Unidad",
+        "pk": 1,
+        "fields":{
+            "nombre": "Administrador" ,
+            "siglas":"ADM",
+            "descripcion": "Administración del sistema",
+            "activo": "True",
+            "jefe_unidad": "1"
+        }
+    },
+    {
+        "_comment": "Creación del usuario administrador del sistema",
+        "model": "usuarios.PerfilUser",
+        "pk": 1,
+        "fields": {
+            "amaterno": "Administrador",
+            "telefono": "Admin",
+            "extension": "Admin",
+            "rol" : 1,
+            "jefe_inmediato" : 1,
+            "unidad_user" : 1,
+            "transferido" : false,
+            "deputy" : false,
+            "es_deputy" : false,
+            "usuario_deputy" : 1
+        }
+    }
+]
