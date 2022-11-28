@@ -1,3 +1,5 @@
+# .\estatus\views.py
+
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from estatus.forms import EstatusForm

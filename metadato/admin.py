@@ -1,3 +1,7 @@
+# .\metadato\admin.py
+
+# no se utiliza esta funcionalidad
+
 from django.contrib import admin
 
 from metadato.models import Metadato

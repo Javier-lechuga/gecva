@@ -1,3 +1,4 @@
+# .\inicio\views.py
 import datetime
 from itertools import count
 from django.shortcuts import render

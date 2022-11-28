@@ -1,1 +1,2 @@
+# .\logs.txt
 en esta carpeta de encuentran los logs del sistema

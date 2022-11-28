@@ -1,6 +1,41 @@
 [
-    {"model": "rol.Rol", "pk": 1, "fields":{"nombre": "Administrador" , "descripcion": "Rol utilizado para la administración del sistema"}},
-    {"model": "rol.Rol", "pk": 2, "fields":{"nombre": "Aprobador" , "descripcion": "Rol utilizado para la aprobación de expedientes, solo jefes de área"}},
-    {"model": "rol.Rol", "pk": 3, "fields":{"nombre": "Revisor" , "descripcion": "Rol utilizado para crear y revisar"}},
-    {"model": "rol.Rol", "pk": 4, "fields":{"nombre": "Usuario" , "descripcion": "Rol utilizado para crear y enviar documentos"}}
+    {
+        "archivo": ".\\rol\\fixtures\\rol.json",
+        "_comment": "Fixtur para la creacion de los roloes",
+        "_ejecución": "python.exe .\\manage.py loaddata .\\rol.json, solo con una barra"
+    },
+    {
+        "_comment": "Creación del rol de Administrador",
+        "model": "rol.Rol",
+        "pk": 1,
+        "fields":{
+            "nombre": "Administrador",
+            "descripcion": "Rol utilizado para la administración del sistema"
+            }
+    },
+    {
+        "_comment": "Creación del rol de Aprobador",
+        "model": "rol.Rol",
+        "pk": 2,
+        "fields":{
+            "nombre": "Aprobador" ,
+            "descripcion": "Rol utilizado para la aprobación de expedientes, solo jefes de área"
+            }
+    },
+    {
+        "_comment": "Creación del rol de Revisor",
+        "pk": 3,
+        "fields":{
+            "nombre": "Revisor" ,
+            "descripcion": "Rol utilizado para crear y revisar"
+        }
+    },
+    {
+        "_comment": "Creación del rol de Usuario",
+        "pk": 4, 
+        "fields":{
+            "nombre": "Usuario",
+            "descripcion": "Rol utilizado para crear y enviar documentos"
+        }
+    }
 ]

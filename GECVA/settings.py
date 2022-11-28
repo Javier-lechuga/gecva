@@ -1,3 +1,4 @@
+# .\GECVA\settings.py
 """
 Django settings for GECVA project.
 

@@ -1,1 +1,2 @@
+# .\media
 en esta carpeta se almacenan los documentos cargados al sistema 

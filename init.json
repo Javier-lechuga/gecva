@@ -1,4 +1,9 @@
 [
+    {
+        "_archivo": ".\\init.json",
+        "_comment": "Fixtur que crea la primera inicialización del sistema",
+        "_ejecución": "python.exe .\\manage.py loaddata .\\init.json, solo con una barra"
+    },
     { 
         "_comment": "Creación del usuario raiz, con el nombre Administrador y clave admin",
         "model": "auth.user",

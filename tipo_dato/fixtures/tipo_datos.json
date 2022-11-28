@@ -1,8 +1,48 @@
 [
-    {"model": "tipo_dato.TipoDato", "pk":1, "fields":{"tipo": "Archivo"}},
-    {"model": "tipo_dato.TipoDato", "pk":2, "fields":{"tipo": "Numérico"}},
-    {"model": "tipo_dato.TipoDato", "pk":3, "fields":{"tipo": "Fecha"}},
-    {"model": "tipo_dato.TipoDato", "pk":4, "fields":{"tipo": "Texto"}},
-    {"model": "tipo_dato.TipoDato", "pk":5, "fields":{"tipo": "Correo electrónico"}},
-    {"model": "tipo_dato.TipoDato", "pk":6, "fields":{"tipo": "XML"}}
+    {
+        "archivo": ".\\tipo_dato\\fixtures\\tipo_datos.json",
+        "_comment": "Fixtur para la creacion de los roloes",
+        "_ejecución": "python.exe .\\manage.py loaddata .\\tipo_datos.json, solo con una barra"
+    },
+    {
+        "model": "tipo_dato.TipoDato",
+        "pk":1, "fields":{
+            "tipo": "Archivo"
+            }
+    },
+    {
+        "model": "tipo_dato.TipoDato",
+        "pk":2,
+        "fields":{
+            "tipo": "Numérico"
+            }
+    },
+    {
+        "model": "tipo_dato.TipoDato",
+        "pk":3,
+        "fields":{
+            "tipo": "Fecha"
+            }
+    },
+    {
+        "model": "tipo_dato.TipoDato",
+        "pk":4,
+        "fields":{
+            "tipo": "Texto"
+            }
+    },
+    {
+        "model": "tipo_dato.TipoDato",
+        "pk":5,
+        "fields":{
+            "tipo": "Correo electrónico"
+            }
+    },
+    {
+        "model": "tipo_dato.TipoDato",
+        "pk":6,
+        "fields":{
+            "tipo": "XML"
+            }
+    }
 ]

@@ -1,3 +1,17 @@
 [
-    {"model": "unidad.Unidad", "pk": 1, "fields":{"nombre": "Administrador" , "siglas":"ADM", "descripcion": "Administración del sistema", "activo": "True", "jefe_unidad": "1"}}
+    {
+        "_archivo": ".\\unidad\\fixtures\\unidad.json",
+        "_comment": "Fixtur para la creacion de los roloes",
+        "_ejecución": "python.exe .\\manage.py loaddata .\\unidad.json, solo con una barra"
+    },
+    {
+        "model": "unidad.Unidad",
+        "pk": 1, "fields":{
+            "nombre": "Administrador",
+            "siglas":"ADM",
+            "descripcion": "Administración del sistema",
+            "activo": "True",
+            "jefe_unidad": "1"
+        }
+    }
 ]
