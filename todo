@@ -1,0 +1,17 @@
+Fecha de creación: 2022/11/27
+Creador: Javier Ivan Lechuga Vital
+
+Fecha de ultima modificación: 2022/11/27
+Modificardo : 
+
+1.- Agregar comentarios identificando cada archivo por ejemplo ./todo
+2.- Marcar el código que no se usa come decrepito
+3.- Estructurar el código en clases
+4.- Eliminar código repetido
+5.- Inventariar los links de la plataforma
+6.- Verificar que todos los links funcionen
+7.- Crear diagrama de la estructura de la plataforma
+8.- crear diagrama entidad relación
+9.- implementar el cifrado de la base de datos
+10.- implementar el cifrado de los archivos
+11.- crear un ejemplo para cargar en la base de datos
