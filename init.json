@@ -60,6 +60,7 @@
         }
     },
     {
+        "_comment": "Creación del usuario administrador del sistema",
         "model": "usuarios.PerfilUser",
         "pk": 1,
         "fields": {
