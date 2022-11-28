@@ -2,8 +2,8 @@
 #.\requirements.tx
 
 #librerias activas # M2022/11/23 lechuga
-Django==4.1.3 
-reportlab==3.6.12
+#Django==4.1.3 
+#reportlab==3.6.12
 
 
 #librerias en posible uso, hace falta revisar si son necesarios # M2022/11/23
@@ -16,8 +16,8 @@ reportlab==3.6.12
 
 
 # versiones actiualizadas # 2022/11/23
-#Django==4.0.3      -> Django==4.1.3        # M2022/11/23 
-#reportlab==3.6.10  -> reportlab==3.6.12    # M2022/11/23
+Django==4.0.3      # -> Django==4.1.3        # M2022/11/23 
+reportlab==3.6.10  # -> reportlab==3.6.12    # M2022/11/23
 
 #librerias eliminadas  # M2022/11/23
 #paquetecalculos==1.0 -> se elimino dado que rada comento que solo fue una prueba y no es
