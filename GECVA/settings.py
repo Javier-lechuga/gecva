@@ -85,28 +85,30 @@ WSGI_APPLICATION = 'GECVA.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-SQLITE_DB_BACKEND = 1
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'gecvadb',
-        'USER': 'postgres',
-        'PASSWORD': 'cancelar01',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+SQLITE_DB_BACKEND    = 1
+POSGRESQL_DB_BACKEND = 2
 
-""" 
-Quitar comentarios y comentar la conexión de pstgresql para usar Sqlite
-DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+db_backend = SQLITE_DB_BACKEND # cambiar para asignar las  
+
+if db_backend == POSGRESQL_DB_BACKEND:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'gecvadb',
+            'USER': 'postgres',
+            'PASSWORD': 'cancelar01',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-}
-"""
+elif db_backend == SQLITE_DB_BACKEND:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
