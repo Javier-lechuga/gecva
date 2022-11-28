@@ -1,8 +1,0 @@
-2022-05-26 10:11:56 El usuario Admin Admin Admin consulta los tipos
-2022-05-26 10:12:13 El usuario Admin Admin Admin crea el tipo de expediente: Prueba de fechas
-2022-05-26 10:12:39 El usuario Admin Admin Admin crea el metadato: Fecha de inicio
-2022-05-26 10:13:10 El usuario Admin Admin Admin crea el metadato: Fecha fin
-2022-05-26 10:13:22 El usuario Admin Admin Admin consulta los tipos
-2022-05-26 10:14:23 El usuario Admin Admin Admin consulta los tipos
-2022-05-26 10:14:31 El usuario Admin Admin Admin edita el tipo de expediente: Prueba de fechas
-2022-05-26 10:14:36 El usuario Admin Admin Admin consulta los tipos

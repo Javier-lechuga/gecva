@@ -1,5 +1,0 @@
-2022-11-10 11:44:59 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
-2022-11-10 11:45:13 Administrador Administrador Admin Admin Crea: Tipo de Expediente: Factura
-2022-11-10 11:45:40 Administrador Administrador Admin Admin Crea: Metadato: PDF
-2022-11-10 11:45:57 Administrador Administrador Admin Admin Crea: Metadato: XML
-2022-11-10 11:46:05 Administrador Administrador Admin Admin Consulta Tipos de Expedientes

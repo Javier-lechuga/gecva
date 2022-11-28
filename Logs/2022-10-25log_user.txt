@@ -1,4 +1,0 @@
-2022-10-25 09:54:57 Usuario Juan Robles Robles Consulta Expedientes
-2022-10-25 10:00:51 Usuario Maria Pérez Pérez Entra Sistema
-2022-10-25 10:00:53 Usuario Maria Pérez Pérez Consulta Expedientes
-2022-10-25 10:00:57 Usuario Maria Pérez Pérez Consulta Recibidos Expedientes

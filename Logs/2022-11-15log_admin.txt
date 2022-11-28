@@ -1,7 +1,0 @@
-2022-11-15 12:36:39 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
-2022-11-15 12:36:53 Administrador Administrador Admin Admin Crea: Tipo de Expediente: Prueba 2
-2022-11-15 12:37:20 Administrador Administrador Admin Admin Crea: Metadato: Total
-2022-11-15 12:37:42 Administrador Administrador Admin Admin Crea: Metadato: Participante
-2022-11-15 12:38:07 Administrador Administrador Admin Admin Crea: Metadato: Factura PDF
-2022-11-15 12:38:30 Administrador Administrador Admin Admin Crea: Metadato: Factura XML
-2022-11-15 12:38:34 Administrador Administrador Admin Admin Consulta Tipos de Expedientes
