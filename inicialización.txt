@@ -1,8 +1,8 @@
 pra inicializar el sistema es necesario:
 
 1.- crear o activar el entorno virtual en caso de tener
-    # para activar en powershell
     
+    # para activar en powershell
     @ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
     @ .\gven\Scripts\Activate.ps1
 
