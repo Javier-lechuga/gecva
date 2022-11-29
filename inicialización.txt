@@ -18,5 +18,20 @@ pra inicializar el sistema es necesario:
 5.- ejecutar las ficturs en el siguinte orden 
 
     @ python.exe .\manage.py loaddata .\init.json
-    @ python.exe .\manage.py loaddata .\estatus.json
-    @ python.exe .\manage.py loaddata .\tipo_datos.json
+
+
+6.- en caso de querer usar los siguientes datos de prueba
+
+    Unidad administrativa:
+        nombre: Prueba
+        jefe de unidad: usuario Aprobador
+
+    Usuario Aprobador: 
+        nombre: Aprobador
+        contraseña: amdin
+    Usuario Revisor: 
+        nombre: Revisor
+        contraseña: amdin
+    Usuario Usuario:
+        nombre: Usuario
+        contraseña: amdin

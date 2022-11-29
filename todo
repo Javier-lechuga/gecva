@@ -18,3 +18,10 @@ Modificardo :
 10.- implementar el cifrado de los archivos
 11.- crear un ejemplo para cargar en la base de datos
 12.- sacar el template base del app unidad
+
+
+# correcciones
+Al momento de enviar el expediente a aprobación (revisión), cuando
+se entra al detalle del expediente, no se muestran los metadatos correspondientes
+
+No se cambia la contraseña en el formulario de modificar usuario

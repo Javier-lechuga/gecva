@@ -6,6 +6,23 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+
+"""
+Modelo estatus, este modelo se utiliza para controlar el estado que pueden tener los flujos(expedientes),
+los estatus posibles son los siguientes:
+    1.- Creado ->para cuando el flujo fue creado por el usuario, en esta etapa el flujo 
+                 puede ser modificado, eliminado o asignado para aprobación.
+                 Al eliminar el expediente en el sistema, este se conserva en la base de datos
+                 y se le cambia el campo de activo de 1 a 0.
+                 # Nota hay que revisar el proceso de la eliminación
+    2.- Revisión -> el usuario creador paso el flujo a aprobación(revisión), en esta etapa el flujo puede ser 
+                    aprobado(Revisado). en esta etapa el flujo no puede ser modificado por el usuario creador
+                    # Nota hai que acomodar para eliminar confuciones, en el template dice aprobar
+                    pero deberia decir revisar.
+    3.- 
+"""
+
 class Estatus(models.Model):
 
     nombre = models.CharField(u'Nombre', max_length=245)
@@ -13,18 +30,4 @@ class Estatus(models.Model):
 
     def __str__(self):
             return self.nombre
-# creación de los estatus en los que se puede encontrar un expediente o documento.
-# para crear estos modelos en la base de datos utilizar la fixture estatus.json ejecutando
-# el comando "python manage.py loaddata estatus.json" en la terminal
-#   Estatus:
-#       Enviado   - cuando el expediente fue enviado para su aprobación.
-#       Guardado  - cuando el expediente aun no a sido terminado y sigue recibiendo modificaciones.
-#       Recibido  - cuando el expediente fue abierto por el usuario responsable de su aprobación o 
-#                   revisión.
-#       Aprobado  - cuando el usuario responsable de la aprobación señala que el documento o 
-#                   expediente están correctos.
-#       Rechazado - cuando el usuario responsable de la aprobación señala que el documento o 
-#                   expediente están incorrectos.
-#
-#   Ingreso de los estatus anteriores al modelo Estatus
-#        
+     

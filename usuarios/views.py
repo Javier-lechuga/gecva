@@ -127,7 +127,6 @@ def EditarUsuario(request, pk):
     try:
         usuario = PerfilUser.objects.get(pk=pk)
         if request.method == "POST":
-            # return HttpResponse(request.POST.items())
             PerfilUser.objects.filter(pk=pk).update(username=request.POST['username'])
             PerfilUser.objects.filter(pk=pk).update(first_name=request.POST['first_name'])
             PerfilUser.objects.filter(pk=pk).update(last_name=request.POST['last_name'])
@@ -135,6 +134,15 @@ def EditarUsuario(request, pk):
             PerfilUser.objects.filter(pk=pk).update(amaterno=request.POST['amaterno'])
             PerfilUser.objects.filter(pk=pk).update(telefono=request.POST['telefono'])
             PerfilUser.objects.filter(pk=pk).update(extension=request.POST['extension'])
+            
+            #############################################################################
+            # Falta la logica para la actualizacion ya que no cambiaba la contraseña
+            #PerfilUser.objects.filter(pk=pk).update(password=request.POST['password'])
+            #usuario.set_password(request.POST['password'])
+            #usuario.save
+            #return HttpResponse(usuario)
+            #############################################################################
+
             # Instanciando Usuario Jefe inmediato
             jefe_inmediato_dos = User()
             jefe_inmediato_dos = User.objects.get(pk=request.POST['jefe_inmediato'])

@@ -1,0 +1,101 @@
+[
+    {
+        "_comment": "Creando la unidad Prueba",
+        "model": "unidad.Unidad",
+        "pk": 2,
+        "fields":{
+            "nombre": "Prueba" ,
+            "siglas":"PRU",
+            "descripcion": "Unidad Prueba",
+            "activo": "True",
+            "jefe_unidad": "2"
+        }
+    },
+    { 
+        "_comment": "Creación la primera parte del usuario Aprobador, con el nombre Aprobador y clave admin",
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "username": "Aprobador",
+            "password": "pbkdf2_sha256$390000$mPu0O7UPketZE7wqBo0A4D$hu/DGjVZ6cl1czgGNIJLaipskmUdTqFeTKD3AVf9Gq4=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "_comment": "Creación la segunda parte del usuario Aprobador",
+        "model": "usuarios.PerfilUser",
+        "pk": 2,
+        "fields": {
+            "amaterno": "Aprobador",
+            "telefono": "1234",
+            "extension": "1234",
+            "rol" : 2,
+            "jefe_inmediato" : 1,
+            "unidad_user" : 1,
+            "transferido" : false,
+            "deputy" : false,
+            "es_deputy" : false,
+            "usuario_deputy" : 1
+        }
+    },
+    { 
+        "_comment": "Creación la primera parte del usuario Revisor, con el nombre Revisor y clave admin",
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "username": "Revisor",
+            "password": "pbkdf2_sha256$390000$mPu0O7UPketZE7wqBo0A4D$hu/DGjVZ6cl1czgGNIJLaipskmUdTqFeTKD3AVf9Gq4=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "_comment": "Creación la segunda parte del usuario Revisor",
+        "model": "usuarios.PerfilUser",
+        "pk": 3,
+        "fields": {
+            "amaterno": "Revisor",
+            "telefono": "1234",
+            "extension": "1234",
+            "rol" : 3,
+            "jefe_inmediato" : 1,
+            "unidad_user" : 1,
+            "transferido" : false,
+            "deputy" : false,
+            "es_deputy" : false,
+            "usuario_deputy" : 1
+        }
+    },
+    { 
+        "_comment": "Creación la primera parte del usuario Usuario, con el nombre Usuario y clave admin",
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "username": "Usuario",
+            "password": "pbkdf2_sha256$390000$mPu0O7UPketZE7wqBo0A4D$hu/DGjVZ6cl1czgGNIJLaipskmUdTqFeTKD3AVf9Gq4=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "_comment": "Creación la segunda parte del usuario Usuario",
+        "model": "usuarios.PerfilUser",
+        "pk": 4,
+        "fields": {
+            "amaterno": "Usuario",
+            "telefono": "1234",
+            "extension": "1234",
+            "rol" : 4,
+            "jefe_inmediato" : 1,
+            "unidad_user" : 1,
+            "transferido" : false,
+            "deputy" : false,
+            "es_deputy" : false,
+            "usuario_deputy" : 1
+        }
+    }
+]
