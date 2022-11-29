@@ -15,7 +15,8 @@ pra inicializar el sistema es necesario:
 4.- ejecutar las migraciones 
     @ python .\manage.py migrate
 
-5.- ejecutar las ficturs en el siguinte orden 
+5.- ejecutar la siguiente fixtur, la cual creara el usuario y unidad Adminitrador, para
+    poder realizar el primer acceso al sistema
 
     @ python.exe .\manage.py loaddata .\init.json
 
@@ -35,3 +36,4 @@ pra inicializar el sistema es necesario:
     Usuario Usuario:
         nombre: Usuario
         contraseña: amdin
+    ejecutar la fixtur
