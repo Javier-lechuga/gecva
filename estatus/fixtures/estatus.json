@@ -1,10 +1,5 @@
 [
     {
-        "archivo": ".\\estatus\\fixtures\\estatus.json",
-        "_comment": "Fixtur para la creacion de los estatus",
-        "_ejecución": "python.exe .\\manage.py loaddata .\\estatus.json, solo con una barra"
-    },
-    {
         "_comment": "Creación estatus Creado",
         "model": "estatus.Estatus",
         "pk": 1,

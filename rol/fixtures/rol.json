@@ -1,17 +1,12 @@
 [
     {
-        "archivo": ".\\rol\\fixtures\\rol.json",
-        "_comment": "Fixtur para la creacion de los roloes",
-        "_ejecución": "python.exe .\\manage.py loaddata .\\rol.json, solo con una barra"
-    },
-    {
         "_comment": "Creación del rol de Administrador",
         "model": "rol.Rol",
         "pk": 1,
         "fields":{
             "nombre": "Administrador",
             "descripcion": "Rol utilizado para la administración del sistema"
-            }
+        }
     },
     {
         "_comment": "Creación del rol de Aprobador",
@@ -20,10 +15,11 @@
         "fields":{
             "nombre": "Aprobador" ,
             "descripcion": "Rol utilizado para la aprobación de expedientes, solo jefes de área"
-            }
+        }
     },
     {
         "_comment": "Creación del rol de Revisor",
+        "model": "rol.Rol",
         "pk": 3,
         "fields":{
             "nombre": "Revisor" ,
@@ -32,6 +28,7 @@
     },
     {
         "_comment": "Creación del rol de Usuario",
+        "model": "rol.Rol",
         "pk": 4, 
         "fields":{
             "nombre": "Usuario",

@@ -1,10 +1,5 @@
 [
     {
-        "_archivo": ".\\usuario\\fixtures\\usuariod.json",
-        "_comment": "Fixtur para la creacion del usuario Administrador",
-        "_ejecución": "python.exe .\\manage.py loaddata .\\usuario.json, solo con una barra"
-    },
-    {
         "model": "usuarios.Perfiluser",
         "pk": 1,
         "fields":{

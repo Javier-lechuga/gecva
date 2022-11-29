@@ -1,10 +1,5 @@
 [
     {
-        "archivo": ".\\tipo_dato\\fixtures\\tipo_datos.json",
-        "_comment": "Fixtur para la creacion de los roloes",
-        "_ejecución": "python.exe .\\manage.py loaddata .\\tipo_datos.json, solo con una barra"
-    },
-    {
         "model": "tipo_dato.TipoDato",
         "pk":1, "fields":{
             "tipo": "Archivo"

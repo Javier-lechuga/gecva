@@ -1,0 +1,22 @@
+pra inicializar el sistema es necesario:
+
+1.- crear o activar el entorno virtual en caso de tener
+    # para activar en powershell
+    
+    @ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+    @ .\gven\Scripts\Activate.ps1
+
+2.- en el archivo .\GECVA\setings.py, seleccionar el motor de base de datos que sera utilizado,
+    esto se hace cambiando la variable "db_backend". 
+
+3.- ejecutar el archivo requirements.txt
+    @ pip install -r .\requirements.txt
+
+4.- ejecutar las migraciones 
+    @ python .\manage.py migrate
+
+5.- ejecutar las ficturs en el siguinte orden 
+
+    @ python.exe .\manage.py loaddata .\init.json
+    @ python.exe .\manage.py loaddata .\estatus.json
+    @ python.exe .\manage.py loaddata .\tipo_datos.json
