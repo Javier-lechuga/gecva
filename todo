@@ -25,3 +25,6 @@ Al momento de enviar el expediente a aprobación (revisión), cuando
 se entra al detalle del expediente, no se muestran los metadatos correspondientes
 
 No se cambia la contraseña en el formulario de modificar usuario
+
+Al modificar la unidad no se muestra la informacion del jefe de la unidad y en la lista para la
+seleccion del jefe no se muestran los usuarios disponibles

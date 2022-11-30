@@ -1,6 +1,6 @@
 [
     { 
-        "_comment": "Creación del usuario raiz, con el nombre Administrador y clave admin",
+        "_comment": "Creación de la primera parte del  usuario raiz, con el nombre Administrador y clave admin",
         "model": "auth.user",
         "pk": 1,
         "fields": {
@@ -9,6 +9,35 @@
             "is_superuser": true,
             "is_staff": true,
             "is_active": true
+        }
+    },
+    {
+        "_comment": "Creación de la segunda parte del usuario raiz",
+        "model": "usuarios.PerfilUser",
+        "pk": 1,
+        "fields": {
+            "amaterno": "Administrador",
+            "telefono": "1234",
+            "extension": "1234",
+            "rol" : 1,
+            "jefe_inmediato" : 1,
+            "unidad_user" : 1,
+            "transferido" : false,
+            "deputy" : false,
+            "es_deputy" : false,
+            "usuario_deputy" : 1
+        }
+    },
+    {
+        "_comment": "Creando la unidad Administrador",
+        "model": "unidad.Unidad",
+        "pk": 1,
+        "fields":{
+            "nombre": "Administrador" ,
+            "siglas":"ADM",
+            "descripcion": "Administración del sistema",
+            "activo": "True",
+            "jefe_unidad": "1"
         }
     },
     {
@@ -45,35 +74,6 @@
         "fields":{
             "nombre": "Usuario",
             "descripcion": "Rol utilizado para crear y enviar documentos"
-        }
-    },
-    {
-        "_comment": "Creando la unidad Administrador",
-        "model": "unidad.Unidad",
-        "pk": 1,
-        "fields":{
-            "nombre": "Administrador" ,
-            "siglas":"ADM",
-            "descripcion": "Administración del sistema",
-            "activo": "True",
-            "jefe_unidad": "1"
-        }
-    },
-    {
-        "_comment": "Creación del usuario administrador del sistema",
-        "model": "usuarios.PerfilUser",
-        "pk": 1,
-        "fields": {
-            "amaterno": "Administrador",
-            "telefono": "1234",
-            "extension": "1234",
-            "rol" : 1,
-            "jefe_inmediato" : 1,
-            "unidad_user" : 1,
-            "transferido" : false,
-            "deputy" : false,
-            "es_deputy" : false,
-            "usuario_deputy" : 1
         }
     },
     {
