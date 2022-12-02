@@ -36,4 +36,8 @@ pra inicializar el sistema es necesario:
     Usuario Usuario:
         nombre: Usuario
         contraseña: amdin
-    ejecutar la fixtur
+    
+    ejecutar la fixtur datos_de_prueba.json
+    @ python.exe .\manage.py loaddata .\datos_de_prueba.json
+
+

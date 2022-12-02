@@ -1,0 +1,5 @@
+2022-12-01 12:22:44 Usuario   Usuario Entra Sistema
+2022-12-01 12:23:17 Administrador   Administrador Entra Sistema
+2022-12-01 12:25:24 Usuario   Usuario Entra Sistema
+2022-12-01 12:28:33 Usuario   Usuario Consulta Expedientes
+2022-12-01 12:28:35 Usuario   Usuario Lista Tipos de Expedientes

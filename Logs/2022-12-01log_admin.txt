@@ -1,0 +1,4 @@
+2022-12-01 12:23:22 Administrador   Administrador Consulta Tipos de Expedientes
+2022-12-01 12:24:16 Administrador   Administrador Crea: Tipo de Expediente: flujo_de_prueba1
+2022-12-01 12:24:57 Administrador   Administrador Crea: Metadato: metadato_de_prueba_1
+2022-12-01 12:25:01 Administrador   Administrador Consulta Tipos de Expedientes
